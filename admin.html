@@ -213,7 +213,7 @@ tr:hover td{background:rgba(255,255,255,0.02)}
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EJPS2SY5Q3');</script>
 </head>
 <body>
- 
+
 <div class="login-page" id="loginPage">
   <div class="login-card">
     <div class="login-logo">⚙️ <span>admin</span>.panel</div>
@@ -225,7 +225,7 @@ tr:hover td{background:rgba(255,255,255,0.02)}
     <div class="login-err" id="loginErr"></div>
   </div>
 </div>
- 
+
 <div class="app hidden" id="app">
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-top">
@@ -266,7 +266,7 @@ tr:hover td{background:rgba(255,255,255,0.02)}
       </div>
     </div>
   </aside>
- 
+
   <div class="main">
     <div class="topbar">
       <div class="topbar-left">
@@ -280,14 +280,14 @@ tr:hover td{background:rgba(255,255,255,0.02)}
         <div class="topbar-btn notif-btn" onclick="toggleNotifPanel()">🔔<div class="notif-dot" id="notifDot" style="display:none"></div></div>
       </div>
     </div>
- 
+
     <div class="notif-panel" id="notifPanel">
       <div class="notif-header"><h4>Bildirimler</h4><span class="notif-clear" onclick="clearNotifs()">Temizle</span></div>
       <div class="notif-list" id="notifList"></div>
     </div>
- 
+
     <div class="content">
- 
+
       <div class="panel active fade-in" id="panel-dashboard">
         <div class="stats-grid">
           <div class="stat-card"><div class="stat-icon">📝</div><div class="stat-val blue" id="s-posts">—</div><div class="stat-label">Toplam Yazı</div></div>
@@ -304,7 +304,7 @@ tr:hover td{background:rgba(255,255,255,0.02)}
           <div id="pendingList"></div>
         </div>
       </div>
- 
+
       <div class="panel fade-in" id="panel-visitors">
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px">
           <div class="stat-card"><div class="stat-icon">👁️</div><div class="stat-val blue" id="v-today">—</div><div class="stat-label">Bugün</div></div>
@@ -317,21 +317,21 @@ tr:hover td{background:rgba(255,255,255,0.02)}
         </div>
         <div class="card" style="margin-top:16px"><div class="card-header"><div class="card-title">Not</div></div><p style="font-size:13px;color:var(--text2);line-height:1.7">Gerçek ziyaretçi takibi için sitenize <strong>Google Analytics</strong> veya <strong>Plausible</strong> ekleyin. Gösterilen veriler simüle edilmiştir.</p></div>
       </div>
- 
+
       <div class="panel fade-in" id="panel-notifs">
         <div class="card"><div class="card-header"><div class="card-title">Tüm Bildirimler</div><button class="btn btn-sm btn-ghost" onclick="clearNotifs()">Tümünü Temizle</button></div><div id="allNotifList"></div></div>
       </div>
- 
+
       <div class="panel fade-in" id="panel-posts">
         <div style="display:flex;justify-content:flex-end;margin-bottom:16px"><button class="btn btn-primary" onclick="openPostModal()">+ Yeni Yazı</button></div>
         <div class="table-wrap"><table><thead><tr><th>İkon</th><th>Başlık</th><th>Kategori</th><th>Durum</th><th>Öne Çıkan</th><th>Tarih</th><th>İşlem</th></tr></thead><tbody id="postsBody"><tr><td colspan="7" style="text-align:center;padding:32px;color:var(--text3)"><span class="spin">⚙️</span></td></tr></tbody></table></div>
       </div>
- 
+
       <div class="panel fade-in" id="panel-projects">
         <div style="display:flex;justify-content:flex-end;margin-bottom:16px"><button class="btn btn-primary" onclick="openProjModal()">+ Yeni Proje</button></div>
         <div class="table-wrap"><table><thead><tr><th>İkon</th><th>Ad</th><th>Teknoloji</th><th>Durum</th><th>GitHub</th><th>Demo</th><th>İşlem</th></tr></thead><tbody id="projsBody"><tr><td colspan="7" style="text-align:center;padding:32px;color:var(--text3)"><span class="spin">⚙️</span></td></tr></tbody></table></div>
       </div>
- 
+
       <div class="panel fade-in" id="panel-comments">
         <div style="display:flex;gap:8px;margin-bottom:16px">
           <button class="btn btn-sm btn-ghost filter-btn active" onclick="filterComments('all',this)">Tümü</button>
@@ -340,11 +340,11 @@ tr:hover td{background:rgba(255,255,255,0.02)}
         </div>
         <div class="table-wrap"><table><thead><tr><th>Yazar</th><th>E-posta</th><th>Yorum</th><th>Durum</th><th>Tarih</th><th>İşlem</th></tr></thead><tbody id="commentsBody"></tbody></table></div>
       </div>
- 
+
       <div class="panel fade-in" id="panel-messages">
         <div class="table-wrap"><table><thead><tr><th>Ad</th><th>E-posta</th><th>Konu</th><th>Mesaj</th><th>Tarih</th><th>İşlem</th></tr></thead><tbody id="msgsBody"></tbody></table></div>
       </div>
- 
+
       <div class="panel fade-in" id="panel-media">
         <div class="card">
           <div class="card-header"><div class="card-title">Resim Yükle</div></div>
@@ -364,7 +364,7 @@ tr:hover td{background:rgba(255,255,255,0.02)}
           <div class="media-grid" id="mediaGrid"><div class="empty" style="grid-column:span 4"><div class="empty-icon">🖼️</div><p>Yükleniyor...</p></div></div>
         </div>
       </div>
- 
+
       <div class="panel fade-in" id="panel-about">
         <div class="card">
           <div class="card-header"><div class="card-title">Biyografi</div></div>
@@ -377,7 +377,7 @@ tr:hover td{background:rgba(255,255,255,0.02)}
         <div class="card" style="margin-top:16px"><div class="card-header"><div class="card-title">Sosyal Medya</div></div><div id="socialList"></div></div>
         <div style="margin-top:16px;display:flex;justify-content:flex-end"><button class="btn btn-primary" onclick="saveAbout()">💾 Kaydet</button></div>
       </div>
- 
+
       <div class="panel fade-in" id="panel-chatbot">
         <div class="card">
           <div class="card-header"><div class="card-title">Bot Ayarları</div></div>
@@ -390,7 +390,7 @@ tr:hover td{background:rgba(255,255,255,0.02)}
         <div class="card" style="margin-top:16px"><div class="card-header"><div class="card-title">Hızlı Öneriler</div></div><div class="form-group"><label class="form-label">Öneri butonları (virgülle ayır)</label><input class="form-input" id="botSuggestions"></div></div>
         <div style="margin-top:16px;display:flex;justify-content:flex-end"><button class="btn btn-primary" onclick="saveChatbot()">💾 Kaydet</button></div>
       </div>
- 
+
       <div class="panel fade-in" id="panel-theme">
         <div class="card">
           <div class="card-header"><div class="card-title">Site Bilgileri</div></div>
@@ -411,7 +411,7 @@ tr:hover td{background:rgba(255,255,255,0.02)}
         </div>
         <div style="margin-top:16px;display:flex;justify-content:flex-end"><button class="btn btn-primary" onclick="saveSiteSettings()">💾 Kaydet</button></div>
       </div>
- 
+
       <div class="panel fade-in" id="panel-settings">
         <div class="card">
           <div class="card-header"><div class="card-title">Genel Ayarlar</div></div>
@@ -436,11 +436,11 @@ tr:hover td{background:rgba(255,255,255,0.02)}
         </div>
         <div style="margin-top:16px;display:flex;justify-content:flex-end"><button class="btn btn-primary" onclick="saveSettings()">💾 Kaydet</button></div>
       </div>
- 
+
     </div>
   </div>
 </div>
- 
+
 <div class="modal-overlay" id="postModal">
   <div class="modal">
     <h3 id="postModalTitle">Yeni Yazı</h3>
@@ -459,7 +459,7 @@ tr:hover td{background:rgba(255,255,255,0.02)}
     <div class="form-actions"><button class="btn btn-ghost" onclick="closeModal('postModal')">İptal</button><button class="btn btn-primary" onclick="savePost()">💾 Kaydet</button></div>
   </div>
 </div>
- 
+
 <div class="modal-overlay" id="projModal">
   <div class="modal">
     <h3 id="projModalTitle">Yeni Proje</h3>
@@ -478,21 +478,21 @@ tr:hover td{background:rgba(255,255,255,0.02)}
     <div class="form-actions"><button class="btn btn-ghost" onclick="closeModal('projModal')">İptal</button><button class="btn btn-primary" onclick="saveProj()">💾 Kaydet</button></div>
   </div>
 </div>
- 
+
 <div class="toast" id="toast"><span id="toastIcon">✓</span><span id="toastMsg">İşlem tamamlandı.</span></div>
- 
+
 <script>
 const SUPABASE_URL='https://rnroiajlmjudwgoacsjw.supabase.co';
 const SUPABASE_KEY='sb_publishable_GpoMQnpHtrxQKMTjO9Z7iQ_7fC56-tc';
 const{createClient}=supabase;
 const db=createClient(SUPABASE_URL,SUPABASE_KEY);
- 
+
 let adminUser=null;
 let allComments=[];
 let commentFilter='all';
 let notifications=JSON.parse(localStorage.getItem('ka_notifs')||'[]');
 let isDark=localStorage.getItem('ka_admin_theme')!=='light';
- 
+
 let aboutData={
   bio1:'Merhaba! Ben Kerem Akbayır. 8+ yıldır kurumsal ve startup projelerinde yazılım geliştiriyorum.',
   bio2:'Kariyerim boyunca fintech, e-ticaret ve SaaS alanlarında yüksek trafikli sistemler tasarladım.',
@@ -501,24 +501,24 @@ let aboutData={
   experience:[{title:'Senior Software Engineer',company:'TechCorp A.Ş.',date:'Oca 2022 – Günümüz',desc:'Mikroservis mimarileri, .NET 8, Azure AKS.'},{title:'Software Engineer',company:'Fintech Startup',date:'Mar 2019 – Ara 2021',desc:'Ödeme sistemleri, REST API tasarımı.'},{title:'Junior Developer',company:'Yazılım Evi Ltd.',date:'Haz 2016 – Mar 2019',desc:'ASP.NET MVC, MSSQL, jQuery.'}],
   social:[{id:'github',name:'GitHub',icon:'🐙',url:'github.com/keremakbayir',active:true},{id:'linkedin',name:'LinkedIn',icon:'💼',url:'linkedin.com/in/keremakbayir',active:true},{id:'twitter',name:'Twitter',icon:'🐦',url:'@keremakbayir',active:true},{id:'medium',name:'Medium',icon:'✍️',url:'medium.com/@keremakbayir',active:true}]
 };
- 
+
 let chatbotData={
   name:'Kerem Bot',
   greeting:'Merhaba! 👋 Size nasıl yardımcı olabilirim?',
   suggestions:'Hakkında,Projeler,İletişim,Blog konuları,Teknolojiler',
   qa:[{q:'hakkında',a:'Kerem Akbayır, 8+ yıllık deneyime sahip Senior Software Engineer.'},{q:'projeler',a:'MicroKit, AzureWatcher ve QueryOptimizer projelerine göz atabilirsiniz!'},{q:'iletişim',a:'kerem@akbayir.dev adresinden ulaşabilirsiniz.'},{q:'blog',a:'DevOps, Architecture, C#, PostgreSQL, AI konularında yazılar yazıyorum.'},{q:'teknoloji',a:'.NET, Azure, Docker, Kubernetes, PostgreSQL ve LLM entegrasyonlarıyla çalışıyorum.'}]
 };
- 
+
 function fmtDate(s){if(!s)return'—';const d=new Date(s);const m=['Oca','Şub','Mar','Nis','May','Haz','Tem','Ağu','Eyl','Eki','Kas','Ara'];return`${d.getDate()} ${m[d.getMonth()]} ${d.getFullYear()}`;}
 function escHtml(t){return(t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function showToast(msg,type='success'){const t=document.getElementById('toast');document.getElementById('toastIcon').textContent=type==='error'?'✕':'✓';document.getElementById('toastMsg').textContent=msg;t.className='toast '+type+' show';setTimeout(()=>t.classList.remove('show'),3000);}
 function closeModal(id){document.getElementById(id).classList.remove('show');}
 document.addEventListener('click',e=>{if(e.target.classList.contains('modal-overlay'))e.target.classList.remove('show');if(!e.target.closest('.notif-btn')&&!e.target.closest('#notifPanel'))document.getElementById('notifPanel').classList.remove('show');});
- 
+
 function applyTheme(){document.documentElement.setAttribute('data-theme',isDark?'dark':'light');const b=document.getElementById('themeBtn');if(b)b.textContent=isDark?'🌙':'☀️';}
 function toggleTheme(){isDark=!isDark;localStorage.setItem('ka_admin_theme',isDark?'dark':'light');applyTheme();}
 applyTheme();
- 
+
 async function doLogin(){
   const email=document.getElementById('loginEmail').value.trim();
   const pass=document.getElementById('loginPass').value;
@@ -527,9 +527,9 @@ async function doLogin(){
   if(!email||!pass){err.textContent='E-posta ve şifre girin.';return;}
   try{const{data,error}=await db.auth.signInWithPassword({email,password:pass});if(error)throw error;adminUser=data.user;showApp();}catch(e){err.textContent='Giriş başarısız: '+e.message;}
 }
- 
+
 async function doLogout(){await db.auth.signOut();adminUser=null;document.getElementById('app').classList.add('hidden');document.getElementById('loginPage').classList.remove('hidden');}
- 
+
 // ============================================================
 // SHOW APP — ÖNEMLİ DEĞİŞİKLİK: async + await ile Supabase'den yükleme
 // ============================================================
@@ -551,7 +551,7 @@ async function showApp(){
   checkSBStatus();
   renderNotifications();
 }
- 
+
 const panelTitles={dashboard:'Dashboard',visitors:'Ziyaretçiler',notifs:'Bildirimler',posts:'Yazılar',projects:'Projeler',comments:'Yorumlar',messages:'Mesajlar',media:'Medya',about:'Hakkımda',chatbot:'Chatbot',theme:'Tema & Site',settings:'Ayarlar'};
 function showPanel(name,btn){
   document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
@@ -565,7 +565,7 @@ function showPanel(name,btn){
   if(name==='visitors')loadVisitors();
   if(name==='notifs')renderAllNotifs();
 }
- 
+
 async function loadDashboard(){
   try{
     const[p,pr,c,m]=await Promise.all([db.from('posts').select('id',{count:'exact'}),db.from('projects').select('id',{count:'exact'}),db.from('comments').select('id',{count:'exact'}),db.from('messages').select('id',{count:'exact'})]);
@@ -580,24 +580,24 @@ async function loadDashboard(){
     const mb=document.getElementById('msgBadge');if(mb&&nm){mb.textContent=nm;mb.classList.toggle('show',nm>0);}
   }catch(e){console.warn(e);}
 }
- 
+
 function renderChart(){const months=['Kas','Ara','Oca','Şub','Mar','Nis','May'];const vals=[12,28,19,34,41,27,38];const max=Math.max(...vals);const c=document.getElementById('dashChart');if(!c)return;c.innerHTML=months.map((m,i)=>`<div class="chart-bar-wrap"><div class="chart-bar" style="height:${vals[i]/max*100}%;background:linear-gradient(to top,rgba(99,102,241,0.8),rgba(139,92,246,0.8));flex:1" title="${vals[i]}"></div><div class="chart-bar-label">${m}</div></div>`).join('');}
- 
+
 async function loadActivity(){const el=document.getElementById('activityList');if(!el)return;try{const{data:c}=await db.from('comments').select('author,created_at').order('created_at',{ascending:false}).limit(3);const{data:m}=await db.from('messages').select('name,created_at').order('created_at',{ascending:false}).limit(2);const items=[...(c||[]).map(x=>({icon:'💬',cls:'blue',text:`<strong>${escHtml(x.author)}</strong> yorum yaptı`,time:x.created_at})),...(m||[]).map(x=>({icon:'✉️',cls:'green',text:`<strong>${escHtml(x.name)}</strong> mesaj gönderdi`,time:x.created_at}))];if(!items.length){el.innerHTML='<div class="empty"><p>Henüz aktivite yok</p></div>';return;}el.innerHTML=items.map(i=>`<div class="activity-item"><div class="activity-icon ${i.cls}">${i.icon}</div><div><div class="activity-text">${i.text}</div><div class="activity-time">${fmtDate(i.time)}</div></div></div>`).join('');}catch(e){el.innerHTML='';}}
- 
+
 async function loadPendingComments(){const el=document.getElementById('pendingList');if(!el)return;try{const{data}=await db.from('comments').select('*').eq('status','pending').limit(5);if(!data||!data.length){el.innerHTML='<div class="empty"><div class="empty-icon">✅</div><p>Onay bekleyen yorum yok</p></div>';return;}el.innerHTML=`<div class="table-wrap"><table><thead><tr><th>Yazar</th><th>Yorum</th><th>Tarih</th><th>İşlem</th></tr></thead><tbody>${data.map(c=>`<tr><td><strong>${escHtml(c.author)}</strong></td><td style="max-width:280px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${escHtml(c.content)}</td><td>${fmtDate(c.created_at)}</td><td style="display:flex;gap:6px"><button class="btn btn-sm btn-success" onclick="approveComment(${c.id})">Onayla</button><button class="btn btn-sm btn-danger" onclick="deleteComment(${c.id})">Sil</button></td></tr>`).join('')}</tbody></table></div>`;}catch(e){}}
- 
+
 function loadVisitors(){document.getElementById('v-today').textContent=Math.floor(Math.random()*80+20);document.getElementById('v-week').textContent=Math.floor(Math.random()*500+100);document.getElementById('v-month').textContent=Math.floor(Math.random()*2000+500);const pages=['/ Ana Sayfa','/ Blog','/ Hakkımda','/ Projeler','/ Araçlar'];const counts=[120,89,67,54,43];const max=counts[0];document.getElementById('popPages').innerHTML=pages.map((p,i)=>`<div class="visitor-stat"><div class="visitor-label">${p}</div><div class="visitor-bar-wrap"><div class="visitor-bar" style="width:${counts[i]/max*100}%"></div></div><div class="visitor-count">${counts[i]}</div></div>`).join('');document.getElementById('deviceStats').innerHTML=[['Chrome',52],['Safari',28],['Firefox',12],['Edge',8]].map(([b,p])=>`<div class="visitor-stat"><div class="visitor-label">${b}</div><div class="visitor-bar-wrap"><div class="visitor-bar" style="width:${p}%;background:var(--accent2)"></div></div><div class="visitor-count">${p}%</div></div>`).join('');}
- 
+
 function addNotif(n){notifications.unshift(n);if(notifications.length>50)notifications.pop();localStorage.setItem('ka_notifs',JSON.stringify(notifications));renderNotifications();}
 function renderNotifications(){const unread=notifications.filter(n=>n.unread).length;const dot=document.getElementById('notifDot');const badge=document.getElementById('notifBadge');if(dot)dot.style.display=unread>0?'block':'none';if(badge){badge.textContent=unread;badge.classList.toggle('show',unread>0);}const list=document.getElementById('notifList');if(!list)return;if(!notifications.length){list.innerHTML='<div class="empty" style="padding:20px"><p>Bildirim yok</p></div>';return;}list.innerHTML=notifications.slice(0,10).map(n=>`<div class="notif-item ${n.unread?'unread':''}" onclick="markRead('${n.id}')"><div class="notif-item-icon">${n.icon||'🔔'}</div><div><div class="notif-item-text">${n.text}</div><div class="notif-item-time">${fmtDate(n.time)}</div></div></div>`).join('');}
 function renderAllNotifs(){const el=document.getElementById('allNotifList');if(!el)return;if(!notifications.length){el.innerHTML='<div class="empty"><div class="empty-icon">🔔</div><p>Bildirim yok</p></div>';return;}el.innerHTML=notifications.map(n=>`<div class="activity-item"><div class="activity-icon ${n.unread?'blue':''}">${n.icon||'🔔'}</div><div><div class="activity-text">${n.text}</div><div class="activity-time">${fmtDate(n.time)}</div></div></div>`).join('');}
 function markRead(id){notifications=notifications.map(n=>n.id===id?{...n,unread:false}:n);localStorage.setItem('ka_notifs',JSON.stringify(notifications));renderNotifications();}
 function clearNotifs(){notifications=[];localStorage.setItem('ka_notifs','[]');renderNotifications();renderAllNotifs();document.getElementById('notifPanel').classList.remove('show');}
 function toggleNotifPanel(){const p=document.getElementById('notifPanel');p.classList.toggle('show');if(p.classList.contains('show')){notifications=notifications.map(n=>({...n,unread:false}));localStorage.setItem('ka_notifs',JSON.stringify(notifications));renderNotifications();}}
- 
+
 async function loadPosts(){try{const{data,error}=await db.from('posts').select('*').order('created_at',{ascending:false});const body=document.getElementById('postsBody');if(!body)return;if(error||!data||!data.length){body.innerHTML=`<tr><td colspan="7" style="text-align:center;padding:32px;color:var(--text3)">Yazı bulunamadı.</td></tr>`;return;}body.innerHTML=data.map(p=>`<tr><td style="font-size:20px">${p.icon||'📝'}</td><td><strong>${escHtml(p.title)}</strong></td><td style="font-size:12px;color:var(--text2)">${escHtml(p.category||'Genel')}</td><td><span class="badge ${p.status}">${p.status==='published'?'Yayında':'Taslak'}</span></td><td>${p.featured?'⭐':'—'}</td><td style="font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--text3)">${fmtDate(p.created_at)}</td><td style="display:flex;gap:6px;flex-wrap:wrap"><button class="btn btn-sm btn-ghost" onclick="openPostModal(${p.id})">Düzenle</button><button class="btn btn-sm btn-danger" onclick="deletePost(${p.id})">Sil</button></td></tr>`).join('');}catch(e){showToast('Yazılar yüklenemedi','error');}}
- 
+
 async function openPostModal(id){
   document.getElementById('postModalTitle').textContent=id?'Yazı Düzenle':'Yeni Yazı';
   document.getElementById('editPostId').value=id||'';
@@ -619,12 +619,12 @@ async function openPostModal(id){
   }
   document.getElementById('postModal').classList.add('show');
 }
- 
+
 async function savePost(){const id=document.getElementById('editPostId').value;const title=document.getElementById('editPostTitle').value.trim();if(!title){showToast('Başlık zorunlu','error');return;}const payload={title,excerpt:document.getElementById('editPostExcerpt').value.trim(),category:document.getElementById('editPostCat').value.trim(),icon:document.getElementById('editPostIcon').value.trim(),status:document.getElementById('editPostStatus').value,featured:document.getElementById('editPostFeatured').value==='true',content:document.getElementById('editPostContent').value.trim(),comments_enabled:true};try{if(id){const{error}=await db.from('posts').update(payload).eq('id',id);if(error)throw error;}else{const{error}=await db.from('posts').insert([payload]);if(error)throw error;}showToast(id?'Yazı güncellendi!':'Yazı eklendi!');closeModal('postModal');loadPosts();loadDashboard();addNotif({id:'p_'+Date.now(),icon:'📝',text:`Yazı ${id?'güncellendi':'eklendi'}: ${title}`,time:new Date().toISOString(),unread:false});}catch(e){showToast('Hata: '+e.message,'error');}}
 async function deletePost(id){if(!confirm('Bu yazıyı silmek istediğinizden emin misiniz?'))return;const{error}=await db.from('posts').delete().eq('id',id);if(error){showToast('Silinemedi','error');return;}showToast('Yazı silindi');loadPosts();loadDashboard();}
- 
+
 async function loadProjects(){try{const{data,error}=await db.from('projects').select('*').order('created_at',{ascending:false});const body=document.getElementById('projsBody');if(!body)return;if(error||!data||!data.length){body.innerHTML=`<tr><td colspan="7" style="text-align:center;padding:32px;color:var(--text3)">Proje bulunamadı.</td></tr>`;return;}body.innerHTML=data.map(p=>`<tr><td style="font-size:20px">${p.icon||'🚀'}</td><td><strong>${escHtml(p.name)}</strong></td><td style="font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--text3)">${escHtml(p.tech||'—')}</td><td><span class="badge ${p.status==='active'?'active':'archived'}">${p.status==='active'?'Aktif':'Arşiv'}</span></td><td>${p.github_url?`<a href="${p.github_url}" target="_blank" style="color:var(--accent);font-size:12px">↗ GitHub</a>`:'—'}</td><td>${p.demo_url?`<a href="${p.demo_url}" target="_blank" style="color:var(--green);font-size:12px">↗ Demo</a>`:'—'}</td><td style="display:flex;gap:6px"><button class="btn btn-sm btn-ghost" onclick="openProjModal(${p.id})">Düzenle</button><button class="btn btn-sm btn-danger" onclick="deleteProj(${p.id})">Sil</button></td></tr>`).join('');}catch(e){}}
- 
+
 async function openProjModal(id){
   document.getElementById('projModalTitle').textContent=id?'Proje Düzenle':'Yeni Proje';
   document.getElementById('editProjId').value=id||'';
@@ -645,25 +645,25 @@ async function openProjModal(id){
   }
   document.getElementById('projModal').classList.add('show');
 }
- 
+
 async function saveProj(){const id=document.getElementById('editProjId').value;const name=document.getElementById('editProjName').value.trim();if(!name){showToast('Proje adı zorunlu','error');return;}const payload={name,icon:document.getElementById('editProjIcon').value.trim(),description:document.getElementById('editProjDesc').value.trim(),tech:document.getElementById('editProjTech').value.trim(),github_url:document.getElementById('editProjGithub').value.trim(),demo_url:document.getElementById('editProjDemo').value.trim(),status:document.getElementById('editProjStatus').value};try{if(id){const{error}=await db.from('projects').update(payload).eq('id',id);if(error)throw error;}else{const{error}=await db.from('projects').insert([payload]);if(error)throw error;}showToast(id?'Proje güncellendi!':'Proje eklendi!');closeModal('projModal');loadProjects();loadDashboard();}catch(e){showToast('Hata: '+e.message,'error');}}
 async function deleteProj(id){if(!confirm('Bu projeyi silmek istediğinizden emin misiniz?'))return;const{error}=await db.from('projects').delete().eq('id',id);if(error){showToast('Silinemedi','error');return;}showToast('Proje silindi');loadProjects();loadDashboard();}
- 
+
 async function loadComments(){try{const{data}=await db.from('comments').select('*').order('created_at',{ascending:false});allComments=data||[];renderComments();}catch(e){}}
 function renderComments(){const body=document.getElementById('commentsBody');if(!body)return;const filtered=commentFilter==='all'?allComments:allComments.filter(c=>c.status===commentFilter);if(!filtered.length){body.innerHTML=`<tr><td colspan="6" style="text-align:center;padding:32px;color:var(--text3)">Yorum bulunamadı.</td></tr>`;return;}body.innerHTML=filtered.map(c=>`<tr><td><strong>${escHtml(c.author)}</strong></td><td style="font-size:11px;color:var(--text3)">${escHtml(c.email||'—')}</td><td style="max-width:250px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:12px">${escHtml(c.content)}</td><td><span class="badge ${c.status}">${c.status==='approved'?'Onaylı':c.status==='pending'?'Bekliyor':'Reddedildi'}</span></td><td style="font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--text3)">${fmtDate(c.created_at)}</td><td style="display:flex;gap:6px;flex-wrap:wrap">${c.status!=='approved'?`<button class="btn btn-sm btn-success" onclick="approveComment(${c.id})">Onayla</button>`:''}<button class="btn btn-sm btn-danger" onclick="deleteComment(${c.id})">Sil</button></td></tr>`).join('');}
 function filterComments(filter,btn){commentFilter=filter;document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');renderComments();}
 async function approveComment(id){const{error}=await db.from('comments').update({status:'approved'}).eq('id',id);if(error){showToast('Hata','error');return;}showToast('Yorum onaylandı!');await loadComments();loadDashboard();}
 async function deleteComment(id){if(!confirm('Yorumu silmek istediğinizden emin misiniz?'))return;const{error}=await db.from('comments').delete().eq('id',id);if(error){showToast('Silinemedi','error');return;}showToast('Yorum silindi');await loadComments();loadDashboard();}
- 
+
 async function loadMessages(){try{const{data}=await db.from('messages').select('*').order('created_at',{ascending:false});const body=document.getElementById('msgsBody');if(!body)return;if(!data||!data.length){body.innerHTML=`<tr><td colspan="6" style="text-align:center;padding:32px;color:var(--text3)">Mesaj bulunamadı.</td></tr>`;return;}body.innerHTML=data.map(m=>`<tr><td><strong>${escHtml(m.name)}</strong></td><td style="font-size:12px">${escHtml(m.email||'—')}</td><td>${escHtml(m.subject||'—')}</td><td style="max-width:220px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:12px;color:var(--text2)">${escHtml(m.body||'')}</td><td style="font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--text3)">${fmtDate(m.created_at)}</td><td><button class="btn btn-sm btn-danger" onclick="deleteMsg(${m.id})">Sil</button></td></tr>`).join('');}catch(e){}}
 async function deleteMsg(id){if(!confirm('Mesajı silmek istediğinizden emin misiniz?'))return;const{error}=await db.from('messages').delete().eq('id',id);if(error){showToast('Silinemedi','error');return;}showToast('Mesaj silindi');loadMessages();loadDashboard();}
- 
+
 async function loadMedia(){const grid=document.getElementById('mediaGrid');if(!grid)return;try{const{data,error}=await db.storage.from('media').list('',{limit:50,sortBy:{column:'created_at',order:'desc'}});if(error||!data||!data.length){grid.innerHTML='<div class="empty" style="grid-column:span 4"><div class="empty-icon">🖼️</div><p>Henüz resim yok.</p></div>';return;}grid.innerHTML=data.filter(f=>f.name).map(f=>{const url=db.storage.from('media').getPublicUrl(f.name).data.publicUrl;return`<div class="media-item"><img src="${url}" alt="${f.name}" loading="lazy" onerror="this.parentElement.style.display='none'"><div class="media-item-overlay"><button class="btn btn-sm btn-ghost" onclick="copyUrl('${url}')">📋</button><button class="btn btn-sm btn-danger" onclick="deleteMedia('${f.name}')">🗑️</button></div><div class="media-item-url">${f.name}</div></div>`;}).join('');}catch(e){grid.innerHTML='<div class="empty" style="grid-column:span 4"><p>⚠️ Storage erişim hatası.</p></div>';}}
 function handleDrop(e){e.preventDefault();e.currentTarget.classList.remove('drag');if(e.dataTransfer.files.length)uploadFiles(e.dataTransfer.files);}
 async function uploadFiles(files){if(!files||!files.length)return;const prog=document.getElementById('uploadProgress');const status=document.getElementById('uploadStatus');const bar=document.getElementById('uploadBar');prog.style.display='block';for(let i=0;i<files.length;i++){const file=files[i];if(file.size>5*1024*1024){showToast(`${file.name} 5MB'dan büyük, atlandı.`,'error');continue;}status.textContent=`${file.name} yükleniyor... (${i+1}/${files.length})`;bar.style.width=((i/files.length)*100)+'%';const name=Date.now()+'_'+file.name.replace(/[^a-zA-Z0-9._-]/g,'_');const{error}=await db.storage.from('media').upload(name,file,{cacheControl:'3600',upsert:false});if(error)showToast(`${file.name}: `+error.message,'error');else addNotif({id:'m_'+Date.now(),icon:'🖼️',text:`${file.name} yüklendi`,time:new Date().toISOString(),unread:false});}bar.style.width='100%';status.textContent='Tamamlandı!';setTimeout(()=>{prog.style.display='none';bar.style.width='0%';},2000);showToast('Yükleme tamamlandı!');loadMedia();}
 async function deleteMedia(name){if(!confirm('Dosyayı silmek istediğinizden emin misiniz?'))return;const{error}=await db.storage.from('media').remove([name]);if(error){showToast('Silinemedi: '+error.message,'error');return;}showToast('Dosya silindi');loadMedia();}
 function copyUrl(url){navigator.clipboard.writeText(url).then(()=>showToast('URL kopyalandı!'));}
- 
+
 // ============================================================
 // ABOUT — ÖNEMLİ DEĞİŞİKLİK: Supabase'den oku
 // ============================================================
@@ -679,13 +679,13 @@ async function loadAboutPanel(){
   renderExpList();
   renderSocialList();
 }
- 
+
 function renderSkillsList(){const el=document.getElementById('skillsList');if(!el)return;el.innerHTML=(aboutData.skills||[]).map((s,i)=>`<div class="skill-row"><input value="${escHtml(s.name)}" placeholder="Beceri adı" oninput="aboutData.skills[${i}].name=this.value" style="width:140px"><input type="range" min="0" max="100" value="${s.pct}" oninput="aboutData.skills[${i}].pct=+this.value;this.nextElementSibling.textContent=this.value+'%'"><span class="skill-pct">${s.pct}%</span><button class="btn btn-sm btn-danger btn-icon" onclick="aboutData.skills.splice(${i},1);renderSkillsList()">×</button></div>`).join('');}
 function addSkill(){aboutData.skills.push({name:'Yeni Beceri',pct:70});renderSkillsList();}
 function renderExpList(){const el=document.getElementById('expList');if(!el)return;el.innerHTML=(aboutData.experience||[]).map((e,i)=>`<div class="exp-row"><input value="${escHtml(e.title)}" placeholder="Unvan" oninput="aboutData.experience[${i}].title=this.value"><input value="${escHtml(e.company)}" placeholder="Şirket" oninput="aboutData.experience[${i}].company=this.value"><input value="${escHtml(e.date)}" placeholder="Tarih aralığı" oninput="aboutData.experience[${i}].date=this.value"><textarea oninput="aboutData.experience[${i}].desc=this.value">${escHtml(e.desc)}</textarea><div style="text-align:right"><button class="btn btn-sm btn-danger" onclick="aboutData.experience.splice(${i},1);renderExpList()">Sil</button></div></div>`).join('');}
 function addExp(){aboutData.experience.push({title:'',company:'',date:'',desc:''});renderExpList();}
 function renderSocialList(){const el=document.getElementById('socialList');if(!el)return;el.innerHTML=(aboutData.social||[]).map((s,i)=>`<div class="setting-row"><div class="setting-info"><h4>${s.icon} ${s.name}</h4><input class="form-input" value="${escHtml(s.url)}" placeholder="URL" oninput="aboutData.social[${i}].url=this.value" style="margin-top:6px;font-size:12px"></div><button class="toggle ${s.active?'on':''}" onclick="aboutData.social[${i}].active=!aboutData.social[${i}].active;this.classList.toggle('on')"></button></div>`).join('');}
- 
+
 // ============================================================
 // SAVE ABOUT — ÖNEMLİ DEĞİŞİKLİK: Supabase'e yaz
 // ============================================================
@@ -699,7 +699,7 @@ async function saveAbout(){
     showToast('Hakkımda kaydedildi! ✅');
   }catch(e){showToast('Hata: '+e.message,'error');}
 }
- 
+
 // ============================================================
 // CHATBOT — ÖNEMLİ DEĞİŞİKLİK: Supabase'den oku
 // ============================================================
@@ -713,10 +713,10 @@ async function loadChatbotPanel(){
   document.getElementById('botSuggestions').value=chatbotData.suggestions||'';
   renderQAList();
 }
- 
+
 function renderQAList(){const el=document.getElementById('qaList');if(!el)return;el.innerHTML=(chatbotData.qa||[]).map((qa,i)=>`<div class="qa-row"><div style="flex:1"><div style="font-size:10px;color:var(--text3);font-family:'JetBrains Mono',monospace;margin-bottom:4px">ANAHTAR KELİME</div><input value="${escHtml(qa.q)}" placeholder="hakkında" oninput="chatbotData.qa[${i}].q=this.value"></div><div style="flex:2"><div style="font-size:10px;color:var(--text3);font-family:'JetBrains Mono',monospace;margin-bottom:4px">CEVAP</div><input value="${escHtml(qa.a)}" placeholder="Cevap..." oninput="chatbotData.qa[${i}].a=this.value"></div><button class="btn btn-sm btn-danger btn-icon" style="margin-top:18px" onclick="chatbotData.qa.splice(${i},1);renderQAList()">×</button></div>`).join('');}
 function addQA(){chatbotData.qa.push({q:'',a:''});renderQAList();}
- 
+
 // ============================================================
 // SAVE CHATBOT — ÖNEMLİ DEĞİŞİKLİK: Supabase'e yaz
 // ============================================================
@@ -730,11 +730,11 @@ async function saveChatbot(){
     showToast('Chatbot kaydedildi! ✅');
   }catch(e){showToast('Hata: '+e.message,'error');}
 }
- 
+
 function saveSiteSettings(){const s={author:document.getElementById('siteAuthor').value,role:document.getElementById('siteRole').value,heroBio:document.getElementById('siteHeroBio').value,tags:document.getElementById('siteTags').value,colorAccent:document.getElementById('colorAccent').value,colorAccent2:document.getElementById('colorAccent2').value,defaultTheme:document.getElementById('defaultTheme').value};localStorage.setItem('ka_site_settings',JSON.stringify(s));showToast('Site ayarları kaydedildi!');}
 function saveSettings(){const s={comments:document.getElementById('tog-comments').classList.contains('on'),contact:document.getElementById('tog-contact').classList.contains('on'),bot:document.getElementById('tog-bot').classList.contains('on'),moderation:document.getElementById('tog-moderation').classList.contains('on'),notifEmail:document.getElementById('notifEmail').value};localStorage.setItem('ka_settings',JSON.stringify(s));showToast('Ayarlar kaydedildi!');}
 function checkSBStatus(){db.from('posts').select('id').limit(1).then(({error})=>{const el=document.getElementById('sbStatus');if(el)el.innerHTML=error?'<span style="color:var(--red)">❌ Bağlantı hatası</span>':'<span style="color:var(--green)">✅ Bağlı</span>';});}
- 
+
 document.addEventListener('DOMContentLoaded',()=>{
   db.auth.getSession().then(({data:{session}})=>{if(session){adminUser=session.user;showApp();}});
   db.auth.onAuthStateChange((event,session)=>{adminUser=session?.user||null;});
@@ -742,4 +742,3 @@ document.addEventListener('DOMContentLoaded',()=>{
 </script>
 </body>
 </html>
- 
