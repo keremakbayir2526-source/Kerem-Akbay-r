@@ -234,6 +234,11 @@ tr:hover td{background:rgba(255,255,255,0.02)}
 .visitor-count{font-size:12px;font-family:'JetBrains Mono',monospace;color:var(--text3);width:50px;text-align:right;flex-shrink:0}
 .filter-btn.active{background:rgba(99,102,241,0.12);color:var(--accent);border-color:rgba(99,102,241,0.3)}
 
+/* INFO BOX */
+.info-box{background:rgba(99,102,241,0.07);border:1px solid rgba(99,102,241,0.2);border-radius:10px;padding:14px 16px;font-size:12px;color:var(--text2);line-height:1.7;margin-bottom:16px}
+.info-box strong{color:var(--accent)}
+.info-box code{font-family:'JetBrains Mono',monospace;background:rgba(99,102,241,0.15);padding:1px 5px;border-radius:4px;font-size:11px}
+
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 .fade-in{animation:fadeIn .25s ease forwards}
 @keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
@@ -473,6 +478,10 @@ tr:hover td{background:rgba(255,255,255,0.02)}
 
       <!-- ABOUT -->
       <div class="panel fade-in" id="panel-about">
+        <!-- ℹ️ BİLGİ KUTUSU -->
+        <div class="info-box">
+          ✅ <strong>Artık Supabase'e kaydediliyor.</strong> Kaydet butonuna bastığında değişiklikler hem Supabase <code>settings</code> tablosuna hem de <code>localStorage</code>'a yazılır. Sitenizde <code>loadSettingFromSupabase('about')</code> ile okuyabilirsiniz.
+        </div>
         <div class="card">
           <div class="card-header"><div class="card-title">Biyografi</div></div>
           <div class="form-group"><label class="form-label">1. Paragraf</label><textarea class="form-textarea" id="aboutBio1" rows="3"></textarea></div>
@@ -492,12 +501,15 @@ tr:hover td{background:rgba(255,255,255,0.02)}
           <div id="socialList"></div>
         </div>
         <div style="margin-top:16px;display:flex;justify-content:flex-end">
-          <button class="btn btn-primary" onclick="saveAbout()">💾 Kaydet</button>
+          <button class="btn btn-primary" onclick="saveAbout()">💾 Supabase'e Kaydet</button>
         </div>
       </div>
 
       <!-- CHATBOT -->
       <div class="panel fade-in" id="panel-chatbot">
+        <div class="info-box">
+          ✅ <strong>Artık Supabase'e kaydediliyor.</strong> Sitenizde <code>loadSettingFromSupabase('chatbot')</code> ile okuyabilirsiniz.
+        </div>
         <div class="card">
           <div class="card-header"><div class="card-title">Bot Ayarları</div></div>
           <div class="form-row">
@@ -514,12 +526,15 @@ tr:hover td{background:rgba(255,255,255,0.02)}
           <div class="form-group"><label class="form-label">Öneri butonları (virgülle ayır)</label><input class="form-input" id="botSuggestions"></div>
         </div>
         <div style="margin-top:16px;display:flex;justify-content:flex-end">
-          <button class="btn btn-primary" onclick="saveChatbot()">💾 Kaydet</button>
+          <button class="btn btn-primary" onclick="saveChatbot()">💾 Supabase'e Kaydet</button>
         </div>
       </div>
 
       <!-- THEME -->
       <div class="panel fade-in" id="panel-theme">
+        <div class="info-box">
+          ✅ <strong>Artık Supabase'e kaydediliyor.</strong> Sitenizde <code>loadSettingFromSupabase('site_settings')</code> ile okuyabilirsiniz.
+        </div>
         <div class="card">
           <div class="card-header"><div class="card-title">Site Bilgileri</div></div>
           <div class="form-row">
@@ -553,7 +568,7 @@ tr:hover td{background:rgba(255,255,255,0.02)}
           </div>
         </div>
         <div style="margin-top:16px;display:flex;justify-content:flex-end">
-          <button class="btn btn-primary" onclick="saveSiteSettings()">💾 Kaydet</button>
+          <button class="btn btn-primary" onclick="saveSiteSettings()">💾 Supabase'e Kaydet</button>
         </div>
       </div>
 
@@ -699,6 +714,33 @@ document.addEventListener('click',e=>{
 });
 
 // ============================================================
+// SUPABASE SETTINGS HELPERS
+// ============================================================
+
+/**
+ * Bir ayarı Supabase settings tablosuna kaydeder.
+ * key: 'about' | 'chatbot' | 'site_settings' | 'app_settings'
+ * value: herhangi bir JSON objesi
+ */
+async function saveSettingToSupabase(key, value) {
+  const { error } = await db.from('settings').upsert(
+    { key, value, updated_at: new Date().toISOString() },
+    { onConflict: 'key' }
+  );
+  if (error) throw error;
+}
+
+/**
+ * Bir ayarı Supabase'den okur.
+ * Sitenin index.html dosyasında da bu fonksiyonu kullanabilirsiniz.
+ */
+async function loadSettingFromSupabase(key) {
+  const { data, error } = await db.from('settings').select('value').eq('key', key).single();
+  if (error) return null;
+  return data?.value || null;
+}
+
+// ============================================================
 // THEME
 // ============================================================
 function applyTheme(){
@@ -797,7 +839,6 @@ async function loadDashboard(){
     renderChart();
     loadActivity();
     loadPendingComments();
-    // Badges
     const{count:pc}=await db.from('comments').select('id',{count:'exact'}).eq('status','pending');
     const cb=document.getElementById('commentBadge');
     if(cb&&pc){cb.textContent=pc;cb.classList.toggle('show',pc>0);}
@@ -1256,9 +1297,18 @@ function copyUrl(url){
 }
 
 // ============================================================
-// ABOUT PANEL
+// ABOUT PANEL  ← SUPABASE'E KAYDEDEN VERSİYON
 // ============================================================
-function loadAboutPanel(){
+async function loadAboutPanel(){
+  // Önce Supabase'den dene, yoksa localStorage'daki default'u kullan
+  try {
+    const remote = await loadSettingFromSupabase('about');
+    if (remote) {
+      aboutData = remote;
+      localStorage.setItem('ka_about', JSON.stringify(aboutData));
+    }
+  } catch(e) { /* bağlantı yoksa local ile devam et */ }
+
   document.getElementById('aboutBio1').value=aboutData.bio1||'';
   document.getElementById('aboutBio2').value=aboutData.bio2||'';
   document.getElementById('aboutBio3').value=aboutData.bio3||'';
@@ -1309,18 +1359,37 @@ function renderSocialList(){
     </div>`).join('');
 }
 
-function saveAbout(){
+async function saveAbout(){
+  // Form değerlerini al
   aboutData.bio1=document.getElementById('aboutBio1').value;
   aboutData.bio2=document.getElementById('aboutBio2').value;
   aboutData.bio3=document.getElementById('aboutBio3').value;
-  localStorage.setItem('ka_about',JSON.stringify(aboutData));
-  showToast('Hakkımda sayfası kaydedildi!');
+
+  // Önce localStorage'a yaz (yedek)
+  localStorage.setItem('ka_about', JSON.stringify(aboutData));
+
+  // Supabase'e kaydet
+  try {
+    await saveSettingToSupabase('about', aboutData);
+    showToast('✅ Hakkımda Supabase\'e kaydedildi!');
+    addNotif({id:'ab_'+Date.now(),icon:'👤',text:'Hakkımda sayfası güncellendi',time:new Date().toISOString(),unread:true});
+  } catch(e) {
+    showToast('⚠️ Supabase hatası: '+e.message, 'error');
+  }
 }
 
 // ============================================================
-// CHATBOT PANEL
+// CHATBOT PANEL  ← SUPABASE'E KAYDEDEN VERSİYON
 // ============================================================
-function loadChatbotPanel(){
+async function loadChatbotPanel(){
+  try {
+    const remote = await loadSettingFromSupabase('chatbot');
+    if (remote) {
+      chatbotData = remote;
+      localStorage.setItem('ka_chatbot', JSON.stringify(chatbotData));
+    }
+  } catch(e) {}
+
   document.getElementById('botName').value=chatbotData.name||'Kerem Bot';
   document.getElementById('botGreeting').value=chatbotData.greeting||'';
   document.getElementById('botSuggestions').value=chatbotData.suggestions||'';
@@ -1346,18 +1415,24 @@ function renderQAList(){
 
 function addQA(){chatbotData.qa.push({q:'',a:''});renderQAList();}
 
-function saveChatbot(){
+async function saveChatbot(){
   chatbotData.name=document.getElementById('botName').value;
   chatbotData.greeting=document.getElementById('botGreeting').value;
   chatbotData.suggestions=document.getElementById('botSuggestions').value;
-  localStorage.setItem('ka_chatbot',JSON.stringify(chatbotData));
-  showToast('Chatbot ayarları kaydedildi!');
+  localStorage.setItem('ka_chatbot', JSON.stringify(chatbotData));
+
+  try {
+    await saveSettingToSupabase('chatbot', chatbotData);
+    showToast('✅ Chatbot ayarları Supabase\'e kaydedildi!');
+  } catch(e) {
+    showToast('⚠️ Supabase hatası: '+e.message, 'error');
+  }
 }
 
 // ============================================================
-// THEME & SETTINGS
+// THEME & SITE SETTINGS  ← SUPABASE'E KAYDEDEN VERSİYON
 // ============================================================
-function saveSiteSettings(){
+async function saveSiteSettings(){
   const s={
     author:document.getElementById('siteAuthor').value,
     role:document.getElementById('siteRole').value,
@@ -1367,10 +1442,19 @@ function saveSiteSettings(){
     colorAccent2:document.getElementById('colorAccent2').value,
     defaultTheme:document.getElementById('defaultTheme').value
   };
-  localStorage.setItem('ka_site_settings',JSON.stringify(s));
-  showToast('Site ayarları kaydedildi!');
+  localStorage.setItem('ka_site_settings', JSON.stringify(s));
+
+  try {
+    await saveSettingToSupabase('site_settings', s);
+    showToast('✅ Site ayarları Supabase\'e kaydedildi!');
+  } catch(e) {
+    showToast('⚠️ Supabase hatası: '+e.message, 'error');
+  }
 }
 
+// ============================================================
+// APP SETTINGS
+// ============================================================
 function saveSettings(){
   const s={
     comments:document.getElementById('tog-comments').classList.contains('on'),
