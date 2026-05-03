@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="tr" data-theme="dark">
 <head>
@@ -356,10 +355,6 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
 .empty-icon{font-size:34px;margin-bottom:8px}
 .empty p{font-size:13px}
  
-/* ===== ADMIN BTN ===== */
-.admin-nav-btn{font-size:10px;font-family:'JetBrains Mono',monospace;background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.25);border-radius:6px;padding:5px 10px;cursor:pointer;color:var(--accent2);transition:all .15s}
-.admin-nav-btn:hover{background:rgba(139,92,246,0.2)}
- 
 @keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
 .fade-in{animation:fadeIn .25s ease forwards}
 @keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
@@ -423,12 +418,12 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
 <!-- HOME -->
 <div class="page active" id="homePage">
   <div class="hero">
-    <div class="hero-avatar">KA</div>
+    <div class="hero-avatar" id="heroAvatar">KA</div>
     <div class="hero-content">
-      <h1>Kerem Akbayır</h1>
-      <div class="hero-role">Senior Software Engineer</div>
-      <p class="hero-desc">Yazılım mimarisi, bulut teknolojileri ve yapay zeka üzerine deneyimlerimi ve düşüncelerimi paylaşıyorum.</p>
-      <div class="hero-tags">
+      <h1 id="heroName">Kerem Akbayır</h1>
+      <div class="hero-role" id="heroRole">Senior Software Engineer</div>
+      <p class="hero-desc" id="heroDesc">Yazılım mimarisi, bulut teknolojileri ve yapay zeka üzerine deneyimlerimi ve düşüncelerimi paylaşıyorum.</p>
+      <div class="hero-tags" id="heroTags">
         <span class="tag">.NET</span><span class="tag">Azure</span><span class="tag">Microservices</span><span class="tag">PostgreSQL</span><span class="tag">AI/LLM</span>
       </div>
       <div class="hero-btns">
@@ -466,8 +461,8 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
       <div>
         <div class="about-sidebar-card">
           <div class="about-av">KA</div>
-          <h3>Kerem Akbayır</h3>
-          <div class="role">Senior Software Engineer</div>
+          <h3 id="aboutSidebarName">Kerem Akbayır</h3>
+          <div class="role" id="aboutSidebarRole">Senior Software Engineer</div>
           <p style="font-size:11.5px;color:var(--text2)">📍 İstanbul, Türkiye</p>
           <div class="about-social" id="aboutSocialLinks"></div>
         </div>
@@ -664,27 +659,91 @@ function showPage(p){
   if(p==='tools')initTools();
 }
  
+// ============================================================
 // SUPABASE LOADERS
+// ============================================================
 async function loadPosts(){
   try{const{data,error}=await db.from('posts').select('*').eq('status','published').order('created_at',{ascending:false});if(error)throw error;
     allPosts=(data||[]).map(p=>({id:p.id,title:p.title,excerpt:p.excerpt||'',content:p.content||'',category:p.category||'Genel',icon:p.icon||'📝',date:p.created_at?p.created_at.split('T')[0]:'',featured:p.featured,comments_enabled:p.comments_enabled!==false}));
   }catch(e){console.warn('Posts:',e.message);allPosts=[];}
 }
+
 async function loadProjects(){
   try{const{data,error}=await db.from('projects').select('*').eq('status','active').order('created_at',{ascending:false});if(error)throw error;
     allProjects=(data||[]).map(p=>({id:p.id,name:p.name,desc:p.description||'',icon:p.icon||'🚀',tech:p.tech||'',github:p.github_url||'',demo:p.demo_url||''}));
   }catch(e){console.warn('Projects:',e.message);allProjects=[];}
 }
+
+// ============================================================
+// SETTINGS — admin panelinden kaydedilen verileri oku
+// Supabase'deki "settings" tablosundan key=about, key=chatbot,
+// key=site_settings satırlarını çeker.
+// ============================================================
 async function loadSiteSettings(){
   try{
-    const{data}=await db.from('site_settings').select('key,value');
-    if(!data)return;
-    const about=data.find(r=>r.key==='about');
-    const chatbot=data.find(r=>r.key==='chatbot');
-    if(about?.value)window._aboutData=about.value;
-    if(chatbot?.value)window._chatbotData=chatbot.value;
-  }catch(e){}
+    // "settings" tablosundan TÜM satırları çek
+    const{data,error}=await db.from('settings').select('key,value');
+    if(error||!data)return;
+
+    // Her satırı key'e göre ayır
+    const map={};
+    data.forEach(row=>{ map[row.key]=row.value; });
+
+    // --- Hakkımda verisi ---
+    if(map['about']){
+      window._aboutData = map['about'];
+    }
+
+    // --- Chatbot verisi ---
+    if(map['chatbot']){
+      window._chatbotData = map['chatbot'];
+    }
+
+    // --- Site ayarları (hero, isim, unvan, renkler) ---
+    if(map['site_settings']){
+      const s = map['site_settings'];
+
+      // Hero bölümünü güncelle
+      const heroName = document.getElementById('heroName');
+      const heroRole = document.getElementById('heroRole');
+      const heroDesc = document.getElementById('heroDesc');
+      const heroTags = document.getElementById('heroTags');
+      const heroAvatar = document.getElementById('heroAvatar');
+
+      if(heroName && s.author)  heroName.textContent  = s.author;
+      if(heroRole && s.role)    heroRole.textContent   = s.role;
+      if(heroDesc && s.heroBio) heroDesc.textContent   = s.heroBio;
+
+      if(heroTags && s.tags){
+        heroTags.innerHTML = s.tags.split(',')
+          .map(t=>`<span class="tag">${t.trim()}</span>`).join('');
+      }
+
+      // Avatar baş harfleri
+      if(heroAvatar && s.author){
+        heroAvatar.textContent = s.author.split(' ')
+          .map(w=>w[0]).join('').substring(0,2).toUpperCase();
+      }
+
+      // Hakkımda sidebar güncelle
+      const sbn = document.getElementById('aboutSidebarName');
+      const sbr = document.getElementById('aboutSidebarRole');
+      if(sbn && s.author) sbn.textContent = s.author;
+      if(sbr && s.role)   sbr.textContent = s.role;
+
+      // Renk değişkenleri (isteğe bağlı, admin'de kaydedildiyse)
+      if(s.colorAccent){
+        document.documentElement.style.setProperty('--accent', s.colorAccent);
+      }
+      if(s.colorAccent2){
+        document.documentElement.style.setProperty('--accent2', s.colorAccent2);
+      }
+    }
+  }catch(e){
+    console.warn('Settings yüklenemedi:', e.message);
+  }
 }
+
 async function loadComments(postId){
   try{const{data,error}=await db.from('comments').select('*').eq('post_id',postId).eq('status','approved').order('created_at');if(error)throw error;return(data||[]).map(c=>({id:c.id,author:c.author,email:c.email,text:c.content,date:c.created_at?c.created_at.split('T')[0]:''}));}catch(e){return[];}
 }
@@ -722,7 +781,7 @@ function renderBlog(filter){
   </div>`).join('');
 }
  
-// ABOUT
+// ABOUT — Supabase'den gelen window._aboutData kullanılıyor
 function renderAbout(){
   const d=window._aboutData||{
     bio1:'Merhaba! Ben Kerem Akbayır. 8+ yıldır kurumsal ve startup projelerinde yazılım geliştiriyorum.',
@@ -874,7 +933,7 @@ function openReadingMode(id){
 function closeReadingMode(){document.getElementById('readingOverlay').classList.remove('show');document.body.style.overflow='';}
 function changeFontSize(d){readFontSize=Math.max(13,Math.min(24,readFontSize+d));const el=document.getElementById('rmContent');if(el)el.style.fontSize=readFontSize+'px';}
  
-// CHATBOT
+// CHATBOT — Supabase'den gelen window._chatbotData kullanılıyor
 const defaultQA=[{q:'hakkında',a:'Kerem Akbayır, 8+ yıllık deneyime sahip Senior Software Engineer.'},{q:'projeler',a:'MicroKit, AzureWatcher ve QueryOptimizer projelerine göz atabilirsiniz!'},{q:'iletişim',a:'kerem@akbayir.dev adresinden ulaşabilirsiniz.'},{q:'blog',a:'DevOps, Architecture, C#, PostgreSQL, AI konularında yazılar yazıyorum.'},{q:'teknoloji',a:'.NET, Azure, Docker, Kubernetes, PostgreSQL ve LLM entegrasyonlarıyla çalışıyorum.'}];
 function toggleChat(){
   const w=document.getElementById('chatWindow');
@@ -945,11 +1004,14 @@ function testRegex(){const pat=document.getElementById('rxPat')?.value;const fla
 function genUUID(){const u='xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,c=>{const r=Math.random()*16|0;return(c==='x'?r:(r&0x3|0x8)).toString(16);});const el=document.getElementById('uuidRes');if(el)el.textContent=u;}
 function copyEl(id){const el=document.getElementById(id);if(!el)return;navigator.clipboard.writeText(el.textContent).then(()=>showToast('Kopyalandı!','success')).catch(()=>showToast('Kopyalanamadı.','error'));}
  
-// INIT
+// ============================================================
+// INIT — Sayfa yüklendiğinde her şeyi çek
+// ============================================================
 document.addEventListener('DOMContentLoaded',async()=>{
   const tb=document.getElementById('themeBtn');if(tb)tb.textContent=isDark?'🌙':'☀️';
   applyLang();
-  await Promise.all([loadPosts(),loadProjects(),loadSiteSettings()]);
+  // Tüm veriyi paralel çek: yazılar + projeler + admin ayarları
+  await Promise.all([loadPosts(), loadProjects(), loadSiteSettings()]);
   showPage('home');
 });
 </script>
