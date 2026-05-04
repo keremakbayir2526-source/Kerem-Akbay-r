@@ -1011,10 +1011,12 @@ function copyEl(id){const el=document.getElementById(id);if(!el)return;navigator
 document.addEventListener('DOMContentLoaded',async()=>{
   const tb=document.getElementById('themeBtn');if(tb)tb.textContent=isDark?'🌙':'☀️';
   applyLang();
-  // Tüm veriyi paralel çek: yazılar + projeler + admin ayarları
+(async()=>{
   await Promise.all([loadPosts(), loadProjects(), loadSiteSettings()]);
-  showPage('home');
-});
+  renderHome();
+  initChatbot();
+  applyLang();
+})();
 </script>
 </body>
 </html>
