@@ -1008,15 +1008,14 @@ function copyEl(id){const el=document.getElementById(id);if(!el)return;navigator
 // ============================================================
 // INIT — Sayfa yüklendiğinde her şeyi çek
 // ============================================================
-document.addEventListener('DOMContentLoaded',async()=>{
-  const tb=document.getElementById('themeBtn');if(tb)tb.textContent=isDark?'🌙':'☀️';
+document.addEventListener('DOMContentLoaded', async () => {
+  const tb = document.getElementById('themeBtn');
+  if (tb) tb.textContent = isDark ? '🌙' : '☀️';
   applyLang();
-(async()=>{
   await Promise.all([loadPosts(), loadProjects(), loadSiteSettings()]);
   renderHome();
   initChatbot();
-  applyLang();
-})();
+});
 </script>
 </body>
 </html>
