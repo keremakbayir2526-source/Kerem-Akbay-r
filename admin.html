@@ -1,3 +1,86 @@
+
+
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0c12">
+<meta name="description" content="Kerem Akbayır – Senior Software Engineer">
+<title>Kerem Akbayır – Senior Software Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0c12;--bg2:#0f1117;--bg3:#141720;--bg4:#1a1e2a;
+  --accent:#6366f1;--accent2:#8b5cf6;--accent3:#06b6d4;
+  --green:#10b981;--red:#ef4444;--orange:#f59e0b;--pink:#ec4899;
+  --text:#f1f5f9;--text2:#94a3b8;--text3:#475569;
+  --border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.12);
+  --card:#111318;--card2:#161a24;
+  --shadow:0 4px 24px rgba(0,0,
+Claude's response was interrupted
+You said: he bide mesaj yanıtlma çalışıyortmu onda bak ve yaop
+he bide mesaj yanıtlma çalışıyortmu onda bak ve yaop
+
+22:36
+Claude responded: Kodunuza bakıyorum — mesaj yanıtlama (reply) fonksiyonu admin panelinde sadece console.
+Kodunuza bakıyorum — mesaj yanıtlama (reply) fonksiyonu admin panelinde sadece console.log yapıyor, gerçekten e-posta göndermiyor. Supabase'in e-posta gönderme özelliği yok, ama Resend veya EmailJS ile çözebiliriz.
+
+En kolay yol: EmailJS (ücretsiz, kurulum 5 dakika).
+
+You said: Q: Yanıt e-postasını nasıl göndermek istersiniz?
+Q: Yanıt e-postasını nasıl göndermek istersiniz?
+A: EmailJS (ücretsiz, kolay kurulum)
+
+22:37
+Claude responded: EmailJS kurulumu ve admin paneline entegrasyonu yapıyorum.
+EmailJS kurulumu ve admin paneline entegrasyonu yapıyorum. Önce EmailJS'de hesap açmanız gerekiyor:
+
+1. https://emailjs.com → Sign Up (ücretsiz) 2. Email Services → Add New Service → Gmail seçin → bağlayın 3. Email Templates → Create New Template
+
+Template içeriği şöyle olsun:
+
+Konu: Re: {{subject}}
+İçerik:
+Merhaba {{to_name}},
+
+{{message}}
+
+---
+Kerem Akbayır
+Template değişkenleri: to_name, to_email, subject, message
+
+4. Account → API Keys → Public Key'i kopyalayın
+
+Şimdi admin panelini düzenliyorum:
+
+
+Admin panelinde mevcut reply kodunu kontrol et
+Admin panelinde mevcut reply kodunu kontrol et
+Admin
+
+Claude's response was interrupted
+You said: ya ano sonra yaparız sen yanıtlamayı kaldır ve kodu düzenle ve ne yaptığınıda söyle
+ya ano  sonra yaparız sen yanıtlamayı kaldır ve kodu düzenle ve ne yaptığınıda söyle
+
+22:37
+Claude responded: Admin panelindeki mesaj yanıtlama butonunu ve modal'ı kaldırıp temiz bir versiyon oluşturuyorum: Admin paneli kodunu (document index=1) alıp düzenleyerek tam d…
+Admin panelindeki mesaj yanıtlama butonunu ve modal'ı kaldırıp temiz bir versiyon oluşturuyorum:
+
+
+Dosya kontrol
+Dosya kontrol
+Admin paneli kodunu (document index=1) alıp düzenleyerek tam dosya oluşturuyorum:
+
+
+Admin paneli - reply kaldırıldı, temizlendi
+Admin paneli - reply kaldırıldı, temizlendi
+
+Admin paneli - reply kaldırıldı, temizlendi
+html
+
 <!DOCTYPE html>
 <html lang="tr" data-theme="dark">
 <head>
@@ -6,10 +89,8 @@
 <title>Admin Panel – Kerem Akbayır</title>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<!-- Quill Rich Text Editor -->
 <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
 <script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>
-<!-- SortableJS -->
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -35,7 +116,6 @@ a{color:inherit;text-decoration:none}
 button,input,textarea,select{font-family:'Sora',sans-serif}
 button{cursor:pointer}
 
-/* ── QUILL OVERRIDE ── */
 .ql-toolbar{background:var(--bg3)!important;border:1px solid var(--border2)!important;border-radius:9px 9px 0 0!important}
 .ql-container{background:var(--bg3)!important;border:1px solid var(--border2)!important;border-top:none!important;border-radius:0 0 9px 9px!important}
 .ql-editor{color:var(--text)!important;font-family:'Sora',sans-serif!important;font-size:13px!important;min-height:220px}
@@ -47,7 +127,6 @@ button{cursor:pointer}
 [data-theme="light"] .ql-toolbar{background:#f1f5f9!important}
 [data-theme="light"] .ql-container{background:#fff!important}
 
-/* LOGIN */
 .login-page{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:var(--bg);z-index:9999}
 .login-page.hidden{display:none}
 .login-card{width:400px;max-width:90vw;background:var(--card);border:1px solid var(--border2);border-radius:20px;padding:44px 40px;position:relative;overflow:hidden}
@@ -58,1874 +137,566 @@ button{cursor:pointer}
 .login-card p{font-size:13px;color:var(--text2);margin-bottom:28px}
 .login-field{margin-bottom:14px}
 .login-field label{display:block;font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px}
-.login-field input{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:10px;padding:11px 14px;color:var(--text);font-size:14px;outline:none;transition:border-color .15s}
-.login-field input:focus{border-color:var(--accent)}
-.login-btn{width:100%;padding:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:600;margin-top:8px;transition:opacity .15s}
-.login-btn:hover{opacity:.9}
-.login-btn:disabled{opacity:.5;cursor:not-allowed}
-.login-err{font-size:12px;color:var(--red);text-align:center;margin-top:10px;min-height:16px}
+.login-field input{width:100%;background:var(--bg
+Claude's response was interrupted
+You said: bunaları ekelemi unutma
 
-/* APP LAYOUT */
-.app{display:flex;width:100%;min-height:100vh}
-.app.hidden{display:none}
-.sidebar{width:var(--sidebar-w);background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;position:fixed;top:0;left:0;height:100vh;z-index:100;overflow-y:auto}
-.sidebar-top{padding:20px 16px 16px}
-.sidebar-brand{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:8px;margin-bottom:24px}
-.sidebar-brand .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent)}
-.nav-section{margin-bottom:6px}
-.nav-label{font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--text3);letter-spacing:1.2px;text-transform:uppercase;padding:0 10px;margin-bottom:4px}
-.nav-item{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:9px;font-size:13px;color:var(--text2);cursor:pointer;transition:all .15s;margin-bottom:1px}
-.nav-item:hover{background:var(--bg3);color:var(--text)}
-.nav-item.active{background:rgba(99,102,241,0.12);color:var(--accent)}
-.nav-item .nav-icon{font-size:15px;width:20px;text-align:center;flex-shrink:0}
-.nav-item .nav-badge{margin-left:auto;background:var(--red);color:#fff;font-size:10px;font-family:'JetBrains Mono',monospace;padding:2px 6px;border-radius:10px;display:none}
-.nav-item .nav-badge.show{display:block}
-.sidebar-bottom{margin-top:auto;padding:16px;border-top:1px solid var(--border)}
-.sidebar-user{display:flex;align-items:center;gap:10px;margin-bottom:12px}
-.sidebar-avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;font-family:'JetBrains Mono',monospace;flex-shrink:0}
-.sidebar-user-info{flex:1;min-width:0}
-.sidebar-email{font-size:11px;color:var(--text3);font-family:'JetBrains Mono',monospace;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.sidebar-role{font-size:10px;color:var(--accent);font-weight:600}
-.sidebar-actions{display:flex;gap:6px}
-.sidebar-btn{flex:1;font-size:11px;padding:7px 10px;border-radius:7px;border:1px solid var(--border);background:transparent;color:var(--text2);transition:all .15s}
-.sidebar-btn:hover{background:var(--bg3);color:var(--text)}
-.sidebar-btn.danger:hover{color:var(--red);border-color:rgba(239,68,68,0.3)}
-.main{flex:1;margin-left:var(--sidebar-w);display:flex;flex-direction:column;min-height:100vh}
-.topbar{height:58px;background:var(--bg2);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 28px;position:sticky;top:0;z-index:50}
-.topbar-left{display:flex;align-items:center;gap:12px}
-.topbar-title{font-size:16px;font-weight:600;letter-spacing:-.3px}
-.topbar-breadcrumb{font-size:12px;color:var(--text3);font-family:'JetBrains Mono',monospace}
-.topbar-right{display:flex;align-items:center;gap:10px}
-.topbar-btn{width:36px;height:36px;border-radius:9px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:15px;transition:all .15s;color:var(--text2)}
-.topbar-btn:hover{border-color:var(--border2);color:var(--text)}
-.notif-btn{position:relative}
-.notif-dot{position:absolute;top:6px;right:6px;width:7px;height:7px;border-radius:50%;background:var(--red);border:1.5px solid var(--bg2)}
-.content{padding:28px;flex:1}
-.panel{display:none!important}
-.panel.active{display:block!important}
+// ============================================================ // SUPABASE // ============================================================ const SUPABASE_URL='https://rnroiajlmjudwgoacsjw.supabase.co'; const SUPABASE_KEY='sb_publishable_GpoMQnpHtrxQKMTjO9Z7iQ_7fC56-tc'; const{createClient}=sup
 
-/* CARDS */
-.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px}
-.card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:8px}
-.card-title{font-size:14px;font-weight:600}
-.card-subtitle{font-size:12px;color:var(--text3);font-family:'JetBrains Mono',monospace;margin-top:2px}
+pasted
 
-/* STATS */
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
-.stat-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;position:relative;overflow:hidden;transition:border-color .2s,transform .2s}
-.stat-card:hover{border-color:var(--border2);transform:translateY(-2px)}
-.stat-icon{font-size:20px;margin-bottom:12px}
-.stat-val{font-size:30px;font-weight:700;font-family:'JetBrains Mono',monospace;line-height:1}
-.stat-val.blue{color:var(--accent)}
-.stat-val.purple{color:var(--accent2)}
-.stat-val.green{color:var(--green)}
-.stat-val.orange{color:var(--orange)}
-.stat-label{font-size:12px;color:var(--text3);margin-top:6px}
+bunaları ekelemi unutma
 
-/* ACTIVITY */
-.activity-item{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)}
-.activity-item:last-child{border-bottom:none}
-.activity-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
-.activity-icon.blue{background:rgba(99,102,241,0.12)}
-.activity-icon.green{background:rgba(16,185,129,0.12)}
-.activity-text{font-size:13px;color:var(--text2);line-height:1.5}
-.activity-text strong{color:var(--text);font-weight:500}
-.activity-time{font-size:11px;color:var(--text3);font-family:'JetBrains Mono',monospace;margin-top:2px}
+22:38
+Claude responded: Tamam, hem admin panelini (reply kaldırılmış) hem de web sitesini (tüm düzeltmeler + document 3'teki script) tam olarak oluşturuyorum: Önce web sitesi (index.
+Tamam, hem admin panelini (reply kaldırılmış) hem de web sitesini (tüm düzeltmeler + document 3'teki script) tam olarak oluşturuyorum:
 
-/* CHART */
-.chart-wrap{height:160px;margin-top:8px}
-.chart-bars{display:flex;align-items:flex-end;gap:6px;height:100%;padding-top:10px}
-.chart-bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;height:100%}
-.chart-bar{width:100%;border-radius:4px 4px 0 0;cursor:pointer;transition:opacity .15s}
-.chart-bar:hover{opacity:.8}
-.chart-bar-label{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--text3)}
 
-/* TABLE */
-.table-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--border)}
-table{width:100%;border-collapse:collapse}
-th{font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--text3);text-align:left;padding:10px 16px;border-bottom:1px solid var(--border);font-weight:600;text-transform:uppercase;letter-spacing:.6px;background:var(--bg3)}
-td{font-size:13px;padding:11px 16px;border-bottom:1px solid var(--border);vertical-align:middle}
-tr:last-child td{border-bottom:none}
-tr:hover td{background:rgba(255,255,255,0.02)}
-th.cb,td.cb{width:36px;padding-right:4px}
-input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:pointer}
+Mevcut dosyaları kontrol et
+Mevcut dosyaları kontrol et
 
-/* BADGES */
-.badge{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-family:'JetBrains Mono',monospace;padding:3px 9px;border-radius:5px;font-weight:600}
-.badge.published,.badge.active,.badge.approved{color:var(--green);background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2)}
-.badge.draft,.badge.archived{color:var(--text3);background:var(--bg3);border:1px solid var(--border)}
-.badge.pending{color:var(--orange);background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2)}
+Mevcut dosyaları kontrol et
 
-/* TAGS */
-.tags-wrap{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
-.tag-chip{display:inline-flex;align-items:center;gap:3px;font-size:10px;font-family:'JetBrains Mono',monospace;background:rgba(99,102,241,0.1);color:var(--accent);border:1px solid rgba(99,102,241,0.2);padding:2px 7px;border-radius:20px}
-.tag-chip-del{cursor:pointer;font-size:11px;opacity:.7}
-.tag-chip-del:hover{opacity:1}
-.tag-add-row{display:flex;gap:6px;align-items:center;margin-top:6px}
-.tag-add-row input{flex:1}
+Script
+Done
+Önce web sitesi (index.html) — document 2'nin HTML'i + document 3'teki script:
 
-/* BUTTONS */
-.btn{font-size:12px;font-weight:500;padding:8px 16px;border-radius:8px;border:1px solid var(--border);cursor:pointer;transition:all .15s;background:transparent;color:var(--text2)}
+
+Web sitesi HTML şablonunu oluştur
+Web sitesi HTML şablonunu oluştur
+
+Web sitesi HTML şablonunu oluştur
+bash
+
+cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
+<!DOCTYPE html>
+<html lang="tr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0c12">
+<meta name="description" content="Kerem Akbayır – Senior Software Engineer">
+<title>Kerem Akbayır – Senior Software Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0c12;--bg2:#0f1117;--bg3:#141720;--bg4:#1a1e2a;
+  --accent:#6366f1;--accent2:#8b5cf6;--accent3:#06b6d4;
+  --green:#10b981;--red:#ef4444;--orange:#f59e0b;--pink:#ec4899;
+  --text:#f1f5f9;--text2:#94a3b8;--text3:#475569;
+  --border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.12);
+  --card:#111318;--card2:#161a24;
+  --shadow:0 4px 24px rgba(0,0,0,0.4);
+}
+[data-theme="light"]{
+  --bg:#f8fafc;--bg2:#ffffff;--bg3:#f1f5f9;--bg4:#e2e8f0;
+  --text:#0f172a;--text2:#475569;--text3:#94a3b8;
+  --border:rgba(0,0,0,0.07);--border2:rgba(0,0,0,0.13);
+  --card:#ffffff;--card2:#f8fafc;
+  --shadow:0 4px 24px rgba(0,0,0,0.08);
+}
+body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;transition:background .3s,color .3s}
+a{color:inherit;text-decoration:none}
+button{font-family:'Sora',sans-serif;cursor:pointer}
+input,textarea,select{font-family:'Sora',sans-serif}
+nav{position:sticky;top:0;z-index:200;background:rgba(10,12,18,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px}
+[data-theme="light"] nav{background:rgba(248,250,252,0.92)}
+.nav-brand{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:8px}
+.nav-brand .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent)}
+.nav-links{display:flex;gap:2px}
+.nav-links a{font-size:13px;color:var(--text2);padding:6px 14px;border-radius:8px;transition:all .15s;cursor:pointer}
+.nav-links a:hover{background:var(--bg3);color:var(--text)}
+.nav-links a.active{color:var(--accent);background:rgba(99,102,241,0.1)}
+.nav-right{display:flex;align-items:center;gap:8px}
+.nav-btn{height:34px;border-radius:8px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:13px;transition:all .15s;color:var(--text2);padding:0 12px;gap:6px}
+.nav-btn:hover{border-color:var(--border2);color:var(--text)}
+.nav-icon-btn{width:34px;padding:0}
+.lang-btn{font-family:'JetBrains Mono',monospace;font-size:11px}
+.search-overlay{position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);display:none;align-items:flex-start;justify-content:center;padding-top:14vh}
+.search-overlay.show{display:flex}
+.search-box{background:var(--bg2);border:1px solid var(--border2);border-radius:16px;width:560px;max-width:90vw;overflow:hidden;box-shadow:var(--shadow)}
+.search-input-row{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--border)}
+.search-input-row input{flex:1;background:none;border:none;outline:none;font-size:15px;color:var(--text)}
+.search-results{max-height:300px;overflow-y:auto;padding:8px}
+.search-item{padding:10px 14px;border-radius:9px;cursor:pointer;display:flex;align-items:center;gap:10px;transition:background .1s}
+.search-item:hover{background:var(--bg3)}
+.search-item-title{font-size:13px;font-weight:500}
+.search-item-meta{font-size:11px;color:var(--text3);font-family:'JetBrains Mono',monospace}
+.search-empty{text-align:center;padding:28px;color:var(--text3);font-size:13px}
+.page{display:none;min-height:100vh}
+.page.active{display:block}
+.hero{padding:64px 2rem 52px;max-width:900px;margin:0 auto;display:flex;gap:48px;align-items:center}
+.hero-avatar{width:88px;height:88px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:26px;font-weight:700;color:#fff;flex-shrink:0;box-shadow:0 0 0 3px rgba(99,102,241,0.25),0 0 0 7px rgba(99,102,241,0.08)}
+.hero-content h1{font-size:28px;font-weight:700;letter-spacing:-.7px;margin-bottom:3px}
+.hero-role{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent);margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.hero-role::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green)}
+.hero-desc{font-size:14px;color:var(--text2);max-width:480px;line-height:1.8}
+.hero-tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}
+.tag{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text3);background:var(--bg3);border:1px solid var(--border);padding:4px 10px;border-radius:5px}
+.hero-btns{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap}
+.btn{font-size:13px;font-weight:500;padding:8px 18px;border-radius:8px;border:1px solid var(--border);cursor:pointer;transition:all .15s;background:transparent;color:var(--text2)}
 .btn-primary{background:var(--accent);color:#fff;border-color:var(--accent)}
-.btn-primary:hover{filter:brightness(1.1)}
+.btn-primary:hover{filter:brightness(1.1);transform:translateY(-1px)}
 .btn-ghost:hover{background:var(--bg3);color:var(--text)}
-.btn-danger{color:var(--red);border-color:rgba(239,68,68,0.25);background:rgba(239,68,68,0.08)}
-.btn-danger:hover{background:rgba(239,68,68,0.15)}
-.btn-success{color:var(--green);border-color:rgba(16,185,129,0.25);background:rgba(16,185,129,0.08)}
-.btn-success:hover{background:rgba(16,185,129,0.15)}
-.btn-warning{color:var(--orange);border-color:rgba(245,158,11,0.25);background:rgba(245,158,11,0.08)}
-.btn-warning:hover{background:rgba(245,158,11,0.15)}
 .btn-sm{padding:5px 12px;font-size:11px;border-radius:6px}
-.btn-icon{width:32px;height:32px;padding:0;display:inline-flex;align-items:center;justify-content:center;border-radius:7px}
-.btn:disabled{opacity:.4;cursor:not-allowed}
-
-/* BULK BAR */
-.bulk-bar{display:none;align-items:center;gap:10px;padding:10px 16px;background:rgba(99,102,241,0.07);border:1px solid rgba(99,102,241,0.2);border-radius:10px;margin-bottom:12px}
-.bulk-bar.show{display:flex}
-.bulk-count{font-size:13px;font-weight:600;color:var(--accent);font-family:'JetBrains Mono',monospace}
-.bulk-actions{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap}
-
-/* SEARCH & FILTER BAR */
-.table-controls{display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap}
-.search-wrap{position:relative;flex:1;min-width:160px}
-.search-wrap::before{content:'🔍';position:absolute;left:11px;top:50%;transform:translateY(-50%);font-size:11px;pointer-events:none}
-.search-input{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:9px;padding:8px 12px 8px 32px;color:var(--text);font-size:13px;outline:none;transition:border-color .15s}
-.search-input:focus{border-color:var(--accent)}
-
-/* FORMS */
-.form-group{margin-bottom:14px}
-.form-label{display:block;font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
-.form-label .req{color:var(--red);margin-left:2px}
-.form-input{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:9px;padding:10px 14px;color:var(--text);font-size:13px;outline:none;transition:border-color .15s}
-.form-input:focus{border-color:var(--accent)}
-.form-input.err{border-color:var(--red)}
-.field-err{font-size:11px;color:var(--red);margin-top:3px}
-.form-textarea{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:9px;padding:10px 14px;color:var(--text);font-size:13px;outline:none;transition:border-color .15s;resize:vertical;min-height:100px;font-family:'JetBrains Mono',monospace}
-.form-textarea:focus{border-color:var(--accent)}
-.form-select{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:9px;padding:10px 14px;color:var(--text);font-size:13px;outline:none}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.form-row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
-.form-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:20px;padding-top:16px;border-top:1px solid var(--border)}
-.char-count{font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--text3);text-align:right;margin-top:2px}
-.char-count.warn{color:var(--orange)}
-.char-count.over{color:var(--red)}
-
-/* SLUG PREVIEW */
-.slug-preview{font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--text3);margin-top:4px;padding:4px 10px;background:var(--bg4);border-radius:5px}
-.slug-preview span{color:var(--accent)}
-
-/* SEO GOOGLE PREVIEW */
-.seo-preview{background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:14px;margin-top:10px}
-.seo-prev-site{font-size:11px;color:var(--green);font-family:'JetBrains Mono',monospace;margin-bottom:3px}
-.seo-prev-title{font-size:15px;color:#8ab4f8;font-weight:500;margin-bottom:2px}
-[data-theme="light"] .seo-prev-title{color:#1a0dab}
-.seo-prev-desc{font-size:12px;color:var(--text2);line-height:1.5}
-
-/* IMAGE PREVIEW */
-.img-preview-wrap{margin-top:10px;display:none}
-.img-preview-wrap.show{display:block}
-.img-preview{width:100%;max-height:160px;object-fit:cover;border-radius:9px;border:1px solid var(--border)}
-
-/* UPLOAD ZONE */
-.upload-zone{border:2px dashed var(--border2);border-radius:12px;padding:28px;text-align:center;cursor:pointer;transition:all .2s;background:var(--bg3);position:relative}
-.upload-zone:hover,.upload-zone.dragover{border-color:var(--accent);background:rgba(99,102,241,0.05)}
-.upload-zone-icon{font-size:32px;margin-bottom:8px}
-.upload-zone p{font-size:13px;color:var(--text2)}
-.upload-zone small{font-size:11px;color:var(--text3);font-family:'JetBrains Mono',monospace}
-.upload-progress{width:100%;height:4px;background:var(--bg4);border-radius:2px;margin-top:12px;overflow:hidden;display:none}
-.upload-progress.show{display:block}
-.upload-progress-bar{height:100%;background:var(--accent);border-radius:2px;transition:width .3s}
-.media-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;margin-top:16px}
-.media-item{position:relative;border-radius:8px;overflow:hidden;border:2px solid var(--border);cursor:pointer;aspect-ratio:1;background:var(--bg3);transition:border-color .15s}
-.media-item img{width:100%;height:100%;object-fit:cover}
-.media-item:hover .media-overlay{opacity:1}
-.media-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.55);display:flex;align-items:center;justify-content:center;gap:6px;opacity:0;transition:opacity .15s}
-.media-item.selected{border-color:var(--accent)}
-.media-check{position:absolute;top:5px;left:5px;width:18px;height:18px;border-radius:4px;background:var(--accent);color:#fff;font-size:10px;display:none;align-items:center;justify-content:center;font-weight:700}
-.media-item.selected .media-check{display:flex}
-
-/* MODAL */
-.modal-overlay{position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,0.65);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:20px}
-.modal-overlay.show{display:flex}
-.modal{background:var(--card);border:1px solid var(--border2);border-radius:18px;padding:28px;width:680px;max-width:95vw;max-height:90vh;overflow-y:auto}
-.modal-lg{width:820px}
-.modal-sm{width:440px}
-.modal h3{font-size:18px;font-weight:600;margin-bottom:20px;letter-spacing:-.3px}
-
-/* MODAL TABS */
-.modal-tabs{display:flex;gap:3px;background:var(--bg3);border-radius:9px;padding:3px;margin-bottom:20px}
-.modal-tab{flex:1;padding:7px;text-align:center;font-size:12px;font-weight:500;border-radius:7px;cursor:pointer;color:var(--text2);transition:all .15s;border:none;background:none}
-.modal-tab.active{background:var(--card);color:var(--text);box-shadow:0 1px 4px rgba(0,0,0,0.2)}
-.tab-pane{display:none}
-.tab-pane.active{display:block}
-
-/* CONFIRM MODAL */
-.confirm-body{text-align:center;padding:8px 0}
-.confirm-icon{font-size:48px;margin-bottom:14px}
-.confirm-title{font-size:18px;font-weight:700;margin-bottom:8px;letter-spacing:-.3px}
-.confirm-msg{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:24px}
-.confirm-acts{display:flex;gap:10px;justify-content:center}
-
-/* PREVIEW FRAME */
-.preview-frame{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:32px;min-height:360px;overflow-y:auto}
-.pf-title{font-size:26px;font-weight:700;margin-bottom:14px;line-height:1.3}
-.pf-meta{display:flex;gap:10px;font-size:12px;color:var(--text3);margin-bottom:20px;flex-wrap:wrap;align-items:center}
-.pf-img{width:100%;max-height:260px;object-fit:cover;border-radius:10px;margin-bottom:20px}
-.pf-content{font-size:14px;line-height:1.8;color:var(--text2)}
-.pf-content h1,.pf-content h2,.pf-content h3{color:var(--text);margin:18px 0 8px}
-.pf-content p{margin-bottom:10px}
-.pf-content code{background:var(--bg3);padding:1px 5px;border-radius:4px;font-family:'JetBrains Mono',monospace;font-size:12px}
-.pf-content pre{background:var(--bg3);border-radius:8px;padding:14px;margin:10px 0;overflow-x:auto}
-.pf-content a{color:var(--accent)}
-.pf-content blockquote{border-left:3px solid var(--accent);padding-left:14px;margin:10px 0;color:var(--text3)}
-
-/* REPLY BOX */
-.reply-original{background:var(--bg3);border-radius:10px;padding:14px;margin-bottom:14px;font-size:13px;color:var(--text2);line-height:1.6;border-left:3px solid var(--accent)}
-
-/* NOTIFICATIONS */
-.notif-panel{position:fixed;top:70px;right:20px;width:340px;background:var(--card);border:1px solid var(--border2);border-radius:14px;z-index:500;box-shadow:var(--shadow);display:none}
-.notif-panel.show{display:block}
-.notif-header{padding:14px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
-.notif-header h4{font-size:13px;font-weight:600}
-.notif-clear{font-size:11px;color:var(--accent);cursor:pointer}
-.notif-list{max-height:320px;overflow-y:auto}
-.notif-item{padding:12px 16px;border-bottom:1px solid var(--border);display:flex;gap:10px;cursor:pointer;transition:background .1s}
-.notif-item:hover{background:var(--bg3)}
-.notif-item.unread{background:rgba(99,102,241,0.04)}
-.notif-item-icon{font-size:18px;flex-shrink:0}
-.notif-item-text{font-size:12px;color:var(--text2);line-height:1.5}
-.notif-item-time{font-size:10px;color:var(--text3);font-family:'JetBrains Mono',monospace;margin-top:2px}
-
-/* TOAST */
-.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(10px);z-index:9999;background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:12px 18px;font-size:13px;display:flex;align-items:center;gap:9px;opacity:0;transition:all .3s;pointer-events:none;box-shadow:var(--shadow)}
+.btn-success{color:var(--green);border-color:rgba(16,185,129,0.25);background:rgba(16,185,129,0.08)}
+.btn-danger{color:var(--red);border-color:rgba(239,68,68,0.25);background:rgba(239,68,68,0.08)}
+.container{max-width:900px;margin:0 auto;padding:0 2rem 80px}
+.section-head{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.section-title{font-size:10px;font-weight:600;font-family:'JetBrains Mono',monospace;color:var(--text3);letter-spacing:1.8px;text-transform:uppercase;white-space:nowrap}
+.section-line{flex:1;height:1px;background:var(--border)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px}
+.featured-card{display:flex;overflow:hidden;margin-bottom:32px;cursor:pointer;transition:border-color .2s,transform .2s,box-shadow .2s}
+.featured-card:hover{border-color:rgba(99,102,241,0.4);transform:translateY(-2px);box-shadow:var(--shadow)}
+.featured-img{width:190px;flex-shrink:0;background:linear-gradient(160deg,var(--bg3),var(--bg4));display:flex;align-items:center;justify-content:center;font-size:44px;border-right:1px solid var(--border)}
+.featured-body{padding:24px 28px;flex:1}
+.featured-body h2{font-size:18px;font-weight:600;margin:8px 0 10px;letter-spacing:-.3px;line-height:1.4}
+.featured-body p{font-size:13px;color:var(--text2);line-height:1.75;margin-bottom:12px}
+.post-meta{font-size:11px;color:var(--text3);font-family:'JetBrains Mono',monospace;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.meta-dot{width:3px;height:3px;border-radius:50%;background:var(--text3)}
+.badge{display:inline-flex;align-items:center;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;padding:3px 8px;border-radius:5px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.badge-default{color:var(--accent);background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.25)}
+.badge-purple{color:var(--accent2);background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.25)}
+.badge-green{color:var(--green);background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2)}
+.badge-orange{color:var(--orange);background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2)}
+.badge-cyan{color:var(--accent3);background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.2)}
+.badge-red{color:var(--red);background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2)}
+.posts-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.post-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px 20px;cursor:pointer;transition:border-color .2s,transform .2s,box-shadow .2s}
+.post-card:hover{border-color:rgba(99,102,241,0.35);transform:translateY(-2px);box-shadow:var(--shadow)}
+.post-card h3{font-size:13.5px;font-weight:500;margin:7px 0 6px;line-height:1.45}
+.post-card p{font-size:12px;color:var(--text2);line-height:1.65}
+.post-card .post-meta{margin-top:12px}
+.view-all{display:inline-flex;align-items:center;gap:7px;margin-top:18px;font-size:13px;color:var(--accent);font-weight:500;cursor:pointer;transition:gap .15s}
+.view-all:hover{gap:12px}
+.tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.tool-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:11px;cursor:pointer;transition:border-color .2s,transform .15s}
+.tool-card:hover{border-color:rgba(99,102,241,0.35);transform:translateY(-1px)}
+.tool-icon{width:34px;height:34px;border-radius:8px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.tool-name{font-size:12.5px;font-weight:500}
+.tool-desc{font-size:11px;color:var(--text3);margin-top:2px}
+footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
+.footer-copy{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3)}
+.footer-links{display:flex;gap:14px}
+.footer-links a{font-size:12px;color:var(--text3);cursor:pointer;transition:color .15s}
+.footer-links a:hover{color:var(--text2)}
+.detail-wrap{max-width:740px;margin:0 auto;padding:0 2rem 80px}
+.detail-back{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--text3);margin-bottom:24px;cursor:pointer;padding:10px 0;transition:color .15s}
+.detail-back:hover{color:var(--accent)}
+.detail-header h1{font-size:26px;font-weight:700;line-height:1.38;letter-spacing:-.5px;margin:10px 0 12px}
+.detail-meta-bar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding-bottom:18px;border-bottom:1px solid var(--border)}
+.detail-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;font-family:'JetBrains Mono',monospace}
+.detail-author{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500}
+.stats-bar{display:flex;gap:10px;flex-wrap:wrap;padding:12px 16px;background:var(--card);border:1px solid var(--border);border-radius:10px;margin:18px 0}
+.stat-pill{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--text3);font-family:'JetBrains Mono',monospace}
+.toc{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 18px;margin-bottom:24px}
+.toc-label{font-size:10px;font-weight:600;color:var(--text3);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+.toc a{display:block;font-size:12.5px;color:var(--text2);padding:3px 0;cursor:pointer;transition:color .15s}
+.toc a:hover{color:var(--accent)}
+.detail-content{font-size:15px;line-height:1.85;color:var(--text)}
+.detail-content h2{font-size:19px;font-weight:600;margin:32px 0 12px;letter-spacing:-.3px}
+.detail-content h3{font-size:15px;font-weight:600;margin:22px 0 8px}
+.detail-content p{margin-bottom:16px;color:var(--text2)}
+.detail-content ul,.detail-content ol{margin:0 0 16px 20px;color:var(--text2)}
+.detail-content li{margin-bottom:5px;line-height:1.7}
+.detail-content code{font-family:'JetBrains Mono',monospace;font-size:12px;background:var(--bg3);border:1px solid var(--border);padding:2px 6px;border-radius:4px;color:var(--accent)}
+.detail-content pre{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin:16px 0;overflow-x:auto}
+.detail-content pre code{background:none;border:none;padding:0;color:var(--green);font-size:12px}
+.detail-content blockquote{border-left:2px solid var(--accent);padding:10px 16px;margin:18px 0;background:rgba(99,102,241,0.05);border-radius:0 8px 8px 0;font-style:italic;color:var(--text2)}
+.detail-actions{display:flex;align-items:center;gap:10px;padding:18px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:28px 0;flex-wrap:wrap}
+.like-btn{display:flex;align-items:center;gap:6px;padding:7px 15px;border-radius:20px;background:var(--bg3);border:1px solid var(--border);font-size:13px;cursor:pointer;transition:all .2s;color:var(--text2)}
+.like-btn:hover,.like-btn.liked{background:rgba(239,68,68,0.1);border-color:rgba(239,68,68,0.3);color:var(--red)}
+.share-btn{display:flex;align-items:center;gap:6px;padding:7px 15px;border-radius:20px;background:var(--bg3);border:1px solid var(--border);font-size:13px;cursor:pointer;transition:all .15s;color:var(--text2)}
+.share-btn:hover{border-color:var(--border2);color:var(--text)}
+.read-time{font-size:11px;color:var(--text3);font-family:'JetBrains Mono',monospace;margin-left:auto}
+.related-posts{margin-top:32px}
+.related-label{font-size:10px;font-weight:600;color:var(--text3);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px}
+.related-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.related-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;cursor:pointer;transition:all .15s}
+.related-card:hover{border-color:rgba(99,102,241,0.35);transform:translateY(-1px)}
+.related-card-title{font-size:12.5px;font-weight:500;line-height:1.4;margin-top:5px}
+.comments-wrap{margin-top:6px}
+.comments-wrap h3{font-size:16px;font-weight:600;margin-bottom:18px}
+.comment-form{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:24px}
+.comment-form h4{font-size:13px;font-weight:600;margin-bottom:14px}
+.form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
+.form-group{display:flex;flex-direction:column;gap:4px}
+.form-group label{font-size:10px;color:var(--text3);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.5px}
+.form-group input,.form-group textarea{background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:8px 12px;color:var(--text);font-size:13px;outline:none;transition:border-color .15s}
+.form-group input:focus,.form-group textarea:focus{border-color:rgba(99,102,241,0.5)}
+.form-group textarea{min-height:90px;resize:vertical}
+.captcha-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:9px 13px;flex-wrap:wrap}
+.captcha-q{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:600;color:var(--accent)}
+.captcha-input{width:66px;background:var(--bg2);border:1px solid var(--border2);border-radius:6px;padding:6px 10px;color:var(--text);font-size:13px;outline:none;font-family:'JetBrains Mono',monospace}
+.captcha-input:focus{border-color:rgba(99,102,241,0.5)}
+.comment-list{display:flex;flex-direction:column;gap:12px}
+.comment-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px}
+.comment-head{display:flex;align-items:center;gap:9px;margin-bottom:8px}
+.comment-av{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#fff;font-family:'JetBrains Mono',monospace;flex-shrink:0}
+.comment-name{font-size:13px;font-weight:600}
+.comment-date{font-size:10px;color:var(--text3);font-family:'JetBrains Mono',monospace}
+.comment-text{font-size:13px;color:var(--text2);line-height:1.7}
+.no-comments{text-align:center;padding:28px;color:var(--text3);font-size:13px}
+.comment-cooldown{text-align:center;padding:14px;background:rgba(239,68,68,0.07);border:1px solid rgba(239,68,68,0.2);border-radius:9px;font-size:12px;color:var(--red);font-family:'JetBrains Mono',monospace}
+.about-grid{display:grid;grid-template-columns:250px 1fr;gap:28px;align-items:start}
+.about-sidebar-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px 18px;text-align:center;position:sticky;top:76px}
+.about-av{width:68px;height:68px;border-radius:50%;margin:0 auto 10px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;color:#fff}
+.about-sidebar-card h3{font-size:14px;font-weight:600;margin-bottom:2px}
+.about-sidebar-card .role{font-size:11px;color:var(--accent);font-family:'JetBrains Mono',monospace;margin-bottom:12px}
+.about-social{display:flex;flex-direction:column;gap:6px;margin-top:12px}
+.social-link{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--text2);background:var(--bg3);border:1px solid var(--border);border-radius:7px;padding:6px 11px;transition:all .15s;cursor:pointer}
+.social-link:hover{border-color:rgba(99,102,241,0.4);color:var(--text)}
+.about-section{margin-bottom:28px}
+.about-section h2{font-size:17px;font-weight:600;margin-bottom:10px;letter-spacing:-.3px}
+.about-section p{font-size:14px;color:var(--text2);line-height:1.8;margin-bottom:8px}
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:10px}
+.skill-item{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:11px 13px}
+.skill-name{font-size:11.5px;font-weight:500;margin-bottom:6px}
+.skill-bar{height:3px;background:var(--bg4);border-radius:2px;overflow:hidden}
+.skill-fill{height:100%;border-radius:2px;background:var(--accent)}
+.exp-item{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 16px;margin-bottom:9px;border-left:2px solid var(--accent)}
+.exp-title{font-size:13.5px;font-weight:600}
+.exp-company{font-size:11px;color:var(--accent);font-family:'JetBrains Mono',monospace;margin:2px 0}
+.exp-date{font-size:10px;color:var(--text3);font-family:'JetBrains Mono',monospace;margin-bottom:5px}
+.exp-desc{font-size:12px;color:var(--text2);line-height:1.65}
+.filter-row{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:20px}
+.filter-btn{font-size:11px;padding:5px 13px;border-radius:6px;border:1px solid var(--border);background:transparent;color:var(--text2);cursor:pointer;transition:all .15s}
+.filter-btn:hover,.filter-btn.active{background:rgba(99,102,241,0.1);color:var(--accent);border-color:rgba(99,102,241,0.3)}
+.blog-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}
+.blog-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;transition:border-color .2s,transform .2s,box-shadow .2s}
+.blog-card:hover{border-color:rgba(99,102,241,0.35);transform:translateY(-2px);box-shadow:var(--shadow)}
+.blog-thumb{height:110px;background:linear-gradient(135deg,var(--bg3),var(--bg4));display:flex;align-items:center;justify-content:center;font-size:32px;border-bottom:1px solid var(--border)}
+.blog-body{padding:14px 16px}
+.blog-body h3{font-size:13px;font-weight:600;margin:6px 0;line-height:1.45}
+.blog-body p{font-size:11.5px;color:var(--text2);line-height:1.65}
+.blog-body .post-meta{margin-top:9px}
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.proj-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px 20px;transition:border-color .2s,transform .2s;cursor:pointer}
+.proj-card:hover{border-color:rgba(99,102,241,0.35);transform:translateY(-2px)}
+.proj-head{display:flex;align-items:center;gap:10px;margin-bottom:7px}
+.proj-title{font-size:13.5px;font-weight:600}
+.proj-desc{font-size:12px;color:var(--text2);line-height:1.65;margin-bottom:10px}
+.proj-tags{display:flex;flex-wrap:wrap;gap:5px}
+.proj-tag{font-family:'JetBrains Mono',monospace;font-size:9.5px;color:var(--text3);background:var(--bg3);border:1px solid var(--border);padding:3px 7px;border-radius:4px}
+.proj-links{display:flex;gap:6px;margin-top:10px}
+.proj-link{font-size:11px;color:var(--accent);border:1px solid rgba(99,102,241,0.25);border-radius:5px;padding:4px 9px;transition:all .15s;cursor:pointer}
+.proj-link:hover{background:rgba(99,102,241,0.1)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.contact-info h2{font-size:20px;font-weight:600;margin-bottom:9px;letter-spacing:-.4px}
+.contact-info p{font-size:13.5px;color:var(--text2);line-height:1.8;margin-bottom:20px}
+.contact-items{display:flex;flex-direction:column;gap:8px}
+.contact-item{display:flex;align-items:center;gap:11px;background:var(--card);border:1px solid var(--border);border-radius:9px;padding:12px 14px}
+.contact-icon{font-size:17px;flex-shrink:0}
+.contact-label{font-size:10px;color:var(--text3);font-family:'JetBrains Mono',monospace}
+.contact-value{font-size:13px;font-weight:500}
+.contact-form-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px}
+.contact-form-card h3{font-size:14px;font-weight:600;margin-bottom:16px}
+.contact-form-card .form-group{margin-bottom:12px}
+.contact-form-card label{display:block;font-size:10px;color:var(--text3);margin-bottom:5px;font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:.5px}
+.contact-form-card input,.contact-form-card textarea{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:9px 12px;color:var(--text);font-size:13px;outline:none;transition:border-color .15s}
+.contact-form-card input:focus,.contact-form-card textarea:focus{border-color:rgba(99,102,241,0.5)}
+.contact-form-card textarea{min-height:96px;resize:vertical}
+.form-submit{width:100%;padding:10px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:13.5px;font-weight:500;cursor:pointer;transition:filter .15s}
+.form-submit:hover{filter:brightness(1.1)}
+.tools-page-grid{display:grid;grid-template-columns:220px 1fr;gap:20px}
+.tools-sidebar{display:flex;flex-direction:column;gap:4px;position:sticky;top:76px}
+.tnav-btn{display:flex;align-items:center;gap:9px;padding:9px 12px;border-radius:9px;border:1px solid transparent;background:transparent;color:var(--text2);cursor:pointer;font-size:12.5px;transition:all .15s;text-align:left;width:100%}
+.tnav-btn:hover{background:var(--bg3);color:var(--text)}
+.tnav-btn.active{background:rgba(99,102,241,0.1);color:var(--accent);border-color:rgba(99,102,241,0.25)}
+.tnav-icon{font-size:15px;width:20px;text-align:center;flex-shrink:0}
+.tool-panel-title{font-size:18px;font-weight:600;margin-bottom:4px}
+.tool-panel-sub{font-size:13px;color:var(--text2);margin-bottom:18px}
+.tool-box{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:14px}
+.tool-label{display:block;font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.tool-input{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:9px 13px;color:var(--text);font-size:13px;outline:none;transition:border-color .15s;font-family:'JetBrains Mono',monospace}
+.tool-input:focus{border-color:rgba(99,102,241,0.5)}
+.tool-textarea{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:9px 13px;color:var(--text);font-size:12px;outline:none;transition:border-color .15s;font-family:'JetBrains Mono',monospace;resize:vertical}
+.tool-textarea:focus{border-color:rgba(99,102,241,0.5)}
+.tool-result{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:12px 14px;font-family:'JetBrains Mono',monospace;font-size:12.5px;word-break:break-all;min-height:44px;color:var(--green);position:relative}
+.tool-copy-btn{position:absolute;top:8px;right:8px;font-size:10px;color:var(--text3);background:var(--bg2);border:1px solid var(--border);border-radius:5px;padding:3px 8px;cursor:pointer;transition:all .15s}
+.tool-copy-btn:hover{color:var(--accent);border-color:rgba(99,102,241,0.4)}
+.tool-opts{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0;align-items:center}
+.tool-opts label{font-size:12px;color:var(--text2);display:flex;align-items:center;gap:5px;cursor:pointer}
+.tool-opts input[type="checkbox"]{width:13px;height:13px;cursor:pointer;accent-color:var(--accent)}
+.tool-opts input[type="number"],.tool-opts select{background:var(--bg3);border:1px solid var(--border2);border-radius:6px;padding:5px 9px;color:var(--text);font-size:12px;outline:none}
+.tool-actions{display:flex;gap:7px;margin-top:10px;flex-wrap:wrap}
+.strength-bar{height:5px;border-radius:3px;margin-top:5px;background:var(--bg3)}
+.diff-added{background:rgba(16,185,129,0.13);color:var(--green)}
+.diff-removed{background:rgba(239,68,68,0.13);color:var(--red);text-decoration:line-through}
+.diff-line{padding:2px 8px;border-radius:3px;margin:1px 0;font-size:12px;font-family:'JetBrains Mono',monospace}
+.page-header{padding:44px 2rem 32px;max-width:900px;margin:0 auto}
+.page-header h1{font-size:24px;font-weight:700;letter-spacing:-.5px;margin-bottom:4px}
+.page-header p{font-size:13.5px;color:var(--text2)}
+#chatBtn{position:fixed;bottom:80px;right:24px;width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;color:#fff;font-size:20px;cursor:pointer;z-index:790;box-shadow:0 4px 20px rgba(99,102,241,0.5);display:flex;align-items:center;justify-content:center;transition:transform .2s}
+#chatBtn:hover{transform:scale(1.08)}
+#chatBtn .notif-dot{position:absolute;top:-2px;right:-2px;width:11px;height:11px;border-radius:50%;background:var(--red);border:2px solid var(--bg)}
+.chat-window{position:fixed;bottom:140px;right:24px;width:320px;height:460px;background:var(--bg2);border:1px solid var(--border2);border-radius:16px;z-index:789;display:none;flex-direction:column;box-shadow:var(--shadow);overflow:hidden}
+.chat-window.show{display:flex}
+.chat-header{padding:14px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:linear-gradient(135deg,rgba(99,102,241,0.08),rgba(139,92,246,0.08))}
+.chat-header-info{display:flex;align-items:center;gap:9px}
+.chat-header-av{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:14px}
+.chat-header-title{font-size:13px;font-weight:600}
+.chat-header-status{font-size:10px;color:var(--green);font-family:'JetBrains Mono',monospace}
+.chat-close{background:none;border:none;font-size:17px;cursor:pointer;color:var(--text3)}
+.chat-msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:9px}
+.chat-msg{max-width:80%;display:flex;flex-direction:column;gap:2px}
+.chat-msg.user{align-self:flex-end;align-items:flex-end}
+.chat-msg.bot{align-self:flex-start;align-items:flex-start}
+.chat-bubble{padding:9px 13px;border-radius:12px;font-size:12.5px;line-height:1.55}
+.chat-msg.user .chat-bubble{background:var(--accent);color:#fff;border-radius:12px 12px 4px 12px}
+.chat-msg.bot .chat-bubble{background:var(--bg3);color:var(--text);border-radius:12px 12px 12px 4px}
+.chat-time-label{font-size:9px;color:var(--text3);font-family:'JetBrains Mono',monospace}
+.chat-suggestions{display:flex;flex-wrap:wrap;gap:5px;padding:0 12px 10px}
+.chat-sug{font-size:10.5px;padding:4px 10px;border-radius:12px;background:var(--bg3);border:1px solid var(--border);cursor:pointer;color:var(--text2);transition:all .15s}
+.chat-sug:hover{border-color:rgba(99,102,241,0.4);color:var(--accent)}
+.chat-input-row{padding:10px 12px;border-top:1px solid var(--border);display:flex;gap:7px}
+.chat-input-row input{flex:1;background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:8px 11px;color:var(--text);font-size:12.5px;outline:none;transition:border-color .15s}
+.chat-input-row input:focus{border-color:rgba(99,102,241,0.5)}
+.chat-send{width:34px;height:34px;border-radius:8px;background:var(--accent);border:none;color:#fff;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.reading-overlay{display:none;position:fixed;inset:0;z-index:5000;background:var(--bg);overflow-y:auto}
+.reading-overlay.show{display:block}
+.reading-inner{max-width:660px;margin:0 auto;padding:56px 2rem 100px}
+.reading-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:36px;padding-bottom:18px;border-bottom:1px solid var(--border)}
+.reading-label{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text3)}
+.reading-controls{display:flex;gap:8px;align-items:center}
+.reading-font-btn{width:30px;height:30px;border-radius:6px;background:var(--bg3);border:1px solid var(--border);cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;color:var(--text2)}
+.reading-close{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:6px 14px;font-size:12.5px;cursor:pointer;color:var(--text2)}
+.reading-close:hover{color:var(--text)}
+#scrollTopBtn{position:fixed;bottom:24px;right:24px;width:40px;height:40px;border-radius:50%;background:var(--accent);border:none;color:#fff;font-size:16px;cursor:pointer;opacity:0;transform:translateY(8px);transition:all .3s;z-index:800;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(99,102,241,0.4)}
+#scrollTopBtn.show{opacity:1;transform:translateY(0)}
+#scrollTopBtn:hover{transform:translateY(-2px)}
+#readProgress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));width:0%;z-index:9999;display:none}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(8px);z-index:9999;background:var(--bg2);border:1px solid var(--border2);border-radius:10px;padding:11px 16px;font-size:13px;display:flex;align-items:center;gap:8px;opacity:0;transition:all .3s;pointer-events:none;box-shadow:var(--shadow)}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .toast.success{border-color:rgba(16,185,129,0.4)}
 .toast.error{border-color:rgba(239,68,68,0.4)}
-.toast.warning{border-color:rgba(245,158,11,0.4)}
-
-/* EMPTY STATE */
-.empty{text-align:center;padding:48px 20px;color:var(--text3)}
-.empty-icon{font-size:36px;margin-bottom:10px}
+.empty{text-align:center;padding:40px 20px;color:var(--text3)}
+.empty-icon{font-size:34px;margin-bottom:8px}
 .empty p{font-size:13px}
-
-/* SETTINGS */
-.setting-row{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--border)}
-.setting-row:last-child{border-bottom:none}
-.setting-info h4{font-size:13px;font-weight:500}
-.setting-info p{font-size:12px;color:var(--text3);margin-top:2px}
-.toggle{width:40px;height:22px;border-radius:11px;background:var(--bg4);border:none;position:relative;cursor:pointer;transition:background .2s;flex-shrink:0}
-.toggle.on{background:var(--accent)}
-.toggle::after{content:'';position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:transform .2s}
-.toggle.on::after{transform:translateX(18px)}
-
-/* INFO BOX */
-.info-box{background:rgba(99,102,241,0.07);border:1px solid rgba(99,102,241,0.2);border-radius:10px;padding:14px 16px;font-size:12px;color:var(--text2);line-height:1.7;margin-bottom:16px}
-.info-box strong{color:var(--accent)}
-.info-box code{font-family:'JetBrains Mono',monospace;background:rgba(99,102,241,0.15);padding:1px 5px;border-radius:4px;font-size:11px}
-
-/* FILTER */
-.filter-btn.active{background:rgba(99,102,241,0.12);color:var(--accent);border-color:rgba(99,102,241,0.3)}
-
-/* DRAG HANDLE */
-.drag-handle{cursor:grab;color:var(--text3);font-size:16px;padding:0 4px;user-select:none}
-.drag-handle:active{cursor:grabbing}
-.sortable-ghost{opacity:.4;background:rgba(99,102,241,0.06)!important}
-
-/* ABOUT */
-.skill-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:10px 14px}
-.skill-row input{background:none;border:none;outline:none;color:var(--text);font-size:13px}
-.skill-row input[type=range]{flex:2}
-.skill-pct{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent);width:35px;text-align:right}
-.exp-row{background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:14px;margin-bottom:10px}
-.exp-row input,.exp-row textarea{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:7px;padding:8px 12px;color:var(--text);font-size:12px;outline:none;margin-bottom:6px;font-family:'Sora',sans-serif}
-.exp-row textarea{min-height:60px;resize:vertical}
-
-/* SOCIAL ROW */
-.social-row{background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:12px 14px;margin-bottom:8px;display:flex;align-items:center;gap:8px}
-.social-row input{background:var(--bg2);border:1px solid var(--border);border-radius:7px;padding:7px 10px;color:var(--text);font-size:12px;outline:none;font-family:'Sora',sans-serif}
-.social-row input:focus{border-color:var(--accent)}
-
-/* QA ROW */
-.qa-row{background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:14px;margin-bottom:10px;display:flex;gap:12px;align-items:flex-start}
-.qa-row input{flex:1;background:var(--bg2);border:1px solid var(--border);border-radius:7px;padding:8px 12px;color:var(--text);font-size:12px;outline:none;font-family:'Sora',sans-serif}
-
-@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
 .fade-in{animation:fadeIn .25s ease forwards}
 @keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
 .spin{animation:spin 1s linear infinite;display:inline-block}
-
 @media(max-width:768px){
-  .sidebar{transform:translateX(-100%)}
-  .main{margin-left:0}
-  .stats-grid{grid-template-columns:repeat(2,1fr)}
-  .form-row,.form-row3{grid-template-columns:1fr}
+  .hero{flex-direction:column;gap:20px;padding:36px 1.2rem 32px}
+  nav{padding:0 1.2rem}
+  .nav-links{display:none}
+  .container{padding:0 1.2rem 60px}
+  .posts-grid,.blog-grid,.projects-grid,.related-grid{grid-template-columns:1fr}
+  .tools-page-grid{grid-template-columns:1fr}
+  .tools-sidebar{flex-direction:row;flex-wrap:wrap;position:static}
+  .about-grid{grid-template-columns:1fr}
+  .about-sidebar-card{position:static}
+  .contact-grid{grid-template-columns:1fr}
+  .featured-card{flex-direction:column}
+  .featured-img{width:100%;height:100px}
+  .detail-wrap{padding:0 1.2rem 60px}
+  .page-header{padding:28px 1.2rem 20px}
+  footer{padding:18px 1.2rem;flex-direction:column;gap:10px;text-align:center}
 }
 </style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EJPS2SY5Q3"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EJPS2SY5Q3');</script>
 </head>
 <body>
-
-<!-- LOGIN -->
-<div class="login-page" id="loginPage">
-  <div class="login-card">
-    <div class="login-logo">⚙️ <span>admin</span>.panel</div>
-    <h1>Hoş geldin 👋</h1>
-    <p>Devam etmek için giriş yapın.</p>
-    <div class="login-field">
-      <label>E-posta</label>
-      <input type="email" id="loginEmail" placeholder="admin@example.com" onkeydown="if(event.key==='Enter')doLogin()">
+<div id="readProgress"></div>
+<button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+<nav id="mainNav">
+  <div class="nav-brand" onclick="showPage('home')"><span class="dot"></span><span style="font-family:'JetBrains Mono',monospace">kerem<span style="color:var(--accent)">.</span>akbayır</span></div>
+  <div class="nav-links">
+    <a onclick="showPage('home')" id="nav-home" class="active">Ana Sayfa</a>
+    <a onclick="showPage('about')" id="nav-about">Hakkımda</a>
+    <a onclick="showPage('blog')" id="nav-blog">Blog</a>
+    <a onclick="showPage('projects')" id="nav-projects">Projeler</a>
+    <a onclick="showPage('tools')" id="nav-tools">Araçlar</a>
+    <a onclick="showPage('contact')" id="nav-contact">İletişim</a>
+  </div>
+  <div class="nav-right">
+    <div class="nav-btn" onclick="openSearch()">🔍 <span style="font-size:11px;font-family:'JetBrains Mono',monospace" id="searchPlaceholder">Ara...</span></div>
+    <button class="nav-btn nav-icon-btn lang-btn" onclick="toggleLang()" id="langBtn">EN</button>
+    <div class="nav-btn nav-icon-btn" onclick="toggleTheme()" id="themeBtn">🌙</div>
+  </div>
+</nav>
+<div class="search-overlay" id="searchOverlay" onclick="closeSearch(event)">
+  <div class="search-box">
+    <div class="search-input-row">
+      <span>🔍</span>
+      <input type="text" id="searchInput" placeholder="Yazı, proje ara..." oninput="doSearch(this.value)" onkeydown="if(event.key==='Escape')closeSearch()">
     </div>
-    <div class="login-field">
-      <label>Şifre</label>
-      <input type="password" id="loginPass" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()">
-    </div>
-    <button class="login-btn" id="loginBtn" onclick="doLogin()">Giriş Yap →</button>
-    <div class="login-err" id="loginErr"></div>
+    <div class="search-results" id="searchResults"><div class="search-empty">Aramak istediğinizi yazın...</div></div>
   </div>
 </div>
-
-<!-- APP -->
-<div class="app hidden" id="app">
-  <aside class="sidebar">
-    <div class="sidebar-top">
-      <div class="sidebar-brand"><span class="dot"></span> Admin Panel</div>
-      <div class="nav-section">
-        <div class="nav-label">Genel</div>
-        <div class="nav-item active" onclick="showPanel('dashboard',this)"><span class="nav-icon">📊</span> Dashboard</div>
-        <div class="nav-item" onclick="showPanel('visitors',this)"><span class="nav-icon">📈</span> Ziyaretçiler</div>
-        <div class="nav-item" onclick="showPanel('notifs',this)"><span class="nav-icon">🔔</span> Bildirimler <span class="nav-badge" id="notifBadge">0</span></div>
+<!-- HOME -->
+<div class="page active" id="homePage">
+  <div class="hero">
+    <div class="hero-avatar" id="heroAvatar">KA</div>
+    <div class="hero-content">
+      <h1 id="heroName">Kerem Akbayır</h1>
+      <div class="hero-role" id="heroRole">Senior Software Engineer</div>
+      <p class="hero-desc" id="heroDesc">Yazılım mimarisi, bulut teknolojileri ve yapay zeka üzerine deneyimlerimi ve düşüncelerimi paylaşıyorum.</p>
+      <div class="hero-tags" id="heroTags">
+        <span class="tag">.NET</span><span class="tag">Azure</span><span class="tag">Microservices</span><span class="tag">PostgreSQL</span><span class="tag">AI/LLM</span>
       </div>
-      <div class="nav-section" style="margin-top:12px">
-        <div class="nav-label">İçerik</div>
-        <div class="nav-item" onclick="showPanel('posts',this)"><span class="nav-icon">📝</span> Yazılar</div>
-        <div class="nav-item" onclick="showPanel('projects',this)"><span class="nav-icon">📁</span> Projeler</div>
-        <div class="nav-item" onclick="showPanel('media',this)"><span class="nav-icon">🖼️</span> Medya</div>
-        <div class="nav-item" onclick="showPanel('comments',this)"><span class="nav-icon">💬</span> Yorumlar <span class="nav-badge" id="commentBadge">0</span></div>
-        <div class="nav-item" onclick="showPanel('messages',this)"><span class="nav-icon">✉️</span> Mesajlar <span class="nav-badge" id="msgBadge">0</span></div>
-      </div>
-      <div class="nav-section" style="margin-top:12px">
-        <div class="nav-label">Kişiselleştir</div>
-        <div class="nav-item" onclick="showPanel('about',this)"><span class="nav-icon">👤</span> Hakkımda</div>
-        <div class="nav-item" onclick="showPanel('contact',this)"><span class="nav-icon">📬</span> İletişim Sayfası</div>
-        <div class="nav-item" onclick="showPanel('chatbot',this)"><span class="nav-icon">🤖</span> Chatbot</div>
-        <div class="nav-item" onclick="showPanel('seo',this)"><span class="nav-icon">🔍</span> SEO & Meta</div>
-        <div class="nav-item" onclick="showPanel('theme',this)"><span class="nav-icon">🎨</span> Tema & Site</div>
-        <div class="nav-item" onclick="showPanel('settings',this)"><span class="nav-icon">⚙️</span> Ayarlar</div>
-      </div>
-    </div>
-    <div class="sidebar-bottom">
-      <div class="sidebar-user">
-        <div class="sidebar-avatar" id="sidebarAvatar">A</div>
-        <div class="sidebar-user-info">
-          <div class="sidebar-email" id="sidebarEmail">—</div>
-          <div class="sidebar-role">Super Admin</div>
-        </div>
-      </div>
-      <div class="sidebar-actions">
-        <button class="sidebar-btn" onclick="window.open('index.html','_blank')">🌐 Site</button>
-        <button class="sidebar-btn danger" onclick="doLogout()">Çıkış</button>
-      </div>
-    </div>
-  </aside>
-
-  <div class="main">
-    <div class="topbar">
-      <div class="topbar-left">
-        <div>
-          <div class="topbar-title" id="topbarTitle">Dashboard</div>
-          <div class="topbar-breadcrumb">Admin / <span id="topbarSub">Genel bakış</span></div>
-        </div>
-      </div>
-      <div class="topbar-right">
-        <div class="topbar-btn" onclick="toggleTheme()" id="themeBtn">🌙</div>
-        <div class="topbar-btn notif-btn" onclick="toggleNotifPanel()">🔔<div class="notif-dot" id="notifDot" style="display:none"></div></div>
-      </div>
-    </div>
-
-    <div class="notif-panel" id="notifPanel">
-      <div class="notif-header"><h4>Bildirimler</h4><span class="notif-clear" onclick="clearNotifs()">Temizle</span></div>
-      <div class="notif-list" id="notifList"></div>
-    </div>
-
-    <div class="content">
-
-      <!-- DASHBOARD -->
-      <div class="panel active fade-in" id="panel-dashboard">
-        <div class="stats-grid">
-          <div class="stat-card"><div class="stat-icon">📝</div><div class="stat-val blue" id="s-posts">—</div><div class="stat-label">Toplam Yazı</div></div>
-          <div class="stat-card"><div class="stat-icon">📁</div><div class="stat-val purple" id="s-projects">—</div><div class="stat-label">Proje</div></div>
-          <div class="stat-card"><div class="stat-icon">💬</div><div class="stat-val green" id="s-comments">—</div><div class="stat-label">Yorum</div></div>
-          <div class="stat-card"><div class="stat-icon">✉️</div><div class="stat-val orange" id="s-messages">—</div><div class="stat-label">Mesaj</div></div>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-          <div class="card">
-            <div class="card-header"><div><div class="card-title">Aylık Aktivite</div><div class="card-subtitle">Son 7 ay</div></div></div>
-            <div class="chart-wrap"><div class="chart-bars" id="dashChart"></div></div>
-          </div>
-          <div class="card">
-            <div class="card-header"><div class="card-title">Son Aktiviteler</div></div>
-            <div id="activityList"></div>
-          </div>
-        </div>
-        <div style="margin-top:16px" class="card">
-          <div class="card-header"><div class="card-title">Onay Bekleyen Yorumlar</div><button class="btn btn-sm btn-ghost" onclick="showPanel('comments',null)">Tümü →</button></div>
-          <div id="pendingList"></div>
-        </div>
-      </div>
-
-      <!-- VISITORS -->
-      <div class="panel fade-in" id="panel-visitors">
-        <div class="card">
-          <div class="card-header"><div class="card-title">📊 Ziyaretçi İstatistikleri</div></div>
-          <p style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:20px">Gerçek ziyaretçi verilerinizi Google Analytics üzerinden görüntüleyin.</p>
-          <a href="https://analytics.google.com" target="_blank" style="display:inline-flex;align-items:center;gap:10px;padding:14px 24px;background:linear-gradient(135deg,#4285f4,#34a853);color:#fff;border-radius:12px;font-size:14px;font-weight:600"><span style="font-size:20px">📊</span> Google Analytics'i Aç</a>
-        </div>
-      </div>
-
-      <!-- NOTIFICATIONS -->
-      <div class="panel fade-in" id="panel-notifs">
-        <div class="card">
-          <div class="card-header"><div class="card-title">Tüm Bildirimler</div><button class="btn btn-sm btn-ghost" onclick="clearNotifs()">Tümünü Temizle</button></div>
-          <div id="allNotifList"></div>
-        </div>
-      </div>
-
-      <!-- POSTS -->
-      <div class="panel fade-in" id="panel-posts">
-        <div class="table-controls">
-          <div class="search-wrap"><input class="search-input" id="postSearch" placeholder="Yazı ara..." oninput="filterPosts()"></div>
-          <select class="form-select" id="postStatusFilter" onchange="filterPosts()" style="width:auto;padding:8px 12px">
-            <option value="">Tüm Durumlar</option><option value="published">Yayında</option><option value="draft">Taslak</option>
-          </select>
-          <select class="form-select" id="postCatFilter" onchange="filterPosts()" style="width:auto;padding:8px 12px">
-            <option value="">Tüm Kategoriler</option>
-          </select>
-          <button class="btn btn-primary" onclick="openPostModal()">+ Yeni Yazı</button>
-        </div>
-        <div class="bulk-bar" id="postBulkBar">
-          <span class="bulk-count"><span id="postSelCount">0</span> seçildi</span>
-          <div class="bulk-actions">
-            <button class="btn btn-sm btn-success" onclick="bulkPostAction('published')">✓ Yayınla</button>
-            <button class="btn btn-sm btn-warning" onclick="bulkPostAction('draft')">Taslak</button>
-            <button class="btn btn-sm btn-danger" onclick="bulkDeletePosts()">🗑 Sil</button>
-            <button class="btn btn-sm btn-ghost" onclick="clearPostSel()">İptal</button>
-          </div>
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead><tr>
-              <th class="cb"><input type="checkbox" id="postSelAll" onchange="togglePostSelAll(this)"></th>
-              <th>Görsel</th><th>Başlık & Slug</th><th>Kategori</th><th>Etiketler</th><th>Durum</th><th>Tarih</th><th>İşlem</th>
-            </tr></thead>
-            <tbody id="postsBody"><tr><td colspan="8" style="text-align:center;padding:32px;color:var(--text3)"><span class="spin">⚙️</span></td></tr></tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- PROJECTS -->
-      <div class="panel fade-in" id="panel-projects">
-        <div class="table-controls">
-          <div class="search-wrap"><input class="search-input" id="projSearch" placeholder="Proje ara..." oninput="filterProjects()"></div>
-          <select class="form-select" id="projStatusFilter" onchange="filterProjects()" style="width:auto;padding:8px 12px">
-            <option value="">Tüm Durumlar</option><option value="active">Aktif</option><option value="archived">Arşiv</option>
-          </select>
-          <button class="btn btn-primary" onclick="openProjModal()">+ Yeni Proje</button>
-        </div>
-        <div style="font-size:12px;color:var(--text3);margin-bottom:8px;padding:8px 12px;background:rgba(99,102,241,0.06);border-radius:8px;border:1px solid rgba(99,102,241,0.15)">
-          💡 Satırları sürükleyerek sıralayabilirsiniz — sıra otomatik kaydedilir.
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th style="width:30px"></th><th>Görsel</th><th>Ad</th><th>Teknoloji</th><th>Durum</th><th>GitHub</th><th>Demo</th><th>İşlem</th></tr></thead>
-            <tbody id="projsBody"></tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- MEDIA -->
-      <div class="panel fade-in" id="panel-media">
-        <div class="info-box">✅ <strong>Supabase Storage</strong> kullanılıyor. <code>media</code> bucket'ına yüklenir.</div>
-        <div class="card" style="margin-bottom:16px">
-          <div class="card-header"><div class="card-title">📤 Görsel Yükle</div></div>
-          <div class="upload-zone" id="uploadZone" onclick="document.getElementById('mediaInput').click()" ondragover="onDragOver(event)" ondragleave="onDragLeave(event)" ondrop="onDrop(event)">
-            <div class="upload-zone-icon">🖼️</div>
-            <p>Görseli buraya sürükleyin veya tıklayın</p>
-            <small>PNG, JPG, WEBP, GIF · Maks 5 MB</small>
-            <div class="upload-progress" id="uploadProgress"><div class="upload-progress-bar" id="uploadBar" style="width:0%"></div></div>
-          </div>
-          <input type="file" id="mediaInput" accept="image/*" multiple style="display:none" onchange="handleFileSelect(event)">
-        </div>
-        <div class="card">
-          <div class="card-header">
-            <div class="card-title">📁 Medya Kütüphanesi</div>
-            <div style="display:flex;gap:8px">
-              <button class="btn btn-sm btn-danger" id="mediaDelBtn" onclick="deleteSelectedMedia()" disabled>🗑 Seçilenleri Sil</button>
-              <button class="btn btn-sm btn-ghost" onclick="loadMedia()">↻ Yenile</button>
-            </div>
-          </div>
-          <div class="media-grid" id="mediaGrid"><div class="empty"><div class="empty-icon">🖼️</div><p>Henüz görsel yok</p></div></div>
-        </div>
-      </div>
-
-      <!-- COMMENTS -->
-      <div class="panel fade-in" id="panel-comments">
-        <div class="table-controls">
-          <div class="search-wrap"><input class="search-input" id="commentSearch" placeholder="Yorum ara..." oninput="renderComments()"></div>
-          <button class="btn btn-sm btn-ghost filter-btn active" onclick="filterComments('all',this)">Tümü</button>
-          <button class="btn btn-sm btn-ghost filter-btn" onclick="filterComments('pending',this)">Bekleyen</button>
-          <button class="btn btn-sm btn-ghost filter-btn" onclick="filterComments('approved',this)">Onaylı</button>
-        </div>
-        <div class="bulk-bar" id="commentBulkBar">
-          <span class="bulk-count"><span id="commentSelCount">0</span> seçildi</span>
-          <div class="bulk-actions">
-            <button class="btn btn-sm btn-success" onclick="bulkApproveComments()">✓ Onayla</button>
-            <button class="btn btn-sm btn-danger" onclick="bulkDeleteComments()">🗑 Sil</button>
-            <button class="btn btn-sm btn-ghost" onclick="clearCommentSel()">İptal</button>
-          </div>
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead><tr>
-              <th class="cb"><input type="checkbox" id="commentSelAll" onchange="toggleCommentSelAll(this)"></th>
-              <th>Yazar</th><th>E-posta</th><th>Yorum</th><th>Durum</th><th>Tarih</th><th>İşlem</th>
-            </tr></thead>
-            <tbody id="commentsBody"></tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- MESSAGES -->
-      <div class="panel fade-in" id="panel-messages">
-        <div class="table-controls">
-          <div class="search-wrap"><input class="search-input" id="msgSearch" placeholder="Mesajlarda ara..." oninput="renderMessages()"></div>
-        </div>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>Ad</th><th>E-posta</th><th>Konu</th><th>Mesaj</th><th>Tarih</th><th>İşlem</th></tr></thead>
-            <tbody id="msgsBody"></tbody>
-          </table>
-        </div>
-      </div>
-
-      <!-- ABOUT -->
-      <div class="panel fade-in" id="panel-about">
-        <div class="info-box">✅ <strong>Supabase'e kaydediliyor.</strong> <code>loadSettingFromSupabase('about')</code></div>
-        <div class="card">
-          <div class="card-header"><div class="card-title">👤 Biyografi</div></div>
-          <div class="form-group"><label class="form-label">Ad Soyad <span class="req">*</span></label><input class="form-input" id="aboutName" placeholder="Kerem Akbayır"></div>
-          <div class="form-group"><label class="form-label">Unvan</label><input class="form-input" id="aboutTitle" placeholder="Senior Software Engineer"></div>
-          <div class="form-row">
-            <div class="form-group"><label class="form-label">Konum</label><input class="form-input" id="aboutLocation" placeholder="📍 İstanbul, Türkiye"></div>
-            <div class="form-group"><label class="form-label">E-posta</label><input class="form-input" id="aboutEmail" placeholder="kerem@akbayir.dev"></div>
-          </div>
-          <div class="form-group"><label class="form-label">1. Paragraf</label><textarea class="form-textarea" id="aboutBio1" rows="3"></textarea></div>
-          <div class="form-group"><label class="form-label">2. Paragraf</label><textarea class="form-textarea" id="aboutBio2" rows="3"></textarea></div>
-          <div class="form-group"><label class="form-label">3. Paragraf</label><textarea class="form-textarea" id="aboutBio3" rows="2"></textarea></div>
-        </div>
-        <div class="card" style="margin-top:16px">
-          <div class="card-header"><div class="card-title">🛠️ Beceriler</div><button class="btn btn-sm btn-primary" onclick="addSkill()">+ Ekle</button></div>
-          <div id="skillsList"></div>
-        </div>
-        <div class="card" style="margin-top:16px">
-          <div class="card-header"><div class="card-title">💼 Deneyim</div><button class="btn btn-sm btn-primary" onclick="addExp()">+ Ekle</button></div>
-          <div id="expList"></div>
-        </div>
-        <div class="card" style="margin-top:16px">
-          <div class="card-header">
-            <div><div class="card-title">🔗 Sosyal Medya</div><div class="card-subtitle">İkon · Ad · URL · Aktif</div></div>
-            <button class="btn btn-sm btn-primary" onclick="addSocial()">+ Ekle</button>
-          </div>
-          <div id="socialList"></div>
-        </div>
-        <div style="margin-top:16px;display:flex;justify-content:flex-end">
-          <button class="btn btn-primary" onclick="saveAbout()">💾 Supabase'e Kaydet</button>
-        </div>
-      </div>
-
-      <!-- CONTACT -->
-      <div class="panel fade-in" id="panel-contact">
-        <div class="info-box">✅ <strong>Supabase'e kaydediliyor.</strong> <code>loadSettingFromSupabase('contact_page')</code></div>
-        <div class="card">
-          <div class="card-header"><div class="card-title">📬 İletişim Sayfası İçeriği</div></div>
-          <div class="form-group"><label class="form-label">Başlık</label><input class="form-input" id="cpTitle" value="Merhaba, konuşalım!"></div>
-          <div class="form-group"><label class="form-label">Açıklama</label><textarea class="form-textarea" id="cpDesc" rows="3">Yeni projeler, iş birlikleri veya sadece selamlaşmak için mesaj atabilirsiniz.</textarea></div>
-          <div class="form-row">
-            <div class="form-group"><label class="form-label">E-posta <span class="req">*</span></label><input class="form-input" id="cpEmail" placeholder="kerem@akbayir.dev"></div>
-            <div class="form-group"><label class="form-label">Konum</label><input class="form-input" id="cpLocation" placeholder="İstanbul, Türkiye"></div>
-          </div>
-          <div class="form-group"><label class="form-label">LinkedIn Profil URL</label><input class="form-input" id="cpLinkedin" placeholder="linkedin.com/in/keremakbayir"></div>
-          <div class="form-group"><label class="form-label">Form Başlığı</label><input class="form-input" id="cpFormTitle" value="Mesaj Gönder"></div>
-        </div>
-        <div style="margin-top:16px;display:flex;justify-content:flex-end">
-          <button class="btn btn-primary" onclick="saveContactPage()">💾 Supabase'e Kaydet</button>
-        </div>
-      </div>
-
-      <!-- CHATBOT -->
-      <div class="panel fade-in" id="panel-chatbot">
-        <div class="info-box">✅ <strong>Supabase'e kaydediliyor.</strong> <code>loadSettingFromSupabase('chatbot')</code></div>
-        <div class="card">
-          <div class="card-header"><div class="card-title">Bot Ayarları</div></div>
-          <div class="form-row">
-            <div class="form-group"><label class="form-label">Bot Adı</label><input class="form-input" id="botName"></div>
-            <div class="form-group"><label class="form-label">Karşılama Mesajı</label><input class="form-input" id="botGreeting"></div>
-          </div>
-        </div>
-        <div class="card" style="margin-top:16px">
-          <div class="card-header"><div class="card-title">Soru & Cevaplar</div><button class="btn btn-sm btn-primary" onclick="addQA()">+ Ekle</button></div>
-          <div id="qaList"></div>
-        </div>
-        <div class="card" style="margin-top:16px">
-          <div class="card-header"><div class="card-title">Hızlı Öneriler</div></div>
-          <div class="form-group"><label class="form-label">Öneri butonları (virgülle ayır)</label><input class="form-input" id="botSuggestions"></div>
-        </div>
-        <div style="margin-top:16px;display:flex;justify-content:flex-end">
-          <button class="btn btn-primary" onclick="saveChatbot()">💾 Supabase'e Kaydet</button>
-        </div>
-      </div>
-
-      <!-- SEO -->
-      <div class="panel fade-in" id="panel-seo">
-        <div class="info-box">✅ <strong>Supabase'e kaydediliyor.</strong> <code>loadSettingFromSupabase('seo')</code></div>
-        <div class="card">
-          <div class="card-header"><div class="card-title">🔍 Meta Bilgileri</div></div>
-          <div class="form-group"><label class="form-label">Site Başlığı (Title)</label><input class="form-input" id="seoTitle" oninput="updateSeoPreview()"></div>
-          <div class="form-group">
-            <label class="form-label">Meta Description</label>
-            <textarea class="form-textarea" id="seoDesc" rows="3" style="min-height:80px" oninput="updateCharCount(this,'seoDescCount',160);updateSeoPreview()"></textarea>
-            <div class="char-count" id="seoDescCount">0 / 160</div>
-          </div>
-          <div class="form-group"><label class="form-label">Google Önizleme</label>
-            <div class="seo-preview">
-              <div class="seo-prev-site">keremakbayir.tr</div>
-              <div class="seo-prev-title" id="seoPrevTitle">—</div>
-              <div class="seo-prev-desc" id="seoPrevDesc">—</div>
-            </div>
-          </div>
-          <div class="form-group"><label class="form-label">Keywords (virgülle ayır)</label><input class="form-input" id="seoKeywords" placeholder=".NET, Azure, Microservices, PostgreSQL"></div>
-          <div class="form-row">
-            <div class="form-group"><label class="form-label">OG Image URL</label><input class="form-input" id="seoOgImage" placeholder="https://..."></div>
-            <div class="form-group"><label class="form-label">Site URL</label><input class="form-input" id="seoUrl" placeholder="https://www.keremakbayir.tr"></div>
-          </div>
-          <div class="form-row">
-            <div class="form-group"><label class="form-label">Twitter/X Kullanıcı Adı</label><input class="form-input" id="seoTwitter" placeholder="@keremakbayir"></div>
-            <div class="form-group"><label class="form-label">Google Analytics ID</label><input class="form-input" id="seoGaId" placeholder="G-XXXXXXXXXX"></div>
-          </div>
-        </div>
-        <div class="card" style="margin-top:16px">
-          <div class="card-header"><div class="card-title">🤖 Robots & İndeksleme</div></div>
-          <div class="setting-row"><div class="setting-info"><h4>Search Engine İndeksleme</h4><p>Arama motorları siteyi indekslesin</p></div><button class="toggle on" id="tog-index" onclick="this.classList.toggle('on')"></button></div>
-          <div class="setting-row"><div class="setting-info"><h4>Sitemap</h4><p>Otomatik sitemap.xml oluştur</p></div><button class="toggle on" id="tog-sitemap" onclick="this.classList.toggle('on')"></button></div>
-        </div>
-        <div style="margin-top:16px;display:flex;justify-content:flex-end">
-          <button class="btn btn-primary" onclick="saveSEO()">💾 Supabase'e Kaydet</button>
-        </div>
-      </div>
-
-      <!-- THEME -->
-      <div class="panel fade-in" id="panel-theme">
-        <div class="info-box">✅ <strong>Supabase'e kaydediliyor.</strong> <code>loadSettingFromSupabase('site_settings')</code></div>
-        <div class="card">
-          <div class="card-header"><div class="card-title">Site Bilgileri</div></div>
-          <div class="form-row">
-            <div class="form-group"><label class="form-label">Ad Soyad</label><input class="form-input" id="siteAuthor" value="Kerem Akbayır"></div>
-            <div class="form-group"><label class="form-label">Unvan</label><input class="form-input" id="siteRole" value="Senior Software Engineer"></div>
-          </div>
-          <div class="form-group"><label class="form-label">Kısa Bio (Hero)</label><textarea class="form-textarea" id="siteHeroBio" rows="2">Yazılım mimarisi, bulut teknolojileri ve yapay zeka üzerine deneyimlerimi paylaşıyorum.</textarea></div>
-          <div class="form-group"><label class="form-label">Hero Etiketler (virgülle ayır)</label><input class="form-input" id="siteTags" value=".NET,Azure,Microservices,PostgreSQL,AI/LLM"></div>
-          <div class="form-row">
-            <div class="form-group"><label class="form-label">Hero CTA 1 Metni</label><input class="form-input" id="siteHeroCta1" value="Hakkımda →"></div>
-            <div class="form-group"><label class="form-label">Hero CTA 1 Linki</label><input class="form-input" id="siteHeroCta1Link" value="#about"></div>
-          </div>
-          <div class="form-row">
-            <div class="form-group"><label class="form-label">Hero CTA 2 Metni</label><input class="form-input" id="siteHeroCta2" value="Blog"></div>
-            <div class="form-group"><label class="form-label">Hero CTA 2 Linki</label><input class="form-input" id="siteHeroCta2Link" value="blog.html"></div>
-          </div>
-        </div>
-        <div class="card" style="margin-top:16px">
-          <div class="card-header"><div class="card-title">Renk Teması</div></div>
-          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
-            <div><label class="form-label">Accent Renk</label><div style="display:flex;gap:8px;align-items:center"><input type="color" id="colorAccent" value="#4f8ef7" style="width:44px;height:36px;border:1px solid var(--border);border-radius:8px;cursor:pointer;background:none;padding:2px" oninput="document.getElementById('colorAccentHex').value=this.value"><input class="form-input" id="colorAccentHex" value="#4f8ef7" style="flex:1" oninput="document.getElementById('colorAccent').value=this.value"></div></div>
-            <div><label class="form-label">Accent 2</label><div style="display:flex;gap:8px;align-items:center"><input type="color" id="colorAccent2" value="#a78bfa" style="width:44px;height:36px;border:1px solid var(--border);border-radius:8px;cursor:pointer;background:none;padding:2px" oninput="document.getElementById('colorAccent2Hex').value=this.value"><input class="form-input" id="colorAccent2Hex" value="#a78bfa" style="flex:1" oninput="document.getElementById('colorAccent2').value=this.value"></div></div>
-            <div><label class="form-label">Varsayılan Tema</label><select class="form-select" id="defaultTheme"><option value="dark">Koyu</option><option value="light">Açık</option></select></div>
-          </div>
-        </div>
-        <div class="card" style="margin-top:16px">
-          <div class="card-header"><div class="card-title">🦶 Footer</div></div>
-          <div class="form-group"><label class="form-label">Footer Telif Metni</label><input class="form-input" id="siteFooter" value="© 2025–2026 Kerem Akbayır"></div>
-          <div class="form-group"><label class="form-label">Footer Linkler (format: Ad|URL, virgülle ayır)</label><input class="form-input" id="siteFooterLinks" value="Hakkımda|about.html,Blog|blog.html,Projeler|projects.html,İletişim|contact.html"></div>
-        </div>
-        <div style="margin-top:16px;display:flex;justify-content:flex-end">
-          <button class="btn btn-primary" onclick="saveSiteSettings()">💾 Supabase'e Kaydet</button>
-        </div>
-      </div>
-
-      <!-- SETTINGS -->
-      <div class="panel fade-in" id="panel-settings">
-        <div class="card">
-          <div class="card-header"><div class="card-title">Genel Ayarlar</div></div>
-          <div class="setting-row"><div class="setting-info"><h4>Yorum Sistemi</h4><p>Ziyaretçiler yorum yapabilsin</p></div><button class="toggle on" id="tog-comments" onclick="this.classList.toggle('on')"></button></div>
-          <div class="setting-row"><div class="setting-info"><h4>İletişim Formu</h4><p>Mesaj gönderme aktif</p></div><button class="toggle on" id="tog-contact" onclick="this.classList.toggle('on')"></button></div>
-          <div class="setting-row"><div class="setting-info"><h4>Chatbot</h4><p>Bot görünür olsun</p></div><button class="toggle on" id="tog-bot" onclick="this.classList.toggle('on')"></button></div>
-          <div class="setting-row"><div class="setting-info"><h4>Yorum Moderasyonu</h4><p>Yorumlar önce onaya gelsin</p></div><button class="toggle on" id="tog-moderation" onclick="this.classList.toggle('on')"></button></div>
-          <div class="setting-row"><div class="setting-info"><h4>Okuma Modu</h4><p>Okuma modu butonu görünsün</p></div><button class="toggle on" id="tog-readmode" onclick="this.classList.toggle('on')"></button></div>
-          <div class="setting-row"><div class="setting-info"><h4>Dil Değiştirici</h4><p>TR/EN dil butonu görünsün</p></div><button class="toggle on" id="tog-lang" onclick="this.classList.toggle('on')"></button></div>
-        </div>
-        <div class="card" style="margin-top:16px">
-          <div class="card-header"><div class="card-title">E-posta Bildirimleri</div></div>
-          <div class="setting-row"><div class="setting-info"><h4>Yeni yorum bildirimi</h4></div><button class="toggle on" id="tog-notif-comment" onclick="this.classList.toggle('on')"></button></div>
-          <div class="setting-row"><div class="setting-info"><h4>Yeni mesaj bildirimi</h4></div><button class="toggle on" id="tog-notif-msg" onclick="this.classList.toggle('on')"></button></div>
-          <div class="form-group" style="margin-top:14px"><label class="form-label">Bildirim E-postası</label><input class="form-input" id="notifEmail" placeholder="admin@example.com"></div>
-        </div>
-        <div class="card" style="margin-top:16px">
-          <div class="card-header"><div class="card-title">Supabase Bağlantısı</div><button class="btn btn-sm btn-ghost" onclick="checkSBStatus()">↻ Test</button></div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-            <div><div style="font-size:11px;color:var(--text3);font-family:'JetBrains Mono',monospace;margin-bottom:5px">URL</div><div style="background:var(--bg3);border:1px solid var(--border);border-radius:7px;padding:8px 12px;font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--green);word-break:break-all" id="sbUrl"></div></div>
-            <div><div style="font-size:11px;color:var(--text3);font-family:'JetBrains Mono',monospace;margin-bottom:5px">DURUM</div><div style="background:var(--bg3);border:1px solid var(--border);border-radius:7px;padding:8px 12px;font-size:11px;font-family:'JetBrains Mono',monospace" id="sbStatus">Kontrol ediliyor...</div></div>
-          </div>
-        </div>
-        <div style="margin-top:16px;display:flex;justify-content:flex-end">
-          <button class="btn btn-primary" onclick="saveSettings()">💾 Supabase'e Kaydet</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div>
-
-<!-- ══ POST MODAL (Quill + SEO + Tags + Slug) ══ -->
-<div class="modal-overlay" id="postModal">
-  <div class="modal modal-lg">
-    <h3 id="postModalTitle">✍️ Yeni Yazı</h3>
-    <input type="hidden" id="editPostId">
-    <div class="modal-tabs">
-      <button class="modal-tab active" onclick="switchTab('postTab','content',this)">📝 İçerik</button>
-      <button class="modal-tab" onclick="switchTab('postTab','seo',this)">🔍 SEO</button>
-    </div>
-
-    <!-- İÇERİK TAB -->
-    <div class="tab-pane active" id="postTab-content">
-      <div class="form-group">
-        <label class="form-label">Başlık <span class="req">*</span></label>
-        <input class="form-input" id="editPostTitle" placeholder="Yazı başlığı..." oninput="autoSlug()">
-        <div id="editPostTitleErr" class="field-err"></div>
-      </div>
-      <div class="form-group">
-        <label class="form-label">URL Slug</label>
-        <input class="form-input" id="editPostSlug" placeholder="url-slug" oninput="updateSlugPreview()">
-        <div class="slug-preview">keremakbayir.tr/blog/<span id="slugPreviewVal">—</span></div>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Özet</label>
-        <input class="form-input" id="editPostExcerpt" placeholder="Kısa açıklama..." oninput="updateCharCount(this,'excerptCount',160)">
-        <div class="char-count" id="excerptCount">0 / 160</div>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label class="form-label">Kategori</label><input class="form-input" id="editPostCat" placeholder="DevOps, C#, AI..."></div>
-        <div class="form-group"><label class="form-label">İkon (emoji)</label><input class="form-input" id="editPostIcon" placeholder="🚀"></div>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Etiketler</label>
-        <div class="tags-wrap" id="tagsWrap"></div>
-        <div class="tag-add-row">
-          <input class="form-input" id="tagInput" placeholder="Etiket yaz, Enter'a bas..." onkeydown="if(event.key==='Enter'||event.key===','){event.preventDefault();addTag()}" style="max-width:220px">
-          <button class="btn btn-sm btn-ghost" onclick="addTag()">+ Ekle</button>
-        </div>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Kapak Görseli URL</label>
-        <input class="form-input" id="editPostImage" placeholder="https://images.unsplash.com/..." oninput="previewImg('editPostImage','postImgPreview','postImgEl')">
-        <div class="img-preview-wrap" id="postImgPreview"><img class="img-preview" id="postImgEl" src="" alt="" onerror="this.parentElement.classList.remove('show')"></div>
-      </div>
-      <div class="form-row">
-        <div class="form-group"><label class="form-label">Durum</label><select class="form-select" id="editPostStatus"><option value="published">Yayında</option><option value="draft">Taslak</option></select></div>
-        <div class="form-group"><label class="form-label">Öne Çıkan</label><select class="form-select" id="editPostFeatured"><option value="false">Hayır</option><option value="true">Evet</option></select></div>
-      </div>
-      <div class="form-group">
-        <label class="form-label">İçerik</label>
-        <div id="quillEditor"></div>
-      </div>
-    </div>
-
-    <!-- SEO TAB -->
-    <div class="tab-pane" id="postTab-seo">
-      <div class="form-group">
-        <label class="form-label">SEO Başlığı <span style="font-size:10px;color:var(--text3)">(boş bırakırsan yazı başlığı kullanılır)</span></label>
-        <input class="form-input" id="postSeoTitle" placeholder="SEO başlığı..." oninput="updateCharCount(this,'pstCount',60);updatePostSeoPreview()">
-        <div class="char-count" id="pstCount">0 / 60</div>
-      </div>
-      <div class="form-group">
-        <label class="form-label">Meta Description</label>
-        <textarea class="form-textarea" id="postSeoDesc" rows="3" style="min-height:80px" oninput="updateCharCount(this,'psdCount',160);updatePostSeoPreview()"></textarea>
-        <div class="char-count" id="psdCount">0 / 160</div>
-      </div>
-      <div class="form-group">
-        <label class="form-label">OG Image URL</label>
-        <input class="form-input" id="postSeoOg" placeholder="https://...">
-      </div>
-      <div class="form-group">
-        <label class="form-label">Canonical URL</label>
-        <input class="form-input" id="postSeoCanonical" placeholder="https://keremakbayir.tr/blog/yazi-slug">
-      </div>
-      <div class="form-group">
-        <label class="form-label">Google Önizleme</label>
-        <div class="seo-preview">
-          <div class="seo-prev-site">keremakbayir.tr › blog</div>
-          <div class="seo-prev-title" id="postSeoTitle">—</div>
-          <div class="seo-prev-desc" id="postSeoDescPrev">—</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-actions">
-      <button class="btn btn-ghost" onclick="closeModal('postModal')">İptal</button>
-      <button class="btn btn-warning" onclick="previewPost()">👁️ Önizle</button>
-      <button class="btn btn-primary" onclick="savePost()">💾 Kaydet</button>
-    </div>
-  </div>
-</div>
-
-<!-- ══ PROJECT MODAL ══ -->
-<div class="modal-overlay" id="projModal">
-  <div class="modal">
-    <h3 id="projModalTitle">📁 Yeni Proje</h3>
-    <input type="hidden" id="editProjId">
-    <div class="form-row">
-      <div class="form-group"><label class="form-label">Proje Adı <span class="req">*</span></label><input class="form-input" id="editProjName"></div>
-      <div class="form-group"><label class="form-label">İkon</label><input class="form-input" id="editProjIcon" placeholder="⚡"></div>
-    </div>
-    <div class="form-group"><label class="form-label">Açıklama</label><textarea class="form-textarea" id="editProjDesc" rows="4"></textarea></div>
-    <div class="form-group">
-      <label class="form-label">Proje Görseli URL</label>
-      <input class="form-input" id="editProjImage" placeholder="https://images.unsplash.com/..." oninput="previewImg('editProjImage','projImgPreview','projImgEl')">
-      <div class="img-preview-wrap" id="projImgPreview"><img class="img-preview" id="projImgEl" src="" alt="" onerror="this.parentElement.classList.remove('show')"></div>
-    </div>
-    <div class="form-group"><label class="form-label">Teknoloji (virgülle ayır)</label><input class="form-input" id="editProjTech" placeholder=".NET, Docker, CLI"></div>
-    <div class="form-row">
-      <div class="form-group"><label class="form-label">GitHub URL</label><input class="form-input" id="editProjGithub" type="url"></div>
-      <div class="form-group"><label class="form-label">Demo URL</label><input class="form-input" id="editProjDemo" type="url"></div>
-    </div>
-    <div class="form-group"><label class="form-label">Durum</label><select class="form-select" id="editProjStatus"><option value="active">Aktif</option><option value="archived">Arşivlendi</option></select></div>
-    <div class="form-actions">
-      <button class="btn btn-ghost" onclick="closeModal('projModal')">İptal</button>
-      <button class="btn btn-primary" onclick="saveProj()">💾 Kaydet</button>
-    </div>
-  </div>
-</div>
-
-<!-- ══ CONFIRM MODAL ══ -->
-<div class="modal-overlay" id="confirmModal">
-  <div class="modal modal-sm">
-    <div class="confirm-body">
-      <div class="confirm-icon" id="confirmIcon">⚠️</div>
-      <div class="confirm-title" id="confirmTitle">Emin misiniz?</div>
-      <div class="confirm-msg" id="confirmMsg">Bu işlem geri alınamaz.</div>
-      <div class="confirm-acts">
-        <button class="btn btn-ghost" onclick="closeModal('confirmModal')">İptal</button>
-        <button class="btn btn-danger" id="confirmOkBtn">Evet, Sil</button>
+      <div class="hero-btns" id="heroBtns">
+        <button class="btn btn-primary" onclick="showPage('about')">Hakkımda →</button>
+        <button class="btn btn-ghost" onclick="showPage('blog')">Blog</button>
+        <button class="btn btn-ghost" onclick="showPage('projects')">Projeler</button>
+        <button class="btn btn-ghost" onclick="showPage('tools')">Araçlar 🛠️</button>
       </div>
     </div>
   </div>
-</div>
-
-<!-- ══ PREVIEW MODAL ══ -->
-<div class="modal-overlay" id="previewModal">
-  <div class="modal modal-lg">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
-      <h3 style="margin:0">👁️ Yazı Önizleme</h3>
-      <button class="btn btn-ghost btn-sm" onclick="closeModal('previewModal')">✕ Kapat</button>
-    </div>
-    <div class="preview-frame" id="previewFrame"></div>
-  </div>
-</div>
-
-<!-- ══ REPLY MODAL ══ -->
-<div class="modal-overlay" id="replyModal">
-  <div class="modal modal-sm">
-    <h3>✉️ Mesaja Cevap Ver</h3>
-    <div class="reply-original" id="replyOriginal"></div>
-    <div class="form-group">
-      <label class="form-label">Cevabınız</label>
-      <textarea class="form-textarea" id="replyContent" rows="5" placeholder="Cevabınızı yazın..."></textarea>
-    </div>
-    <div class="form-actions">
-      <button class="btn btn-ghost" onclick="closeModal('replyModal')">İptal</button>
-      <button class="btn btn-primary" onclick="sendReply()">📤 Gönder</button>
+  <div class="container">
+    <div id="homeFeatured"></div>
+    <div class="section-head"><span class="section-title">Son Yazılar</span><div class="section-line"></div></div>
+    <div class="posts-grid" id="homePostsGrid"><div class="empty" style="grid-column:span 2"><div class="empty-icon spin">⚙️</div><p>Yükleniyor...</p></div></div>
+    <div class="view-all" onclick="showPage('blog')">Tüm yazıları görüntüle →</div>
+    <div style="height:44px"></div>
+    <div class="section-head"><span class="section-title">Araçlar</span><div class="section-line"></div></div>
+    <div class="tools-grid">
+      <div class="tool-card" onclick="goTool('password')"><div class="tool-icon">🔑</div><div><div class="tool-name">Password Generator</div><div class="tool-desc">Güvenli şifre üret</div></div></div>
+      <div class="tool-card" onclick="goTool('json')"><div class="tool-icon">📋</div><div><div class="tool-name">JSON Viewer</div><div class="tool-desc">JSON formatla & görüntüle</div></div></div>
+      <div class="tool-card" onclick="goTool('compare')"><div class="tool-icon">⚖️</div><div><div class="tool-name">Compare Texts</div><div class="tool-desc">İki metni karşılaştır</div></div></div>
+      <div class="tool-card" onclick="goTool('jwt')"><div class="tool-icon">🔐</div><div><div class="tool-name">JWT Decoder</div><div class="tool-desc">Token çöz & analiz et</div></div></div>
+      <div class="tool-card" onclick="goTool('ip')"><div class="tool-icon">📡</div><div><div class="tool-name">What Is My IP</div><div class="tool-desc">IP adresini öğren</div></div></div>
+      <div class="tool-card" onclick="goTool('base64')"><div class="tool-icon">🔤</div><div><div class="tool-name">Base64 Encoder</div><div class="tool-desc">Encode & decode</div></div></div>
     </div>
   </div>
+  <footer><div class="footer-copy">© 2025–2026 Kerem Akbayır</div><div class="footer-links"><a onclick="showPage('about')">Hakkımda</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('projects')">Projeler</a><a onclick="showPage('contact')">İletişim</a></div></footer>
 </div>
-
+<!-- ABOUT -->
+<div class="page" id="aboutPage">
+  <div class="page-header"><h1>Hakkımda</h1><p>Yazılım geliştirici, blog yazarı ve teknoloji meraklısı.</p></div>
+  <div class="container" style="padding-top:0">
+    <div class="about-grid">
+      <div>
+        <div class="about-sidebar-card">
+          <div class="about-av">KA</div>
+          <h3 id="aboutSidebarName">Kerem Akbayır</h3>
+          <div class="role" id="aboutSidebarRole">Senior Software Engineer</div>
+          <p style="font-size:11.5px;color:var(--text2)">📍 İstanbul, Türkiye</p>
+          <div class="about-social" id="aboutSocialLinks"></div>
+        </div>
+      </div>
+      <div class="about-main" id="aboutContent"><div class="empty"><div class="empty-icon spin">⚙️</div><p>Yükleniyor...</p></div></div>
+    </div>
+  </div>
+  <footer><div class="footer-copy">© 2025–2026 Kerem Akbayır</div><div class="footer-links"><a onclick="showPage('home')">Ana Sayfa</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('contact')">İletişim</a></div></footer>
+</div>
+<!-- BLOG -->
+<div class="page" id="blogPage">
+  <div class="page-header"><h1>Blog</h1><p>Yazılım, mimari ve teknoloji üzerine düşünceler.</p></div>
+  <div class="container" style="padding-top:0">
+    <div class="filter-row" id="blogFilters"></div>
+    <div class="blog-grid" id="blogGrid"><div class="empty" style="grid-column:span 2"><div class="empty-icon spin">⚙️</div><p>Yükleniyor...</p></div></div>
+  </div>
+  <footer><div class="footer-copy">© 2025–2026 Kerem Akbayır</div></footer>
+</div>
+<!-- BLOG DETAIL -->
+<div class="page" id="blogDetailPage">
+  <div class="detail-wrap">
+    <div class="detail-back" onclick="showPage('blog')">← Blog'a Dön</div>
+    <div id="blogDetailContent"></div>
+  </div>
+</div>
+<!-- PROJECTS -->
+<div class="page" id="projectsPage">
+  <div class="page-header"><h1>Projeler</h1><p>Geliştirdiğim açık kaynak ve kişisel projeler.</p></div>
+  <div class="container" style="padding-top:0">
+    <div class="projects-grid" id="projectsGrid"><div class="empty" style="grid-column:span 2"><div class="empty-icon spin">⚙️</div><p>Yükleniyor...</p></div></div>
+  </div>
+  <footer><div class="footer-copy">© 2025–2026 Kerem Akbayır</div></footer>
+</div>
+<!-- TOOLS -->
+<div class="page" id="toolsPage">
+  <div class="page-header"><h1>Araçlar 🛠️</h1><p>Geliştirici araçları — hepsi tarayıcıda, ücretsiz.</p></div>
+  <div class="container" style="padding-top:0">
+    <div class="tools-page-grid">
+      <div class="tools-sidebar">
+        <button class="tnav-btn active" onclick="switchTool('password',this)"><span class="tnav-icon">🔑</span> Password Generator</button>
+        <button class="tnav-btn" onclick="switchTool('json',this)"><span class="tnav-icon">📋</span> JSON Viewer</button>
+        <button class="tnav-btn" onclick="switchTool('base64',this)"><span class="tnav-icon">🔤</span> Base64 Encoder</button>
+        <button class="tnav-btn" onclick="switchTool('jwt',this)"><span class="tnav-icon">🔐</span> JWT Decoder</button>
+        <button class="tnav-btn" onclick="switchTool('compare',this)"><span class="tnav-icon">⚖️</span> Text Compare</button>
+        <button class="tnav-btn" onclick="switchTool('ip',this)"><span class="tnav-icon">📡</span> What Is My IP</button>
+        <button class="tnav-btn" onclick="switchTool('hash',this)"><span class="tnav-icon">🔢</span> Hash Generator</button>
+        <button class="tnav-btn" onclick="switchTool('url',this)"><span class="tnav-icon">🔗</span> URL Encode/Decode</button>
+        <button class="tnav-btn" onclick="switchTool('timestamp',this)"><span class="tnav-icon">⏱️</span> Timestamp</button>
+        <button class="tnav-btn" onclick="switchTool('color',this)"><span class="tnav-icon">🎨</span> Color Converter</button>
+        <button class="tnav-btn" onclick="switchTool('regex',this)"><span class="tnav-icon">🔍</span> Regex Tester</button>
+        <button class="tnav-btn" onclick="switchTool('uuid',this)"><span class="tnav-icon">🆔</span> UUID Generator</button>
+      </div>
+      <div id="toolContent"></div>
+    </div>
+  </div>
+  <footer><div class="footer-copy">© 2025–2026 Kerem Akbayır</div></footer>
+</div>
+<!-- CONTACT -->
+<div class="page" id="contactPage">
+  <div class="page-header"><h1>İletişim</h1><p>Sorularınız veya iş birliği teklifleri için.</p></div>
+  <div class="container" style="padding-top:0">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h2>Merhaba, konuşalım!</h2>
+        <p>Yeni projeler, iş birlikleri veya sadece selamlaşmak için mesaj atabilirsiniz.</p>
+        <div class="contact-items">
+          <div class="contact-item"><div class="contact-icon">✉️</div><div><div class="contact-label">E-posta</div><div class="contact-value">kerem@akbayir.dev</div></div></div>
+          <div class="contact-item"><div class="contact-icon">📍</div><div><div class="contact-label">Konum</div><div class="contact-value">İstanbul, Türkiye</div></div></div>
+          <div class="contact-item"><div class="contact-icon">💼</div><div><div class="contact-label">LinkedIn</div><div class="contact-value">linkedin.com/in/keremakbayir</div></div></div>
+        </div>
+      </div>
+      <div class="contact-form-card">
+        <h3>Mesaj Gönder</h3>
+        <div class="form-group"><label>Ad Soyad</label><input type="text" id="msgName" placeholder="Adınızı girin"></div>
+        <div class="form-group"><label>E-posta</label><input type="email" id="msgEmail" placeholder="email@ornek.com"></div>
+        <div class="form-group"><label>Konu</label><input type="text" id="msgSubject" placeholder="Konuyu yazın"></div>
+        <div class="form-group"><label>Mesaj</label><textarea id="msgBody" placeholder="Mesajınızı buraya yazın..."></textarea></div>
+        <button class="form-submit" onclick="sendContactMsg()">Gönder →</button>
+      </div>
+    </div>
+  </div>
+  <footer><div class="footer-copy">© 2025–2026 Kerem Akbayır</div></footer>
+</div>
+<!-- READING MODE -->
+<div class="reading-overlay" id="readingOverlay">
+  <div class="reading-inner">
+    <div class="reading-top">
+      <div class="reading-label">📖 Okuma Modu</div>
+      <div class="reading-controls">
+        <button class="reading-font-btn" onclick="changeFontSize(-1)">A-</button>
+        <button class="reading-font-btn" onclick="changeFontSize(1)">A+</button>
+        <button class="reading-close" onclick="closeReadingMode()">✕ Kapat</button>
+      </div>
+    </div>
+    <div id="readingBody"></div>
+  </div>
+</div>
+<!-- CHATBOT -->
+<button id="chatBtn" onclick="toggleChat()">💬<div class="notif-dot" id="chatDot" style="display:none"></div></button>
+<div class="chat-window" id="chatWindow">
+  <div class="chat-header">
+    <div class="chat-header-info">
+      <div class="chat-header-av">🤖</div>
+      <div><div class="chat-header-title" id="chatBotName">Kerem Bot</div><div class="chat-header-status">● Çevrimiçi</div></div>
+    </div>
+    <button class="chat-close" onclick="toggleChat()">×</button>
+  </div>
+  <div class="chat-msgs" id="chatMsgs"></div>
+  <div class="chat-suggestions" id="chatSugs"></div>
+  <div class="chat-input-row">
+    <input type="text" id="chatInput" placeholder="Mesaj yaz..." onkeydown="if(event.key==='Enter')sendChat()">
+    <button class="chat-send" onclick="sendChat()">→</button>
+  </div>
+</div>
 <div class="toast" id="toast"><span id="toastIcon">✓</span><span id="toastMsg">İşlem tamamlandı.</span></div>
-
 <script>
-// ═══════════════════════════════════════════════════
-// SUPABASE
-// ═══════════════════════════════════════════════════
-const SUPABASE_URL = 'https://rnroiajlmjudwgoacsjw.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_GpoMQnpHtrxQKMTjO9Z7iQ_7fC56-tc';
-const { createClient } = supabase;
-const db = createClient(SUPABASE_URL, SUPABASE_KEY);
-
-// ═══════════════════════════════════════════════════
-// STATE
-// ═══════════════════════════════════════════════════
-let adminUser = null;
-let allPosts = [], allProjects = [], allComments = [], allMessages = [];
-let commentFilter = 'all';
-let selectedPosts = new Set(), selectedComments = new Set(), selectedMedia = new Set();
-let notifications = JSON.parse(localStorage.getItem('ka_notifs') || '[]');
-let isDark = localStorage.getItem('ka_admin_theme') !== 'light';
-let quill = null;
-let currentTags = [];
-let projSortable = null;
-let replyMsg = null;
-
-let aboutData = JSON.parse(localStorage.getItem('ka_about') || 'null') || {
-  name:'Kerem Akbayır',title:'Senior Software Engineer',location:'📍 İstanbul, Türkiye',
-  email:'kerem@akbayir.dev',bio1:'Merhaba! Ben Kerem Akbayır.',bio2:'',bio3:'',
-  skills:[{name:'.NET & C#',pct:95},{name:'Azure & AKS',pct:85},{name:'Docker',pct:88}],
-  experience:[{title:'Senior SE',company:'TechCorp A.Ş.',date:'Oca 2022 – Günümüz',desc:'Mikroservis mimarileri.'}],
-  social:[
-    {id:'github',name:'GitHub',icon:'🐙',url:'github.com/keremakbayir',active:true},
-    {id:'linkedin',name:'LinkedIn',icon:'💼',url:'linkedin.com/in/keremakbayir',active:true}
-  ]
-};
-
-let chatbotData = JSON.parse(localStorage.getItem('ka_chatbot') || 'null') || {
-  name:'Kerem Bot',greeting:'Merhaba! 👋 Nasıl yardımcı olabilirim?',
-  suggestions:'Hakkında,Projeler,İletişim',
-  qa:[{q:'hakkında',a:'Kerem Akbayır, 8+ yıllık deneyime sahip Senior SE.'},{q:'iletişim',a:'kerem@akbayir.dev'}]
-};
-
-// ═══════════════════════════════════════════════════
-// UTILS
-// ═══════════════════════════════════════════════════
-const fmtDate = s => {
-  if(!s) return '—';
-  const d = new Date(s);
-  const m = ['Oca','Şub','Mar','Nis','May','Haz','Tem','Ağu','Eyl','Eki','Kas','Ara'];
-  return `${d.getDate()} ${m[d.getMonth()]} ${d.getFullYear()}`;
-};
-const escHtml = t => (t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-const getEl = id => document.getElementById(id);
-const val = id => (getEl(id)?.value||'').trim();
-
-function showToast(msg, type='success'){
-  const t = getEl('toast');
-  getEl('toastIcon').textContent = type==='error'?'✕':type==='warning'?'⚠️':'✓';
-  getEl('toastMsg').textContent = msg;
-  t.className = 'toast '+type+' show';
-  setTimeout(() => t.classList.remove('show'), 3200);
-}
-function closeModal(id){ getEl(id).classList.remove('show'); }
-function previewImg(inputId, wrapId, imgId){
-  const url = val(inputId);
-  const wrap = getEl(wrapId);
-  if(!url){ wrap.classList.remove('show'); return; }
-  getEl(imgId).src = url;
-  wrap.classList.add('show');
-}
-function updateCharCount(el, countId, max){
-  const n = el.value.length;
-  const cc = getEl(countId);
-  if(!cc) return;
-  cc.textContent = `${n} / ${max}`;
-  cc.className = 'char-count' + (n > max ? ' over' : n > max*0.85 ? ' warn' : '');
-}
-function showConfirm(icon, title, msg, onOk){
-  getEl('confirmIcon').textContent = icon;
-  getEl('confirmTitle').textContent = title;
-  getEl('confirmMsg').textContent = msg;
-  const btn = getEl('confirmOkBtn');
-  btn.onclick = () => { closeModal('confirmModal'); onOk(); };
-  getEl('confirmModal').classList.add('show');
-}
-function switchTab(prefix, name, btn){
-  document.querySelectorAll(`[id^="${prefix}-"]`).forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.modal-tab').forEach(b => b.classList.remove('active'));
-  const t = getEl(`${prefix}-${name}`); if(t) t.classList.add('active');
-  if(btn) btn.classList.add('active');
-}
-
-document.addEventListener('click', e => {
-  if(e.target.classList.contains('modal-overlay')) e.target.classList.remove('show');
-  if(!e.target.closest('.notif-btn') && !e.target.closest('#notifPanel')) getEl('notifPanel').classList.remove('show');
-});
-
-// ═══════════════════════════════════════════════════
-// SUPABASE HELPERS
-// ═══════════════════════════════════════════════════
-async function saveSettingToSupabase(key, value){
-  const { error } = await db.from('settings').upsert({ key, value, updated_at: new Date().toISOString() }, { onConflict: 'key' });
-  if(error) throw error;
-}
-async function loadSettingFromSupabase(key){
-  const { data, error } = await db.from('settings').select('value').eq('key', key).single();
-  if(error) return null;
-  return data?.value || null;
-}
-
-// ═══════════════════════════════════════════════════
-// THEME
-// ═══════════════════════════════════════════════════
-function applyTheme(){
-  document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
-  const b = getEl('themeBtn');
-  if(b) b.textContent = isDark ? '🌙' : '☀️';
-}
-function toggleTheme(){ isDark = !isDark; localStorage.setItem('ka_admin_theme', isDark?'dark':'light'); applyTheme(); }
-applyTheme();
-
-// ═══════════════════════════════════════════════════
-// AUTH
-// ═══════════════════════════════════════════════════
-async function doLogin(){
-  const email = val('loginEmail'), pass = getEl('loginPass').value;
-  const errEl = getEl('loginErr'), btn = getEl('loginBtn');
-  errEl.textContent = '';
-  if(!email || !pass){ errEl.textContent = 'E-posta ve şifre girin.'; return; }
-  btn.disabled = true; btn.textContent = 'Giriş yapılıyor...';
-  try{
-    const { data, error } = await db.auth.signInWithPassword({ email, password: pass });
-    if(error) throw error;
-    adminUser = data.user;
-    showApp();
-  } catch(e){ errEl.textContent = 'Giriş başarısız: '+e.message; }
-  finally{ btn.disabled = false; btn.textContent = 'Giriş Yap →'; }
-}
-async function doLogout(){
-  await db.auth.signOut(); adminUser = null;
-  getEl('app').classList.add('hidden'); getEl('loginPage').classList.remove('hidden');
-}
-function showApp(){
-  getEl('loginPage').classList.add('hidden'); getEl('app').classList.remove('hidden');
-  const email = adminUser?.email || '';
-  getEl('sidebarEmail').textContent = email;
-  getEl('sidebarAvatar').textContent = (email[0]||'A').toUpperCase();
-  getEl('sbUrl').textContent = SUPABASE_URL;
-  initQuill();
-  loadDashboard(); loadPosts(); loadProjects(); loadSiteSettings();
-  loadComments(); loadMessages(); loadAboutPanel(); loadChatbotPanel();
-  loadSettingsPanel(); loadContactPage(); loadSEO(); loadMedia();
-  checkSBStatus(); renderNotifications();
-}
-
-// ═══════════════════════════════════════════════════
-// PANEL NAV
-// ═══════════════════════════════════════════════════
-const panelTitles = {
-  dashboard:'Dashboard',visitors:'Ziyaretçiler',notifs:'Bildirimler',
-  posts:'Yazılar',projects:'Projeler',media:'Medya',comments:'Yorumlar',messages:'Mesajlar',
-  about:'Hakkımda',contact:'İletişim Sayfası',chatbot:'Chatbot',
-  seo:'SEO & Meta',theme:'Tema & Site',settings:'Ayarlar'
-};
-function showPanel(name, btn){
-  document.querySelectorAll('.panel').forEach(p => { p.classList.remove('active'); });
-  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-  const panel = getEl('panel-'+name);
-  if(panel){ panel.classList.add('active'); panel.classList.remove('fade-in'); void panel.offsetWidth; panel.classList.add('fade-in'); }
-  if(btn) btn.classList.add('active');
-  else document.querySelectorAll('.nav-item').forEach(n => { if((n.getAttribute('onclick')||'').includes("'"+name+"'")) n.classList.add('active'); });
-  if(getEl('topbarTitle')) getEl('topbarTitle').textContent = panelTitles[name]||name;
-  if(getEl('topbarSub')) getEl('topbarSub').textContent = panelTitles[name]||name;
-  if(name==='notifs') renderAllNotifs();
-  if(name==='contact') loadContactPage();
-  if(name==='seo') loadSEO();
-  if(name==='settings') loadSettingsPanel();
-}
-
-// ═══════════════════════════════════════════════════
-// QUILL
-// ═══════════════════════════════════════════════════
-function initQuill(){
-  if(quill) return;
-  quill = new Quill('#quillEditor', {
-    theme: 'snow',
-    modules: { toolbar: [
-      [{ header: [1,2,3,false] }],
-      ['bold','italic','underline','strike'],
-      ['blockquote','code-block'],
-      [{ list:'ordered' },{ list:'bullet' }],
-      ['link','image'],
-      [{ color: [] },{ background: [] }],
-      ['clean']
-    ]}
-  });
-}
-
-// ═══════════════════════════════════════════════════
-// TAGS
-// ═══════════════════════════════════════════════════
-function renderTags(){
-  const w = getEl('tagsWrap'); if(!w) return;
-  w.innerHTML = currentTags.map((t,i) =>
-    `<span class="tag-chip">${escHtml(t)}<span class="tag-chip-del" onclick="removeTag(${i})">×</span></span>`
-  ).join('');
-}
-function addTag(){
-  const inp = getEl('tagInput'); if(!inp) return;
-  const v = inp.value.replace(',','').trim();
-  if(v && !currentTags.includes(v)){ currentTags.push(v); renderTags(); }
-  inp.value = '';
-}
-function removeTag(i){ currentTags.splice(i,1); renderTags(); }
-
-// ═══════════════════════════════════════════════════
-// SLUG
-// ═══════════════════════════════════════════════════
-function toSlug(s){
-  return s.toLowerCase()
-    .replace(/ğ/g,'g').replace(/ü/g,'u').replace(/ş/g,'s')
-    .replace(/ı/g,'i').replace(/ö/g,'o').replace(/ç/g,'c')
-    .replace(/[^a-z0-9\s-]/g,'').trim().replace(/\s+/g,'-').replace(/-+/g,'-');
-}
-function autoSlug(){
-  const t = val('editPostTitle');
-  const slugEl = getEl('editPostSlug');
-  if(slugEl && !slugEl.dataset.manual){ slugEl.value = toSlug(t); updateSlugPreview(); }
-}
-function updateSlugPreview(){
-  const s = val('editPostSlug');
-  const el = getEl('slugPreviewVal'); if(el) el.textContent = s||'—';
-  const slugEl = getEl('editPostSlug'); if(slugEl) slugEl.dataset.manual = s?'1':'';
-}
-function updateSeoPreview(){
-  const t = val('seoTitle'); const d = val('seoDesc');
-  const pt = getEl('seoPrevTitle'); const pd = getEl('seoPrevDesc');
-  if(pt) pt.textContent = t||'—'; if(pd) pd.textContent = d||'—';
-}
-function updatePostSeoPreview(){
-  const t = val('postSeoTitle')||val('editPostTitle');
-  const d = val('postSeoDesc')||val('editPostExcerpt');
-  const pt = getEl('postSeoTitle'); const pd = getEl('postSeoDescPrev');
-  if(pt) pt.textContent = t||'—'; if(pd) pd.textContent = d||'—';
-}
-
-// ═══════════════════════════════════════════════════
-// DASHBOARD
-// ═══════════════════════════════════════════════════
-async function loadDashboard(){
-  try{
-    const [p,pr,c,m] = await Promise.all([
-      db.from('posts').select('id',{count:'exact'}),
-      db.from('projects').select('id',{count:'exact'}),
-      db.from('comments').select('id',{count:'exact'}),
-      db.from('messages').select('id',{count:'exact'})
-    ]);
-    getEl('s-posts').textContent = p.count||0; getEl('s-projects').textContent = pr.count||0;
-    getEl('s-comments').textContent = c.count||0; getEl('s-messages').textContent = m.count||0;
-    renderChart(); loadActivity(); loadPendingComments();
-    const {count:pc} = await db.from('comments').select('id',{count:'exact'}).eq('status','pending');
-    const cb = getEl('commentBadge');
-    if(cb && pc){ cb.textContent = pc; cb.classList.toggle('show', pc>0); }
-    const {count:nm} = await db.from('messages').select('id',{count:'exact'});
-    const mb = getEl('msgBadge');
-    if(mb && nm){ mb.textContent = nm; mb.classList.toggle('show', nm>0); }
-  } catch(e){ console.warn(e); }
-}
-function renderChart(){
-  const months = ['Kas','Ara','Oca','Şub','Mar','Nis','May'];
-  const vals = [12,28,19,34,41,27,38];
-  const max = Math.max(...vals);
-  const c = getEl('dashChart'); if(!c) return;
-  c.innerHTML = months.map((m,i) => `
-    <div class="chart-bar-wrap">
-      <div class="chart-bar" style="height:${vals[i]/max*100}%;background:linear-gradient(to top,rgba(99,102,241,0.8),rgba(139,92,246,0.8));flex:1" title="${vals[i]}"></div>
-      <div class="chart-bar-label">${m}</div>
-    </div>`).join('');
-}
-async function loadActivity(){
-  const el = getEl('activityList'); if(!el) return;
-  try{
-    const {data:c} = await db.from('comments').select('author,created_at').order('created_at',{ascending:false}).limit(3);
-    const {data:m} = await db.from('messages').select('name,created_at').order('created_at',{ascending:false}).limit(2);
-    const items = [
-      ...(c||[]).map(x=>({icon:'💬',cls:'blue',text:`<strong>${escHtml(x.author)}</strong> yorum yaptı`,time:x.created_at})),
-      ...(m||[]).map(x=>({icon:'✉️',cls:'green',text:`<strong>${escHtml(x.name)}</strong> mesaj gönderdi`,time:x.created_at}))
-    ];
-    if(!items.length){ el.innerHTML = '<div class="empty"><p>Henüz aktivite yok</p></div>'; return; }
-    el.innerHTML = items.map(i => `<div class="activity-item"><div class="activity-icon ${i.cls}">${i.icon}</div><div><div class="activity-text">${i.text}</div><div class="activity-time">${fmtDate(i.time)}</div></div></div>`).join('');
-  } catch(e){ el.innerHTML = ''; }
-}
-async function loadPendingComments(){
-  const el = getEl('pendingList'); if(!el) return;
-  try{
-    const {data} = await db.from('comments').select('*').eq('status','pending').limit(5);
-    if(!data||!data.length){ el.innerHTML = '<div class="empty"><div class="empty-icon">✅</div><p>Onay bekleyen yorum yok</p></div>'; return; }
-    el.innerHTML = `<div class="table-wrap"><table><thead><tr><th>Yazar</th><th>Yorum</th><th>Tarih</th><th>İşlem</th></tr></thead><tbody>
-      ${data.map(c=>`<tr><td><strong>${escHtml(c.author)}</strong></td><td style="max-width:280px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${escHtml(c.content)}</td><td>${fmtDate(c.created_at)}</td><td style="display:flex;gap:6px"><button class="btn btn-sm btn-success" onclick="approveComment(${c.id})">✓ Onayla</button><button class="btn btn-sm btn-danger" onclick="confirmAction('🗑️','Yorumu Sil','Bu yorum silinecek.',()=>deleteComment(${c.id}))">Sil</button></td></tr>`).join('')}
-    </tbody></table></div>`;
-  } catch(e){}
-}
-
-// ═══════════════════════════════════════════════════
-// NOTIFICATIONS
-// ═══════════════════════════════════════════════════
-function addNotif(n){ notifications.unshift(n); if(notifications.length>50) notifications.pop(); localStorage.setItem('ka_notifs',JSON.stringify(notifications)); renderNotifications(); }
-function renderNotifications(){
-  const unread = notifications.filter(n=>n.unread).length;
-  const dot = getEl('notifDot'), badge = getEl('notifBadge');
-  if(dot) dot.style.display = unread>0?'block':'none';
-  if(badge){ badge.textContent = unread; badge.classList.toggle('show',unread>0); }
-  const list = getEl('notifList'); if(!list) return;
-  if(!notifications.length){ list.innerHTML = '<div class="empty" style="padding:20px"><p>Bildirim yok</p></div>'; return; }
-  list.innerHTML = notifications.slice(0,10).map(n =>
-    `<div class="notif-item ${n.unread?'unread':''}" onclick="markRead('${n.id}')"><div class="notif-item-icon">${n.icon||'🔔'}</div><div><div class="notif-item-text">${n.text}</div><div class="notif-item-time">${fmtDate(n.time)}</div></div></div>`
-  ).join('');
-}
-function renderAllNotifs(){
-  const el = getEl('allNotifList'); if(!el) return;
-  if(!notifications.length){ el.innerHTML = '<div class="empty"><div class="empty-icon">🔔</div><p>Bildirim yok</p></div>'; return; }
-  el.innerHTML = notifications.map(n =>
-    `<div class="activity-item"><div class="activity-icon ${n.unread?'blue':''}">${n.icon||'🔔'}</div><div><div class="activity-text">${n.text}</div><div class="activity-time">${fmtDate(n.time)}</div></div></div>`
-  ).join('');
-}
-function markRead(id){ notifications = notifications.map(n=>n.id===id?{...n,unread:false}:n); localStorage.setItem('ka_notifs',JSON.stringify(notifications)); renderNotifications(); }
-function clearNotifs(){ notifications = []; localStorage.setItem('ka_notifs','[]'); renderNotifications(); renderAllNotifs(); getEl('notifPanel').classList.remove('show'); }
-function toggleNotifPanel(){
-  const p = getEl('notifPanel'); p.classList.toggle('show');
-  if(p.classList.contains('show')){ notifications = notifications.map(n=>({...n,unread:false})); localStorage.setItem('ka_notifs',JSON.stringify(notifications)); renderNotifications(); }
-}
-function confirmAction(icon,title,msg,fn){ showConfirm(icon,title,msg,fn); }
-
-// ═══════════════════════════════════════════════════
-// POSTS
-// ═══════════════════════════════════════════════════
-async function loadPosts(){
-  try{
-    const {data,error} = await db.from('posts').select('*').order('created_at',{ascending:false});
-    allPosts = data||[];
-    // populate cat filter
-    const cats = [...new Set(allPosts.map(p=>p.category).filter(Boolean))];
-    const cf = getEl('postCatFilter');
-    if(cf) cf.innerHTML = '<option value="">Tüm Kategoriler</option>' + cats.map(c=>`<option value="${escHtml(c)}">${escHtml(c)}</option>`).join('');
-    renderPosts();
-  } catch(e){ showToast('Yazılar yüklenemedi','error'); }
-}
-function filterPosts(){ renderPosts(); }
-function renderPosts(){
-  const q = (getEl('postSearch')?.value||'').toLowerCase();
-  const st = getEl('postStatusFilter')?.value||'';
-  const cat = getEl('postCatFilter')?.value||'';
-  const filtered = allPosts.filter(p => {
-    if(q && !(p.title||'').toLowerCase().includes(q)) return false;
-    if(st && p.status !== st) return false;
-    if(cat && p.category !== cat) return false;
-    return true;
-  });
-  const body = getEl('postsBody'); if(!body) return;
-  if(!filtered.length){ body.innerHTML = `<tr><td colspan="8" style="text-align:center;padding:32px;color:var(--text3)">Yazı bulunamadı.</td></tr>`; return; }
-  body.innerHTML = filtered.map(p => {
-    const tags = (p.tags||[]).map(t=>`<span class="tag-chip">${escHtml(t)}</span>`).join('');
-    return `<tr>
-      <td class="cb"><input type="checkbox" class="post-cb" value="${p.id}" onchange="updatePostSel()"></td>
-      <td>${p.image_url
-        ? `<img src="${escHtml(p.image_url)}" style="width:52px;height:38px;object-fit:cover;border-radius:6px;border:1px solid var(--border)" onerror="this.style.display='none'">`
-        : `<div style="width:52px;height:38px;border-radius:6px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:18px">${p.icon||'📝'}</div>`}</td>
-      <td><strong>${escHtml(p.title)}</strong>${p.slug?`<div style="font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--text3);margin-top:2px">/${escHtml(p.slug)}</div>`:''}</td>
-      <td style="font-size:12px;color:var(--text2)">${escHtml(p.category||'—')}</td>
-      <td><div class="tags-wrap">${tags||'—'}</div></td>
-      <td><span class="badge ${p.status}">${p.status==='published'?'Yayında':'Taslak'}</span></td>
-      <td style="font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--text3)">${fmtDate(p.created_at)}</td>
-      <td style="display:flex;gap:5px;flex-wrap:wrap">
-        <button class="btn btn-sm btn-ghost" onclick="openPostModal(${p.id})" title="Düzenle">✏️</button>
-        <button class="btn btn-sm btn-warning" onclick="previewPostById(${p.id})" title="Önizle">👁️</button>
-        <button class="btn btn-sm btn-danger" onclick="confirmAction('🗑️','Yazıyı Sil','Bu yazı kalıcı olarak silinecek.',()=>deletePost(${p.id}))" title="Sil">🗑</button>
-      </td>
-    </tr>`;
-  }).join('');
-}
-function updatePostSel(){
-  selectedPosts = new Set([...document.querySelectorAll('.post-cb:checked')].map(cb=>parseInt(cb.value)));
-  getEl('postSelCount').textContent = selectedPosts.size;
-  getEl('postBulkBar').classList.toggle('show', selectedPosts.size>0);
-}
-function togglePostSelAll(cb){ document.querySelectorAll('.post-cb').forEach(c=>c.checked=cb.checked); updatePostSel(); }
-function clearPostSel(){ document.querySelectorAll('.post-cb').forEach(c=>c.checked=false); getEl('postSelAll').checked=false; selectedPosts.clear(); getEl('postBulkBar').classList.remove('show'); }
-async function bulkPostAction(status){
-  if(!selectedPosts.size) return;
-  await db.from('posts').update({status}).in('id',[...selectedPosts]);
-  showToast(`${selectedPosts.size} yazı güncellendi`); clearPostSel(); loadPosts();
-}
-function bulkDeletePosts(){
-  if(!selectedPosts.size) return;
-  showConfirm('🗑️',`${selectedPosts.size} Yazıyı Sil`,`${selectedPosts.size} yazı kalıcı silinecek.`, async () => {
-    await db.from('posts').delete().in('id',[...selectedPosts]);
-    showToast(`${selectedPosts.size} yazı silindi`); clearPostSel(); loadPosts(); loadDashboard();
-  });
-}
-
-function openPostModal(id){
-  currentTags = [];
-  getEl('postModalTitle').textContent = id ? '✏️ Yazı Düzenle' : '✍️ Yeni Yazı';
-  getEl('editPostId').value = id||'';
-  ['editPostTitle','editPostExcerpt','editPostCat','editPostImage','editPostSlug','postSeoTitle','postSeoDesc','postSeoOg','postSeoCanonical'].forEach(x=>{ const el=getEl(x); if(el)el.value=''; });
-  getEl('editPostIcon').value = '📝';
-  getEl('editPostStatus').value = 'published';
-  getEl('editPostFeatured').value = 'false';
-  getEl('postImgPreview').classList.remove('show');
-  getEl('slugPreviewVal').textContent = '—';
-  getEl('editPostTitleErr').textContent = '';
-  if(getEl('editPostSlug')) getEl('editPostSlug').dataset.manual = '';
-  renderTags();
-  if(quill) quill.setContents([]);
-  switchTab('postTab','content', document.querySelector('.modal-tab'));
-  if(id){
-    db.from('posts').select('*').eq('id',id).single().then(({data}) => {
-      if(!data) return;
-      getEl('editPostTitle').value = data.title||'';
-      getEl('editPostExcerpt').value = data.excerpt||'';
-      getEl('editPostCat').value = data.category||'';
-      getEl('editPostIcon').value = data.icon||'📝';
-      getEl('editPostStatus').value = data.status||'published';
-      getEl('editPostFeatured').value = String(data.featured||false);
-      if(data.slug){ getEl('editPostSlug').value=data.slug; getEl('editPostSlug').dataset.manual='1'; updateSlugPreview(); }
-      currentTags = data.tags||[]; renderTags();
-      if(quill && data.content) quill.clipboard.dangerouslyPasteHTML(data.content);
-      if(data.seo){
-        if(data.seo.title) getEl('postSeoTitle').value = data.seo.title;
-        if(data.seo.desc) getEl('postSeoDesc').value = data.seo.desc;
-        if(data.seo.og) getEl('postSeoOg').value = data.seo.og;
-        if(data.seo.canonical) getEl('postSeoCanonical').value = data.seo.canonical;
-      }
-      if(data.image_url){ getEl('editPostImage').value=data.image_url; getEl('postImgEl').src=data.image_url; getEl('postImgPreview').classList.add('show'); }
-    });
-  }
-  getEl('postModal').classList.add('show');
-}
-
-async function savePost(){
-  const id = val('editPostId');
-  const title = val('editPostTitle');
-  const errEl = getEl('editPostTitleErr');
-  if(!title){ errEl.textContent = 'Başlık zorunlu'; getEl('editPostTitle').classList.add('err'); return; }
-  getEl('editPostTitle').classList.remove('err'); errEl.textContent = '';
-  const slug = val('editPostSlug') || toSlug(title);
-  const content = quill ? quill.root.innerHTML : '';
-  const payload = {
-    title, slug,
-    excerpt: val('editPostExcerpt'),
-    category: val('editPostCat'),
-    icon: val('editPostIcon'),
-    status: getEl('editPostStatus').value,
-    featured: getEl('editPostFeatured').value === 'true',
-    content, tags: currentTags,
-    image_url: val('editPostImage')||null,
-    comments_enabled: true,
-    seo: {
-      title: val('postSeoTitle'),
-      desc: val('postSeoDesc'),
-      og: val('postSeoOg'),
-      canonical: val('postSeoCanonical')
-    }
-  };
-  try{
-    if(id){ const {error}=await db.from('posts').update(payload).eq('id',id); if(error) throw error; }
-    else{ const {error}=await db.from('posts').insert([payload]); if(error) throw error; }
-    showToast(id?'Yazı güncellendi!':'Yazı eklendi! 🎉');
-    closeModal('postModal'); loadPosts(); loadDashboard();
-    addNotif({id:'p_'+Date.now(),icon:'📝',text:`Yazı ${id?'güncellendi':'eklendi'}: ${title}`,time:new Date().toISOString(),unread:false});
-  } catch(e){ showToast('Hata: '+e.message,'error'); }
-}
-
-async function deletePost(id){
-  const {error} = await db.from('posts').delete().eq('id',id);
-  if(error){ showToast('Silinemedi','error'); return; }
-  showToast('Yazı silindi'); loadPosts(); loadDashboard();
-}
-
-function previewPost(){
-  const title = val('editPostTitle');
-  const content = quill ? quill.root.innerHTML : '';
-  const excerpt = val('editPostExcerpt');
-  const cat = val('editPostCat');
-  const tags = currentTags;
-  const imgUrl = val('editPostImage');
-  renderPreviewModal({title,content,excerpt,category:cat,tags,image_url:imgUrl,created_at:new Date().toISOString()});
-}
-async function previewPostById(id){
-  const {data} = await db.from('posts').select('*').eq('id',id).single();
-  if(data) renderPreviewModal(data);
-}
-function renderPreviewModal(post){
-  const tags = (post.tags||[]).map(t=>`<span class="tag-chip">${escHtml(t)}</span>`).join('');
-  getEl('previewFrame').innerHTML = `
-    <div class="pf-title">${escHtml(post.title)}</div>
-    <div class="pf-meta">
-      <span>📅 ${fmtDate(post.created_at)}</span>
-      ${post.category?`<span>📂 ${escHtml(post.category)}</span>`:''}
-      ${tags}
-    </div>
-    ${post.image_url?`<img class="pf-img" src="${escHtml(post.image_url)}" alt="">`:''}
-    <div class="pf-content">${post.content||'<em style="color:var(--text3)">İçerik yok</em>'}</div>`;
-  getEl('previewModal').classList.add('show');
-}
-
-// ═══════════════════════════════════════════════════
-// PROJECTS (drag-drop)
-// ═══════════════════════════════════════════════════
-async function loadProjects(){
-  try{
-    const {data} = await db.from('projects').select('*').order('sort_order',{ascending:true}).order('created_at',{ascending:false});
-    allProjects = data||[];
-    renderProjects();
-  } catch(e){}
-}
-function filterProjects(){ renderProjects(); }
-function renderProjects(){
-  const q = (getEl('projSearch')?.value||'').toLowerCase();
-  const st = getEl('projStatusFilter')?.value||'';
-  const filtered = allProjects.filter(p => {
-    if(q && !(p.name||'').toLowerCase().includes(q)) return false;
-    if(st && p.status !== st) return false;
-    return true;
-  });
-  const body = getEl('projsBody'); if(!body) return;
-  if(!filtered.length){ body.innerHTML = `<tr><td colspan="8" style="text-align:center;padding:32px;color:var(--text3)">Proje bulunamadı.</td></tr>`; return; }
-  body.innerHTML = filtered.map(p => `<tr data-id="${p.id}">
-    <td><span class="drag-handle" title="Sürükle">⠿</span></td>
-    <td>${p.image_url
-      ? `<img src="${escHtml(p.image_url)}" style="width:52px;height:38px;object-fit:cover;border-radius:6px;border:1px solid var(--border)" onerror="this.style.display='none'">`
-      : `<div style="width:52px;height:38px;border-radius:6px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:18px">${p.icon||'🚀'}</div>`}</td>
-    <td><strong>${escHtml(p.name)}</strong></td>
-    <td style="font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--text3)">${escHtml(p.tech||'—')}</td>
-    <td><span class="badge ${p.status==='active'?'active':'archived'}">${p.status==='active'?'Aktif':'Arşiv'}</span></td>
-    <td>${p.github_url?`<a href="${p.github_url}" target="_blank" style="color:var(--accent);font-size:12px">↗ GitHub</a>`:'—'}</td>
-    <td>${p.demo_url?`<a href="${p.demo_url}" target="_blank" style="color:var(--green);font-size:12px">↗ Demo</a>`:'—'}</td>
-    <td style="display:flex;gap:5px">
-      <button class="btn btn-sm btn-ghost" onclick="openProjModal(${p.id})">✏️</button>
-      <button class="btn btn-sm btn-danger" onclick="confirmAction('🗑️','Projeyi Sil','Bu proje kalıcı silinecek.',()=>deleteProj(${p.id}))">🗑</button>
-    </td>
-  </tr>`).join('');
-  // Init sortable
-  if(projSortable) projSortable.destroy();
-  projSortable = new Sortable(body, {
-    handle: '.drag-handle', animation: 150, ghostClass: 'sortable-ghost',
-    onEnd: async () => {
-      const ids = [...body.querySelectorAll('tr[data-id]')].map(r=>parseInt(r.dataset.id));
-      for(let i=0;i<ids.length;i++) await db.from('projects').update({sort_order:i}).eq('id',ids[i]);
-      showToast('Sıralama kaydedildi');
-    }
-  });
-}
-
-function openProjModal(id){
-  getEl('projModalTitle').textContent = id ? '✏️ Proje Düzenle' : '📁 Yeni Proje';
-  getEl('editProjId').value = id||'';
-  ['editProjName','editProjDesc','editProjTech','editProjGithub','editProjDemo','editProjImage'].forEach(x=>getEl(x).value='');
-  getEl('editProjIcon').value = '🚀'; getEl('editProjStatus').value = 'active';
-  getEl('projImgPreview').classList.remove('show');
-  if(id){
-    db.from('projects').select('*').eq('id',id).single().then(({data}) => {
-      if(!data) return;
-      getEl('editProjName').value = data.name||''; getEl('editProjIcon').value = data.icon||'🚀';
-      getEl('editProjDesc').value = data.description||''; getEl('editProjTech').value = data.tech||'';
-      getEl('editProjGithub').value = data.github_url||''; getEl('editProjDemo').value = data.demo_url||'';
-      getEl('editProjStatus').value = data.status||'active';
-      if(data.image_url){ getEl('editProjImage').value=data.image_url; getEl('projImgEl').src=data.image_url; getEl('projImgPreview').classList.add('show'); }
-    });
-  }
-  getEl('projModal').classList.add('show');
-}
-
-async function saveProj(){
-  const id = val('editProjId'), name = val('editProjName');
-  if(!name){ showToast('Proje adı zorunlu','error'); return; }
-  const payload = {
-    name, icon: val('editProjIcon'), description: val('editProjDesc'),
-    tech: val('editProjTech'), github_url: val('editProjGithub'), demo_url: val('editProjDemo'),
-    status: getEl('editProjStatus').value, image_url: val('editProjImage')||null
-  };
-  try{
-    if(id){ const {error}=await db.from('projects').update(payload).eq('id',id); if(error) throw error; }
-    else{ const {error}=await db.from('projects').insert([{...payload, sort_order: allProjects.length}]); if(error) throw error; }
-    showToast(id?'Proje güncellendi!':'Proje eklendi!');
-    closeModal('projModal'); loadProjects(); loadDashboard();
-  } catch(e){ showToast('Hata: '+e.message,'error'); }
-}
-
-async function deleteProj(id){
-  const {error} = await db.from('projects').delete().eq('id',id);
-  if(error){ showToast('Silinemedi','error'); return; }
-  showToast('Proje silindi'); loadProjects(); loadDashboard();
-}
-
-// ═══════════════════════════════════════════════════
-// MEDIA (Supabase Storage)
-// ═══════════════════════════════════════════════════
-function onDragOver(e){ e.preventDefault(); getEl('uploadZone').classList.add('dragover'); }
-function onDragLeave(){ getEl('uploadZone').classList.remove('dragover'); }
-function onDrop(e){ e.preventDefault(); onDragLeave(); if(e.dataTransfer.files.length) uploadFiles(e.dataTransfer.files); }
-function handleFileSelect(e){ if(e.target.files.length) uploadFiles(e.target.files); }
-
-async function uploadFiles(files){
-  const prog = getEl('uploadProgress'), bar = getEl('uploadBar');
-  prog.classList.add('show'); bar.style.width = '0%';
-  let done = 0;
-  for(const file of files){
-    if(file.size > 5*1024*1024){ showToast(`${file.name} çok büyük (maks 5 MB)`,'error'); done++; continue; }
-    const ext = file.name.split('.').pop();
-    const name = `${Date.now()}_${Math.random().toString(36).substr(2,5)}.${ext}`;
-    const {error} = await db.storage.from('media').upload(name, file, {contentType: file.type});
-    if(error) showToast(`${file.name}: ${error.message}`,'error');
-    else showToast(`${file.name} yüklendi ✓`);
-    done++; bar.style.width = `${done/files.length*100}%`;
-  }
-  setTimeout(() => { prog.classList.remove('show'); bar.style.width='0%'; }, 800);
-  loadMedia();
-}
-
-async function loadMedia(){
-  const grid = getEl('mediaGrid'); if(!grid) return;
-  grid.innerHTML = '<div class="empty"><span style="font-size:24px;display:inline-block;animation:spin 1s linear infinite">⚙️</span></div>';
-  try{
-    const {data, error} = await db.storage.from('media').list('', {limit:100, sortBy:{column:'created_at',order:'desc'}});
-    if(error || !data || !data.length){ grid.innerHTML = '<div class="empty"><div class="empty-icon">🖼️</div><p>Henüz görsel yok</p></div>'; return; }
-    const items = data.filter(f => f.name && !f.name.startsWith('.'));
-    if(!items.length){ grid.innerHTML = '<div class="empty"><div class="empty-icon">🖼️</div><p>Henüz görsel yok</p></div>'; return; }
-    grid.innerHTML = items.map(f => {
-      const url = db.storage.from('media').getPublicUrl(f.name).data.publicUrl;
-      return `<div class="media-item" id="mi-${f.name}" onclick="toggleMediaSel('${f.name}',event)">
-        <img src="${url}" alt="${f.name}" loading="lazy">
-        <div class="media-check">✓</div>
-        <div class="media-overlay">
-          <button class="btn btn-sm btn-ghost" onclick="event.stopPropagation();copyToClipboard('${url}')" title="URL Kopyala">📋</button>
-          <button class="btn btn-sm btn-danger" onclick="event.stopPropagation();confirmAction('🗑️','Görseli Sil','${f.name} silinecek.',()=>deleteMedia('${f.name}'))" title="Sil">🗑</button>
-        </div>
-      </div>`;
-    }).join('');
-  } catch(e){ grid.innerHTML = '<div class="empty"><p>Storage erişim hatası. Bucket\'ı kontrol edin.</p></div>'; }
-}
-
-function toggleMediaSel(name, e){
-  if(e && e.target.tagName==='BUTTON') return;
-  const el = getEl('mi-'+name); if(!el) return;
-  if(selectedMedia.has(name)){ selectedMedia.delete(name); el.classList.remove('selected'); }
-  else{ selectedMedia.add(name); el.classList.add('selected'); }
-  const btn = getEl('mediaDelBtn'); if(btn) btn.disabled = selectedMedia.size===0;
-}
-function copyToClipboard(text){ navigator.clipboard.writeText(text).then(()=>showToast('URL kopyalandı!')); }
-async function deleteMedia(name){
-  const {error} = await db.storage.from('media').remove([name]);
-  if(error){ showToast('Silinemedi','error'); return; }
-  selectedMedia.delete(name); showToast('Görsel silindi'); loadMedia();
-}
-async function deleteSelectedMedia(){
-  if(!selectedMedia.size) return;
-  showConfirm('🗑️',`${selectedMedia.size} Görseli Sil`,`${selectedMedia.size} görsel kalıcı silinecek.`, async () => {
-    const {error} = await db.storage.from('media').remove([...selectedMedia]);
-    if(error){ showToast('Bazı görseller silinemedi','error'); return; }
-    showToast(`${selectedMedia.size} görsel silindi`); selectedMedia.clear(); loadMedia();
-    getEl('mediaDelBtn').disabled = true;
-  });
-}
-
-// ═══════════════════════════════════════════════════
-// COMMENTS
-// ═══════════════════════════════════════════════════
-async function loadComments(){
-  try{
-    const {data} = await db.from('comments').select('*').order('created_at',{ascending:false});
-    allComments = data||[]; renderComments();
-  } catch(e){}
-}
-function renderComments(){
-  const body = getEl('commentsBody'); if(!body) return;
-  const q = (getEl('commentSearch')?.value||'').toLowerCase();
-  const filtered = allComments.filter(c => {
-    if(commentFilter!=='all' && c.status!==commentFilter) return false;
-    if(q && !(c.content||'').toLowerCase().includes(q) && !(c.author||'').toLowerCase().includes(q)) return false;
-    return true;
-  });
-  if(!filtered.length){ body.innerHTML = `<tr><td colspan="7" style="text-align:center;padding:32px;color:var(--text3)">Yorum bulunamadı.</td></tr>`; return; }
-  body.innerHTML = filtered.map(c => `<tr>
-    <td class="cb"><input type="checkbox" class="comment-cb" value="${c.id}" onchange="updateCommentSel()"></td>
-    <td><strong>${escHtml(c.author)}</strong></td>
-    <td style="font-size:11px;color:var(--text3)">${escHtml(c.email||'—')}</td>
-    <td style="max-width:240px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:12px">${escHtml(c.content)}</td>
-    <td><span class="badge ${c.status}">${c.status==='approved'?'Onaylı':c.status==='pending'?'Bekliyor':'Reddedildi'}</span></td>
-    <td style="font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--text3)">${fmtDate(c.created_at)}</td>
-    <td style="display:flex;gap:5px;flex-wrap:wrap">
-      ${c.status!=='approved'?`<button class="btn btn-sm btn-success" onclick="approveComment(${c.id})">✓</button>`:''}
-      <button class="btn btn-sm btn-danger" onclick="confirmAction('🗑️','Yorumu Sil','Bu yorum silinecek.',()=>deleteComment(${c.id}))">🗑</button>
-    </td>
-  </tr>`).join('');
-}
-function filterComments(filter, btn){ commentFilter=filter; document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active')); if(btn)btn.classList.add('active'); renderComments(); }
-function updateCommentSel(){
-  selectedComments = new Set([...document.querySelectorAll('.comment-cb:checked')].map(cb=>parseInt(cb.value)));
-  getEl('commentSelCount').textContent = selectedComments.size;
-  getEl('commentBulkBar').classList.toggle('show', selectedComments.size>0);
-}
-function toggleCommentSelAll(cb){ document.querySelectorAll('.comment-cb').forEach(c=>c.checked=cb.checked); updateCommentSel(); }
-function clearCommentSel(){ document.querySelectorAll('.comment-cb').forEach(c=>c.checked=false); getEl('commentSelAll').checked=false; selectedComments.clear(); getEl('commentBulkBar').classList.remove('show'); }
-async function bulkApproveComments(){
-  if(!selectedComments.size) return;
-  await db.from('comments').update({status:'approved'}).in('id',[...selectedComments]);
-  showToast(`${selectedComments.size} yorum onaylandı`); clearCommentSel(); loadComments(); loadDashboard();
-}
-function bulkDeleteComments(){
-  if(!selectedComments.size) return;
-  showConfirm('🗑️',`${selectedComments.size} Yorumu Sil`,`${selectedComments.size} yorum silinecek.`, async () => {
-    await db.from('comments').delete().in('id',[...selectedComments]);
-    showToast(`${selectedComments.size} yorum silindi`); clearCommentSel(); loadComments(); loadDashboard();
-  });
-}
-async function approveComment(id){
-  const {error} = await db.from('comments').update({status:'approved'}).eq('id',id);
-  if(error){ showToast('Hata','error'); return; }
-  showToast('Yorum onaylandı!'); await loadComments(); loadDashboard();
-}
-async function deleteComment(id){
-  const {error} = await db.from('comments').delete().eq('id',id);
-  if(error){ showToast('Silinemedi','error'); return; }
-  showToast('Yorum silindi'); await loadComments(); loadDashboard();
-}
-
-// ═══════════════════════════════════════════════════
-// MESSAGES (with reply)
-// ═══════════════════════════════════════════════════
-async function loadMessages(){
-  try{
-    const {data} = await db.from('messages').select('*').order('created_at',{ascending:false});
-    allMessages = data||[]; renderMessages();
-  } catch(e){}
-}
-function renderMessages(){
-  const body = getEl('msgsBody'); if(!body) return;
-  const q = (getEl('msgSearch')?.value||'').toLowerCase();
-  const filtered = allMessages.filter(m => {
-    if(q && !(m.name||'').toLowerCase().includes(q) && !(m.email||'').toLowerCase().includes(q) && !(m.body||'').toLowerCase().includes(q)) return false;
-    return true;
-  });
-  if(!filtered.length){ body.innerHTML = `<tr><td colspan="6" style="text-align:center;padding:32px;color:var(--text3)">Mesaj bulunamadı.</td></tr>`; return; }
-  body.innerHTML = filtered.map(m => `<tr>
-    <td><strong>${escHtml(m.name)}</strong></td>
-    <td style="font-size:12px">${escHtml(m.email||'—')}</td>
-    <td>${escHtml(m.subject||'—')}</td>
-    <td style="max-width:200px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:12px;color:var(--text2)">${escHtml(m.body||'')}</td>
-    <td style="font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--text3)">${fmtDate(m.created_at)}</td>
-    <td style="display:flex;gap:5px">
-      <button class="btn btn-sm btn-primary" onclick="openReply(${m.id})">↩️ Cevap</button>
-      <button class="btn btn-sm btn-danger" onclick="confirmAction('🗑️','Mesajı Sil','Bu mesaj silinecek.',()=>deleteMsg(${m.id}))">🗑</button>
-    </td>
-  </tr>`).join('');
-}
-function openReply(id){
-  const msg = allMessages.find(m=>m.id===id); if(!msg) return;
-  replyMsg = msg;
-  getEl('replyOriginal').innerHTML = `<strong>${escHtml(msg.name)}</strong> &lt;${escHtml(msg.email||'')}&gt; · ${fmtDate(msg.created_at)}<br><strong>${escHtml(msg.subject||'Konu yok')}</strong><br><br>${escHtml(msg.body||'')}`;
-  getEl('replyContent').value = '';
-  getEl('replyModal').classList.add('show');
-}
-async function sendReply(){
-  if(!replyMsg) return;
-  const body = val('replyContent');
-  if(!body){ showToast('Cevap boş olamaz','error'); return; }
-  // Supabase Edge Function / SMTP entegrasyonu buraya eklenebilir
-  console.log('Reply to:', replyMsg.email, '\nBody:', body);
-  showToast(`Cevap ${replyMsg.email} adresine gönderildi ✓`);
-  closeModal('replyModal'); replyMsg = null;
-}
-async function deleteMsg(id){
-  const {error} = await db.from('messages').delete().eq('id',id);
-  if(error){ showToast('Silinemedi','error'); return; }
-  showToast('Mesaj silindi'); loadMessages(); loadDashboard();
-}
-
-// ═══════════════════════════════════════════════════
-// ABOUT
-// ═══════════════════════════════════════════════════
-async function loadAboutPanel(){
-  try{ const remote = await loadSettingFromSupabase('about'); if(remote){ aboutData=remote; localStorage.setItem('ka_about',JSON.stringify(aboutData)); } } catch(e){}
-  getEl('aboutName').value = aboutData.name||''; getEl('aboutTitle').value = aboutData.title||'';
-  getEl('aboutLocation').value = aboutData.location||''; getEl('aboutEmail').value = aboutData.email||'';
-  getEl('aboutBio1').value = aboutData.bio1||''; getEl('aboutBio2').value = aboutData.bio2||''; getEl('aboutBio3').value = aboutData.bio3||'';
-  renderSkillsList(); renderExpList(); renderSocialList();
-}
-function renderSkillsList(){
-  const el = getEl('skillsList'); if(!el) return;
-  if(!aboutData.skills?.length){ el.innerHTML = '<div class="empty"><p>Beceri yok.</p></div>'; return; }
-  el.innerHTML = aboutData.skills.map((s,i) => `
-    <div class="skill-row">
-      <input value="${escHtml(s.name)}" placeholder="Beceri" style="width:140px" oninput="aboutData.skills[${i}].name=this.value">
-      <input type="range" min="0" max="100" value="${s.pct}" oninput="aboutData.skills[${i}].pct=+this.value;this.nextElementSibling.textContent=this.value+'%'">
-      <span class="skill-pct">${s.pct}%</span>
-      <button class="btn btn-sm btn-danger btn-icon" onclick="aboutData.skills.splice(${i},1);renderSkillsList()">×</button>
-    </div>`).join('');
-}
-function addSkill(){ if(!aboutData.skills) aboutData.skills=[]; aboutData.skills.push({name:'Yeni Beceri',pct:70}); renderSkillsList(); }
-
-function renderExpList(){
-  const el = getEl('expList'); if(!el) return;
-  if(!aboutData.experience?.length){ el.innerHTML = '<div class="empty"><p>Deneyim yok. + Ekle butonuna tıklayın.</p></div>'; return; }
-  el.innerHTML = aboutData.experience.map((e,i) => `
-    <div class="exp-row">
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:6px">
-        <input value="${escHtml(e.title||'')}" placeholder="Unvan" oninput="aboutData.experience[${i}].title=this.value">
-        <input value="${escHtml(e.company||'')}" placeholder="Şirket" oninput="aboutData.experience[${i}].company=this.value">
-      </div>
-      <input value="${escHtml(e.date||'')}" placeholder="Tarih aralığı" oninput="aboutData.experience[${i}].date=this.value">
-      <textarea placeholder="Açıklama..." oninput="aboutData.experience[${i}].desc=this.value">${escHtml(e.desc||'')}</textarea>
-      <div style="text-align:right;margin-top:4px">
-        <button class="btn btn-sm btn-danger" onclick="confirmAction('🗑️','Deneyimi Sil','Bu deneyim kaldırılacak.',()=>{aboutData.experience.splice(${i},1);renderExpList();})">🗑 Sil</button>
-      </div>
-    </div>`).join('');
-}
-function addExp(){ if(!aboutData.experience) aboutData.experience=[]; aboutData.experience.push({title:'',company:'',date:'',desc:''}); renderExpList(); setTimeout(()=>{const rows=document.querySelectorAll('.exp-row');if(rows.length)rows[rows.length-1].scrollIntoView({behavior:'smooth',block:'nearest'});},50); }
-
-function renderSocialList(){
-  const el = getEl('socialList'); if(!el) return;
-  if(!aboutData.social?.length){ el.innerHTML = '<div class="empty"><p>Sosyal medya hesabı yok.</p></div>'; return; }
-  el.innerHTML = aboutData.social.map((s,i) => `
-    <div class="social-row">
-      <input value="${escHtml(s.icon||'')}" placeholder="🔗" style="width:44px;text-align:center;font-size:18px" oninput="aboutData.social[${i}].icon=this.value">
-      <input value="${escHtml(s.name||'')}" placeholder="Platform" style="flex:1" oninput="aboutData.social[${i}].name=this.value">
-      <input value="${escHtml(s.url||'')}" placeholder="URL / kullanıcı adı" style="flex:2" oninput="aboutData.social[${i}].url=this.value">
-      <button class="toggle ${s.active?'on':''}" title="${s.active?'Aktif':'Pasif'}" onclick="aboutData.social[${i}].active=!aboutData.social[${i}].active;this.classList.toggle('on')"></button>
-      <button class="btn btn-sm btn-danger btn-icon" onclick="confirmAction('🗑️','Hesabı Kaldır','${escHtml(s.name)} kaldırılacak.',()=>{aboutData.social.splice(${i},1);renderSocialList();})">×</button>
-    </div>`).join('');
-}
-function addSocial(){ if(!aboutData.social) aboutData.social=[]; aboutData.social.push({id:'new_'+Date.now(),name:'',icon:'🔗',url:'',active:true}); renderSocialList(); }
-
-async function saveAbout(){
-  aboutData.name = val('aboutName'); aboutData.title = val('aboutTitle');
-  aboutData.location = val('aboutLocation'); aboutData.email = val('aboutEmail');
-  aboutData.bio1 = getEl('aboutBio1').value; aboutData.bio2 = getEl('aboutBio2').value; aboutData.bio3 = getEl('aboutBio3').value;
-  if(!aboutData.name){ showToast('Ad Soyad zorunlu','error'); return; }
-  localStorage.setItem('ka_about', JSON.stringify(aboutData));
-  try{ await saveSettingToSupabase('about', aboutData); showToast('Hakkımda kaydedildi! ✅'); addNotif({id:'ab_'+Date.now(),icon:'👤',text:'Hakkımda sayfası güncellendi',time:new Date().toISOString(),unread:true}); }
-  catch(e){ showToast('Supabase hatası: '+e.message,'error'); }
-}
-
-// ═══════════════════════════════════════════════════
-// CONTACT PAGE
-// ═══════════════════════════════════════════════════
-async function loadContactPage(){
-  const D = {title:'Merhaba, konuşalım!',desc:'Yeni projeler, iş birlikleri veya selamlaşmak için mesaj atabilirsiniz.',email:'kerem@akbayir.dev',location:'İstanbul, Türkiye',linkedin:'linkedin.com/in/keremakbayir',formTitle:'Mesaj Gönder'};
-  ['cpTitle','cpDesc','cpEmail','cpLocation','cpLinkedin','cpFormTitle'].forEach((id,idx) => {
-    const key = ['title','desc','email','location','linkedin','formTitle'][idx];
-    const el = getEl(id); if(el) el.value = D[key];
-  });
-  try{
-    const r = await loadSettingFromSupabase('contact_page');
-    if(r){ ['cpTitle','cpDesc','cpEmail','cpLocation','cpLinkedin','cpFormTitle'].forEach((id,idx)=>{ const key=['title','desc','email','location','linkedin','formTitle'][idx]; const el=getEl(id); if(el&&r[key]) el.value=r[key]; }); }
-  } catch(e){}
-}
-async function saveContactPage(){
-  const email = val('cpEmail');
-  if(!email){ showToast('E-posta zorunlu','error'); return; }
-  const s = {title:val('cpTitle'),desc:getEl('cpDesc').value,email,location:val('cpLocation'),linkedin:val('cpLinkedin'),formTitle:val('cpFormTitle')};
-  try{ await saveSettingToSupabase('contact_page',s); showToast('İletişim sayfası kaydedildi! ✅'); }
-  catch(e){ showToast('Supabase hatası: '+e.message,'error'); }
-}
-
-// ═══════════════════════════════════════════════════
-// CHATBOT
-// ═══════════════════════════════════════════════════
-async function loadChatbotPanel(){
-  try{ const r=await loadSettingFromSupabase('chatbot'); if(r){chatbotData=r;localStorage.setItem('ka_chatbot',JSON.stringify(chatbotData));} } catch(e){}
-  getEl('botName').value=chatbotData.name||''; getEl('botGreeting').value=chatbotData.greeting||''; getEl('botSuggestions').value=chatbotData.suggestions||'';
-  renderQAList();
-}
-function renderQAList(){
-  const el = getEl('qaList'); if(!el) return;
-  if(!chatbotData.qa?.length){ el.innerHTML='<div class="empty"><p>Soru-cevap yok.</p></div>'; return; }
-  el.innerHTML = chatbotData.qa.map((qa,i) => `
-    <div class="qa-row">
-      <div style="flex:1"><div style="font-size:10px;color:var(--text3);font-family:'JetBrains Mono',monospace;margin-bottom:4px">ANAHTAR KELİME</div><input value="${escHtml(qa.q)}" placeholder="hakkında" oninput="chatbotData.qa[${i}].q=this.value"></div>
-      <div style="flex:2"><div style="font-size:10px;color:var(--text3);font-family:'JetBrains Mono',monospace;margin-bottom:4px">CEVAP</div><input value="${escHtml(qa.a)}" placeholder="Cevap..." oninput="chatbotData.qa[${i}].a=this.value"></div>
-      <button class="btn btn-sm btn-danger btn-icon" style="margin-top:18px" onclick="chatbotData.qa.splice(${i},1);renderQAList()">×</button>
-    </div>`).join('');
-}
-function addQA(){ chatbotData.qa.push({q:'',a:''}); renderQAList(); }
-async function saveChatbot(){
-  chatbotData.name=val('botName'); chatbotData.greeting=val('botGreeting'); chatbotData.suggestions=val('botSuggestions');
-  localStorage.setItem('ka_chatbot',JSON.stringify(chatbotData));
-  try{ await saveSettingToSupabase('chatbot',chatbotData); showToast('Chatbot kaydedildi! ✅'); }
-  catch(e){ showToast('Supabase hatası: '+e.message,'error'); }
-}
-
-// ═══════════════════════════════════════════════════
-// SEO
-// ═══════════════════════════════════════════════════
-async function loadSEO(){
-  try{
-    const r = await loadSettingFromSupabase('seo');
-    if(r){
-      ['seoTitle','seoDesc','seoKeywords','seoOgImage','seoUrl','seoTwitter','seoGaId'].forEach((id,idx)=>{ const key=['title','desc','keywords','ogImage','url','twitter','gaId'][idx]; const el=getEl(id); if(el&&r[key]) el.value=r[key]; });
-      const setTog=(id,v)=>{const el=getEl(id);if(el){if(v)el.classList.add('on');else el.classList.remove('on');}};
-      setTog('tog-index',r.index!==false); setTog('tog-sitemap',r.sitemap!==false);
-      updateSeoPreview();
-    }
-  } catch(e){}
-}
-async function saveSEO(){
-  const s={title:val('seoTitle'),desc:getEl('seoDesc').value,keywords:val('seoKeywords'),ogImage:val('seoOgImage'),url:val('seoUrl'),twitter:val('seoTwitter'),gaId:val('seoGaId'),index:getEl('tog-index').classList.contains('on'),sitemap:getEl('tog-sitemap').classList.contains('on')};
-  try{ await saveSettingToSupabase('seo',s); showToast('SEO ayarları kaydedildi! ✅'); }
-  catch(e){ showToast('Supabase hatası: '+e.message,'error'); }
-}
-
-// ═══════════════════════════════════════════════════
-// THEME & SITE
-// ═══════════════════════════════════════════════════
-async function loadSiteSettings(){
-  try{
-    const r = await loadSettingFromSupabase('site_settings');
-    if(r){
-      const S=['siteAuthor','siteRole','siteHeroBio','siteTags','siteHeroCta1','siteHeroCta1Link','siteHeroCta2','siteHeroCta2Link','siteFooter','siteFooterLinks'];
-      const K=['author','role','heroBio','tags','heroCta1','heroCta1Link','heroCta2','heroCta2Link','footer','footerLinks'];
-      S.forEach((id,i)=>{ const el=getEl(id); if(el&&r[K[i]]) el.value=r[K[i]]; });
-      if(r.colorAccent){getEl('colorAccent').value=r.colorAccent;getEl('colorAccentHex').value=r.colorAccent;}
-      if(r.colorAccent2){getEl('colorAccent2').value=r.colorAccent2;getEl('colorAccent2Hex').value=r.colorAccent2;}
-      if(r.defaultTheme) getEl('defaultTheme').value=r.defaultTheme;
-    }
-  } catch(e){}
-}
-async function saveSiteSettings(){
-  const s={author:val('siteAuthor'),role:val('siteRole'),heroBio:getEl('siteHeroBio').value,tags:val('siteTags'),colorAccent:getEl('colorAccent').value,colorAccent2:getEl('colorAccent2').value,defaultTheme:getEl('defaultTheme').value,heroCta1:val('siteHeroCta1'),heroCta1Link:val('siteHeroCta1Link'),heroCta2:val('siteHeroCta2'),heroCta2Link:val('siteHeroCta2Link'),footer:val('siteFooter'),footerLinks:val('siteFooterLinks')};
-  localStorage.setItem('ka_site_settings',JSON.stringify(s));
-  try{ await saveSettingToSupabase('site_settings',s); showToast('Site ayarları kaydedildi! ✅'); }
-  catch(e){ showToast('Supabase hatası: '+e.message,'error'); }
-}
-
-// ═══════════════════════════════════════════════════
-// SETTINGS
-// ═══════════════════════════════════════════════════
-async function loadSettingsPanel(){
-  getEl('sbUrl').textContent = SUPABASE_URL;
-  try{
-    const r = await loadSettingFromSupabase('app_settings');
-    if(r){
-      const setT=(id,v)=>{const el=getEl(id);if(!el)return;if(v||v===undefined)el.classList.add('on');else el.classList.remove('on');};
-      setT('tog-comments',r.comments!==false); setT('tog-contact',r.contact!==false);
-      setT('tog-bot',r.bot!==false); setT('tog-moderation',r.moderation!==false);
-      setT('tog-readmode',r.readmode!==false); setT('tog-lang',r.lang!==false);
-      setT('tog-notif-comment',r.notifComment!==false); setT('tog-notif-msg',r.notifMsg!==false);
-      if(r.notifEmail) getEl('notifEmail').value=r.notifEmail;
-    }
-  } catch(e){}
-}
-async function saveSettings(){
-  const isOn = id => getEl(id)?.classList.contains('on')??true;
-  const s={comments:isOn('tog-comments'),contact:isOn('tog-contact'),bot:isOn('tog-bot'),moderation:isOn('tog-moderation'),readmode:isOn('tog-readmode'),lang:isOn('tog-lang'),notifComment:isOn('tog-notif-comment'),notifMsg:isOn('tog-notif-msg'),notifEmail:val('notifEmail')};
-  localStorage.setItem('ka_settings',JSON.stringify(s));
-  try{ await saveSettingToSupabase('app_settings',s); showToast('Ayarlar kaydedildi! ✅'); }
-  catch(e){ showToast('Supabase hatası: '+e.message,'error'); }
-}
-function checkSBStatus(){
-  const el = getEl('sbStatus'); if(el) el.innerHTML = '<span style="color:var(--text3)">Test ediliyor...</span>';
-  db.from('posts').select('id').limit(1).then(({error}) => {
-    if(el) el.innerHTML = error ? `<span style="color:var(--red)">❌ ${error.message}</span>` : '<span style="color:var(--green)">✅ Bağlantı başarılı</span>';
-  });
-}
-
-// ═══════════════════════════════════════════════════
-// INIT
-// ═══════════════════════════════════════════════════
-document.addEventListener('DOMContentLoaded', () => {
-  db.auth.getSession().then(({data:{session}}) => { if(session){ adminUser=session.user; showApp(); } });
-  db.auth.onAuthStateChange((event,session) => { adminUser=session?.user||null; });
-});
+SCRIPT_PLACEHOLDER
 </script>
 </body>
 </html>
+
+
+
+
+
