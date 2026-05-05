@@ -1,177 +1,7 @@
-
-
 <!DOCTYPE html>
 <html lang="tr" data-theme="dark">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0a0c12">
-<meta name="description" content="Kerem Akbayır – Senior Software Engineer">
-<title>Kerem Akbayır – Senior Software Engineer</title>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#0a0c12;--bg2:#0f1117;--bg3:#141720;--bg4:#1a1e2a;
-  --accent:#6366f1;--accent2:#8b5cf6;--accent3:#06b6d4;
-  --green:#10b981;--red:#ef4444;--orange:#f59e0b;--pink:#ec4899;
-  --text:#f1f5f9;--text2:#94a3b8;--text3:#475569;
-  --border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.12);
-  --card:#111318;--card2:#161a24;
-  --shadow:0 4px 24px rgba(0,0,
-Claude's response was interrupted
-You said: he bide mesaj yanıtlma çalışıyortmu onda bak ve yaop
-he bide mesaj yanıtlma çalışıyortmu onda bak ve yaop
-
-22:36
-Claude responded: Kodunuza bakıyorum — mesaj yanıtlama (reply) fonksiyonu admin panelinde sadece console.
-Kodunuza bakıyorum — mesaj yanıtlama (reply) fonksiyonu admin panelinde sadece console.log yapıyor, gerçekten e-posta göndermiyor. Supabase'in e-posta gönderme özelliği yok, ama Resend veya EmailJS ile çözebiliriz.
-
-En kolay yol: EmailJS (ücretsiz, kurulum 5 dakika).
-
-You said: Q: Yanıt e-postasını nasıl göndermek istersiniz?
-Q: Yanıt e-postasını nasıl göndermek istersiniz?
-A: EmailJS (ücretsiz, kolay kurulum)
-
-22:37
-Claude responded: EmailJS kurulumu ve admin paneline entegrasyonu yapıyorum.
-EmailJS kurulumu ve admin paneline entegrasyonu yapıyorum. Önce EmailJS'de hesap açmanız gerekiyor:
-
-1. https://emailjs.com → Sign Up (ücretsiz) 2. Email Services → Add New Service → Gmail seçin → bağlayın 3. Email Templates → Create New Template
-
-Template içeriği şöyle olsun:
-
-Konu: Re: {{subject}}
-İçerik:
-Merhaba {{to_name}},
-
-{{message}}
-
----
-Kerem Akbayır
-Template değişkenleri: to_name, to_email, subject, message
-
-4. Account → API Keys → Public Key'i kopyalayın
-
-Şimdi admin panelini düzenliyorum:
-
-
-Admin panelinde mevcut reply kodunu kontrol et
-Admin panelinde mevcut reply kodunu kontrol et
-Admin
-
-Claude's response was interrupted
-You said: ya ano sonra yaparız sen yanıtlamayı kaldır ve kodu düzenle ve ne yaptığınıda söyle
-ya ano  sonra yaparız sen yanıtlamayı kaldır ve kodu düzenle ve ne yaptığınıda söyle
-
-22:37
-Claude responded: Admin panelindeki mesaj yanıtlama butonunu ve modal'ı kaldırıp temiz bir versiyon oluşturuyorum: Admin paneli kodunu (document index=1) alıp düzenleyerek tam d…
-Admin panelindeki mesaj yanıtlama butonunu ve modal'ı kaldırıp temiz bir versiyon oluşturuyorum:
-
-
-Dosya kontrol
-Dosya kontrol
-Admin paneli kodunu (document index=1) alıp düzenleyerek tam dosya oluşturuyorum:
-
-
-Admin paneli - reply kaldırıldı, temizlendi
-Admin paneli - reply kaldırıldı, temizlendi
-
-Admin paneli - reply kaldırıldı, temizlendi
-html
-
-<!DOCTYPE html>
-<html lang="tr" data-theme="dark">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Panel – Kerem Akbayır</title>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
-<script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#0a0c12;--bg2:#0f1117;--bg3:#141720;--bg4:#1a1e2a;
-  --accent:#6366f1;--accent2:#8b5cf6;--accent3:#06b6d4;
-  --green:#10b981;--red:#ef4444;--orange:#f59e0b;--pink:#ec4899;
-  --text:#f1f5f9;--text2:#94a3b8;--text3:#475569;
-  --border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.12);
-  --card:#111318;--card2:#161a24;
-  --shadow:0 4px 24px rgba(0,0,0,0.4);
-  --sidebar-w:240px;
-}
-[data-theme="light"]{
-  --bg:#f8fafc;--bg2:#ffffff;--bg3:#f1f5f9;--bg4:#e2e8f0;
-  --text:#0f172a;--text2:#475569;--text3:#94a3b8;
-  --border:rgba(0,0,0,0.07);--border2:rgba(0,0,0,0.13);
-  --card:#ffffff;--card2:#f8fafc;
-  --shadow:0 4px 24px rgba(0,0,0,0.08);
-}
-body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex}
-a{color:inherit;text-decoration:none}
-button,input,textarea,select{font-family:'Sora',sans-serif}
-button{cursor:pointer}
-
-.ql-toolbar{background:var(--bg3)!important;border:1px solid var(--border2)!important;border-radius:9px 9px 0 0!important}
-.ql-container{background:var(--bg3)!important;border:1px solid var(--border2)!important;border-top:none!important;border-radius:0 0 9px 9px!important}
-.ql-editor{color:var(--text)!important;font-family:'Sora',sans-serif!important;font-size:13px!important;min-height:220px}
-.ql-stroke{stroke:var(--text2)!important}
-.ql-fill{fill:var(--text2)!important}
-.ql-picker-label{color:var(--text2)!important}
-.ql-picker-options{background:var(--card)!important;border:1px solid var(--border2)!important;border-radius:8px!important}
-.ql-picker-item{color:var(--text)!important}
-[data-theme="light"] .ql-toolbar{background:#f1f5f9!important}
-[data-theme="light"] .ql-container{background:#fff!important}
-
-.login-page{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:var(--bg);z-index:9999}
-.login-page.hidden{display:none}
-.login-card{width:400px;max-width:90vw;background:var(--card);border:1px solid var(--border2);border-radius:20px;padding:44px 40px;position:relative;overflow:hidden}
-.login-card::before{content:'';position:absolute;top:-60px;right:-60px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(99,102,241,0.15),transparent 70%)}
-.login-logo{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--text3);margin-bottom:32px;display:flex;align-items:center;gap:8px}
-.login-logo span{color:var(--accent)}
-.login-card h1{font-size:24px;font-weight:700;margin-bottom:6px;letter-spacing:-.5px}
-.login-card p{font-size:13px;color:var(--text2);margin-bottom:28px}
-.login-field{margin-bottom:14px}
-.login-field label{display:block;font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:6px}
-.login-field input{width:100%;background:var(--bg
-Claude's response was interrupted
-You said: bunaları ekelemi unutma
-
-// ============================================================ // SUPABASE // ============================================================ const SUPABASE_URL='https://rnroiajlmjudwgoacsjw.supabase.co'; const SUPABASE_KEY='sb_publishable_GpoMQnpHtrxQKMTjO9Z7iQ_7fC56-tc'; const{createClient}=sup
-
-pasted
-
-bunaları ekelemi unutma
-
-22:38
-Claude responded: Tamam, hem admin panelini (reply kaldırılmış) hem de web sitesini (tüm düzeltmeler + document 3'teki script) tam olarak oluşturuyorum: Önce web sitesi (index.
-Tamam, hem admin panelini (reply kaldırılmış) hem de web sitesini (tüm düzeltmeler + document 3'teki script) tam olarak oluşturuyorum:
-
-
-Mevcut dosyaları kontrol et
-Mevcut dosyaları kontrol et
-
-Mevcut dosyaları kontrol et
-
-Script
-Done
-Önce web sitesi (index.html) — document 2'nin HTML'i + document 3'teki script:
-
-
-Web sitesi HTML şablonunu oluştur
-Web sitesi HTML şablonunu oluştur
-
-Web sitesi HTML şablonunu oluştur
-bash
-
-cat > /mnt/user-data/outputs/index.html << 'HTMLEOF'
-<!DOCTYPE html>
-<html lang="tr" data-theme="dark">
-<head>
+  <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0a0c12">
@@ -201,6 +31,8 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 a{color:inherit;text-decoration:none}
 button{font-family:'Sora',sans-serif;cursor:pointer}
 input,textarea,select{font-family:'Sora',sans-serif}
+ 
+/* ===== NAV ===== */
 nav{position:sticky;top:0;z-index:200;background:rgba(10,12,18,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 2rem;display:flex;align-items:center;justify-content:space-between;height:60px}
 [data-theme="light"] nav{background:rgba(248,250,252,0.92)}
 .nav-brand{font-family:'JetBrains Mono',monospace;font-size:14px;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:8px}
@@ -214,6 +46,8 @@ nav{position:sticky;top:0;z-index:200;background:rgba(10,12,18,0.92);backdrop-fi
 .nav-btn:hover{border-color:var(--border2);color:var(--text)}
 .nav-icon-btn{width:34px;padding:0}
 .lang-btn{font-family:'JetBrains Mono',monospace;font-size:11px}
+ 
+/* ===== SEARCH ===== */
 .search-overlay{position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);display:none;align-items:flex-start;justify-content:center;padding-top:14vh}
 .search-overlay.show{display:flex}
 .search-box{background:var(--bg2);border:1px solid var(--border2);border-radius:16px;width:560px;max-width:90vw;overflow:hidden;box-shadow:var(--shadow)}
@@ -225,8 +59,12 @@ nav{position:sticky;top:0;z-index:200;background:rgba(10,12,18,0.92);backdrop-fi
 .search-item-title{font-size:13px;font-weight:500}
 .search-item-meta{font-size:11px;color:var(--text3);font-family:'JetBrains Mono',monospace}
 .search-empty{text-align:center;padding:28px;color:var(--text3);font-size:13px}
+ 
+/* ===== PAGES ===== */
 .page{display:none;min-height:100vh}
 .page.active{display:block}
+ 
+/* ===== HERO ===== */
 .hero{padding:64px 2rem 52px;max-width:900px;margin:0 auto;display:flex;gap:48px;align-items:center}
 .hero-avatar{width:88px;height:88px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:26px;font-weight:700;color:#fff;flex-shrink:0;box-shadow:0 0 0 3px rgba(99,102,241,0.25),0 0 0 7px rgba(99,102,241,0.08)}
 .hero-content h1{font-size:28px;font-weight:700;letter-spacing:-.7px;margin-bottom:3px}
@@ -236,6 +74,8 @@ nav{position:sticky;top:0;z-index:200;background:rgba(10,12,18,0.92);backdrop-fi
 .hero-tags{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}
 .tag{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text3);background:var(--bg3);border:1px solid var(--border);padding:4px 10px;border-radius:5px}
 .hero-btns{display:flex;gap:8px;margin-top:18px;flex-wrap:wrap}
+ 
+/* ===== BUTTONS ===== */
 .btn{font-size:13px;font-weight:500;padding:8px 18px;border-radius:8px;border:1px solid var(--border);cursor:pointer;transition:all .15s;background:transparent;color:var(--text2)}
 .btn-primary{background:var(--accent);color:#fff;border-color:var(--accent)}
 .btn-primary:hover{filter:brightness(1.1);transform:translateY(-1px)}
@@ -243,10 +83,14 @@ nav{position:sticky;top:0;z-index:200;background:rgba(10,12,18,0.92);backdrop-fi
 .btn-sm{padding:5px 12px;font-size:11px;border-radius:6px}
 .btn-success{color:var(--green);border-color:rgba(16,185,129,0.25);background:rgba(16,185,129,0.08)}
 .btn-danger{color:var(--red);border-color:rgba(239,68,68,0.25);background:rgba(239,68,68,0.08)}
+ 
+/* ===== CONTAINER ===== */
 .container{max-width:900px;margin:0 auto;padding:0 2rem 80px}
 .section-head{display:flex;align-items:center;gap:14px;margin-bottom:20px}
 .section-title{font-size:10px;font-weight:600;font-family:'JetBrains Mono',monospace;color:var(--text3);letter-spacing:1.8px;text-transform:uppercase;white-space:nowrap}
 .section-line{flex:1;height:1px;background:var(--border)}
+ 
+/* ===== CARDS ===== */
 .card{background:var(--card);border:1px solid var(--border);border-radius:14px}
 .featured-card{display:flex;overflow:hidden;margin-bottom:32px;cursor:pointer;transition:border-color .2s,transform .2s,box-shadow .2s}
 .featured-card:hover{border-color:rgba(99,102,241,0.4);transform:translateY(-2px);box-shadow:var(--shadow)}
@@ -256,6 +100,8 @@ nav{position:sticky;top:0;z-index:200;background:rgba(10,12,18,0.92);backdrop-fi
 .featured-body p{font-size:13px;color:var(--text2);line-height:1.75;margin-bottom:12px}
 .post-meta{font-size:11px;color:var(--text3);font-family:'JetBrains Mono',monospace;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .meta-dot{width:3px;height:3px;border-radius:50%;background:var(--text3)}
+ 
+/* ===== BADGE ===== */
 .badge{display:inline-flex;align-items:center;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:600;padding:3px 8px;border-radius:5px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
 .badge-default{color:var(--accent);background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.25)}
 .badge-purple{color:var(--accent2);background:rgba(139,92,246,0.1);border:1px solid rgba(139,92,246,0.25)}
@@ -263,6 +109,8 @@ nav{position:sticky;top:0;z-index:200;background:rgba(10,12,18,0.92);backdrop-fi
 .badge-orange{color:var(--orange);background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2)}
 .badge-cyan{color:var(--accent3);background:rgba(6,182,212,0.1);border:1px solid rgba(6,182,212,0.2)}
 .badge-red{color:var(--red);background:rgba(239,68,68,0.1);border:1px solid rgba(239,68,68,0.2)}
+ 
+/* ===== POSTS GRID ===== */
 .posts-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 .post-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px 20px;cursor:pointer;transition:border-color .2s,transform .2s,box-shadow .2s}
 .post-card:hover{border-color:rgba(99,102,241,0.35);transform:translateY(-2px);box-shadow:var(--shadow)}
@@ -271,17 +119,23 @@ nav{position:sticky;top:0;z-index:200;background:rgba(10,12,18,0.92);backdrop-fi
 .post-card .post-meta{margin-top:12px}
 .view-all{display:inline-flex;align-items:center;gap:7px;margin-top:18px;font-size:13px;color:var(--accent);font-weight:500;cursor:pointer;transition:gap .15s}
 .view-all:hover{gap:12px}
+ 
+/* ===== TOOLS GRID ===== */
 .tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
 .tool-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 16px;display:flex;align-items:center;gap:11px;cursor:pointer;transition:border-color .2s,transform .15s}
 .tool-card:hover{border-color:rgba(99,102,241,0.35);transform:translateY(-1px)}
 .tool-icon{width:34px;height:34px;border-radius:8px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
 .tool-name{font-size:12.5px;font-weight:500}
 .tool-desc{font-size:11px;color:var(--text3);margin-top:2px}
+ 
+/* ===== FOOTER ===== */
 footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}
 .footer-copy{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text3)}
 .footer-links{display:flex;gap:14px}
 .footer-links a{font-size:12px;color:var(--text3);cursor:pointer;transition:color .15s}
 .footer-links a:hover{color:var(--text2)}
+ 
+/* ===== BLOG DETAIL ===== */
 .detail-wrap{max-width:740px;margin:0 auto;padding:0 2rem 80px}
 .detail-back{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--text3);margin-bottom:24px;cursor:pointer;padding:10px 0;transition:color .15s}
 .detail-back:hover{color:var(--accent)}
@@ -317,6 +171,8 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
 .related-card{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px;cursor:pointer;transition:all .15s}
 .related-card:hover{border-color:rgba(99,102,241,0.35);transform:translateY(-1px)}
 .related-card-title{font-size:12.5px;font-weight:500;line-height:1.4;margin-top:5px}
+ 
+/* ===== COMMENTS ===== */
 .comments-wrap{margin-top:6px}
 .comments-wrap h3{font-size:16px;font-weight:600;margin-bottom:18px}
 .comment-form{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:24px}
@@ -340,6 +196,8 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
 .comment-text{font-size:13px;color:var(--text2);line-height:1.7}
 .no-comments{text-align:center;padding:28px;color:var(--text3);font-size:13px}
 .comment-cooldown{text-align:center;padding:14px;background:rgba(239,68,68,0.07);border:1px solid rgba(239,68,68,0.2);border-radius:9px;font-size:12px;color:var(--red);font-family:'JetBrains Mono',monospace}
+ 
+/* ===== ABOUT ===== */
 .about-grid{display:grid;grid-template-columns:250px 1fr;gap:28px;align-items:start}
 .about-sidebar-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px 18px;text-align:center;position:sticky;top:76px}
 .about-av{width:68px;height:68px;border-radius:50%;margin:0 auto 10px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;color:#fff}
@@ -361,6 +219,8 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
 .exp-company{font-size:11px;color:var(--accent);font-family:'JetBrains Mono',monospace;margin:2px 0}
 .exp-date{font-size:10px;color:var(--text3);font-family:'JetBrains Mono',monospace;margin-bottom:5px}
 .exp-desc{font-size:12px;color:var(--text2);line-height:1.65}
+ 
+/* ===== BLOG PAGE ===== */
 .filter-row{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:20px}
 .filter-btn{font-size:11px;padding:5px 13px;border-radius:6px;border:1px solid var(--border);background:transparent;color:var(--text2);cursor:pointer;transition:all .15s}
 .filter-btn:hover,.filter-btn.active{background:rgba(99,102,241,0.1);color:var(--accent);border-color:rgba(99,102,241,0.3)}
@@ -372,6 +232,8 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
 .blog-body h3{font-size:13px;font-weight:600;margin:6px 0;line-height:1.45}
 .blog-body p{font-size:11.5px;color:var(--text2);line-height:1.65}
 .blog-body .post-meta{margin-top:9px}
+ 
+/* ===== PROJECTS ===== */
 .projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 .proj-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px 20px;transition:border-color .2s,transform .2s;cursor:pointer}
 .proj-card:hover{border-color:rgba(99,102,241,0.35);transform:translateY(-2px)}
@@ -383,6 +245,8 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
 .proj-links{display:flex;gap:6px;margin-top:10px}
 .proj-link{font-size:11px;color:var(--accent);border:1px solid rgba(99,102,241,0.25);border-radius:5px;padding:4px 9px;transition:all .15s;cursor:pointer}
 .proj-link:hover{background:rgba(99,102,241,0.1)}
+ 
+/* ===== CONTACT ===== */
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
 .contact-info h2{font-size:20px;font-weight:600;margin-bottom:9px;letter-spacing:-.4px}
 .contact-info p{font-size:13.5px;color:var(--text2);line-height:1.8;margin-bottom:20px}
@@ -400,6 +264,8 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
 .contact-form-card textarea{min-height:96px;resize:vertical}
 .form-submit{width:100%;padding:10px;background:var(--accent);color:#fff;border:none;border-radius:8px;font-size:13.5px;font-weight:500;cursor:pointer;transition:filter .15s}
 .form-submit:hover{filter:brightness(1.1)}
+ 
+/* ===== TOOLS ===== */
 .tools-page-grid{display:grid;grid-template-columns:220px 1fr;gap:20px}
 .tools-sidebar{display:flex;flex-direction:column;gap:4px;position:sticky;top:76px}
 .tnav-btn{display:flex;align-items:center;gap:9px;padding:9px 12px;border-radius:9px;border:1px solid transparent;background:transparent;color:var(--text2);cursor:pointer;font-size:12.5px;transition:all .15s;text-align:left;width:100%}
@@ -426,9 +292,13 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
 .diff-added{background:rgba(16,185,129,0.13);color:var(--green)}
 .diff-removed{background:rgba(239,68,68,0.13);color:var(--red);text-decoration:line-through}
 .diff-line{padding:2px 8px;border-radius:3px;margin:1px 0;font-size:12px;font-family:'JetBrains Mono',monospace}
+ 
+/* ===== PAGE HEADER ===== */
 .page-header{padding:44px 2rem 32px;max-width:900px;margin:0 auto}
 .page-header h1{font-size:24px;font-weight:700;letter-spacing:-.5px;margin-bottom:4px}
 .page-header p{font-size:13.5px;color:var(--text2)}
+ 
+/* ===== CHATBOT ===== */
 #chatBtn{position:fixed;bottom:80px;right:24px;width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));border:none;color:#fff;font-size:20px;cursor:pointer;z-index:790;box-shadow:0 4px 20px rgba(99,102,241,0.5);display:flex;align-items:center;justify-content:center;transition:transform .2s}
 #chatBtn:hover{transform:scale(1.08)}
 #chatBtn .notif-dot{position:absolute;top:-2px;right:-2px;width:11px;height:11px;border-radius:50%;background:var(--red);border:2px solid var(--bg)}
@@ -455,6 +325,8 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
 .chat-input-row input{flex:1;background:var(--bg3);border:1px solid var(--border2);border-radius:8px;padding:8px 11px;color:var(--text);font-size:12.5px;outline:none;transition:border-color .15s}
 .chat-input-row input:focus{border-color:rgba(99,102,241,0.5)}
 .chat-send{width:34px;height:34px;border-radius:8px;background:var(--accent);border:none;color:#fff;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+ 
+/* ===== READING MODE ===== */
 .reading-overlay{display:none;position:fixed;inset:0;z-index:5000;background:var(--bg);overflow-y:auto}
 .reading-overlay.show{display:block}
 .reading-inner{max-width:660px;margin:0 auto;padding:56px 2rem 100px}
@@ -464,21 +336,31 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
 .reading-font-btn{width:30px;height:30px;border-radius:6px;background:var(--bg3);border:1px solid var(--border);cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;color:var(--text2)}
 .reading-close{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:6px 14px;font-size:12.5px;cursor:pointer;color:var(--text2)}
 .reading-close:hover{color:var(--text)}
+ 
+/* ===== SCROLL TOP ===== */
 #scrollTopBtn{position:fixed;bottom:24px;right:24px;width:40px;height:40px;border-radius:50%;background:var(--accent);border:none;color:#fff;font-size:16px;cursor:pointer;opacity:0;transform:translateY(8px);transition:all .3s;z-index:800;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(99,102,241,0.4)}
 #scrollTopBtn.show{opacity:1;transform:translateY(0)}
 #scrollTopBtn:hover{transform:translateY(-2px)}
+ 
+/* ===== READING PROGRESS ===== */
 #readProgress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));width:0%;z-index:9999;display:none}
+ 
+/* ===== TOAST ===== */
 .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(8px);z-index:9999;background:var(--bg2);border:1px solid var(--border2);border-radius:10px;padding:11px 16px;font-size:13px;display:flex;align-items:center;gap:8px;opacity:0;transition:all .3s;pointer-events:none;box-shadow:var(--shadow)}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .toast.success{border-color:rgba(16,185,129,0.4)}
 .toast.error{border-color:rgba(239,68,68,0.4)}
+ 
+/* ===== EMPTY ===== */
 .empty{text-align:center;padding:40px 20px;color:var(--text3)}
 .empty-icon{font-size:34px;margin-bottom:8px}
 .empty p{font-size:13px}
+ 
 @keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
 .fade-in{animation:fadeIn .25s ease forwards}
 @keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
 .spin{animation:spin 1s linear infinite;display:inline-block}
+ 
 @media(max-width:768px){
   .hero{flex-direction:column;gap:20px;padding:36px 1.2rem 32px}
   nav{padding:0 1.2rem}
@@ -497,12 +379,15 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
   footer{padding:18px 1.2rem;flex-direction:column;gap:10px;text-align:center}
 }
 </style>
+<!-- Google tag -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EJPS2SY5Q3"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EJPS2SY5Q3');</script>
 </head>
 <body>
+ 
 <div id="readProgress"></div>
 <button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+ 
 <nav id="mainNav">
   <div class="nav-brand" onclick="showPage('home')"><span class="dot"></span><span style="font-family:'JetBrains Mono',monospace">kerem<span style="color:var(--accent)">.</span>akbayır</span></div>
   <div class="nav-links">
@@ -519,6 +404,8 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
     <div class="nav-btn nav-icon-btn" onclick="toggleTheme()" id="themeBtn">🌙</div>
   </div>
 </nav>
+ 
+<!-- SEARCH -->
 <div class="search-overlay" id="searchOverlay" onclick="closeSearch(event)">
   <div class="search-box">
     <div class="search-input-row">
@@ -528,6 +415,7 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
     <div class="search-results" id="searchResults"><div class="search-empty">Aramak istediğinizi yazın...</div></div>
   </div>
 </div>
+ 
 <!-- HOME -->
 <div class="page active" id="homePage">
   <div class="hero">
@@ -539,7 +427,7 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
       <div class="hero-tags" id="heroTags">
         <span class="tag">.NET</span><span class="tag">Azure</span><span class="tag">Microservices</span><span class="tag">PostgreSQL</span><span class="tag">AI/LLM</span>
       </div>
-      <div class="hero-btns" id="heroBtns">
+      <div class="hero-btns">
         <button class="btn btn-primary" onclick="showPage('about')">Hakkımda →</button>
         <button class="btn btn-ghost" onclick="showPage('blog')">Blog</button>
         <button class="btn btn-ghost" onclick="showPage('projects')">Projeler</button>
@@ -565,6 +453,7 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
   </div>
   <footer><div class="footer-copy">© 2025–2026 Kerem Akbayır</div><div class="footer-links"><a onclick="showPage('about')">Hakkımda</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('projects')">Projeler</a><a onclick="showPage('contact')">İletişim</a></div></footer>
 </div>
+ 
 <!-- ABOUT -->
 <div class="page" id="aboutPage">
   <div class="page-header"><h1>Hakkımda</h1><p>Yazılım geliştirici, blog yazarı ve teknoloji meraklısı.</p></div>
@@ -584,6 +473,7 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
   </div>
   <footer><div class="footer-copy">© 2025–2026 Kerem Akbayır</div><div class="footer-links"><a onclick="showPage('home')">Ana Sayfa</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('contact')">İletişim</a></div></footer>
 </div>
+ 
 <!-- BLOG -->
 <div class="page" id="blogPage">
   <div class="page-header"><h1>Blog</h1><p>Yazılım, mimari ve teknoloji üzerine düşünceler.</p></div>
@@ -593,6 +483,7 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
   </div>
   <footer><div class="footer-copy">© 2025–2026 Kerem Akbayır</div></footer>
 </div>
+ 
 <!-- BLOG DETAIL -->
 <div class="page" id="blogDetailPage">
   <div class="detail-wrap">
@@ -600,6 +491,7 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
     <div id="blogDetailContent"></div>
   </div>
 </div>
+ 
 <!-- PROJECTS -->
 <div class="page" id="projectsPage">
   <div class="page-header"><h1>Projeler</h1><p>Geliştirdiğim açık kaynak ve kişisel projeler.</p></div>
@@ -608,6 +500,7 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
   </div>
   <footer><div class="footer-copy">© 2025–2026 Kerem Akbayır</div></footer>
 </div>
+ 
 <!-- TOOLS -->
 <div class="page" id="toolsPage">
   <div class="page-header"><h1>Araçlar 🛠️</h1><p>Geliştirici araçları — hepsi tarayıcıda, ücretsiz.</p></div>
@@ -632,6 +525,7 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
   </div>
   <footer><div class="footer-copy">© 2025–2026 Kerem Akbayır</div></footer>
 </div>
+ 
 <!-- CONTACT -->
 <div class="page" id="contactPage">
   <div class="page-header"><h1>İletişim</h1><p>Sorularınız veya iş birliği teklifleri için.</p></div>
@@ -658,6 +552,7 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
   </div>
   <footer><div class="footer-copy">© 2025–2026 Kerem Akbayır</div></footer>
 </div>
+ 
 <!-- READING MODE -->
 <div class="reading-overlay" id="readingOverlay">
   <div class="reading-inner">
@@ -672,6 +567,7 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
     <div id="readingBody"></div>
   </div>
 </div>
+ 
 <!-- CHATBOT -->
 <button id="chatBtn" onclick="toggleChat()">💬<div class="notif-dot" id="chatDot" style="display:none"></div></button>
 <div class="chat-window" id="chatWindow">
@@ -689,14 +585,437 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
     <button class="chat-send" onclick="sendChat()">→</button>
   </div>
 </div>
+ 
 <div class="toast" id="toast"><span id="toastIcon">✓</span><span id="toastMsg">İşlem tamamlandı.</span></div>
+ 
 <script>
-SCRIPT_PLACEHOLDER
+const SUPABASE_URL='https://rnroiajlmjudwgoacsjw.supabase.co';
+const SUPABASE_KEY='sb_publishable_GpoMQnpHtrxQKMTjO9Z7iQ_7fC56-tc';
+const{createClient}=supabase;
+const db=createClient(SUPABASE_URL,SUPABASE_KEY);
+ 
+let allPosts=[],allProjects=[],currentPostId=null;
+let currentLang=localStorage.getItem('ka_lang')||'tr';
+let isDark=localStorage.getItem('ka_theme')!=='light';
+let readFontSize=16;
+let chatHistory=[];
+let _capA=0,_capB=0,_capAns=0;
+ 
+const BASE_LIKES={1:23,2:17,3:31,4:8,5:14,6:6};
+ 
+const catColors={'DevOps':'','Software Architecture':'badge-purple','C#':'badge-orange','Database':'badge-green','Yapay Zeka':'badge-purple','Design Patterns':'badge-cyan','Bilgi Güvenliği':'badge-red','Genel':''};
+function catBadge(c){return`<span class="badge ${catColors[c]||'badge-default'}">${c||'Genel'}</span>`;}
+function fmtDate(s){if(!s)return'';const d=new Date(s);const m=['Oca','Şub','Mar','Nis','May','Haz','Tem','Ağu','Eyl','Eki','Kas','Ara'];return`${d.getDate()} ${m[d.getMonth()]} ${d.getFullYear()}`;}
+function readTime(c){return Math.max(1,Math.ceil((c||'').replace(/<[^>]+>/g,' ').trim().split(/\s+/).filter(Boolean).length/200));}
+function wordCount(c){return(c||'').replace(/<[^>]+>/g,' ').trim().split(/\s+/).filter(Boolean).length;}
+function initials(n){return(n||'??').split(' ').map(w=>w[0]).join('').substring(0,2).toUpperCase();}
+function escHtml(t){return(t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function showToast(msg,type='success'){const t=document.getElementById('toast');document.getElementById('toastIcon').textContent=type==='error'?'✕':'✓';document.getElementById('toastMsg').textContent=msg;t.className='toast '+type+' show';setTimeout(()=>t.classList.remove('show'),3000);}
+ 
+// THEME & LANG
+document.documentElement.setAttribute('data-theme',isDark?'dark':'light');
+function toggleTheme(){isDark=!isDark;document.documentElement.setAttribute('data-theme',isDark?'dark':'light');const b=document.getElementById('themeBtn');if(b)b.textContent=isDark?'🌙':'☀️';localStorage.setItem('ka_theme',isDark?'dark':'light');}
+function applyLang(){const lb=document.getElementById('langBtn');if(lb)lb.textContent=currentLang==='en'?'TR':'EN';}
+function toggleLang(){currentLang=currentLang==='tr'?'en':'tr';localStorage.setItem('ka_lang',currentLang);applyLang();}
+ 
+// SCROLL
+window.addEventListener('scroll',()=>{
+  const sb=document.getElementById('scrollTopBtn');
+  if(sb)sb.classList.toggle('show',window.scrollY>300);
+  const rp=document.getElementById('readProgress');
+  const isDetail=document.getElementById('blogDetailPage')?.classList.contains('active');
+  if(rp){if(isDetail){rp.style.display='block';const h=document.documentElement.scrollHeight-window.innerHeight;rp.style.width=(h>0?window.scrollY/h*100:0)+'%';}else rp.style.display='none';}
+});
+ 
+// SEARCH
+function openSearch(){document.getElementById('searchOverlay').classList.add('show');setTimeout(()=>document.getElementById('searchInput').focus(),50);}
+function closeSearch(e){if(!e||e.target===document.getElementById('searchOverlay')){document.getElementById('searchOverlay').classList.remove('show');document.getElementById('searchInput').value='';document.getElementById('searchResults').innerHTML='<div class="search-empty">Aramak istediğinizi yazın...</div>';}}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSearch();if((e.ctrlKey||e.metaKey)&&e.key==='k'){e.preventDefault();openSearch();}});
+function doSearch(q){
+  q=(q||'').toLowerCase().trim();
+  const res=document.getElementById('searchResults');
+  if(!q){res.innerHTML='<div class="search-empty">Aramak istediğinizi yazın...</div>';return;}
+  const posts=allPosts.filter(p=>(p.title||'').toLowerCase().includes(q)||(p.excerpt||'').toLowerCase().includes(q)||(p.category||'').toLowerCase().includes(q));
+  const projs=allProjects.filter(p=>(p.name||'').toLowerCase().includes(q)||(p.desc||'').toLowerCase().includes(q));
+  if(!posts.length&&!projs.length){res.innerHTML='<div class="search-empty">Sonuç bulunamadı.</div>';return;}
+  res.innerHTML=[
+    ...posts.map(p=>`<div class="search-item" onclick="openPost(${p.id});closeSearch()"><span style="font-size:18px">${p.icon||'📝'}</span><div><div class="search-item-title">${p.title}</div><div class="search-item-meta">📝 ${p.category} · ${fmtDate(p.date)}</div></div></div>`),
+    ...projs.map(p=>`<div class="search-item" onclick="showPage('projects');closeSearch()"><span style="font-size:18px">${p.icon}</span><div><div class="search-item-title">${p.name}</div><div class="search-item-meta">📁 Proje</div></div></div>`)
+  ].join('');
+}
+ 
+// PAGES
+function showPage(p){
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(x=>x.classList.remove('active'));
+  const pe=document.getElementById(p+'Page');if(!pe)return;
+  pe.classList.add('active');
+  const n=document.getElementById('nav-'+p);if(n)n.classList.add('active');
+  window.scrollTo(0,0);
+  applyLang();
+  if(p==='home')renderHome();
+  if(p==='about')renderAbout();
+  if(p==='blog')renderBlog();
+  if(p==='projects')renderProjectsPublic();
+  if(p==='tools')initTools();
+}
+ 
+// ============================================================
+// SUPABASE LOADERS
+// ============================================================
+async function loadPosts(){
+  try{const{data,error}=await db.from('posts').select('*').eq('status','published').order('created_at',{ascending:false});if(error)throw error;
+    allPosts=(data||[]).map(p=>({id:p.id,title:p.title,excerpt:p.excerpt||'',content:p.content||'',category:p.category||'Genel',icon:p.icon||'📝',date:p.created_at?p.created_at.split('T')[0]:'',featured:p.featured,comments_enabled:p.comments_enabled!==false}));
+  }catch(e){console.warn('Posts:',e.message);allPosts=[];}
+}
+
+async function loadProjects(){
+  try{const{data,error}=await db.from('projects').select('*').eq('status','active').order('created_at',{ascending:false});if(error)throw error;
+    allProjects=(data||[]).map(p=>({id:p.id,name:p.name,desc:p.description||'',icon:p.icon||'🚀',tech:p.tech||'',github:p.github_url||'',demo:p.demo_url||''}));
+  }catch(e){console.warn('Projects:',e.message);allProjects=[];}
+}
+
+// ============================================================
+// SETTINGS — admin panelinden kaydedilen verileri oku
+// Supabase'deki "settings" tablosundan key=about, key=chatbot,
+// key=site_settings satırlarını çeker.
+// ============================================================
+async function loadSiteSettings(){
+  try{
+    // "settings" tablosundan TÜM satırları çek
+    const{data,error}=await db.from('settings').select('key,value');
+    if(error||!data)return;
+
+    // Her satırı key'e göre ayır
+    const map={};
+    data.forEach(row=>{ map[row.key]=row.value; });
+
+    // --- Hakkımda verisi ---
+    if(map['about']){
+      window._aboutData = map['about'];
+    }
+
+    // --- Chatbot verisi ---
+    if(map['chatbot']){
+      window._chatbotData = map['chatbot'];
+    }
+
+    // --- Site ayarları (hero, isim, unvan, renkler) ---
+    if(map['site_settings']){
+      const s = map['site_settings'];
+
+      // Hero bölümünü güncelle
+      const heroName = document.getElementById('heroName');
+      const heroRole = document.getElementById('heroRole');
+      const heroDesc = document.getElementById('heroDesc');
+      const heroTags = document.getElementById('heroTags');
+      const heroAvatar = document.getElementById('heroAvatar');
+
+      if(heroName && s.author)  heroName.textContent  = s.author;
+      if(heroRole && s.role)    heroRole.textContent   = s.role;
+      if(heroDesc && s.heroBio) heroDesc.textContent   = s.heroBio;
+
+      if(heroTags && s.tags){
+        heroTags.innerHTML = s.tags.split(',')
+          .map(t=>`<span class="tag">${t.trim()}</span>`).join('');
+      }
+
+      // Avatar baş harfleri
+      if(heroAvatar && s.author){
+        heroAvatar.textContent = s.author.split(' ')
+          .map(w=>w[0]).join('').substring(0,2).toUpperCase();
+      }
+
+      // Hakkımda sidebar güncelle
+      const sbn = document.getElementById('aboutSidebarName');
+      const sbr = document.getElementById('aboutSidebarRole');
+      if(sbn && s.author) sbn.textContent = s.author;
+      if(sbr && s.role)   sbr.textContent = s.role;
+
+      // Renk değişkenleri (isteğe bağlı, admin'de kaydedildiyse)
+      if(s.colorAccent){
+        document.documentElement.style.setProperty('--accent', s.colorAccent);
+      }
+      if(s.colorAccent2){
+        document.documentElement.style.setProperty('--accent2', s.colorAccent2);
+      }
+    }
+  }catch(e){
+    console.warn('Settings yüklenemedi:', e.message);
+  }
+}
+
+async function loadComments(postId){
+  try{const{data,error}=await db.from('comments').select('*').eq('post_id',postId).eq('status','approved').order('created_at');if(error)throw error;return(data||[]).map(c=>({id:c.id,author:c.author,email:c.email,text:c.content,date:c.created_at?c.created_at.split('T')[0]:''}));}catch(e){return[];}
+}
+async function saveComment(postId,author,email,text){const{error}=await db.from('comments').insert([{post_id:postId,author,email,content:text,status:'pending'}]);if(error)throw error;}
+async function saveMessage(name,email,subject,body){const{error}=await db.from('messages').insert([{name,email,subject,body}]);if(error)throw error;}
+ 
+// HOME
+function renderHome(){
+  const feat=allPosts.find(p=>p.featured)||allPosts[0];
+  const rest=allPosts.filter(p=>p!==feat).slice(0,6);
+  const fe=document.getElementById('homeFeatured');
+  if(fe&&feat){
+    fe.innerHTML=`<div class="section-head"><span class="section-title">Öne Çıkan</span><div class="section-line"></div></div>
+    <div class="featured-card card" onclick="openPost(${feat.id})">
+      <div class="featured-img">${feat.icon||'📝'}</div>
+      <div class="featured-body">${catBadge(feat.category)}<h2>${feat.title}</h2><p>${feat.excerpt}</p><div class="post-meta">${fmtDate(feat.date)}<span class="meta-dot"></span>${readTime(feat.content)} dk okuma</div></div>
+    </div>`;
+  }else if(fe)fe.innerHTML='';
+  const hg=document.getElementById('homePostsGrid');
+  if(hg){if(!rest.length){hg.innerHTML='<div class="empty" style="grid-column:span 2"><div class="empty-icon">📭</div><p>Henüz yazı yok.</p></div>';return;}
+    hg.innerHTML=rest.map(p=>`<div class="post-card fade-in" onclick="openPost(${p.id})">${catBadge(p.category)}<h3>${p.title}</h3><p>${p.excerpt}</p><div class="post-meta">${fmtDate(p.date)}<span class="meta-dot"></span>${readTime(p.content)} dk</div></div>`).join('');}
+}
+ 
+// BLOG
+function renderBlog(filter){
+  const cats=[...new Set(allPosts.map(p=>p.category))];
+  const bf=document.getElementById('blogFilters');
+  if(bf)bf.innerHTML=`<button class="filter-btn ${!filter?'active':''}" onclick="renderBlog()">Tümü (${allPosts.length})</button>`+cats.map(c=>`<button class="filter-btn ${filter===c?'active':''}" onclick="renderBlog('${c}')">${c}</button>`).join('');
+  const filtered=filter?allPosts.filter(p=>p.category===filter):allPosts;
+  const grid=document.getElementById('blogGrid');if(!grid)return;
+  if(!filtered.length){grid.innerHTML='<div class="empty" style="grid-column:span 2"><div class="empty-icon">📭</div><p>Yazı bulunamadı.</p></div>';return;}
+  grid.innerHTML=filtered.map(p=>`<div class="blog-card fade-in" onclick="openPost(${p.id})">
+    <div class="blog-thumb">${p.icon||'📝'}</div>
+    <div class="blog-body">${catBadge(p.category)}<h3>${p.title}</h3><p>${p.excerpt}</p><div class="post-meta">${fmtDate(p.date)}<span class="meta-dot"></span>${readTime(p.content)} dk</div></div>
+  </div>`).join('');
+}
+ 
+// ABOUT — Supabase'den gelen window._aboutData kullanılıyor
+function renderAbout(){
+  const d=window._aboutData||{
+    bio1:'Merhaba! Ben Kerem Akbayır. 8+ yıldır kurumsal ve startup projelerinde yazılım geliştiriyorum.',
+    bio2:'Kariyerim boyunca fintech, e-ticaret ve SaaS alanlarında yüksek trafikli sistemler tasarladım.',
+    bio3:'Bu blogda öğrendiklerimi ve deneyimlerimi paylaşıyorum.',
+    skills:[{name:'.NET & C#',pct:95},{name:'Azure & AKS',pct:85},{name:'PostgreSQL',pct:80},{name:'Docker',pct:88},{name:'Microservices',pct:82},{name:'AI & LLM',pct:72}],
+    experience:[{title:'Senior Software Engineer',company:'TechCorp A.Ş.',date:'Oca 2022 – Günümüz',desc:'Mikroservis mimarileri, .NET 8, Azure AKS.'},{title:'Software Engineer',company:'Fintech Startup',date:'Mar 2019 – Ara 2021',desc:'Ödeme sistemleri, REST API tasarımı.'},{title:'Junior Developer',company:'Yazılım Evi Ltd.',date:'Haz 2016 – Mar 2019',desc:'ASP.NET MVC, MSSQL, jQuery.'}],
+    social:[{icon:'🐙',name:'GitHub',url:'github.com/keremakbayir',active:true},{icon:'💼',name:'LinkedIn',url:'linkedin.com/in/keremakbayir',active:true},{icon:'🐦',name:'Twitter',url:'@keremakbayir',active:true},{icon:'✍️',name:'Medium',url:'medium.com/@keremakbayir',active:true}]
+  };
+  const ac=document.getElementById('aboutContent');
+  if(ac)ac.innerHTML=`
+    <div class="about-section"><h2>Merhaba! 👋</h2><p>${d.bio1}</p><p>${d.bio2}</p>${d.bio3?`<p>${d.bio3}</p>`:''}</div>
+    <div class="about-section"><h2>Beceriler</h2><div class="skills-grid">${(d.skills||[]).map(s=>`<div class="skill-item"><div class="skill-name">${s.name}</div><div class="skill-bar"><div class="skill-fill" style="width:${s.pct}%"></div></div></div>`).join('')}</div></div>
+    <div class="about-section"><h2>Deneyim</h2>${(d.experience||[]).map(e=>`<div class="exp-item"><div class="exp-title">${e.title}</div><div class="exp-company">${e.company}</div><div class="exp-date">${e.date}</div><div class="exp-desc">${e.desc}</div></div>`).join('')}</div>`;
+  const sl=document.getElementById('aboutSocialLinks');
+  if(sl)sl.innerHTML=(d.social||[]).filter(s=>s.active&&s.url).map(s=>`<div class="social-link">${s.icon} ${s.url}</div>`).join('');
+}
+ 
+// PROJECTS
+function renderProjectsPublic(){
+  const g=document.getElementById('projectsGrid');if(!g)return;
+  if(!allProjects.length){g.innerHTML='<div class="empty" style="grid-column:span 2"><div class="empty-icon">📁</div><p>Henüz proje eklenmedi.</p></div>';return;}
+  g.innerHTML=allProjects.map(p=>`<div class="proj-card fade-in">
+    <div class="proj-head"><span style="font-size:21px">${p.icon}</span><span class="proj-title">${p.name}</span></div>
+    <p class="proj-desc">${p.desc}</p>
+    <div class="proj-tags">${(p.tech||'').split(',').map(t=>`<span class="proj-tag">${t.trim()}</span>`).join('')}</div>
+    <div class="proj-links">${p.github?`<a class="proj-link" href="${p.github}" target="_blank">GitHub →</a>`:''}${p.demo?`<a class="proj-link" href="${p.demo}" target="_blank">Demo →</a>`:''}</div>
+  </div>`).join('');
+}
+ 
+// BLOG DETAIL
+async function openPost(id){
+  const post=allPosts.find(p=>p.id===id);if(!post)return;
+  currentPostId=id;
+  const likes=JSON.parse(localStorage.getItem('ka_likes')||'{}');
+  if(likes['count_'+id]===undefined){likes['count_'+id]=BASE_LIKES[id]||10;localStorage.setItem('ka_likes',JSON.stringify(likes));}
+  const likeCount=likes['count_'+id];
+  const isLiked=likes['liked_'+id]||false;
+  const related=allPosts.filter(p=>p.category===post.category&&p.id!==id).slice(0,2);
+  const comments=await loadComments(id);
+  const h2s=[...post.content.matchAll(/<h2>([^<]+)<\/h2>/g)];
+  const tocHtml=h2s.length>1?`<div class="toc"><div class="toc-label">İçindekiler</div>${h2s.map((m,i)=>`<a onclick="scrollToH2(${i})">${m[1]}</a>`).join('')}</div>`:'';
+  document.getElementById('blogDetailContent').innerHTML=`
+    <div class="detail-header">
+      ${catBadge(post.category)}
+      <h1>${post.title}</h1>
+      <div class="detail-meta-bar">
+        <div class="detail-author"><div class="detail-avatar">KA</div> Kerem Akbayır</div>
+        <span class="post-meta">${fmtDate(post.date)}</span>
+      </div>
+    </div>
+    <div class="stats-bar">
+      <span class="stat-pill">📖 ${readTime(post.content)} dk</span>
+      <span class="stat-pill">🔤 ${wordCount(post.content)} kelime</span>
+      <span class="stat-pill">💬 ${comments.length} yorum</span>
+      <span class="stat-pill">❤️ ${likeCount} beğeni</span>
+    </div>
+    ${tocHtml}
+    <div class="detail-content" id="postBody">${post.content}</div>
+    <div class="detail-actions">
+      <button class="like-btn ${isLiked?'liked':''}" id="likeBtn" onclick="toggleLike(${id})">${isLiked?'❤️':'🤍'} <span id="likeCount">${likeCount}</span> Beğeni</button>
+      <button class="share-btn" onclick="openReadingMode(${id})">📖 Okuma Modu</button>
+      <button class="share-btn" onclick="sharePost('${post.title.replace(/'/g,"\\'")}')">🔗 Paylaş</button>
+      <span class="read-time">⏱ ${readTime(post.content)} dk</span>
+    </div>
+    ${post.comments_enabled!==false?renderCommentSection(id,comments):'<div style="text-align:center;padding:18px;color:var(--text3);font-size:13px">Bu yazıda yorumlar kapalı.</div>'}
+    ${related.length?`<div class="related-posts"><div class="related-label">İlgili Yazılar</div><div class="related-grid">${related.map(r=>`<div class="related-card" onclick="openPost(${r.id})"><span style="font-size:19px">${r.icon||'📝'}</span><div class="related-card-title">${r.title}</div></div>`).join('')}</div></div>`:''}
+  `;
+  document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.nav-links a').forEach(x=>x.classList.remove('active'));
+  document.getElementById('blogDetailPage').classList.add('active');
+  const nb=document.getElementById('nav-blog');if(nb)nb.classList.add('active');
+  window.scrollTo(0,0);
+  document.getElementById('readProgress').style.display='block';
+  setTimeout(genCaptcha,50);
+}
+ 
+function renderCommentSection(postId,approved){
+  const wait=canComment();
+  let formHtml;
+  if(wait>0){formHtml=`<div class="comment-cooldown">⏳ Yorum için ${wait} saniye bekleyin.</div>`;}
+  else{formHtml=`<div class="comment-form"><h4>Yorum Yap</h4>
+    <div class="form-row-2"><div class="form-group"><label>Ad Soyad</label><input type="text" id="cName"></div><div class="form-group"><label>E-posta</label><input type="email" id="cEmail"></div></div>
+    <div class="form-group" style="margin-bottom:10px"><label>Yorum</label><textarea id="cText" placeholder="Yorumunuzu yazın..."></textarea></div>
+    <div class="captcha-row"><span style="font-size:11px;color:var(--text3)">🤖 Robot değilim </span><span class="captcha-q" id="capQ"></span><input type="number" class="captcha-input" id="capInput" min="0" max="99"></div>
+    <div style="margin-top:10px;display:flex;align-items:center;justify-content:space-between">
+      <button class="btn btn-primary btn-sm" onclick="submitComment(${postId})">Yorum Gönder →</button>
+      <span style="font-size:10px;color:var(--text3);font-family:'JetBrains Mono',monospace">Onay sonrası yayınlanır</span>
+    </div>
+  </div>`;}
+  return `<div class="comments-wrap"><h3>💬 Yorumlar (${approved.length})</h3>${formHtml}
+    <div class="comment-list">${approved.length?approved.map(c=>`<div class="comment-card"><div class="comment-head"><div class="comment-av">${initials(c.author)}</div><div><div class="comment-name">${escHtml(c.author)}</div><div class="comment-date">${fmtDate(c.date)}</div></div></div><div class="comment-text">${escHtml(c.text)}</div></div>`).join(''):'<div class="no-comments">💭 Henüz yorum yok. İlk yorumu siz yapın!</div>'}</div>
+  </div>`;
+}
+ 
+function genCaptcha(){_capA=Math.floor(Math.random()*12)+1;_capB=Math.floor(Math.random()*12)+1;_capAns=_capA+_capB;const el=document.getElementById('capQ');if(el)el.textContent=_capA+' + '+_capB+' = ';}
+function canComment(){const last=parseInt(localStorage.getItem('ka_last_comment')||'0');const now=Date.now();const cd=60000;if(now-last<cd)return Math.ceil((cd-(now-last))/1000);return 0;}
+function isSpam(t){const lc=(t||'').toLowerCase();return['http','https','www.','casino','viagra','script','onclick='].some(w=>lc.includes(w))||t.trim().split(/\s+/).length<2;}
+ 
+async function submitComment(postId){
+  const name=(document.getElementById('cName')||{value:''}).value.trim();
+  const email=(document.getElementById('cEmail')||{value:''}).value.trim();
+  const text=(document.getElementById('cText')||{value:''}).value.trim();
+  const capVal=parseInt((document.getElementById('capInput')||{value:'-1'}).value||'-1');
+  if(!name||!email||!text){showToast('Lütfen tüm alanları doldurun.','error');return;}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){showToast('Geçerli bir e-posta girin.','error');return;}
+  if(capVal!==_capAns){showToast('Captcha yanlış!','error');genCaptcha();const ci=document.getElementById('capInput');if(ci)ci.value='';return;}
+  if(canComment()>0){showToast('Çok hızlı! Bekleyin.','error');return;}
+  if(isSpam(text)){showToast('Spam içeriği tespit edildi.','error');return;}
+  try{await saveComment(postId,name,email,text);localStorage.setItem('ka_last_comment',Date.now().toString());['cName','cEmail','cText'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});genCaptcha();showToast('Yorum gönderildi! Onay bekleniyor.','success');}
+  catch(e){showToast('Yorum gönderilemedi.','error');}
+}
+ 
+// CONTACT
+async function sendContactMsg(){
+  const name=(document.getElementById('msgName')||{value:''}).value.trim();
+  const email=(document.getElementById('msgEmail')||{value:''}).value.trim();
+  const subject=(document.getElementById('msgSubject')||{value:''}).value.trim();
+  const body=(document.getElementById('msgBody')||{value:''}).value.trim();
+  if(!name||!email||!body){showToast('Zorunlu alanları doldurun.','error');return;}
+  try{await saveMessage(name,email,subject,body);['msgName','msgEmail','msgSubject','msgBody'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});showToast('Mesaj gönderildi!','success');}
+  catch(e){showToast('Mesaj gönderilemedi.','error');}
+}
+ 
+// LIKES
+function toggleLike(id){
+  const likes=JSON.parse(localStorage.getItem('ka_likes')||'{}');
+  const isLiked=likes['liked_'+id]||false;
+  likes['liked_'+id]=!isLiked;
+  const cur=likes['count_'+id]!==undefined?likes['count_'+id]:(BASE_LIKES[id]||10);
+  likes['count_'+id]=isLiked?Math.max(BASE_LIKES[id]||0,cur-1):cur+1;
+  localStorage.setItem('ka_likes',JSON.stringify(likes));
+  const btn=document.getElementById('likeBtn');
+  if(btn)btn.innerHTML=`${!isLiked?'❤️':'🤍'} <span id="likeCount">${likes['count_'+id]}</span> Beğeni`;
+  if(btn)btn.classList.toggle('liked',!isLiked);
+}
+function sharePost(title){if(navigator.share)navigator.share({title,url:window.location.href}).catch(()=>{});else navigator.clipboard.writeText(window.location.href).then(()=>showToast('Link kopyalandı!','success'));}
+function scrollToH2(i){const body=document.getElementById('postBody');if(!body)return;const h2s=body.querySelectorAll('h2');if(h2s[i])h2s[i].scrollIntoView({behavior:'smooth'});}
+ 
+// READING MODE
+function openReadingMode(id){
+  const post=allPosts.find(p=>p.id===id);if(!post)return;
+  readFontSize=16;
+  const rb=document.getElementById('readingBody');
+  if(rb)rb.innerHTML=`<h1 style="font-size:26px;font-weight:700;margin-bottom:14px;line-height:1.35">${post.title}</h1><div class="detail-content" id="rmContent" style="font-size:${readFontSize}px;line-height:2">${post.content}</div>`;
+  document.getElementById('readingOverlay').classList.add('show');
+  document.body.style.overflow='hidden';
+}
+function closeReadingMode(){document.getElementById('readingOverlay').classList.remove('show');document.body.style.overflow='';}
+function changeFontSize(d){readFontSize=Math.max(13,Math.min(24,readFontSize+d));const el=document.getElementById('rmContent');if(el)el.style.fontSize=readFontSize+'px';}
+ 
+// CHATBOT — Supabase'den gelen window._chatbotData kullanılıyor
+const defaultQA=[{q:'hakkında',a:'Kerem Akbayır, 8+ yıllık deneyime sahip Senior Software Engineer.'},{q:'projeler',a:'MicroKit, AzureWatcher ve QueryOptimizer projelerine göz atabilirsiniz!'},{q:'iletişim',a:'kerem@akbayir.dev adresinden ulaşabilirsiniz.'},{q:'blog',a:'DevOps, Architecture, C#, PostgreSQL, AI konularında yazılar yazıyorum.'},{q:'teknoloji',a:'.NET, Azure, Docker, Kubernetes, PostgreSQL ve LLM entegrasyonlarıyla çalışıyorum.'}];
+function toggleChat(){
+  const w=document.getElementById('chatWindow');
+  const show=!w.classList.contains('show');
+  w.classList.toggle('show',show);
+  document.getElementById('chatDot').style.display='none';
+  if(show&&!chatHistory.length)initChat();
+}
+function initChat(){
+  chatHistory=[];
+  const cbd=window._chatbotData||{};
+  const name=cbd.name||'Kerem Bot';
+  document.getElementById('chatBotName').textContent=name;
+  addChatMsg('bot',cbd.greeting||'Merhaba! 👋 Size nasıl yardımcı olabilirim?');
+  const sugs=(cbd.suggestions||'Hakkında,Projeler,İletişim,Blog konuları,Teknolojiler').split(',').map(s=>s.trim()).filter(Boolean);
+  const cs=document.getElementById('chatSugs');
+  if(cs)cs.innerHTML=sugs.map(s=>`<button class="chat-sug" onclick="sendChatMsg('${s}')">${s}</button>`).join('');
+}
+function addChatMsg(role,text){chatHistory.push({role,text});const msgs=document.getElementById('chatMsgs');if(!msgs)return;const now=new Date().toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit'});const div=document.createElement('div');div.className=`chat-msg ${role} fade-in`;div.innerHTML=`<div class="chat-bubble">${text}</div><div class="chat-time-label">${now}</div>`;msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;}
+function sendChat(){const inp=document.getElementById('chatInput');if(!inp)return;const v=inp.value.trim();if(!v)return;inp.value='';sendChatMsg(v);}
+function sendChatMsg(msg){addChatMsg('user',msg);document.getElementById('chatSugs').innerHTML='';setTimeout(()=>{const lower=msg.toLowerCase();const cbd=window._chatbotData||{};const qa=cbd.qa||defaultQA;const match=qa.find(x=>lower.includes(x.q.toLowerCase()));if(match)addChatMsg('bot',match.a);else if(lower.includes('merhaba')||lower.includes('selam'))addChatMsg('bot','Merhaba! 😊 Size nasıl yardımcı olabilirim?');else addChatMsg('bot','Üzgünüm, bu konuda bilgim yok. İletişim sayfasından mesaj gönderebilirsiniz! 📩');},600);}
+ 
+// TOOLS
+function goTool(name){showPage('tools');setTimeout(()=>{const btn=document.querySelector(`[onclick="switchTool('${name}',this)"]`);if(btn)btn.click();},100);}
+function switchTool(name,btn){document.querySelectorAll('.tnav-btn').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');renderTool(name);}
+function initTools(){renderTool('password');}
+function renderTool(name){
+  const c=document.getElementById('toolContent');if(!c)return;
+  const tools={
+    password:`<div><div class="tool-panel-title">🔑 Password Generator</div><div class="tool-panel-sub">Güvenli ve rastgele şifre oluşturun.</div><div class="tool-box"><div class="tool-opts"><label>Uzunluk <input type="number" id="pwLen" value="16" min="4" max="128" oninput="genPwd()" style="width:55px"></label><label><input type="checkbox" id="pwUp" checked oninput="genPwd()"> Büyük</label><label><input type="checkbox" id="pwLo" checked oninput="genPwd()"> Küçük</label><label><input type="checkbox" id="pwNum" checked oninput="genPwd()"> Rakam</label><label><input type="checkbox" id="pwSym" oninput="genPwd()"> Sembol</label></div><div style="position:relative"><div class="tool-result" id="pwRes" style="font-size:15px;letter-spacing:2px;padding-right:76px">—</div><button class="tool-copy-btn" onclick="copyEl('pwRes')">Kopyala</button></div><div class="strength-bar" id="pwStr"></div><div class="tool-actions"><button class="btn btn-primary btn-sm" onclick="genPwd()">🎲 Yenile</button></div></div></div>`,
+    json:`<div><div class="tool-panel-title">📋 JSON Viewer</div><div class="tool-panel-sub">JSON formatla ve görüntüle.</div><div class="tool-box"><label class="tool-label">JSON Girin</label><textarea class="tool-textarea" id="jsonIn" rows="8" placeholder='{"key":"value"}' oninput="processJSON()"></textarea><div class="tool-actions"><button class="btn btn-primary btn-sm" onclick="processJSON()">Formatla</button><button class="btn btn-ghost btn-sm" onclick="minifyJSON()">Minify</button></div><div id="jsonErr" style="display:none;color:var(--red);font-size:12px;margin-top:7px"></div><div style="position:relative;margin-top:10px"><pre class="tool-result" id="jsonOut" style="white-space:pre-wrap;max-height:280px;overflow-y:auto"></pre><button class="tool-copy-btn" onclick="copyEl('jsonOut')">Kopyala</button></div></div></div>`,
+    base64:`<div><div class="tool-panel-title">🔤 Base64</div><div class="tool-panel-sub">Encode ve decode işlemleri.</div><div class="tool-box"><label class="tool-label">Giriş</label><textarea class="tool-textarea" id="b64In" rows="5"></textarea><div class="tool-actions"><button class="btn btn-primary btn-sm" onclick="doB64('enc')">Encode →</button><button class="btn btn-ghost btn-sm" onclick="doB64('dec')">← Decode</button></div><div style="position:relative;margin-top:10px"><div class="tool-result" id="b64Out" style="word-break:break-all;min-height:56px"></div><button class="tool-copy-btn" onclick="copyEl('b64Out')">Kopyala</button></div></div></div>`,
+    jwt:`<div><div class="tool-panel-title">🔐 JWT Decoder</div><div class="tool-panel-sub">Token çöz ve analiz et.</div><div class="tool-box"><label class="tool-label">JWT Token</label><textarea class="tool-textarea" id="jwtIn" rows="4" placeholder="eyJ..." oninput="decodeJWT()"></textarea><div id="jwtErr" style="display:none;color:var(--red);font-size:12px;margin-top:7px"></div><div id="jwtRes" style="margin-top:12px;display:none"><div style="margin-bottom:9px"><div class="tool-label">HEADER</div><pre class="tool-result" id="jwtHdr" style="white-space:pre-wrap"></pre></div><div class="tool-label">PAYLOAD</div><pre class="tool-result" id="jwtPld" style="white-space:pre-wrap"></pre><div id="jwtExp" style="margin-top:9px;font-size:12px;font-family:'JetBrains Mono',monospace"></div></div><div class="tool-actions"><button class="btn btn-ghost btn-sm" onclick="loadSampleJWT()">Örnek JWT</button></div></div></div>`,
+    compare:`<div><div class="tool-panel-title">⚖️ Text Compare</div><div class="tool-panel-sub">İki metni satır satır karşılaştır.</div><div class="tool-box"><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px"><div><label class="tool-label">Metin A</label><textarea class="tool-textarea" id="txtA" rows="8"></textarea></div><div><label class="tool-label">Metin B</label><textarea class="tool-textarea" id="txtB" rows="8"></textarea></div></div><div class="tool-actions"><button class="btn btn-primary btn-sm" onclick="compareTexts()">Karşılaştır</button></div><div id="cmpRes" style="margin-top:10px;max-height:280px;overflow-y:auto"></div></div></div>`,
+    ip:`<div><div class="tool-panel-title">📡 What Is My IP</div><div class="tool-panel-sub">IP bilgilerini öğren.</div><div class="tool-box"><div style="text-align:center;padding:18px 0" id="ipLoad"><div style="font-size:26px" class="spin">⚙️</div></div><div id="ipRes" style="display:none"><div style="text-align:center;margin-bottom:18px"><div style="font-size:32px;font-weight:700;font-family:'JetBrains Mono',monospace;color:var(--accent)" id="ipAddr">—</div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:9px" id="ipDetails"></div></div><div class="tool-actions" style="margin-top:14px"><button class="btn btn-ghost btn-sm" onclick="fetchIP()">🔄 Yenile</button></div></div></div>`,
+    hash:`<div><div class="tool-panel-title">🔢 Hash Generator</div><div class="tool-panel-sub">Metin hash değerlerini hesapla.</div><div class="tool-box"><label class="tool-label">Metin</label><textarea class="tool-textarea" id="hashIn" rows="4" oninput="genHashes()"></textarea><div id="hashRes" style="margin-top:12px"></div></div></div>`,
+    url:`<div><div class="tool-panel-title">🔗 URL Encode/Decode</div><div class="tool-panel-sub">URL encode ve decode işlemleri.</div><div class="tool-box"><label class="tool-label">Giriş</label><textarea class="tool-textarea" id="urlIn" rows="4"></textarea><div class="tool-actions"><button class="btn btn-primary btn-sm" onclick="doURL('enc')">Encode</button><button class="btn btn-ghost btn-sm" onclick="doURL('dec')">Decode</button></div><div style="position:relative;margin-top:10px"><div class="tool-result" id="urlOut" style="word-break:break-all;min-height:48px"></div><button class="tool-copy-btn" onclick="copyEl('urlOut')">Kopyala</button></div></div></div>`,
+    timestamp:`<div><div class="tool-panel-title">⏱️ Timestamp</div><div class="tool-panel-sub">Unix timestamp dönüştürücü.</div><div class="tool-box"><div style="font-size:22px;font-weight:700;font-family:'JetBrains Mono',monospace;color:var(--accent);margin-bottom:12px" id="nowTs"></div><label class="tool-label">Timestamp → Tarih</label><div style="display:flex;gap:8px;margin-bottom:10px"><input class="tool-input" id="tsIn" type="number" placeholder="1700000000"><button class="btn btn-primary btn-sm" onclick="tsConvert()">Çevir</button></div><div class="tool-result" id="tsOut" style="min-height:40px"></div></div></div>`,
+    color:`<div><div class="tool-panel-title">🎨 Color Converter</div><div class="tool-panel-sub">HEX, RGB ve HSL dönüştürücü.</div><div class="tool-box"><div style="display:flex;gap:10px;align-items:center;margin-bottom:12px"><input type="color" id="colPick" value="#6366f1" oninput="colFromPicker()" style="width:52px;height:44px;border:1px solid var(--border);border-radius:8px;cursor:pointer;background:none;padding:2px"><div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px"><div><label class="tool-label">HEX</label><input class="tool-input" id="colHex" value="#6366f1" oninput="colFromHex()" style="font-size:12px"></div><div><label class="tool-label">RGB</label><input class="tool-input" id="colRGB" value="99,102,241" oninput="colFromRGB()" style="font-size:12px"></div><div><label class="tool-label">HSL</label><input class="tool-input" id="colHSL" value="" readonly style="font-size:12px"></div></div></div><div id="colPrev" style="height:54px;border-radius:9px;background:#6366f1;border:1px solid var(--border)"></div></div></div>`,
+    regex:`<div><div class="tool-panel-title">🔍 Regex Tester</div><div class="tool-panel-sub">Düzenli ifade test aracı.</div><div class="tool-box"><div style="display:flex;gap:7px;margin-bottom:10px;align-items:center"><span style="font-size:16px;color:var(--text3)">/</span><input class="tool-input" id="rxPat" placeholder="[a-z]+" oninput="testRegex()" style="flex:1"><span style="font-size:16px;color:var(--text3)">/</span><input class="tool-input" id="rxFlags" value="g" style="width:54px" oninput="testRegex()"></div><label class="tool-label">Test Metni</label><textarea class="tool-textarea" id="rxText" rows="5" oninput="testRegex()"></textarea><div id="rxInfo" style="font-size:11.5px;color:var(--text3);margin-top:7px"></div><div id="rxRes" style="margin-top:9px;background:var(--bg3);border-radius:8px;padding:10px;min-height:38px;font-size:13px;line-height:1.8"></div></div></div>`,
+    uuid:`<div><div class="tool-panel-title">🆔 UUID Generator</div><div class="tool-panel-sub">Rastgele UUID v4 üret.</div><div class="tool-box"><div style="position:relative"><div class="tool-result" id="uuidRes" style="font-size:14px;letter-spacing:1px;padding-right:76px"></div><button class="tool-copy-btn" onclick="copyEl('uuidRes')">Kopyala</button></div><div class="tool-actions"><button class="btn btn-primary btn-sm" onclick="genUUID()">🎲 Yeni UUID</button></div></div></div>`
+  };
+  c.innerHTML=tools[name]||'';
+  if(name==='password')genPwd();
+  if(name==='ip')fetchIP();
+  if(name==='timestamp')initTs();
+  if(name==='uuid')genUUID();
+  if(name==='color')colFromHex();
+}
+ 
+function genPwd(){const len=parseInt(document.getElementById('pwLen')?.value)||16;let chars='';if(document.getElementById('pwUp')?.checked)chars+='ABCDEFGHIJKLMNOPQRSTUVWXYZ';if(document.getElementById('pwLo')?.checked)chars+='abcdefghijklmnopqrstuvwxyz';if(document.getElementById('pwNum')?.checked)chars+='0123456789';if(document.getElementById('pwSym')?.checked)chars+='!@#$%^&*()_+-=';if(!chars)chars='abcdefghijklmnopqrstuvwxyz';let pwd='';const arr=new Uint32Array(len);crypto.getRandomValues(arr);for(let i=0;i<len;i++)pwd+=chars[arr[i]%chars.length];const el=document.getElementById('pwRes');if(el)el.textContent=pwd;}
+function processJSON(){const inp=document.getElementById('jsonIn')?.value.trim();const err=document.getElementById('jsonErr');const out=document.getElementById('jsonOut');if(!inp){if(out)out.textContent='';return;}try{if(out)out.textContent=JSON.stringify(JSON.parse(inp),null,2);if(err)err.style.display='none';}catch(e){if(err){err.textContent='❌ '+e.message;err.style.display='block';}if(out)out.textContent='';}}
+function minifyJSON(){try{const out=document.getElementById('jsonOut');if(out)out.textContent=JSON.stringify(JSON.parse(document.getElementById('jsonIn')?.value||''));document.getElementById('jsonErr').style.display='none';}catch(e){const err=document.getElementById('jsonErr');if(err){err.textContent='❌ '+e.message;err.style.display='block';}}}
+function doB64(mode){const inp=document.getElementById('b64In')?.value||'';const out=document.getElementById('b64Out');if(!out)return;try{out.textContent=mode==='enc'?btoa(unescape(encodeURIComponent(inp))):decodeURIComponent(escape(atob(inp)));}catch(e){out.textContent='❌ '+e.message;}}
+function decodeJWT(){const t=document.getElementById('jwtIn')?.value.trim();const err=document.getElementById('jwtErr');const res=document.getElementById('jwtRes');if(!t){if(res)res.style.display='none';return;}try{const parts=t.split('.');if(parts.length!==3)throw new Error('Geçersiz JWT');const hdr=JSON.parse(atob(parts[0].replace(/-/g,'+').replace(/_/g,'/')));const pld=JSON.parse(atob(parts[1].replace(/-/g,'+').replace(/_/g,'/')));document.getElementById('jwtHdr').textContent=JSON.stringify(hdr,null,2);document.getElementById('jwtPld').textContent=JSON.stringify(pld,null,2);if(pld.exp){const exp=new Date(pld.exp*1000);document.getElementById('jwtExp').innerHTML=`<span style="color:${exp<new Date()?'var(--red)':'var(--green)'}">${exp<new Date()?'❌ Süresi dolmuş':'✅ Geçerli'} – ${exp.toLocaleString('tr-TR')}</span>`;}if(res)res.style.display='block';if(err)err.style.display='none';}catch(e){if(err){err.textContent='❌ '+e.message;err.style.display='block';}if(res)res.style.display='none';}}
+function loadSampleJWT(){const el=document.getElementById('jwtIn');if(el)el.value='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6Ikplb24gRG9lIiwiaWF0IjoxNjE2MjM5MDIyLCJleHAiOjk5OTk5OTk5OTl9.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c';decodeJWT();}
+function compareTexts(){const a=document.getElementById('txtA')?.value||'';const b=document.getElementById('txtB')?.value||'';const la=a.split('\n');const lb=b.split('\n');let html='';for(let i=0;i<Math.max(la.length,lb.length);i++){const ra=la[i]||'';const rb=lb[i]||'';if(ra===rb)html+=`<div class="diff-line">${escHtml(ra)||'&nbsp;'}</div>`;else{if(ra)html+=`<div class="diff-line diff-removed">- ${escHtml(ra)}</div>`;if(rb)html+=`<div class="diff-line diff-added">+ ${escHtml(rb)}</div>`;}}const cr=document.getElementById('cmpRes');if(cr)cr.innerHTML=html||'<div style="text-align:center;color:var(--text3);padding:14px">Metin girin</div>';}
+async function fetchIP(){try{const r=await fetch('https://ipapi.co/json/');const d=await r.json();document.getElementById('ipAddr').textContent=d.ip||'—';document.getElementById('ipDetails').innerHTML=[['🌍 Ülke',`${d.country_name||'—'}`],['🏙️ Şehir',d.city||'—'],['🕐 Zaman Dilimi',d.timezone||'—'],['🌐 ISP',d.org||'—']].map(([k,v])=>`<div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:9px 12px"><div style="font-size:10px;color:var(--text3);font-family:'JetBrains Mono',monospace">${k}</div><div style="font-size:12.5px;font-weight:500;margin-top:2px">${v}</div></div>`).join('');document.getElementById('ipLoad').style.display='none';document.getElementById('ipRes').style.display='block';}catch(e){document.getElementById('ipLoad').innerHTML='<div style="font-size:12px;color:var(--red)">⚠️ IP bilgisi alınamadı.</div>';}}
+function genHashes(){const inp=document.getElementById('hashIn')?.value||'';const div=document.getElementById('hashRes');if(!div)return;if(!inp){div.innerHTML='';return;}function djb2(s){let h=5381;for(let i=0;i<s.length;i++)h=((h<<5)+h)^s.charCodeAt(i);return(h>>>0).toString(16).padStart(8,'0');}div.innerHTML=[['DJB2',djb2(inp)],['Char Sum',inp.split('').reduce((a,c)=>a+c.charCodeAt(0),0).toString()],['Length',inp.length.toString()]].map(([n,v])=>`<div style="display:flex;justify-content:space-between;padding:7px 11px;background:var(--bg3);border-radius:7px;margin-bottom:5px"><span style="font-size:12px;color:var(--text2)">${n}</span><span style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--green)">${v}</span></div>`).join('');}
+function doURL(mode){const inp=document.getElementById('urlIn')?.value||'';const out=document.getElementById('urlOut');if(!out)return;try{out.textContent=mode==='enc'?encodeURIComponent(inp):decodeURIComponent(inp);}catch(e){out.textContent='❌ '+e.message;}}
+function initTs(){const upd=()=>{const el=document.getElementById('nowTs');if(el)el.textContent=Math.floor(Date.now()/1000);};upd();setInterval(upd,1000);}
+function tsConvert(){const ts=parseInt(document.getElementById('tsIn')?.value);const out=document.getElementById('tsOut');if(!out||!ts)return;const d=new Date(ts*1000);out.textContent=d.toLocaleDateString('tr-TR',{weekday:'long',year:'numeric',month:'long',day:'numeric'})+' – '+d.toLocaleTimeString('tr-TR');}
+function colFromPicker(){const h=document.getElementById('colPick')?.value;if(h&&document.getElementById('colHex'))document.getElementById('colHex').value=h;colFromHex();}
+function colFromHex(){const hex=(document.getElementById('colHex')?.value||'#6366f1').trim();const m=hex.match(/^#([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i);if(!m)return;const r=parseInt(m[1],16),g=parseInt(m[2],16),b=parseInt(m[3],16);if(document.getElementById('colRGB'))document.getElementById('colRGB').value=`${r},${g},${b}`;const hsl=rgbToHsl(r,g,b);if(document.getElementById('colHSL'))document.getElementById('colHSL').value=`${hsl[0]}°,${hsl[1]}%,${hsl[2]}%`;if(document.getElementById('colPrev'))document.getElementById('colPrev').style.background=`#${m[1]}${m[2]}${m[3]}`;if(document.getElementById('colPick'))document.getElementById('colPick').value=`#${m[1]}${m[2]}${m[3]}`;}
+function colFromRGB(){const p=(document.getElementById('colRGB')?.value||'').split(',').map(s=>parseInt(s.trim()));if(p.length<3||p.some(isNaN))return;const[r,g,b]=p;const hex='#'+[r,g,b].map(x=>Math.min(255,Math.max(0,x)).toString(16).padStart(2,'0')).join('');if(document.getElementById('colHex'))document.getElementById('colHex').value=hex;if(document.getElementById('colPrev'))document.getElementById('colPrev').style.background=hex;}
+function rgbToHsl(r,g,b){r/=255;g/=255;b/=255;const mx=Math.max(r,g,b),mn=Math.min(r,g,b);let h,s,l=(mx+mn)/2;if(mx===mn){h=s=0;}else{const d=mx-mn;s=l>0.5?d/(2-mx-mn):d/(mx+mn);switch(mx){case r:h=(g-b)/d+(g<b?6:0);break;case g:h=(b-r)/d+2;break;case b:h=(r-g)/d+4;break;}h/=6;}return[Math.round(h*360),Math.round(s*100),Math.round(l*100)];}
+function testRegex(){const pat=document.getElementById('rxPat')?.value;const flags=document.getElementById('rxFlags')?.value||'g';const text=document.getElementById('rxText')?.value||'';const info=document.getElementById('rxInfo');const res=document.getElementById('rxRes');if(!pat){if(res)res.innerHTML=escHtml(text);return;}try{let all=[];if(flags.includes('g')){const re2=new RegExp(pat,'g');let m;while((m=re2.exec(text))!==null)all.push(m);}else{const m=new RegExp(pat,flags).exec(text);if(m)all.push(m);}if(info)info.textContent=`${all.length} eşleşme`;if(res)res.innerHTML=text.replace(new RegExp(pat,flags),m=>`<mark style="background:rgba(99,102,241,0.3);border-radius:3px;padding:0 2px">${escHtml(m)}</mark>`);}catch(e){if(info)info.textContent='❌ '+e.message;}}
+function genUUID(){const u='xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,c=>{const r=Math.random()*16|0;return(c==='x'?r:(r&0x3|0x8)).toString(16);});const el=document.getElementById('uuidRes');if(el)el.textContent=u;}
+function copyEl(id){const el=document.getElementById(id);if(!el)return;navigator.clipboard.writeText(el.textContent).then(()=>showToast('Kopyalandı!','success')).catch(()=>showToast('Kopyalanamadı.','error'));}
+ 
+// ============================================================
+// INIT — Sayfa yüklendiğinde her şeyi çek
+// ============================================================
+document.addEventListener('DOMContentLoaded', async () => {
+  const tb = document.getElementById('themeBtn');
+  if (tb) tb.textContent = isDark ? '🌙' : '☀️';
+  applyLang();
+  await Promise.all([loadPosts(), loadProjects(), loadSiteSettings()]);
+  renderHome();
+  initChatbot();
+});
 </script>
 </body>
 </html>
-
-
-
-
-
