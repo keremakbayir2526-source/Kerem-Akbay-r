@@ -47,7 +47,7 @@ button{cursor:pointer}
 .login-btn:hover{opacity:.9}
 .login-err{font-size:12px;color:var(--red);text-align:center;margin-top:10px;min-height:16px}
 
-/* APP */
+/* APP LAYOUT */
 .app{display:flex;width:100%;min-height:100vh}
 .app.hidden{display:none}
 .sidebar{width:var(--sidebar-w);background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;position:fixed;top:0;left:0;height:100vh;z-index:100;overflow-y:auto}
@@ -157,7 +157,7 @@ tr:hover td{background:rgba(255,255,255,0.02)}
 .form-textarea:focus{border-color:var(--accent)}
 .form-select{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:9px;padding:10px 14px;color:var(--text);font-size:13px;outline:none}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.form-row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.form-row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
 .form-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:20px;padding-top:16px;border-top:1px solid var(--border)}
 
 /* IMAGE PREVIEW */
@@ -171,33 +171,23 @@ tr:hover td{background:rgba(255,255,255,0.02)}
 .modal{background:var(--card);border:1px solid var(--border2);border-radius:18px;padding:28px;width:660px;max-width:95vw;max-height:90vh;overflow-y:auto}
 .modal h3{font-size:18px;font-weight:600;margin-bottom:20px;letter-spacing:-.3px}
 
-/* ── ABOUT: SKILLS ── */
+/* ABOUT PANEL */
 .skill-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:10px 14px}
-.skill-row input[type=text]{flex:1;background:none;border:none;outline:none;color:var(--text);font-size:13px}
+.skill-row input{flex:1;background:none;border:none;outline:none;color:var(--text);font-size:13px}
 .skill-row input[type=range]{flex:2}
 .skill-pct{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--accent);width:35px;text-align:right}
-
-/* ── ABOUT: EXPERIENCE ── */
 .exp-row{background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:14px;margin-bottom:10px}
 .exp-row input,.exp-row textarea{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:7px;padding:8px 12px;color:var(--text);font-size:12px;outline:none;margin-bottom:6px;font-family:'Sora',sans-serif}
 .exp-row textarea{min-height:60px;resize:vertical}
+.exp-row:last-child{margin-bottom:0}
 
-/* ── ABOUT: SOCIAL MEDIA ── */
-.social-row{background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:14px 16px;margin-bottom:10px;display:flex;flex-direction:column;gap:10px}
-.social-row-header{display:flex;align-items:center;gap:10px}
-.social-icon-badge{font-size:22px;width:40px;height:40px;border-radius:9px;background:var(--bg2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.social-row-fields{display:grid;grid-template-columns:1fr 1fr 80px;gap:8px;align-items:end}
-.social-row-fields input{background:var(--bg2);border:1px solid var(--border);border-radius:7px;padding:8px 12px;color:var(--text);font-size:12px;outline:none;width:100%;font-family:'Sora',sans-serif;transition:border-color .15s}
+/* SOCIAL ROW */
+.social-row{background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:14px;margin-bottom:10px;display:flex;align-items:center;gap:12px}
+.social-row-fields{flex:1;display:grid;grid-template-columns:60px 1fr 1fr 1fr;gap:8px;align-items:center}
+.social-row-fields input{background:var(--bg2);border:1px solid var(--border);border-radius:7px;padding:7px 10px;color:var(--text);font-size:12px;outline:none;width:100%;font-family:'Sora',sans-serif}
 .social-row-fields input:focus{border-color:var(--accent)}
-.social-field-label{font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
-.social-actions{display:flex;gap:8px;align-items:center;margin-left:auto}
 
-/* QUICK SOCIAL PRESETS */
-.social-presets{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;padding:14px;background:var(--bg3);border:1px solid var(--border);border-radius:10px}
-.social-preset-btn{display:flex;align-items:center;gap:6px;padding:6px 12px;border-radius:7px;border:1px solid var(--border2);background:var(--bg2);color:var(--text2);font-size:12px;cursor:pointer;transition:all .15s}
-.social-preset-btn:hover{border-color:var(--accent);color:var(--accent);background:rgba(99,102,241,0.06)}
-
-/* QA ROWS */
+/* QA ROW */
 .qa-row{background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:14px;margin-bottom:10px;display:flex;gap:12px;align-items:flex-start}
 .qa-row input{flex:1;background:var(--bg2);border:1px solid var(--border);border-radius:7px;padding:8px 12px;color:var(--text);font-size:12px;outline:none;font-family:'Sora',sans-serif}
 
@@ -221,7 +211,7 @@ tr:hover td{background:rgba(255,255,255,0.02)}
 .toast.success{border-color:rgba(16,185,129,0.4)}
 .toast.error{border-color:rgba(239,68,68,0.4)}
 
-/* EMPTY */
+/* EMPTY STATE */
 .empty{text-align:center;padding:48px 20px;color:var(--text3)}
 .empty-icon{font-size:36px;margin-bottom:10px}
 .empty p{font-size:13px}
@@ -245,11 +235,8 @@ tr:hover td{background:rgba(255,255,255,0.02)}
 .filter-btn.active{background:rgba(99,102,241,0.12);color:var(--accent);border-color:rgba(99,102,241,0.3)}
 
 /* DRAG HANDLE */
-.drag-handle{cursor:grab;color:var(--text3);font-size:14px;padding:0 4px;user-select:none}
+.drag-handle{cursor:grab;color:var(--text3);font-size:16px;padding:0 4px;user-select:none}
 .drag-handle:active{cursor:grabbing}
-
-/* SECTION DIVIDER */
-.section-divider{border:none;border-top:1px solid var(--border);margin:20px 0}
 
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 .fade-in{animation:fadeIn .25s ease forwards}
@@ -261,8 +248,7 @@ tr:hover td{background:rgba(255,255,255,0.02)}
   .main{margin-left:0}
   .stats-grid{grid-template-columns:repeat(2,1fr)}
   .form-row{grid-template-columns:1fr}
-  .form-row-3{grid-template-columns:1fr}
-  .social-row-fields{grid-template-columns:1fr}
+  .form-row3{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -309,10 +295,10 @@ tr:hover td{background:rgba(255,255,255,0.02)}
       </div>
       <div class="nav-section" style="margin-top:12px">
         <div class="nav-label">Kişiselleştir</div>
-        <div class="nav-item" onclick="showPanel('about',this)"><span class="nav-icon">👤</span> Hakkımda & Bio</div>
-        <div class="nav-item" onclick="showPanel('social',this)"><span class="nav-icon">🔗</span> Sosyal Medya</div>
-        <div class="nav-item" onclick="showPanel('contact',this)"><span class="nav-icon">📬</span> İletişim Bilgileri</div>
+        <div class="nav-item" onclick="showPanel('about',this)"><span class="nav-icon">👤</span> Hakkımda</div>
+        <div class="nav-item" onclick="showPanel('contact',this)"><span class="nav-icon">📬</span> İletişim Sayfası</div>
         <div class="nav-item" onclick="showPanel('chatbot',this)"><span class="nav-icon">🤖</span> Chatbot</div>
+        <div class="nav-item" onclick="showPanel('seo',this)"><span class="nav-icon">🔍</span> SEO & Meta</div>
         <div class="nav-item" onclick="showPanel('theme',this)"><span class="nav-icon">🎨</span> Tema & Site</div>
         <div class="nav-item" onclick="showPanel('settings',this)"><span class="nav-icon">⚙️</span> Ayarlar</div>
       </div>
@@ -386,11 +372,9 @@ tr:hover td{background:rgba(255,255,255,0.02)}
       <div class="panel fade-in" id="panel-visitors">
         <div class="card">
           <div class="card-header"><div class="card-title">📊 Ziyaretçi İstatistikleri</div></div>
-          <p style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:20px">
-            Gerçek ziyaretçi verilerinizi Google Analytics üzerinden görüntüleyin.
-          </p>
+          <p style="font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:20px">Gerçek ziyaretçi verilerinizi Google Analytics üzerinden görüntüleyin.</p>
           <a href="https://analytics.google.com" target="_blank"
-             style="display:inline-flex;align-items:center;gap:10px;padding:14px 24px;background:linear-gradient(135deg,#4285f4,#34a853);color:#fff;border-radius:12px;font-size:14px;font-weight:600;text-decoration:none">
+             style="display:inline-flex;align-items:center;gap:10px;padding:14px 24px;background:linear-gradient(135deg,#4285f4,#34a853);color:#fff;border-radius:12px;font-size:14px;font-weight:600">
             <span style="font-size:20px">📊</span> Google Analytics'i Aç
           </a>
         </div>
@@ -455,116 +439,87 @@ tr:hover td{background:rgba(255,255,255,0.02)}
         </div>
       </div>
 
-      <!-- ═══════════════════════════════════════════════════
-           ABOUT (Bio + Skills + Experience only)
-           ═══════════════════════════════════════════════════ -->
+      <!-- ════════════════════════════════════════
+           ABOUT – TAM YENİDEN YAZILDI
+           ════════════════════════════════════════ -->
       <div class="panel fade-in" id="panel-about">
-        <div class="info-box">
-          ✅ <strong>Supabase'e kaydediliyor.</strong> Sitenizde <code>loadSettingFromSupabase('about')</code> ile okuyabilirsiniz.
-        </div>
+        <div class="info-box">✅ <strong>Supabase'e kaydediliyor.</strong> Sitenizde <code>loadSettingFromSupabase('about')</code> ile okuyabilirsiniz.</div>
 
-        <!-- Profil Fotoğrafı + Temel Bilgiler -->
-        <div class="card" style="margin-bottom:16px">
-          <div class="card-header"><div class="card-title">👤 Profil & Temel Bilgiler</div></div>
+        <!-- BİYOGRAFİ -->
+        <div class="card">
+          <div class="card-header"><div class="card-title">👤 Biyografi</div></div>
+          <div class="form-group"><label class="form-label">Ad Soyad</label><input class="form-input" id="aboutName" placeholder="Kerem Akbayır"></div>
+          <div class="form-group"><label class="form-label">Unvan</label><input class="form-input" id="aboutTitle" placeholder="Senior Software Engineer"></div>
           <div class="form-row">
-            <div class="form-group"><label class="form-label">Ad Soyad</label><input class="form-input" id="aboutFullName" placeholder="Kerem Akbayır"></div>
-            <div class="form-group"><label class="form-label">Unvan</label><input class="form-input" id="aboutTitle" placeholder="Senior Software Engineer"></div>
+            <div class="form-group"><label class="form-label">Konum</label><input class="form-input" id="aboutLocation" placeholder="📍 İstanbul, Türkiye"></div>
+            <div class="form-group"><label class="form-label">E-posta</label><input class="form-input" id="aboutEmail" placeholder="kerem@akbayir.dev"></div>
           </div>
-          <div class="form-row">
-            <div class="form-group"><label class="form-label">📍 Konum</label><input class="form-input" id="aboutLocation" placeholder="İstanbul, Türkiye"></div>
-            <div class="form-group"><label class="form-label">🖼️ Profil Fotoğrafı URL</label><input class="form-input" id="aboutPhoto" placeholder="https://..."></div>
-          </div>
-        </div>
-
-        <!-- Biyografi -->
-        <div class="card" style="margin-bottom:16px">
-          <div class="card-header"><div class="card-title">✍️ Biyografi</div></div>
           <div class="form-group"><label class="form-label">1. Paragraf</label><textarea class="form-textarea" id="aboutBio1" rows="3"></textarea></div>
           <div class="form-group"><label class="form-label">2. Paragraf</label><textarea class="form-textarea" id="aboutBio2" rows="3"></textarea></div>
           <div class="form-group"><label class="form-label">3. Paragraf</label><textarea class="form-textarea" id="aboutBio3" rows="2"></textarea></div>
         </div>
 
-        <!-- Beceriler -->
-        <div class="card" style="margin-bottom:16px">
-          <div class="card-header"><div class="card-title">💡 Beceriler</div><button class="btn btn-sm btn-primary" onclick="addSkill()">+ Ekle</button></div>
+        <!-- BECERİLER -->
+        <div class="card" style="margin-top:16px">
+          <div class="card-header"><div class="card-title">🛠️ Beceriler</div><button class="btn btn-sm btn-primary" onclick="addSkill()">+ Ekle</button></div>
           <div id="skillsList"></div>
         </div>
 
-        <!-- Deneyim -->
-        <div class="card" style="margin-bottom:16px">
-          <div class="card-header"><div class="card-title">🏢 Deneyim</div><button class="btn btn-sm btn-primary" onclick="addExp()">+ Ekle</button></div>
+        <!-- DENEYİM -->
+        <div class="card" style="margin-top:16px">
+          <div class="card-header"><div class="card-title">💼 Deneyim</div><button class="btn btn-sm btn-primary" onclick="addExp()">+ Ekle</button></div>
           <div id="expList"></div>
+          <div id="expEmpty" style="display:none" class="empty"><div class="empty-icon">💼</div><p>Henüz deneyim yok. + Ekle butonuna tıklayın.</p></div>
         </div>
 
-        <div style="display:flex;justify-content:flex-end">
+        <!-- SOSYAL MEDYA -->
+        <div class="card" style="margin-top:16px">
+          <div class="card-header">
+            <div>
+              <div class="card-title">🔗 Sosyal Medya</div>
+              <div class="card-subtitle">İkon · Ad · URL · Aktif</div>
+            </div>
+            <button class="btn btn-sm btn-primary" onclick="addSocial()">+ Ekle</button>
+          </div>
+          <div style="display:grid;grid-template-columns:50px 1fr 1fr 1fr 44px 44px;gap:6px;padding:0 4px;margin-bottom:8px">
+            <div style="font-size:10px;color:var(--text3);font-family:'JetBrains Mono',monospace;text-transform:uppercase">İkon</div>
+            <div style="font-size:10px;color:var(--text3);font-family:'JetBrains Mono',monospace;text-transform:uppercase">Platform Adı</div>
+            <div style="font-size:10px;color:var(--text3);font-family:'JetBrains Mono',monospace;text-transform:uppercase;grid-column:span 2">URL / Kullanıcı Adı</div>
+            <div style="font-size:10px;color:var(--text3);font-family:'JetBrains Mono',monospace;text-transform:uppercase;text-align:center">Aktif</div>
+            <div></div>
+          </div>
+          <div id="socialList"></div>
+        </div>
+
+        <div style="margin-top:16px;display:flex;justify-content:flex-end">
           <button class="btn btn-primary" onclick="saveAbout()">💾 Supabase'e Kaydet</button>
         </div>
       </div>
 
-      <!-- ═══════════════════════════════════════════════════
-           SOCIAL MEDIA (Ayrı Panel)
-           ═══════════════════════════════════════════════════ -->
-      <div class="panel fade-in" id="panel-social">
-        <div class="info-box">
-          ✅ <strong>Supabase'e kaydediliyor.</strong> Sitenizde <code>loadSettingFromSupabase('about')</code> ile sosyal hesaplar okunur.
-        </div>
-
-        <!-- Hızlı Ekle Presetleri -->
-        <div class="card" style="margin-bottom:16px">
-          <div class="card-header">
-            <div>
-              <div class="card-title">🔗 Sosyal Medya Hesapları</div>
-              <div class="card-subtitle">Hızlı ekle veya özel platform oluştur</div>
-            </div>
-            <button class="btn btn-sm btn-primary" onclick="addCustomSocial()">+ Özel Platform</button>
-          </div>
-
-          <div style="margin-bottom:16px">
-            <div class="form-label" style="margin-bottom:8px">Hızlı Ekle</div>
-            <div class="social-presets" id="socialPresets"></div>
-          </div>
-
-          <div id="socialList"></div>
-
-          <div style="margin-top:16px;display:flex;justify-content:flex-end">
-            <button class="btn btn-primary" onclick="saveSocial()">💾 Sosyal Medyayı Kaydet</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- ═══════════════════════════════════════════════════
-           CONTACT INFO
-           ═══════════════════════════════════════════════════ -->
+      <!-- ════════════════════════════════════════
+           İLETİŞİM SAYFASI
+           ════════════════════════════════════════ -->
       <div class="panel fade-in" id="panel-contact">
-        <div class="info-box">
-          ✅ <strong>Supabase'e kaydediliyor.</strong> İletişim sayfasında ve footer'da kullanılır: <code>loadSettingFromSupabase('contact_info')</code>
-        </div>
+        <div class="info-box">✅ <strong>Supabase'e kaydediliyor.</strong> <code>loadSettingFromSupabase('contact_page')</code> ile okuyabilirsiniz.</div>
         <div class="card">
-          <div class="card-header"><div class="card-title">📬 İletişim Bilgileri</div></div>
+          <div class="card-header"><div class="card-title">📬 İletişim Sayfası İçeriği</div></div>
+          <div class="form-group"><label class="form-label">Başlık</label><input class="form-input" id="cpTitle" value="Merhaba, konuşalım!"></div>
+          <div class="form-group"><label class="form-label">Açıklama</label><textarea class="form-textarea" id="cpDesc" rows="3">Yeni projeler, iş birlikleri veya sadece selamlaşmak için mesaj atabilirsiniz.</textarea></div>
           <div class="form-row">
-            <div class="form-group"><label class="form-label">✉️ E-posta Adresi</label><input class="form-input" id="contactEmail" placeholder="kerem@akbayir.dev"></div>
-            <div class="form-group"><label class="form-label">📍 Konum</label><input class="form-input" id="contactLocation" placeholder="İstanbul, Türkiye"></div>
+            <div class="form-group"><label class="form-label">E-posta</label><input class="form-input" id="cpEmail" placeholder="kerem@akbayir.dev"></div>
+            <div class="form-group"><label class="form-label">Konum</label><input class="form-input" id="cpLocation" placeholder="İstanbul, Türkiye"></div>
           </div>
-          <div class="form-row">
-            <div class="form-group"><label class="form-label">📞 Telefon (isteğe bağlı)</label><input class="form-input" id="contactPhone" placeholder="+90 5xx xxx xx xx"></div>
-            <div class="form-group"><label class="form-label">🌐 Website</label><input class="form-input" id="contactWebsite" placeholder="keremakbayir.tr"></div>
-          </div>
-          <div class="form-group"><label class="form-label">💼 LinkedIn (iletişim sayfasında göster)</label><input class="form-input" id="contactLinkedin" placeholder="linkedin.com/in/keremakbayir"></div>
-          <div class="form-group">
-            <label class="form-label">📋 İletişim Sayfası Açıklama</label>
-            <textarea class="form-textarea" id="contactDesc" rows="3" placeholder="Yeni projeler, iş birlikleri veya sadece selamlaşmak için mesaj atabilirsiniz."></textarea>
-          </div>
-          <div class="form-actions">
-            <button class="btn btn-primary" onclick="saveContactInfo()">💾 Supabase'e Kaydet</button>
-          </div>
+          <div class="form-group"><label class="form-label">LinkedIn Profil URL</label><input class="form-input" id="cpLinkedin" placeholder="linkedin.com/in/keremakbayir"></div>
+          <div class="form-group"><label class="form-label">Form Başlığı</label><input class="form-input" id="cpFormTitle" value="Mesaj Gönder"></div>
+        </div>
+        <div style="margin-top:16px;display:flex;justify-content:flex-end">
+          <button class="btn btn-primary" onclick="saveContactPage()">💾 Supabase'e Kaydet</button>
         </div>
       </div>
 
       <!-- CHATBOT -->
       <div class="panel fade-in" id="panel-chatbot">
-        <div class="info-box">
-          ✅ <strong>Supabase'e kaydediliyor.</strong> Sitenizde <code>loadSettingFromSupabase('chatbot')</code> ile okuyabilirsiniz.
-        </div>
+        <div class="info-box">✅ <strong>Supabase'e kaydediliyor.</strong> <code>loadSettingFromSupabase('chatbot')</code> ile okuyabilirsiniz.</div>
         <div class="card">
           <div class="card-header"><div class="card-title">Bot Ayarları</div></div>
           <div class="form-row">
@@ -585,19 +540,58 @@ tr:hover td{background:rgba(255,255,255,0.02)}
         </div>
       </div>
 
+      <!-- ════════════════════════════════════════
+           SEO & META
+           ════════════════════════════════════════ -->
+      <div class="panel fade-in" id="panel-seo">
+        <div class="info-box">✅ <strong>Supabase'e kaydediliyor.</strong> <code>loadSettingFromSupabase('seo')</code> ile okuyabilirsiniz.</div>
+        <div class="card">
+          <div class="card-header"><div class="card-title">🔍 Meta Bilgileri</div></div>
+          <div class="form-group"><label class="form-label">Site Başlığı (Title)</label><input class="form-input" id="seoTitle" value="Kerem Akbayır – Senior Software Engineer"></div>
+          <div class="form-group"><label class="form-label">Meta Description</label><textarea class="form-textarea" id="seoDesc" rows="3" style="min-height:80px">Yazılım mimarisi, bulut teknolojileri ve yapay zeka üzerine deneyimlerimi paylaşıyorum.</textarea></div>
+          <div class="form-group"><label class="form-label">Keywords (virgülle ayır)</label><input class="form-input" id="seoKeywords" placeholder=".NET, Azure, Microservices, PostgreSQL"></div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">OG Image URL</label><input class="form-input" id="seoOgImage" placeholder="https://..."></div>
+            <div class="form-group"><label class="form-label">Site URL</label><input class="form-input" id="seoUrl" placeholder="https://www.keremakbayir.tr"></div>
+          </div>
+          <div class="form-group"><label class="form-label">Twitter/X Kullanıcı Adı</label><input class="form-input" id="seoTwitter" placeholder="@keremakbayir"></div>
+          <div class="form-group"><label class="form-label">Google Analytics ID</label><input class="form-input" id="seoGaId" placeholder="G-XXXXXXXXXX"></div>
+        </div>
+        <div class="card" style="margin-top:16px">
+          <div class="card-header"><div class="card-title">🤖 Robots & İndeksleme</div></div>
+          <div class="setting-row">
+            <div class="setting-info"><h4>Search Engine İndeksleme</h4><p>Arama motorları siteyi indekslesin</p></div>
+            <button class="toggle on" id="tog-index" onclick="this.classList.toggle('on')"></button>
+          </div>
+          <div class="setting-row">
+            <div class="setting-info"><h4>Sitemap</h4><p>Otomatik sitemap.xml oluştur</p></div>
+            <button class="toggle on" id="tog-sitemap" onclick="this.classList.toggle('on')"></button>
+          </div>
+        </div>
+        <div style="margin-top:16px;display:flex;justify-content:flex-end">
+          <button class="btn btn-primary" onclick="saveSEO()">💾 Supabase'e Kaydet</button>
+        </div>
+      </div>
+
       <!-- THEME -->
       <div class="panel fade-in" id="panel-theme">
-        <div class="info-box">
-          ✅ <strong>Supabase'e kaydediliyor.</strong> Sitenizde <code>loadSettingFromSupabase('site_settings')</code> ile okuyabilirsiniz.
-        </div>
+        <div class="info-box">✅ <strong>Supabase'e kaydediliyor.</strong> <code>loadSettingFromSupabase('site_settings')</code> ile okuyabilirsiniz.</div>
         <div class="card">
           <div class="card-header"><div class="card-title">Site Bilgileri</div></div>
           <div class="form-row">
             <div class="form-group"><label class="form-label">Ad Soyad</label><input class="form-input" id="siteAuthor" value="Kerem Akbayır"></div>
             <div class="form-group"><label class="form-label">Unvan</label><input class="form-input" id="siteRole" value="Senior Software Engineer"></div>
           </div>
-          <div class="form-group"><label class="form-label">Kısa Bio</label><textarea class="form-textarea" id="siteHeroBio" rows="2">Yazılım mimarisi, bulut teknolojileri ve yapay zeka üzerine deneyimlerimi paylaşıyorum.</textarea></div>
+          <div class="form-group"><label class="form-label">Kısa Bio (Hero)</label><textarea class="form-textarea" id="siteHeroBio" rows="2">Yazılım mimarisi, bulut teknolojileri ve yapay zeka üzerine deneyimlerimi paylaşıyorum.</textarea></div>
           <div class="form-group"><label class="form-label">Hero Etiketler (virgülle ayır)</label><input class="form-input" id="siteTags" value=".NET,Azure,Microservices,PostgreSQL,AI/LLM"></div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Hero CTA 1 Metni</label><input class="form-input" id="siteHeroCta1" value="Hakkımda →"></div>
+            <div class="form-group"><label class="form-label">Hero CTA 1 Linki</label><input class="form-input" id="siteHeroCta1Link" value="#about"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label class="form-label">Hero CTA 2 Metni</label><input class="form-input" id="siteHeroCta2" value="Blog"></div>
+            <div class="form-group"><label class="form-label">Hero CTA 2 Linki</label><input class="form-input" id="siteHeroCta2Link" value="blog.html"></div>
+          </div>
         </div>
         <div class="card" style="margin-top:16px">
           <div class="card-header"><div class="card-title">Renk Teması</div></div>
@@ -622,6 +616,11 @@ tr:hover td{background:rgba(255,255,255,0.02)}
             </div>
           </div>
         </div>
+        <div class="card" style="margin-top:16px">
+          <div class="card-header"><div class="card-title">🦶 Footer</div></div>
+          <div class="form-group"><label class="form-label">Footer Telif Metni</label><input class="form-input" id="siteFooter" value="© 2025–2026 Kerem Akbayır"></div>
+          <div class="form-group"><label class="form-label">Footer Linkler (format: Ad|URL, virgülle ayır)</label><input class="form-input" id="siteFooterLinks" value="Hakkımda|about.html,Blog|blog.html,Projeler|projects.html,İletişim|contact.html"></div>
+        </div>
         <div style="margin-top:16px;display:flex;justify-content:flex-end">
           <button class="btn btn-primary" onclick="saveSiteSettings()">💾 Supabase'e Kaydet</button>
         </div>
@@ -635,6 +634,8 @@ tr:hover td{background:rgba(255,255,255,0.02)}
           <div class="setting-row"><div class="setting-info"><h4>İletişim Formu</h4><p>Mesaj gönderme aktif</p></div><button class="toggle on" id="tog-contact" onclick="this.classList.toggle('on')"></button></div>
           <div class="setting-row"><div class="setting-info"><h4>Chatbot</h4><p>Bot görünür olsun</p></div><button class="toggle on" id="tog-bot" onclick="this.classList.toggle('on')"></button></div>
           <div class="setting-row"><div class="setting-info"><h4>Yorum Moderasyonu</h4><p>Yorumlar önce onaya gelsin</p></div><button class="toggle on" id="tog-moderation" onclick="this.classList.toggle('on')"></button></div>
+          <div class="setting-row"><div class="setting-info"><h4>Okuma Modu</h4><p>Okuma modu butonu görünsün</p></div><button class="toggle on" id="tog-readmode" onclick="this.classList.toggle('on')"></button></div>
+          <div class="setting-row"><div class="setting-info"><h4>Dil Değiştirici</h4><p>TR/EN dil butonu görünsün</p></div><button class="toggle on" id="tog-lang" onclick="this.classList.toggle('on')"></button></div>
         </div>
         <div class="card" style="margin-top:16px">
           <div class="card-header"><div class="card-title">E-posta Bildirimleri</div></div>
@@ -650,7 +651,7 @@ tr:hover td{background:rgba(255,255,255,0.02)}
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
             <div>
               <div style="font-size:11px;color:var(--text3);font-family:'JetBrains Mono',monospace;margin-bottom:5px">URL</div>
-              <div style="background:var(--bg3);border:1px solid var(--border);border-radius:7px;padding:8px 12px;font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--green);word-break:break-all" id="sbUrl"></div>
+              <div style="background:var(--bg3);border:1px solid var(--border);border-radius:7px;padding:8px 12px;font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--green)" id="sbUrl"></div>
             </div>
             <div>
               <div style="font-size:11px;color:var(--text3);font-family:'JetBrains Mono',monospace;margin-bottom:5px">DURUM</div>
@@ -743,65 +744,47 @@ let commentFilter = 'all';
 let notifications = JSON.parse(localStorage.getItem('ka_notifs') || '[]');
 let isDark = localStorage.getItem('ka_admin_theme') !== 'light';
 
-// ── ABOUT DATA ──────────────────────────────────────────────
 let aboutData = JSON.parse(localStorage.getItem('ka_about') || 'null') || {
-  fullName: 'Kerem Akbayır',
+  name: 'Kerem Akbayır',
   title: 'Senior Software Engineer',
-  location: 'İstanbul, Türkiye',
-  photo: '',
+  location: '📍 İstanbul, Türkiye',
+  email: 'kerem@akbayir.dev',
   bio1: 'Merhaba! Ben Kerem Akbayır. 8+ yıldır kurumsal ve startup projelerinde yazılım geliştiriyorum.',
   bio2: 'Kariyerim boyunca fintech, e-ticaret ve SaaS alanlarında yüksek trafikli sistemler tasarladım.',
   bio3: 'Bu blogda öğrendiklerimi ve deneyimlerimi paylaşıyorum.',
   skills: [
-    {name:'.NET & C#',pct:95},{name:'Azure & AKS',pct:85},
-    {name:'PostgreSQL',pct:80},{name:'Docker',pct:88},
-    {name:'Microservices',pct:82},{name:'AI & LLM',pct:72}
+    {name:'.NET & C#',pct:95},{name:'Azure & AKS',pct:85},{name:'PostgreSQL',pct:80},
+    {name:'Docker',pct:88},{name:'Microservices',pct:82},{name:'AI & LLM',pct:72}
   ],
   experience: [
     {title:'Senior Software Engineer',company:'TechCorp A.Ş.',date:'Oca 2022 – Günümüz',desc:'Mikroservis mimarileri, .NET 8, Azure AKS.'},
     {title:'Software Engineer',company:'Fintech Startup',date:'Mar 2019 – Ara 2021',desc:'Ödeme sistemleri, REST API tasarımı.'}
   ],
   social: [
-    {id:'github',name:'GitHub',icon:'🐙',url:'github.com/keremakbayir',active:true,color:'#333'},
-    {id:'linkedin',name:'LinkedIn',icon:'💼',url:'linkedin.com/in/keremakbayir',active:true,color:'#0077b5'},
-    {id:'twitter',name:'Twitter / X',icon:'🐦',url:'@keremakbayir',active:true,color:'#1da1f2'},
-    {id:'medium',name:'Medium',icon:'✍️',url:'medium.com/@keremakbayir',active:true,color:'#00ab6c'}
+    {id:'github',name:'GitHub',icon:'🐙',url:'github.com/keremakbayir',active:true},
+    {id:'linkedin',name:'LinkedIn',icon:'💼',url:'linkedin.com/in/keremakbayir',active:true},
+    {id:'twitter',name:'Twitter / X',icon:'🐦',url:'@keremakbayir',active:true},
+    {id:'medium',name:'Medium',icon:'✍️',url:'medium.com/@keremakbayir',active:true}
   ]
 };
 
-// ── CHATBOT DATA ─────────────────────────────────────────────
 let chatbotData = JSON.parse(localStorage.getItem('ka_chatbot') || 'null') || {
-  name: 'Kerem Bot',
-  greeting: 'Merhaba! 👋 Size nasıl yardımcı olabilirim?',
-  suggestions: 'Hakkında,Projeler,İletişim,Blog konuları,Teknolojiler',
-  qa: [
+  name:'Kerem Bot',
+  greeting:'Merhaba! 👋 Size nasıl yardımcı olabilirim?',
+  suggestions:'Hakkında,Projeler,İletişim,Blog konuları,Teknolojiler',
+  qa:[
     {q:'hakkında',a:'Kerem Akbayır, 8+ yıllık deneyime sahip Senior Software Engineer.'},
     {q:'projeler',a:'MicroKit, AzureWatcher ve QueryOptimizer projelerine göz atabilirsiniz!'},
     {q:'iletişim',a:'kerem@akbayir.dev adresinden ulaşabilirsiniz.'}
   ]
 };
 
-// ── SOCIAL PRESETS ───────────────────────────────────────────
-const SOCIAL_PRESETS = [
-  {id:'github',    name:'GitHub',     icon:'🐙', color:'#333',     placeholder:'github.com/username'},
-  {id:'linkedin',  name:'LinkedIn',   icon:'💼', color:'#0077b5',  placeholder:'linkedin.com/in/username'},
-  {id:'twitter',   name:'Twitter/X',  icon:'🐦', color:'#1da1f2',  placeholder:'@username'},
-  {id:'medium',    name:'Medium',     icon:'✍️', color:'#00ab6c',  placeholder:'medium.com/@username'},
-  {id:'instagram', name:'Instagram',  icon:'📸', color:'#e1306c',  placeholder:'instagram.com/username'},
-  {id:'youtube',   name:'YouTube',    icon:'▶️', color:'#ff0000',  placeholder:'youtube.com/@username'},
-  {id:'dev',       name:'Dev.to',     icon:'💻', color:'#0a0a0a',  placeholder:'dev.to/username'},
-  {id:'hashnode',  name:'Hashnode',   icon:'📰', color:'#2962ff',  placeholder:'hashnode.com/@username'},
-  {id:'bluesky',   name:'Bluesky',    icon:'🦋', color:'#0085ff',  placeholder:'bsky.app/profile/username'},
-  {id:'substack',  name:'Substack',   icon:'📬', color:'#ff6719',  placeholder:'username.substack.com'},
-  {id:'telegram',  name:'Telegram',   icon:'✈️', color:'#2ca5e0',  placeholder:'t.me/username'},
-  {id:'discord',   name:'Discord',    icon:'🎮', color:'#5865f2',  placeholder:'discord.gg/invite'},
-];
-
 // ============================================================
 // UTILS
 // ============================================================
 function fmtDate(s){if(!s)return'—';const d=new Date(s);const m=['Oca','Şub','Mar','Nis','May','Haz','Tem','Ağu','Eyl','Eki','Kas','Ara'];return`${d.getDate()} ${m[d.getMonth()]} ${d.getFullYear()}`;}
-function escHtml(t){return(t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+function escHtml(t){return(t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
 function showToast(msg, type='success'){
   const t=document.getElementById('toast');
   document.getElementById('toastIcon').textContent=type==='error'?'✕':'✓';
@@ -809,12 +792,14 @@ function showToast(msg, type='success'){
   t.className='toast '+type+' show';
   setTimeout(()=>t.classList.remove('show'),3000);
 }
+
 function closeModal(id){document.getElementById(id).classList.remove('show');}
-function previewImg(inputId, wrapId, imgId){
-  const url=document.getElementById(inputId).value.trim();
-  const wrap=document.getElementById(wrapId);
-  if(!url){wrap.classList.remove('show');return;}
-  document.getElementById(imgId).src=url;
+
+function previewImg(inputId, wrapId, imgId) {
+  const url = document.getElementById(inputId).value.trim();
+  const wrap = document.getElementById(wrapId);
+  if (!url) { wrap.classList.remove('show'); return; }
+  document.getElementById(imgId).src = url;
   wrap.classList.add('show');
 }
 
@@ -824,16 +809,20 @@ document.addEventListener('click',e=>{
 });
 
 // ============================================================
-// SUPABASE HELPERS
+// SUPABASE SETTINGS HELPERS
 // ============================================================
-async function saveSettingToSupabase(key, value){
-  const{error}=await db.from('settings').upsert({key,value,updated_at:new Date().toISOString()},{onConflict:'key'});
-  if(error)throw error;
+async function saveSettingToSupabase(key, value) {
+  const { error } = await db.from('settings').upsert(
+    { key, value, updated_at: new Date().toISOString() },
+    { onConflict: 'key' }
+  );
+  if (error) throw error;
 }
-async function loadSettingFromSupabase(key){
-  const{data,error}=await db.from('settings').select('value').eq('key',key).single();
-  if(error)return null;
-  return data?.value||null;
+
+async function loadSettingFromSupabase(key) {
+  const { data, error } = await db.from('settings').select('value').eq('key', key).single();
+  if (error) return null;
+  return data?.value || null;
 }
 
 // ============================================================
@@ -889,10 +878,10 @@ function showApp(){
   loadComments();
   loadMessages();
   loadAboutPanel();
-  loadSocialPanel();
-  loadContactPanel();
   loadChatbotPanel();
   loadSettingsPanel();
+  loadContactPage();
+  loadSEO();
   checkSBStatus();
   renderNotifications();
 }
@@ -903,8 +892,8 @@ function showApp(){
 const panelTitles={
   dashboard:'Dashboard',visitors:'Ziyaretçiler',notifs:'Bildirimler',
   posts:'Yazılar',projects:'Projeler',comments:'Yorumlar',messages:'Mesajlar',
-  about:'Hakkımda & Bio',social:'Sosyal Medya',contact:'İletişim Bilgileri',
-  chatbot:'Chatbot',theme:'Tema & Site',settings:'Ayarlar'
+  about:'Hakkımda',contact:'İletişim Sayfası',chatbot:'Chatbot',
+  seo:'SEO & Meta',theme:'Tema & Site',settings:'Ayarlar'
 };
 
 function showPanel(name, btn){
@@ -1063,9 +1052,16 @@ async function loadPosts(){
     const{data,error}=await db.from('posts').select('*').order('created_at',{ascending:false});
     const body=document.getElementById('postsBody');
     if(!body)return;
-    if(error||!data||!data.length){body.innerHTML=`<tr><td colspan="8" style="text-align:center;padding:32px;color:var(--text3)">Yazı bulunamadı.</td></tr>`;return;}
+    if(error||!data||!data.length){
+      body.innerHTML=`<tr><td colspan="8" style="text-align:center;padding:32px;color:var(--text3)">Yazı bulunamadı.</td></tr>`;
+      return;
+    }
     body.innerHTML=data.map(p=>`<tr>
-      <td>${p.image_url?`<img src="${escHtml(p.image_url)}" style="width:52px;height:38px;object-fit:cover;border-radius:6px;border:1px solid var(--border)" onerror="this.style.display='none'">`:`<div style="width:52px;height:38px;border-radius:6px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:18px">${p.icon||'📝'}</div>`}</td>
+      <td>
+        ${p.image_url
+          ? `<img src="${escHtml(p.image_url)}" style="width:52px;height:38px;object-fit:cover;border-radius:6px;border:1px solid var(--border)" onerror="this.style.display='none'">`
+          : `<div style="width:52px;height:38px;border-radius:6px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:18px">${p.icon||'📝'}</div>`}
+      </td>
       <td style="font-size:20px">${p.icon||'📝'}</td>
       <td><strong>${escHtml(p.title)}</strong></td>
       <td style="font-size:12px;color:var(--text2)">${escHtml(p.category||'Genel')}</td>
@@ -1128,7 +1124,8 @@ async function savePost(){
     else{const{error}=await db.from('posts').insert([payload]);if(error)throw error;}
     showToast(id?'Yazı güncellendi!':'Yazı eklendi!');
     closeModal('postModal');
-    loadPosts();loadDashboard();
+    loadPosts();
+    loadDashboard();
     addNotif({id:'p_'+Date.now(),icon:'📝',text:`Yazı ${id?'güncellendi':'eklendi'}: ${title}`,time:new Date().toISOString(),unread:false});
   }catch(e){showToast('Hata: '+e.message,'error');}
 }
@@ -1137,7 +1134,9 @@ async function deletePost(id){
   if(!confirm('Bu yazıyı silmek istediğinizden emin misiniz?'))return;
   const{error}=await db.from('posts').delete().eq('id',id);
   if(error){showToast('Silinemedi','error');return;}
-  showToast('Yazı silindi');loadPosts();loadDashboard();
+  showToast('Yazı silindi');
+  loadPosts();
+  loadDashboard();
 }
 
 // ============================================================
@@ -1148,9 +1147,16 @@ async function loadProjects(){
     const{data,error}=await db.from('projects').select('*').order('created_at',{ascending:false});
     const body=document.getElementById('projsBody');
     if(!body)return;
-    if(error||!data||!data.length){body.innerHTML=`<tr><td colspan="8" style="text-align:center;padding:32px;color:var(--text3)">Proje bulunamadı.</td></tr>`;return;}
+    if(error||!data||!data.length){
+      body.innerHTML=`<tr><td colspan="8" style="text-align:center;padding:32px;color:var(--text3)">Proje bulunamadı.</td></tr>`;
+      return;
+    }
     body.innerHTML=data.map(p=>`<tr>
-      <td>${p.image_url?`<img src="${escHtml(p.image_url)}" style="width:52px;height:38px;object-fit:cover;border-radius:6px;border:1px solid var(--border)" onerror="this.style.display='none'">`:`<div style="width:52px;height:38px;border-radius:6px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:18px">${p.icon||'🚀'}</div>`}</td>
+      <td>
+        ${p.image_url
+          ? `<img src="${escHtml(p.image_url)}" style="width:52px;height:38px;object-fit:cover;border-radius:6px;border:1px solid var(--border)" onerror="this.style.display='none'">`
+          : `<div style="width:52px;height:38px;border-radius:6px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:18px">${p.icon||'🚀'}</div>`}
+      </td>
       <td style="font-size:20px">${p.icon||'🚀'}</td>
       <td><strong>${escHtml(p.name)}</strong></td>
       <td style="font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--text3)">${escHtml(p.tech||'—')}</td>
@@ -1210,7 +1216,9 @@ async function saveProj(){
     if(id){const{error}=await db.from('projects').update(payload).eq('id',id);if(error)throw error;}
     else{const{error}=await db.from('projects').insert([payload]);if(error)throw error;}
     showToast(id?'Proje güncellendi!':'Proje eklendi!');
-    closeModal('projModal');loadProjects();loadDashboard();
+    closeModal('projModal');
+    loadProjects();
+    loadDashboard();
   }catch(e){showToast('Hata: '+e.message,'error');}
 }
 
@@ -1218,7 +1226,9 @@ async function deleteProj(id){
   if(!confirm('Bu projeyi silmek istediğinizden emin misiniz?'))return;
   const{error}=await db.from('projects').delete().eq('id',id);
   if(error){showToast('Silinemedi','error');return;}
-  showToast('Proje silindi');loadProjects();loadDashboard();
+  showToast('Proje silindi');
+  loadProjects();
+  loadDashboard();
 }
 
 // ============================================================
@@ -1227,7 +1237,8 @@ async function deleteProj(id){
 async function loadComments(){
   try{
     const{data}=await db.from('comments').select('*').order('created_at',{ascending:false});
-    allComments=data||[];renderComments();
+    allComments=data||[];
+    renderComments();
   }catch(e){}
 }
 
@@ -1235,7 +1246,10 @@ function renderComments(){
   const body=document.getElementById('commentsBody');
   if(!body)return;
   const filtered=commentFilter==='all'?allComments:allComments.filter(c=>c.status===commentFilter);
-  if(!filtered.length){body.innerHTML=`<tr><td colspan="6" style="text-align:center;padding:32px;color:var(--text3)">Yorum bulunamadı.</td></tr>`;return;}
+  if(!filtered.length){
+    body.innerHTML=`<tr><td colspan="6" style="text-align:center;padding:32px;color:var(--text3)">Yorum bulunamadı.</td></tr>`;
+    return;
+  }
   body.innerHTML=filtered.map(c=>`<tr>
     <td><strong>${escHtml(c.author)}</strong></td>
     <td style="font-size:11px;color:var(--text3)">${escHtml(c.email||'—')}</td>
@@ -1260,7 +1274,8 @@ async function approveComment(id){
   const{error}=await db.from('comments').update({status:'approved'}).eq('id',id);
   if(error){showToast('Hata','error');return;}
   showToast('Yorum onaylandı!');
-  await loadComments();loadDashboard();
+  await loadComments();
+  loadDashboard();
 }
 
 async function deleteComment(id){
@@ -1268,7 +1283,8 @@ async function deleteComment(id){
   const{error}=await db.from('comments').delete().eq('id',id);
   if(error){showToast('Silinemedi','error');return;}
   showToast('Yorum silindi');
-  await loadComments();loadDashboard();
+  await loadComments();
+  loadDashboard();
 }
 
 // ============================================================
@@ -1279,7 +1295,10 @@ async function loadMessages(){
     const{data}=await db.from('messages').select('*').order('created_at',{ascending:false});
     const body=document.getElementById('msgsBody');
     if(!body)return;
-    if(!data||!data.length){body.innerHTML=`<tr><td colspan="6" style="text-align:center;padding:32px;color:var(--text3)">Mesaj bulunamadı.</td></tr>`;return;}
+    if(!data||!data.length){
+      body.innerHTML=`<tr><td colspan="6" style="text-align:center;padding:32px;color:var(--text3)">Mesaj bulunamadı.</td></tr>`;
+      return;
+    }
     body.innerHTML=data.map(m=>`<tr>
       <td><strong>${escHtml(m.name)}</strong></td>
       <td style="font-size:12px">${escHtml(m.email||'—')}</td>
@@ -1295,11 +1314,13 @@ async function deleteMsg(id){
   if(!confirm('Mesajı silmek istediğinizden emin misiniz?'))return;
   const{error}=await db.from('messages').delete().eq('id',id);
   if(error){showToast('Silinemedi','error');return;}
-  showToast('Mesaj silindi');loadMessages();loadDashboard();
+  showToast('Mesaj silindi');
+  loadMessages();
+  loadDashboard();
 }
 
 // ============================================================
-// ABOUT (Bio + Skills + Experience)
+// ABOUT – TAM YENİDEN YAZILDI
 // ============================================================
 async function loadAboutPanel(){
   try{
@@ -1307,241 +1328,196 @@ async function loadAboutPanel(){
     if(remote){aboutData=remote;localStorage.setItem('ka_about',JSON.stringify(aboutData));}
   }catch(e){}
 
-  // Profil alanları
-  document.getElementById('aboutFullName').value=aboutData.fullName||'';
+  // Temel alanlar
+  document.getElementById('aboutName').value=aboutData.name||'';
   document.getElementById('aboutTitle').value=aboutData.title||'';
   document.getElementById('aboutLocation').value=aboutData.location||'';
-  document.getElementById('aboutPhoto').value=aboutData.photo||'';
-
-  // Bio
+  document.getElementById('aboutEmail').value=aboutData.email||'';
   document.getElementById('aboutBio1').value=aboutData.bio1||'';
   document.getElementById('aboutBio2').value=aboutData.bio2||'';
   document.getElementById('aboutBio3').value=aboutData.bio3||'';
 
   renderSkillsList();
   renderExpList();
+  renderSocialList();
 }
 
-// ── SKILLS ──────────────────────────────────────────────────
+/* ── BECERİLER ── */
 function renderSkillsList(){
   const el=document.getElementById('skillsList');
   if(!el)return;
   if(!aboutData.skills||!aboutData.skills.length){
-    el.innerHTML='<p style="font-size:13px;color:var(--text3);padding:12px">Henüz beceri eklenmemiş.</p>';
+    el.innerHTML='<div class="empty"><p>Beceri yok. + Ekle butonuna tıklayın.</p></div>';
     return;
   }
-  el.innerHTML=aboutData.skills.map((s,i)=>`
+  el.innerHTML=(aboutData.skills).map((s,i)=>`
     <div class="skill-row">
-      <input type="text" value="${escHtml(s.name)}" placeholder="Beceri adı" oninput="aboutData.skills[${i}].name=this.value" style="width:160px">
-      <input type="range" min="0" max="100" value="${s.pct||0}" oninput="aboutData.skills[${i}].pct=+this.value;this.nextElementSibling.textContent=this.value+'%'">
-      <span class="skill-pct">${s.pct||0}%</span>
-      <button class="btn btn-sm btn-danger btn-icon" onclick="deleteSkill(${i})">×</button>
+      <input value="${escHtml(s.name)}" placeholder="Beceri adı" style="width:140px;min-width:100px"
+             oninput="aboutData.skills[${i}].name=this.value">
+      <input type="range" min="0" max="100" value="${s.pct}"
+             oninput="aboutData.skills[${i}].pct=+this.value;this.nextElementSibling.textContent=this.value+'%'">
+      <span class="skill-pct">${s.pct}%</span>
+      <button class="btn btn-sm btn-danger btn-icon" title="Sil"
+              onclick="aboutData.skills.splice(${i},1);renderSkillsList()">×</button>
     </div>`).join('');
 }
-
 function addSkill(){
   if(!aboutData.skills)aboutData.skills=[];
   aboutData.skills.push({name:'Yeni Beceri',pct:70});
   renderSkillsList();
 }
 
-function deleteSkill(i){
-  aboutData.skills.splice(i,1);
-  renderSkillsList();
-}
-
-// ── EXPERIENCE ───────────────────────────────────────────────
+/* ── DENEYİM – DÜZELTME ── */
 function renderExpList(){
   const el=document.getElementById('expList');
+  const emptyEl=document.getElementById('expEmpty');
   if(!el)return;
-  if(!aboutData.experience||!aboutData.experience.length){
-    el.innerHTML='<p style="font-size:13px;color:var(--text3);padding:12px">Henüz deneyim eklenmemiş.</p>';
+
+  const list=aboutData.experience||[];
+
+  if(!list.length){
+    el.innerHTML='';
+    if(emptyEl)emptyEl.style.display='block';
     return;
   }
-  el.innerHTML=aboutData.experience.map((e,i)=>`
-    <div class="exp-row">
+  if(emptyEl)emptyEl.style.display='none';
+
+  el.innerHTML=list.map((e,i)=>`
+    <div class="exp-row" id="exp-row-${i}">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:6px">
-        <input value="${escHtml(e.title||'')}" placeholder="Unvan (örn. Senior Developer)" oninput="aboutData.experience[${i}].title=this.value">
-        <input value="${escHtml(e.company||'')}" placeholder="Şirket adı" oninput="aboutData.experience[${i}].company=this.value">
+        <input value="${escHtml(e.title)}" placeholder="Unvan (ör: Senior Developer)"
+               oninput="aboutData.experience[${i}].title=this.value">
+        <input value="${escHtml(e.company)}" placeholder="Şirket adı"
+               oninput="aboutData.experience[${i}].company=this.value">
       </div>
-      <input value="${escHtml(e.date||'')}" placeholder="Tarih aralığı (örn. Oca 2022 – Günümüz)" oninput="aboutData.experience[${i}].date=this.value">
-      <textarea oninput="aboutData.experience[${i}].desc=this.value" placeholder="Açıklama...">${escHtml(e.desc||'')}</textarea>
-      <div style="text-align:right">
-        <button class="btn btn-sm btn-danger" onclick="deleteExp(${i})">🗑 Deneyimi Sil</button>
+      <input value="${escHtml(e.date)}" placeholder="Tarih aralığı (ör: Oca 2022 – Günümüz)"
+             oninput="aboutData.experience[${i}].date=this.value" style="margin-bottom:6px">
+      <textarea placeholder="Açıklama..." oninput="aboutData.experience[${i}].desc=this.value">${escHtml(e.desc)}</textarea>
+      <div style="display:flex;justify-content:flex-end;margin-top:4px">
+        <button class="btn btn-sm btn-danger" onclick="deleteExp(${i})">🗑 Sil</button>
       </div>
     </div>`).join('');
+}
+
+function deleteExp(i){
+  if(!confirm('Bu deneyimi silmek istediğinizden emin misiniz?'))return;
+  aboutData.experience.splice(i,1);
+  renderExpList();
 }
 
 function addExp(){
   if(!aboutData.experience)aboutData.experience=[];
   aboutData.experience.push({title:'',company:'',date:'',desc:''});
   renderExpList();
+  // Yeni eklenen satıra scroll
+  const rows=document.querySelectorAll('.exp-row');
+  if(rows.length)rows[rows.length-1].scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
-function deleteExp(i){
-  aboutData.experience.splice(i,1);
-  renderExpList();
-  showToast('Deneyim silindi');
+/* ── SOSYAL MEDYA – TAM YENİDEN YAZILDI ── */
+function renderSocialList(){
+  const el=document.getElementById('socialList');
+  if(!el)return;
+  const list=aboutData.social||[];
+  if(!list.length){
+    el.innerHTML='<div class="empty"><p>Sosyal medya hesabı yok. + Ekle butonuna tıklayın.</p></div>';
+    return;
+  }
+  el.innerHTML=list.map((s,i)=>`
+    <div class="social-row">
+      <div style="display:grid;grid-template-columns:50px 1fr 1fr 1fr 44px 44px;gap:6px;align-items:center;width:100%">
+        <input value="${escHtml(s.icon)}" placeholder="🐙" title="İkon (emoji)"
+               oninput="aboutData.social[${i}].icon=this.value"
+               style="background:var(--bg2);border:1px solid var(--border);border-radius:7px;padding:7px 8px;color:var(--text);font-size:18px;text-align:center;outline:none;width:100%">
+        <input value="${escHtml(s.name)}" placeholder="Platform adı"
+               oninput="aboutData.social[${i}].name=this.value"
+               style="background:var(--bg2);border:1px solid var(--border);border-radius:7px;padding:7px 10px;color:var(--text);font-size:12px;outline:none;width:100%">
+        <input value="${escHtml(s.url)}" placeholder="URL veya kullanıcı adı"
+               oninput="aboutData.social[${i}].url=this.value"
+               style="background:var(--bg2);border:1px solid var(--border);border-radius:7px;padding:7px 10px;color:var(--text);font-size:12px;outline:none;width:100%;grid-column:span 2">
+        <button class="toggle ${s.active?'on':''}" title="${s.active?'Aktif':'Pasif'}"
+                onclick="aboutData.social[${i}].active=!aboutData.social[${i}].active;this.classList.toggle('on');this.title=aboutData.social[${i}].active?'Aktif':'Pasif'"></button>
+        <button class="btn btn-sm btn-danger btn-icon" title="Sil"
+                onclick="deleteSocial(${i})">×</button>
+      </div>
+    </div>`).join('');
+}
+
+function addSocial(){
+  if(!aboutData.social)aboutData.social=[];
+  aboutData.social.push({id:'new_'+Date.now(),name:'',icon:'🔗',url:'',active:true});
+  renderSocialList();
+}
+
+function deleteSocial(i){
+  if(!confirm('Bu sosyal medya hesabını kaldırmak istediğinizden emin misiniz?'))return;
+  aboutData.social.splice(i,1);
+  renderSocialList();
 }
 
 async function saveAbout(){
-  aboutData.fullName=document.getElementById('aboutFullName').value;
-  aboutData.title=document.getElementById('aboutTitle').value;
-  aboutData.location=document.getElementById('aboutLocation').value;
-  aboutData.photo=document.getElementById('aboutPhoto').value;
+  // Temel alanları güncelle
+  aboutData.name=document.getElementById('aboutName').value.trim();
+  aboutData.title=document.getElementById('aboutTitle').value.trim();
+  aboutData.location=document.getElementById('aboutLocation').value.trim();
+  aboutData.email=document.getElementById('aboutEmail').value.trim();
   aboutData.bio1=document.getElementById('aboutBio1').value;
   aboutData.bio2=document.getElementById('aboutBio2').value;
   aboutData.bio3=document.getElementById('aboutBio3').value;
+
   localStorage.setItem('ka_about',JSON.stringify(aboutData));
   try{
     await saveSettingToSupabase('about',aboutData);
-    showToast('Hakkımda kaydedildi!');
+    showToast('Hakkımda kaydedildi! ✅');
     addNotif({id:'ab_'+Date.now(),icon:'👤',text:'Hakkımda sayfası güncellendi',time:new Date().toISOString(),unread:true});
   }catch(e){showToast('Supabase hatası: '+e.message,'error');}
 }
 
 // ============================================================
-// SOCIAL MEDIA (Ayrı Panel)
+// CONTACT PAGE
 // ============================================================
-async function loadSocialPanel(){
+async function loadContactPage(){
+  const defaults={
+    title:'Merhaba, konuşalım!',
+    desc:'Yeni projeler, iş birlikleri veya sadece selamlaşmak için mesaj atabilirsiniz.',
+    email:'kerem@akbayir.dev',
+    location:'İstanbul, Türkiye',
+    linkedin:'linkedin.com/in/keremakbayir',
+    formTitle:'Mesaj Gönder'
+  };
+  // Önce default değerleri doldur
+  document.getElementById('cpTitle').value=defaults.title;
+  document.getElementById('cpDesc').value=defaults.desc;
+  document.getElementById('cpEmail').value=defaults.email;
+  document.getElementById('cpLocation').value=defaults.location;
+  document.getElementById('cpLinkedin').value=defaults.linkedin;
+  document.getElementById('cpFormTitle').value=defaults.formTitle;
+  // Sonra Supabase'den üzerine yaz
   try{
-    const remote=await loadSettingFromSupabase('about');
-    if(remote&&remote.social){
-      aboutData.social=remote.social;
-    }
-  }catch(e){}
-  renderSocialPresets();
-  renderSocialList();
-}
-
-function renderSocialPresets(){
-  const el=document.getElementById('socialPresets');
-  if(!el)return;
-  el.innerHTML=SOCIAL_PRESETS.map(p=>{
-    const exists=aboutData.social&&aboutData.social.some(s=>s.id===p.id);
-    return `<button class="social-preset-btn" onclick="addPresetSocial('${p.id}')" ${exists?'disabled style="opacity:.45;cursor:not-allowed"':''}>
-      ${p.icon} ${p.name} ${exists?'✓':'+ Ekle'}
-    </button>`;
-  }).join('');
-}
-
-function renderSocialList(){
-  const el=document.getElementById('socialList');
-  if(!el)return;
-  if(!aboutData.social||!aboutData.social.length){
-    el.innerHTML='<div class="empty"><div class="empty-icon">🔗</div><p>Henüz sosyal medya hesabı eklenmemiş.<br>Yukarıdan hızlı ekle veya özel platform oluştur.</p></div>';
-    return;
-  }
-  el.innerHTML=aboutData.social.map((s,i)=>`
-    <div class="social-row" id="social-row-${i}">
-      <div class="social-row-header">
-        <div class="social-icon-badge" style="background:${s.color||'var(--bg2)'}22;border-color:${s.color||'var(--border)'}44">
-          ${s.icon||'🔗'}
-        </div>
-        <div style="flex:1">
-          <div style="font-size:13px;font-weight:600;color:var(--text)">${escHtml(s.name||'Platform')}</div>
-          <div style="font-size:11px;color:var(--text3);font-family:'JetBrains Mono',monospace">${s.id||'custom'}</div>
-        </div>
-        <div style="display:flex;align-items:center;gap:8px">
-          <button class="toggle ${s.active?'on':''}" onclick="toggleSocial(${i},this)" title="${s.active?'Gizle':'Göster'}"></button>
-          <button class="btn btn-sm btn-danger btn-icon" onclick="deleteSocial(${i})" title="Sil">×</button>
-        </div>
-      </div>
-      <div class="social-row-fields">
-        <div>
-          <div class="social-field-label">Platform Adı</div>
-          <input value="${escHtml(s.name||'')}" placeholder="Platform adı" oninput="aboutData.social[${i}].name=this.value">
-        </div>
-        <div>
-          <div class="social-field-label">URL / Kullanıcı Adı</div>
-          <input value="${escHtml(s.url||'')}" placeholder="${getSocialPlaceholder(s.id)}" oninput="aboutData.social[${i}].url=this.value">
-        </div>
-        <div>
-          <div class="social-field-label">İkon</div>
-          <input value="${escHtml(s.icon||'')}" placeholder="🔗" oninput="aboutData.social[${i}].icon=this.value;renderSocialList()" style="text-align:center;font-size:18px">
-        </div>
-      </div>
-    </div>`).join('');
-}
-
-function getSocialPlaceholder(id){
-  const p=SOCIAL_PRESETS.find(x=>x.id===id);
-  return p?p.placeholder:'https://...';
-}
-
-function addPresetSocial(presetId){
-  const preset=SOCIAL_PRESETS.find(p=>p.id===presetId);
-  if(!preset)return;
-  if(!aboutData.social)aboutData.social=[];
-  const exists=aboutData.social.some(s=>s.id===presetId);
-  if(exists){showToast('Bu platform zaten ekli','error');return;}
-  aboutData.social.push({id:preset.id,name:preset.name,icon:preset.icon,url:'',active:true,color:preset.color});
-  renderSocialPresets();
-  renderSocialList();
-  showToast(`${preset.name} eklendi`);
-}
-
-function addCustomSocial(){
-  if(!aboutData.social)aboutData.social=[];
-  const customId='custom_'+Date.now();
-  aboutData.social.push({id:customId,name:'Özel Platform',icon:'🔗',url:'',active:true,color:'#6366f1'});
-  renderSocialList();
-  showToast('Özel platform eklendi');
-}
-
-function toggleSocial(i, btn){
-  aboutData.social[i].active=!aboutData.social[i].active;
-  btn.classList.toggle('on');
-}
-
-function deleteSocial(i){
-  if(!confirm(`"${aboutData.social[i].name}" hesabını silmek istediğinizden emin misiniz?`))return;
-  aboutData.social.splice(i,1);
-  renderSocialPresets();
-  renderSocialList();
-  showToast('Sosyal medya hesabı silindi');
-}
-
-async function saveSocial(){
-  // aboutData.social zaten güncel, aboutData'yı kaydet
-  localStorage.setItem('ka_about',JSON.stringify(aboutData));
-  try{
-    await saveSettingToSupabase('about',aboutData);
-    showToast('Sosyal medya kaydedildi! ✓');
-    addNotif({id:'sc_'+Date.now(),icon:'🔗',text:'Sosyal medya hesapları güncellendi',time:new Date().toISOString(),unread:true});
-  }catch(e){showToast('Supabase hatası: '+e.message,'error');}
-}
-
-// ============================================================
-// CONTACT INFO
-// ============================================================
-async function loadContactPanel(){
-  try{
-    const remote=await loadSettingFromSupabase('contact_info');
+    const remote=await loadSettingFromSupabase('contact_page');
     if(remote){
-      document.getElementById('contactEmail').value=remote.email||'';
-      document.getElementById('contactLocation').value=remote.location||'';
-      document.getElementById('contactPhone').value=remote.phone||'';
-      document.getElementById('contactWebsite').value=remote.website||'';
-      document.getElementById('contactLinkedin').value=remote.linkedin||'';
-      document.getElementById('contactDesc').value=remote.desc||'';
+      document.getElementById('cpTitle').value=remote.title||defaults.title;
+      document.getElementById('cpDesc').value=remote.desc||defaults.desc;
+      document.getElementById('cpEmail').value=remote.email||defaults.email;
+      document.getElementById('cpLocation').value=remote.location||defaults.location;
+      document.getElementById('cpLinkedin').value=remote.linkedin||defaults.linkedin;
+      document.getElementById('cpFormTitle').value=remote.formTitle||defaults.formTitle;
     }
-  }catch(e){}
+  }catch(e){console.warn('Contact page Supabase yüklenemedi:',e);}
 }
 
-async function saveContactInfo(){
+async function saveContactPage(){
   const s={
-    email:document.getElementById('contactEmail').value.trim(),
-    location:document.getElementById('contactLocation').value.trim(),
-    phone:document.getElementById('contactPhone').value.trim(),
-    website:document.getElementById('contactWebsite').value.trim(),
-    linkedin:document.getElementById('contactLinkedin').value.trim(),
-    desc:document.getElementById('contactDesc').value.trim()
+    title:document.getElementById('cpTitle').value,
+    desc:document.getElementById('cpDesc').value,
+    email:document.getElementById('cpEmail').value,
+    location:document.getElementById('cpLocation').value,
+    linkedin:document.getElementById('cpLinkedin').value,
+    formTitle:document.getElementById('cpFormTitle').value
   };
   try{
-    await saveSettingToSupabase('contact_info',s);
-    showToast('İletişim bilgileri kaydedildi!');
-    addNotif({id:'ct_'+Date.now(),icon:'📬',text:'İletişim bilgileri güncellendi',time:new Date().toISOString(),unread:true});
+    await saveSettingToSupabase('contact_page',s);
+    showToast('İletişim sayfası kaydedildi! ✅');
   }catch(e){showToast('Supabase hatası: '+e.message,'error');}
 }
 
@@ -1562,7 +1538,11 @@ async function loadChatbotPanel(){
 function renderQAList(){
   const el=document.getElementById('qaList');
   if(!el)return;
-  el.innerHTML=(chatbotData.qa||[]).map((qa,i)=>`
+  if(!chatbotData.qa||!chatbotData.qa.length){
+    el.innerHTML='<div class="empty"><p>Soru-cevap yok. + Ekle butonuna tıklayın.</p></div>';
+    return;
+  }
+  el.innerHTML=(chatbotData.qa).map((qa,i)=>`
     <div class="qa-row">
       <div style="flex:1">
         <div style="font-size:10px;color:var(--text3);font-family:'JetBrains Mono',monospace;margin-bottom:4px">ANAHTAR KELİME</div>
@@ -1572,7 +1552,8 @@ function renderQAList(){
         <div style="font-size:10px;color:var(--text3);font-family:'JetBrains Mono',monospace;margin-bottom:4px">CEVAP</div>
         <input value="${escHtml(qa.a)}" placeholder="Cevap..." oninput="chatbotData.qa[${i}].a=this.value">
       </div>
-      <button class="btn btn-sm btn-danger btn-icon" style="margin-top:18px" onclick="chatbotData.qa.splice(${i},1);renderQAList()">×</button>
+      <button class="btn btn-sm btn-danger btn-icon" style="margin-top:18px"
+              onclick="chatbotData.qa.splice(${i},1);renderQAList()">×</button>
     </div>`).join('');
 }
 
@@ -1585,7 +1566,46 @@ async function saveChatbot(){
   localStorage.setItem('ka_chatbot',JSON.stringify(chatbotData));
   try{
     await saveSettingToSupabase('chatbot',chatbotData);
-    showToast('Chatbot ayarları kaydedildi!');
+    showToast('Chatbot ayarları kaydedildi! ✅');
+  }catch(e){showToast('Supabase hatası: '+e.message,'error');}
+}
+
+// ============================================================
+// SEO
+// ============================================================
+async function loadSEO(){
+  try{
+    const remote=await loadSettingFromSupabase('seo');
+    if(remote){
+      document.getElementById('seoTitle').value=remote.title||'';
+      document.getElementById('seoDesc').value=remote.desc||'';
+      document.getElementById('seoKeywords').value=remote.keywords||'';
+      document.getElementById('seoOgImage').value=remote.ogImage||'';
+      document.getElementById('seoUrl').value=remote.url||'';
+      document.getElementById('seoTwitter').value=remote.twitter||'';
+      document.getElementById('seoGaId').value=remote.gaId||'';
+      const setTog=(id,val)=>{const el=document.getElementById(id);if(el){if(val)el.classList.add('on');else el.classList.remove('on');}};
+      setTog('tog-index',remote.index!==false);
+      setTog('tog-sitemap',remote.sitemap!==false);
+    }
+  }catch(e){}
+}
+
+async function saveSEO(){
+  const s={
+    title:document.getElementById('seoTitle').value,
+    desc:document.getElementById('seoDesc').value,
+    keywords:document.getElementById('seoKeywords').value,
+    ogImage:document.getElementById('seoOgImage').value,
+    url:document.getElementById('seoUrl').value,
+    twitter:document.getElementById('seoTwitter').value,
+    gaId:document.getElementById('seoGaId').value,
+    index:document.getElementById('tog-index').classList.contains('on'),
+    sitemap:document.getElementById('tog-sitemap').classList.contains('on')
+  };
+  try{
+    await saveSettingToSupabase('seo',s);
+    showToast('SEO ayarları kaydedildi! ✅');
   }catch(e){showToast('Supabase hatası: '+e.message,'error');}
 }
 
@@ -1593,11 +1613,24 @@ async function saveChatbot(){
 // THEME & SITE SETTINGS
 // ============================================================
 async function loadSiteSettings(){
-  const local=JSON.parse(localStorage.getItem('ka_site_settings')||'{}');
-  if(local.author)document.getElementById('siteAuthor').value=local.author;
-  if(local.role)document.getElementById('siteRole').value=local.role;
-  if(local.heroBio)document.getElementById('siteHeroBio').value=local.heroBio;
-  if(local.tags)document.getElementById('siteTags').value=local.tags;
+  try{
+    const remote=await loadSettingFromSupabase('site_settings');
+    if(remote){
+      if(remote.author)document.getElementById('siteAuthor').value=remote.author;
+      if(remote.role)document.getElementById('siteRole').value=remote.role;
+      if(remote.heroBio)document.getElementById('siteHeroBio').value=remote.heroBio;
+      if(remote.tags)document.getElementById('siteTags').value=remote.tags;
+      if(remote.colorAccent){document.getElementById('colorAccent').value=remote.colorAccent;document.getElementById('colorAccentHex').value=remote.colorAccent;}
+      if(remote.colorAccent2){document.getElementById('colorAccent2').value=remote.colorAccent2;document.getElementById('colorAccent2Hex').value=remote.colorAccent2;}
+      if(remote.defaultTheme)document.getElementById('defaultTheme').value=remote.defaultTheme;
+      if(remote.heroCta1)document.getElementById('siteHeroCta1').value=remote.heroCta1;
+      if(remote.heroCta1Link)document.getElementById('siteHeroCta1Link').value=remote.heroCta1Link;
+      if(remote.heroCta2)document.getElementById('siteHeroCta2').value=remote.heroCta2;
+      if(remote.heroCta2Link)document.getElementById('siteHeroCta2Link').value=remote.heroCta2Link;
+      if(remote.footer)document.getElementById('siteFooter').value=remote.footer;
+      if(remote.footerLinks)document.getElementById('siteFooterLinks').value=remote.footerLinks;
+    }
+  }catch(e){}
 }
 
 async function saveSiteSettings(){
@@ -1608,12 +1641,18 @@ async function saveSiteSettings(){
     tags:document.getElementById('siteTags').value,
     colorAccent:document.getElementById('colorAccent').value,
     colorAccent2:document.getElementById('colorAccent2').value,
-    defaultTheme:document.getElementById('defaultTheme').value
+    defaultTheme:document.getElementById('defaultTheme').value,
+    heroCta1:document.getElementById('siteHeroCta1').value,
+    heroCta1Link:document.getElementById('siteHeroCta1Link').value,
+    heroCta2:document.getElementById('siteHeroCta2').value,
+    heroCta2Link:document.getElementById('siteHeroCta2Link').value,
+    footer:document.getElementById('siteFooter').value,
+    footerLinks:document.getElementById('siteFooterLinks').value
   };
   localStorage.setItem('ka_site_settings',JSON.stringify(s));
   try{
     await saveSettingToSupabase('site_settings',s);
-    showToast('Site ayarları kaydedildi!');
+    showToast('Site ayarları kaydedildi! ✅');
   }catch(e){showToast('Supabase hatası: '+e.message,'error');}
 }
 
@@ -1624,13 +1663,15 @@ async function loadSettingsPanel(){
   try{
     const remote=await loadSettingFromSupabase('app_settings');
     if(remote){
-      const setToggle=(id,val)=>{const el=document.getElementById(id);if(!el)return;if(val)el.classList.add('on');else el.classList.remove('on');};
-      setToggle('tog-comments',remote.comments!==false);
-      setToggle('tog-contact',remote.contact!==false);
-      setToggle('tog-bot',remote.bot!==false);
-      setToggle('tog-moderation',remote.moderation!==false);
-      setToggle('tog-notif-comment',remote.notifComment!==false);
-      setToggle('tog-notif-msg',remote.notifMsg!==false);
+      const setTog=(id,val)=>{const el=document.getElementById(id);if(!el)return;if(val)el.classList.add('on');else el.classList.remove('on');};
+      setTog('tog-comments',remote.comments!==false);
+      setTog('tog-contact',remote.contact!==false);
+      setTog('tog-bot',remote.bot!==false);
+      setTog('tog-moderation',remote.moderation!==false);
+      setTog('tog-readmode',remote.readmode!==false);
+      setTog('tog-lang',remote.lang!==false);
+      setTog('tog-notif-comment',remote.notifComment!==false);
+      setTog('tog-notif-msg',remote.notifMsg!==false);
       if(remote.notifEmail)document.getElementById('notifEmail').value=remote.notifEmail;
     }
   }catch(e){}
@@ -1642,6 +1683,8 @@ async function saveSettings(){
     contact:document.getElementById('tog-contact').classList.contains('on'),
     bot:document.getElementById('tog-bot').classList.contains('on'),
     moderation:document.getElementById('tog-moderation').classList.contains('on'),
+    readmode:document.getElementById('tog-readmode').classList.contains('on'),
+    lang:document.getElementById('tog-lang').classList.contains('on'),
     notifComment:document.getElementById('tog-notif-comment').classList.contains('on'),
     notifMsg:document.getElementById('tog-notif-msg').classList.contains('on'),
     notifEmail:document.getElementById('notifEmail').value
@@ -1649,14 +1692,16 @@ async function saveSettings(){
   localStorage.setItem('ka_settings',JSON.stringify(s));
   try{
     await saveSettingToSupabase('app_settings',s);
-    showToast('Ayarlar Supabase\'e kaydedildi!');
+    showToast('Ayarlar Supabase\'e kaydedildi! ✅');
   }catch(e){showToast('Supabase hatası: '+e.message,'error');}
 }
 
 function checkSBStatus(){
   db.from('posts').select('id').limit(1).then(({error})=>{
     const el=document.getElementById('sbStatus');
-    if(el)el.innerHTML=error?'<span style="color:var(--red)">❌ Bağlantı hatası</span>':'<span style="color:var(--green)">✅ Bağlı</span>';
+    if(el)el.innerHTML=error
+      ?'<span style="color:var(--red)">❌ Bağlantı hatası</span>'
+      :'<span style="color:var(--green)">✅ Bağlı</span>';
   });
 }
 
