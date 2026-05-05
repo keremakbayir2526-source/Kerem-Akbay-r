@@ -83,8 +83,8 @@ button{cursor:pointer}
 .notif-btn{position:relative}
 .notif-dot{position:absolute;top:6px;right:6px;width:7px;height:7px;border-radius:50%;background:var(--red);border:1.5px solid var(--bg2)}
 .content{padding:28px;flex:1}
-.panel{display:none}
-.panel.active{display:block}
+.panel{display:none!important}
+.panel.active{display:block!important}
 
 /* CARDS */
 .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px}
@@ -897,20 +897,40 @@ const panelTitles={
 };
 
 function showPanel(name, btn){
-  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  // Tüm panelleri gizle, active sınıfını kaldır
+  document.querySelectorAll('.panel').forEach(p=>{
+    p.classList.remove('active');
+    p.style.display='none';
+  });
   document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+
+  // Hedef paneli bul ve göster
   const panel=document.getElementById('panel-'+name);
   if(panel){
+    panel.style.display='block';
     panel.classList.add('active');
     panel.classList.remove('fade-in');
     void panel.offsetWidth;
     panel.classList.add('fade-in');
   }
+
+  // Nav aktif yap
   if(btn)btn.classList.add('active');
-  else document.querySelectorAll('.nav-item').forEach(n=>{if((n.getAttribute('onclick')||'').includes("'"+name+"'"))n.classList.add('active');});
-  document.getElementById('topbarTitle').textContent=panelTitles[name]||name;
-  document.getElementById('topbarSub').textContent=panelTitles[name]||name;
+  else document.querySelectorAll('.nav-item').forEach(n=>{
+    if((n.getAttribute('onclick')||'').includes("'"+name+"'"))n.classList.add('active');
+  });
+
+  // Başlık güncelle
+  const titleEl=document.getElementById('topbarTitle');
+  const subEl=document.getElementById('topbarSub');
+  if(titleEl)titleEl.textContent=panelTitles[name]||name;
+  if(subEl)subEl.textContent=panelTitles[name]||name;
+
+  // Panele özel yüklemeler
   if(name==='notifs')renderAllNotifs();
+  if(name==='contact')loadContactPage();
+  if(name==='seo')loadSEO();
+  if(name==='settings')loadSettingsPanel();
 }
 
 // ============================================================
