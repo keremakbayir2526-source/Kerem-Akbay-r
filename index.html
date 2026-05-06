@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="tr" data-theme="dark">
 <head>
@@ -19,8 +18,11 @@
 <meta name="twitter:description" content="Yazılım mimarisi, bulut teknolojileri ve yapay zeka üzerine deneyimlerimi paylaşıyorum.">
 <meta name="twitter:image" content="https://www.keremakbayir.tr/og-image.png">
 <link rel="canonical" href="https://www.keremakbayir.tr/" id="canonicalTag">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%236366f1'/><text y='.9em' font-size='65' x='15' fill='white'>⚡</text></svg>">
-<link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%236366f1'/><text y='.9em' font-size='65' x='15' fill='white'>⚡</text></svg>">
+
+<!-- FAVİCON: Beyaz arka plan, ⚡ simgesi — URL-encoded SVG (Google'da doğru görünür) -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20rx%3D%2216%22%20fill%3D%22white%22/%3E%3Ctext%20y%3D%2288%22%20font-size%3D%2282%22%20x%3D%228%22%3E%E2%9A%A1%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Crect%20width%3D%22100%22%20height%3D%22100%22%20rx%3D%2216%22%20fill%3D%22white%22/%3E%3Ctext%20y%3D%2288%22%20font-size%3D%2282%22%20x%3D%228%22%3E%E2%9A%A1%3C/text%3E%3C/svg%3E">
+
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
@@ -345,10 +347,10 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-EJPS2SY5Q3');</script>
 </head>
 <body>
- 
+
 <div id="readProgress"></div>
 <button id="scrollTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
- 
+
 <nav id="mainNav">
   <div class="nav-brand" onclick="showPage('home')"><span class="dot"></span><span style="font-family:'JetBrains Mono',monospace">kerem<span style="color:var(--accent)">.</span>akbayır</span></div>
   <div class="nav-links">
@@ -365,7 +367,7 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
     <div class="nav-btn nav-icon-btn" onclick="toggleTheme()" id="themeBtn">🌙</div>
   </div>
 </nav>
- 
+
 <!-- SEARCH -->
 <div class="search-overlay" id="searchOverlay" onclick="closeSearch(event)">
   <div class="search-box">
@@ -376,7 +378,7 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
     <div class="search-results" id="searchResults"><div class="search-empty">Aramak istediğinizi yazın...</div></div>
   </div>
 </div>
- 
+
 <!-- HOME -->
 <div class="page active" id="homePage">
   <div class="hero">
@@ -414,7 +416,7 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
   </div>
   <footer><div class="footer-copy" id="footerCopy">© 2025–2026 Kerem Akbayır</div><div class="footer-links" id="footerLinks"><a onclick="showPage('about')">Hakkımda</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('projects')">Projeler</a><a onclick="showPage('contact')">İletişim</a></div></footer>
 </div>
- 
+
 <!-- ABOUT -->
 <div class="page" id="aboutPage">
   <div class="page-header"><h1>Hakkımda</h1><p>Yazılım geliştirici, blog yazarı ve teknoloji meraklısı.</p></div>
@@ -434,7 +436,7 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
   </div>
   <footer><div class="footer-copy">© 2025–2026 Kerem Akbayır</div><div class="footer-links"><a onclick="showPage('home')">Ana Sayfa</a><a onclick="showPage('blog')">Blog</a><a onclick="showPage('contact')">İletişim</a></div></footer>
 </div>
- 
+
 <!-- BLOG -->
 <div class="page" id="blogPage">
   <div class="page-header"><h1>Blog</h1><p>Yazılım, mimari ve teknoloji üzerine düşünceler.</p></div>
@@ -444,7 +446,7 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
   </div>
   <footer><div class="footer-copy">© 2025–2026 Kerem Akbayır</div></footer>
 </div>
- 
+
 <!-- BLOG DETAIL -->
 <div class="page" id="blogDetailPage">
   <div class="detail-wrap">
@@ -452,7 +454,7 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
     <div id="blogDetailContent"></div>
   </div>
 </div>
- 
+
 <!-- PROJECTS -->
 <div class="page" id="projectsPage">
   <div class="page-header"><h1>Projeler</h1><p>Geliştirdiğim açık kaynak ve kişisel projeler.</p></div>
@@ -461,7 +463,7 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
   </div>
   <footer><div class="footer-copy">© 2025–2026 Kerem Akbayır</div></footer>
 </div>
- 
+
 <!-- TOOLS -->
 <div class="page" id="toolsPage">
   <div class="page-header"><h1>Araçlar 🛠️</h1><p>Geliştirici araçları — hepsi tarayıcıda, ücretsiz.</p></div>
@@ -486,7 +488,7 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
   </div>
   <footer><div class="footer-copy">© 2025–2026 Kerem Akbayır</div></footer>
 </div>
- 
+
 <!-- CONTACT -->
 <div class="page" id="contactPage">
   <div class="page-header"><h1>İletişim</h1><p>Sorularınız veya iş birliği teklifleri için.</p></div>
@@ -501,7 +503,8 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
           <div class="contact-item"><div class="contact-icon">💼</div><div><div class="contact-label">LinkedIn</div><div class="contact-value" id="contactLinkedin">linkedin.com/in/keremakbayir</div></div></div>
         </div>
       </div>
-      <div class="contact-form-card">
+      <!-- İletişim formu: app_settings.contact=false ise gizlenir -->
+      <div class="contact-form-card" id="contactFormCard">
         <h3 id="contactFormTitle">Mesaj Gönder</h3>
         <div class="form-group"><label>Ad Soyad</label><input type="text" id="msgName" placeholder="Adınızı girin"></div>
         <div class="form-group"><label>E-posta</label><input type="email" id="msgEmail" placeholder="email@ornek.com"></div>
@@ -513,7 +516,7 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
   </div>
   <footer><div class="footer-copy">© 2025–2026 Kerem Akbayır</div></footer>
 </div>
- 
+
 <!-- READING MODE -->
 <div class="reading-overlay" id="readingOverlay">
   <div class="reading-inner">
@@ -528,7 +531,7 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
     <div id="readingBody"></div>
   </div>
 </div>
- 
+
 <!-- CHATBOT -->
 <button id="chatBtn" onclick="toggleChat()">💬<div class="notif-dot" id="chatDot" style="display:none"></div></button>
 <div class="chat-window" id="chatWindow">
@@ -546,24 +549,24 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
     <button class="chat-send" onclick="sendChat()">→</button>
   </div>
 </div>
- 
+
 <div class="toast" id="toast"><span id="toastIcon">✓</span><span id="toastMsg">İşlem tamamlandı.</span></div>
- 
+
 <script>
 const SUPABASE_URL='https://rnroiajlmjudwgoacsjw.supabase.co';
 const SUPABASE_KEY='sb_publishable_GpoMQnpHtrxQKMTjO9Z7iQ_7fC56-tc';
 const{createClient}=supabase;
 const db=createClient(SUPABASE_URL,SUPABASE_KEY);
- 
+
 let allPosts=[],allProjects=[],currentPostId=null;
 let currentLang=localStorage.getItem('ka_lang')||'tr';
 let isDark=localStorage.getItem('ka_theme')!=='light';
 let readFontSize=16;
 let chatHistory=[];
 let _capA=0,_capB=0,_capAns=0;
- 
+
 const BASE_LIKES={1:23,2:17,3:31,4:8,5:14,6:6};
- 
+
 const catColors={'DevOps':'','Software Architecture':'badge-purple','C#':'badge-orange','Database':'badge-green','Yapay Zeka':'badge-purple','Design Patterns':'badge-cyan','Bilgi Güvenliği':'badge-red','Genel':''};
 function catBadge(c){return`<span class="badge ${catColors[c]||'badge-default'}">${c||'Genel'}</span>`;}
 function fmtDate(s){if(!s)return'';const d=new Date(s);const m=['Oca','Şub','Mar','Nis','May','Haz','Tem','Ağu','Eyl','Eki','Kas','Ara'];return`${d.getDate()} ${m[d.getMonth()]} ${d.getFullYear()}`;}
@@ -572,20 +575,20 @@ function wordCount(c){return(c||'').replace(/<[^>]+>/g,' ').trim().split(/\s+/).
 function initials(n){return(n||'??').split(' ').map(w=>w[0]).join('').substring(0,2).toUpperCase();}
 function escHtml(t){return(t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function showToast(msg,type='success'){const t=document.getElementById('toast');document.getElementById('toastIcon').textContent=type==='error'?'✕':'✓';document.getElementById('toastMsg').textContent=msg;t.className='toast '+type+' show';setTimeout(()=>t.classList.remove('show'),3000);}
- 
+
 function normalizeSocialUrl(raw){
   if(!raw)return'#';
   if(raw.startsWith('http://')||raw.startsWith('https://'))return raw;
   if(raw.startsWith('@'))return'https://twitter.com/'+raw.substring(1);
   return'https://'+raw;
 }
- 
+
 // THEME & LANG
 document.documentElement.setAttribute('data-theme',isDark?'dark':'light');
 function toggleTheme(){isDark=!isDark;document.documentElement.setAttribute('data-theme',isDark?'dark':'light');const b=document.getElementById('themeBtn');if(b)b.textContent=isDark?'🌙':'☀️';localStorage.setItem('ka_theme',isDark?'dark':'light');}
 function applyLang(){const lb=document.getElementById('langBtn');if(lb)lb.textContent=currentLang==='en'?'TR':'EN';}
 function toggleLang(){currentLang=currentLang==='tr'?'en':'tr';localStorage.setItem('ka_lang',currentLang);applyLang();}
- 
+
 // SCROLL
 window.addEventListener('scroll',()=>{
   const sb=document.getElementById('scrollTopBtn');
@@ -594,7 +597,7 @@ window.addEventListener('scroll',()=>{
   const isDetail=document.getElementById('blogDetailPage')?.classList.contains('active');
   if(rp){if(isDetail){rp.style.display='block';const h=document.documentElement.scrollHeight-window.innerHeight;rp.style.width=(h>0?window.scrollY/h*100:0)+'%';}else rp.style.display='none';}
 });
- 
+
 // SEARCH
 function openSearch(){document.getElementById('searchOverlay').classList.add('show');setTimeout(()=>document.getElementById('searchInput').focus(),50);}
 function closeSearch(e){if(!e||e.target===document.getElementById('searchOverlay')){document.getElementById('searchOverlay').classList.remove('show');document.getElementById('searchInput').value='';document.getElementById('searchResults').innerHTML='<div class="search-empty">Aramak istediğinizi yazın...</div>';}}
@@ -611,7 +614,7 @@ function doSearch(q){
     ...projs.map(p=>`<div class="search-item" onclick="showPage('projects');closeSearch()"><span style="font-size:18px">${p.icon}</span><div><div class="search-item-title">${p.name}</div><div class="search-item-meta">📁 Proje</div></div></div>`)
   ].join('');
 }
- 
+
 // URL ROUTING
 function updateHash(page,postId){
   const hash=postId?`#post-${postId}`:(page==='home'?'':`#${page}`);
@@ -635,7 +638,7 @@ function handleInitialHash(){
   if(hash.startsWith('#post-')){const id=parseInt(hash.replace('#post-',''));if(!isNaN(id))openPost(id,true);}
   else{const page=hash.replace('#','');const valid=['home','about','blog','projects','tools','contact'];if(valid.includes(page))showPageInternal(page);}
 }
- 
+
 // PAGES
 function showPage(p){updateHash(p,null);showPageInternal(p);}
 function showPageInternal(p){
@@ -653,7 +656,7 @@ function showPageInternal(p){
   if(p==='tools')initTools();
 }
 function goBackToBlog(){history.back();}
- 
+
 // ============================================================
 // SUPABASE LOADERS
 // ============================================================
@@ -662,30 +665,29 @@ async function loadPosts(){
     allPosts=(data||[]).map(p=>({id:p.id,title:p.title,excerpt:p.excerpt||'',content:p.content||'',category:p.category||'Genel',icon:p.icon||'📝',date:p.created_at?p.created_at.split('T')[0]:'',featured:p.featured,comments_enabled:p.comments_enabled!==false}));
   }catch(e){console.warn('Posts:',e.message);allPosts=[];}
 }
- 
+
 async function loadProjects(){
   try{const{data,error}=await db.from('projects').select('*').eq('status','active').order('created_at',{ascending:false});if(error)throw error;
     allProjects=(data||[]).map(p=>({id:p.id,name:p.name,desc:p.description||'',icon:p.icon||'🚀',tech:p.tech||'',github:p.github_url||'',demo:p.demo_url||''}));
   }catch(e){console.warn('Projects:',e.message);allProjects=[];}
 }
- 
+
 // ============================================================
-// ANA SETTINGS LOADER — TÜM KEY'LERİ OKUR
+// SETTINGS LOADER — TÜM TOGGLE'LAR UYGULANIR
 // ============================================================
 async function loadSiteSettings(){
   try{
     const{data,error}=await db.from('settings').select('key,value');
     if(error||!data)return;
- 
-    // Tüm key'leri map'e al, JSON parse et
+
     const map={};
     data.forEach(row=>{
       if(!row.value){map[row.key]=null;return;}
       if(typeof row.value==='object'){map[row.key]=row.value;return;}
       try{map[row.key]=JSON.parse(row.value);}catch{map[row.key]=row.value;}
     });
- 
-    // ── site_settings: hero alanları ve renkler ──
+
+    // ── site_settings ──
     if(map['site_settings']){
       const s=map['site_settings'];
       const set=(id,val)=>{const el=document.getElementById(id);if(el&&val!=null)el.textContent=val;};
@@ -700,7 +702,6 @@ async function loadSiteSettings(){
       set('aboutSidebarRole',s.role);
       if(s.colorAccent)  document.documentElement.style.setProperty('--accent',s.colorAccent);
       if(s.colorAccent2) document.documentElement.style.setProperty('--accent2',s.colorAccent2);
-      // Footer
       const fc=document.getElementById('footerCopy');
       if(fc&&s.footer) fc.textContent=s.footer;
       if(s.footerLinks){
@@ -713,49 +714,26 @@ async function loadSiteSettings(){
         }
       }
     }
- 
-    // ── about: hakkımda verileri ──
+
+    // ── about ──
     if(map['about']) window._aboutData=map['about'];
- 
-    // ── chatbot: bot ayarları ──
+
+    // ── chatbot ──
     if(map['chatbot']) window._chatbotData=map['chatbot'];
- 
-    // ── seo: meta tag'ler ve title ──
+
+    // ── seo ──
     if(map['seo']){
       const s=map['seo'];
       const setMeta=(sel,val)=>{const el=document.querySelector(sel);if(el&&val)el.setAttribute('content',val);};
-      if(s.title){
-        document.title=s.title;
-        setMeta('meta[property="og:title"]',s.title);
-        setMeta('meta[name="twitter:title"]',s.title);
-      }
-      if(s.desc){
-        setMeta('meta[name="description"]',s.desc);
-        setMeta('meta[property="og:description"]',s.desc);
-        setMeta('meta[name="twitter:description"]',s.desc);
-      }
-      if(s.ogImage){
-        setMeta('meta[property="og:image"]',s.ogImage);
-        setMeta('meta[name="twitter:image"]',s.ogImage);
-      }
-      if(s.url){
-        setMeta('meta[property="og:url"]',s.url);
-        const canonical=document.getElementById('canonicalTag');
-        if(canonical)canonical.href=s.url;
-      }
+      if(s.title){document.title=s.title;setMeta('meta[property="og:title"]',s.title);setMeta('meta[name="twitter:title"]',s.title);}
+      if(s.desc){setMeta('meta[name="description"]',s.desc);setMeta('meta[property="og:description"]',s.desc);setMeta('meta[name="twitter:description"]',s.desc);}
+      if(s.ogImage){setMeta('meta[property="og:image"]',s.ogImage);setMeta('meta[name="twitter:image"]',s.ogImage);}
+      if(s.url){setMeta('meta[property="og:url"]',s.url);const canonical=document.getElementById('canonicalTag');if(canonical)canonical.href=s.url;}
       if(s.twitter) setMeta('meta[name="twitter:site"]',s.twitter);
-      // Google Analytics ID değişmişse yükle
-      if(s.gaId&&s.gaId!=='G-EJPS2SY5Q3'){
-        const sc=document.createElement('script');
-        sc.src=`https://www.googletagmanager.com/gtag/js?id=${s.gaId}`;
-        sc.async=true; document.head.appendChild(sc);
-        window.dataLayer=window.dataLayer||[];
-        function gtag2(){dataLayer.push(arguments);}
-        gtag2('js',new Date()); gtag2('config',s.gaId);
-      }
+      if(s.gaId&&s.gaId!=='G-EJPS2SY5Q3'){const sc=document.createElement('script');sc.src=`https://www.googletagmanager.com/gtag/js?id=${s.gaId}`;sc.async=true;document.head.appendChild(sc);window.dataLayer=window.dataLayer||[];function gtag2(){dataLayer.push(arguments);}gtag2('js',new Date());gtag2('config',s.gaId);}
     }
- 
-    // ── contact_page: iletişim sayfası içeriği ──
+
+    // ── contact_page ──
     if(map['contact_page']){
       const c=map['contact_page'];
       const setText=(id,val)=>{const el=document.getElementById(id);if(el&&val!=null&&val!=='')el.textContent=val;};
@@ -766,27 +744,36 @@ async function loadSiteSettings(){
       setText('contactLinkedin',c.linkedin);
       setText('contactFormTitle',c.formTitle);
     }
- 
-    // ── app_settings: özellik toggle'ları ──
+
+    // ── app_settings: TÜM TOGGLE'LAR ──
     if(map['app_settings']){
       const s=map['app_settings'];
-      // Chatbot
+
+      // 1. Chatbot görünürlüğü
       const chatBtn=document.getElementById('chatBtn');
       if(chatBtn) chatBtn.style.display=(s.bot===false)?'none':'flex';
-      // Dil butonu
+
+      // 2. Dil değiştirici
       const langBtn=document.getElementById('langBtn');
       if(langBtn) langBtn.style.display=(s.lang===false)?'none':'';
+
+      // 3. İletişim formu
+      const contactFormCard=document.getElementById('contactFormCard');
+      if(contactFormCard) contactFormCard.style.display=(s.contact===false)?'none':'';
+
+      // 4. Okuma modu — sonradan openPost içinde kullanılmak üzere sakla
+      window._appSettings=s;
     }
- 
+
   }catch(e){console.warn('Settings yüklenemedi:',e.message);}
 }
- 
+
 async function loadComments(postId){
   try{const{data,error}=await db.from('comments').select('*').eq('post_id',postId).eq('status','approved').order('created_at');if(error)throw error;return(data||[]).map(c=>({id:c.id,author:c.author,email:c.email,text:c.content,date:c.created_at?c.created_at.split('T')[0]:''}));}catch(e){return[];}
 }
 async function saveComment(postId,author,email,text){const{error}=await db.from('comments').insert([{post_id:postId,author,email,content:text,status:'pending'}]);if(error)throw error;}
 async function saveMessage(name,email,subject,body){const{error}=await db.from('messages').insert([{name,email,subject,body}]);if(error)throw error;}
- 
+
 // HOME
 function renderHome(){
   const feat=allPosts.find(p=>p.featured)||allPosts[0];
@@ -803,7 +790,7 @@ function renderHome(){
   if(hg){if(!rest.length){hg.innerHTML='<div class="empty" style="grid-column:span 2"><div class="empty-icon">📭</div><p>Henüz yazı yok.</p></div>';return;}
     hg.innerHTML=rest.map(p=>`<div class="post-card fade-in" onclick="openPost(${p.id})">${catBadge(p.category)}<h3>${p.title}</h3><p>${p.excerpt}</p><div class="post-meta">${fmtDate(p.date)}<span class="meta-dot"></span>${readTime(p.content)} dk</div></div>`).join('');}
 }
- 
+
 // BLOG
 function renderBlog(filter){
   const cats=[...new Set(allPosts.map(p=>p.category))];
@@ -817,7 +804,7 @@ function renderBlog(filter){
     <div class="blog-body">${catBadge(p.category)}<h3>${p.title}</h3><p>${p.excerpt}</p><div class="post-meta">${fmtDate(p.date)}<span class="meta-dot"></span>${readTime(p.content)} dk</div></div>
   </div>`).join('');
 }
- 
+
 // ABOUT
 function renderAbout(){
   const d=window._aboutData||{
@@ -828,18 +815,14 @@ function renderAbout(){
     experience:[{title:'Senior Software Engineer',company:'TechCorp A.Ş.',date:'Oca 2022 – Günümüz',desc:'Mikroservis mimarileri, .NET 8, Azure AKS.'},{title:'Software Engineer',company:'Fintech Startup',date:'Mar 2019 – Ara 2021',desc:'Ödeme sistemleri, REST API tasarımı.'},{title:'Junior Developer',company:'Yazılım Evi Ltd.',date:'Haz 2016 – Mar 2019',desc:'ASP.NET MVC, MSSQL, jQuery.'}],
     social:[{icon:'🐙',name:'GitHub',url:'https://github.com/keremakbayir',active:true},{icon:'💼',name:'LinkedIn',url:'https://linkedin.com/in/keremakbayir',active:true},{icon:'🐦',name:'Twitter',url:'https://twitter.com/keremakbayir',active:true},{icon:'✍️',name:'Medium',url:'https://medium.com/@keremakbayir',active:true}]
   };
- 
-  // Sidebar bilgilerini about verisinden de güncelle
   if(d.name){const sbn=document.getElementById('aboutSidebarName');if(sbn)sbn.textContent=d.name;}
   if(d.title){const sbr=document.getElementById('aboutSidebarRole');if(sbr)sbr.textContent=d.title;}
   if(d.location){const sbl=document.getElementById('aboutSidebarLocation');if(sbl)sbl.textContent=d.location;}
- 
   const ac=document.getElementById('aboutContent');
   if(ac)ac.innerHTML=`
     <div class="about-section"><h2>Merhaba! 👋</h2><p>${d.bio1}</p><p>${d.bio2}</p>${d.bio3?`<p>${d.bio3}</p>`:''}</div>
     <div class="about-section"><h2>Beceriler</h2><div class="skills-grid">${(d.skills||[]).map(s=>`<div class="skill-item"><div class="skill-name">${s.name}</div><div class="skill-bar"><div class="skill-fill" style="width:${s.pct}%"></div></div></div>`).join('')}</div></div>
     <div class="about-section"><h2>Deneyim</h2>${(d.experience||[]).map(e=>`<div class="exp-item"><div class="exp-title">${e.title}</div><div class="exp-company">${e.company}</div><div class="exp-date">${e.date}</div><div class="exp-desc">${e.desc}</div></div>`).join('')}</div>`;
- 
   const sl=document.getElementById('aboutSocialLinks');
   if(sl)sl.innerHTML=(d.social||[]).filter(s=>s.active&&s.url).map(s=>{
     const href=normalizeSocialUrl(s.url);
@@ -847,7 +830,7 @@ function renderAbout(){
     return`<a class="social-link" href="${href}" target="_blank" rel="noopener noreferrer">${s.icon} <span>${displayUrl}</span></a>`;
   }).join('');
 }
- 
+
 // PROJECTS
 function renderProjectsPublic(){
   const g=document.getElementById('projectsGrid');if(!g)return;
@@ -859,7 +842,7 @@ function renderProjectsPublic(){
     <div class="proj-links">${p.github?`<a class="proj-link" href="${p.github}" target="_blank" rel="noopener noreferrer">GitHub →</a>`:''}${p.demo?`<a class="proj-link" href="${p.demo}" target="_blank" rel="noopener noreferrer">Demo →</a>`:''}</div>
   </div>`).join('');
 }
- 
+
 // BLOG DETAIL
 async function openPost(id,skipHash){
   const post=allPosts.find(p=>p.id===id);if(!post)return;
@@ -876,9 +859,19 @@ async function openPost(id,skipHash){
   const likeCount=likes['count_'+id];
   const isLiked=likes['liked_'+id]||false;
   const related=allPosts.filter(p=>p.category===post.category&&p.id!==id).slice(0,2);
-  const comments=await loadComments(id);
+
+  // app_settings kontrolü
+  const appS=window._appSettings||{};
+  const commentsEnabled=appS.comments!==false;
+  const readmodeEnabled=appS.readmode!==false;
+
+  const comments=commentsEnabled?await loadComments(id):[];
   const h2s=[...post.content.matchAll(/<h2>([^<]+)<\/h2>/g)];
   const tocHtml=h2s.length>1?`<div class="toc"><div class="toc-label">İçindekiler</div>${h2s.map((m,i)=>`<a onclick="scrollToH2(${i})">${m[1]}</a>`).join('')}</div>`:'';
+
+  // Okuma modu butonu
+  const readmodeBtn=readmodeEnabled?`<button class="share-btn" onclick="openReadingMode(${id})">📖 Okuma Modu</button>`:'';
+
   document.getElementById('blogDetailContent').innerHTML=`
     <div class="detail-header">
       ${catBadge(post.category)}
@@ -898,11 +891,11 @@ async function openPost(id,skipHash){
     <div class="detail-content" id="postBody">${post.content}</div>
     <div class="detail-actions">
       <button class="like-btn ${isLiked?'liked':''}" id="likeBtn" onclick="toggleLike(${id})">${isLiked?'❤️':'🤍'} <span id="likeCount">${likeCount}</span> Beğeni</button>
-      <button class="share-btn" onclick="openReadingMode(${id})">📖 Okuma Modu</button>
+      ${readmodeBtn}
       <button class="share-btn" onclick="sharePost('${post.title.replace(/'/g,"\\'")}')">🔗 Paylaş</button>
       <span class="read-time">⏱ ${readTime(post.content)} dk</span>
     </div>
-    ${post.comments_enabled!==false?renderCommentSection(id,comments):'<div style="text-align:center;padding:18px;color:var(--text3);font-size:13px">Bu yazıda yorumlar kapalı.</div>'}
+    ${commentsEnabled&&post.comments_enabled!==false?renderCommentSection(id,comments):'<div style="text-align:center;padding:18px;color:var(--text3);font-size:13px">Bu yazıda yorumlar kapalı.</div>'}
     ${related.length?`<div class="related-posts"><div class="related-label">İlgili Yazılar</div><div class="related-grid">${related.map(r=>`<div class="related-card" onclick="openPost(${r.id})"><span style="font-size:19px">${r.icon||'📝'}</span><div class="related-card-title">${r.title}</div></div>`).join('')}</div></div>`:''}
   `;
   document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));
@@ -913,9 +906,12 @@ async function openPost(id,skipHash){
   document.getElementById('readProgress').style.display='block';
   setTimeout(genCaptcha,50);
 }
- 
+
 function renderCommentSection(postId,approved){
   const wait=canComment();
+  // app_settings.moderation kontrolü
+  const appS=window._appSettings||{};
+  const moderationNote=appS.moderation!==false?'Onay sonrası yayınlanır':'Yorum hemen yayınlanır';
   let formHtml;
   if(wait>0){formHtml=`<div class="comment-cooldown">⏳ Yorum için ${wait} saniye bekleyin.</div>`;}
   else{formHtml=`<div class="comment-form"><h4>Yorum Yap</h4>
@@ -924,18 +920,18 @@ function renderCommentSection(postId,approved){
     <div class="captcha-row"><span style="font-size:11px;color:var(--text3)">🤖 Robot değilim </span><span class="captcha-q" id="capQ"></span><input type="number" class="captcha-input" id="capInput" min="0" max="99"></div>
     <div style="margin-top:10px;display:flex;align-items:center;justify-content:space-between">
       <button class="btn btn-primary btn-sm" onclick="submitComment(${postId})">Yorum Gönder →</button>
-      <span style="font-size:10px;color:var(--text3);font-family:'JetBrains Mono',monospace">Onay sonrası yayınlanır</span>
+      <span style="font-size:10px;color:var(--text3);font-family:'JetBrains Mono',monospace">${moderationNote}</span>
     </div>
   </div>`;}
   return`<div class="comments-wrap"><h3>💬 Yorumlar (${approved.length})</h3>${formHtml}
     <div class="comment-list">${approved.length?approved.map(c=>`<div class="comment-card"><div class="comment-head"><div class="comment-av">${initials(c.author)}</div><div><div class="comment-name">${escHtml(c.author)}</div><div class="comment-date">${fmtDate(c.date)}</div></div></div><div class="comment-text">${escHtml(c.text)}</div></div>`).join(''):'<div class="no-comments">💭 Henüz yorum yok. İlk yorumu siz yapın!</div>'}</div>
   </div>`;
 }
- 
+
 function genCaptcha(){_capA=Math.floor(Math.random()*12)+1;_capB=Math.floor(Math.random()*12)+1;_capAns=_capA+_capB;const el=document.getElementById('capQ');if(el)el.textContent=_capA+' + '+_capB+' = ';}
 function canComment(){const last=parseInt(localStorage.getItem('ka_last_comment')||'0');const now=Date.now();const cd=60000;if(now-last<cd)return Math.ceil((cd-(now-last))/1000);return 0;}
 function isSpam(t){const lc=(t||'').toLowerCase();return['http','https','www.','casino','viagra','script','onclick='].some(w=>lc.includes(w))||t.trim().split(/\s+/).length<2;}
- 
+
 async function submitComment(postId){
   const name=(document.getElementById('cName')||{value:''}).value.trim();
   const email=(document.getElementById('cEmail')||{value:''}).value.trim();
@@ -946,12 +942,24 @@ async function submitComment(postId){
   if(capVal!==_capAns){showToast('Captcha yanlış!','error');genCaptcha();const ci=document.getElementById('capInput');if(ci)ci.value='';return;}
   if(canComment()>0){showToast('Çok hızlı! Bekleyin.','error');return;}
   if(isSpam(text)){showToast('Spam içeriği tespit edildi.','error');return;}
-  try{await saveComment(postId,name,email,text);localStorage.setItem('ka_last_comment',Date.now().toString());['cName','cEmail','cText'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});genCaptcha();showToast('Yorum gönderildi! Onay bekleniyor.','success');}
-  catch(e){showToast('Yorum gönderilemedi.','error');}
+  // Moderasyon ayarına göre durum belirle
+  const appS=window._appSettings||{};
+  const status=appS.moderation!==false?'pending':'approved';
+  try{
+    const{error}=await db.from('comments').insert([{post_id:postId,author:name,email,content:text,status}]);
+    if(error)throw error;
+    localStorage.setItem('ka_last_comment',Date.now().toString());
+    ['cName','cEmail','cText'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+    genCaptcha();
+    showToast(status==='pending'?'Yorum gönderildi! Onay bekleniyor.':'Yorum yayınlandı!','success');
+  }catch(e){showToast('Yorum gönderilemedi.','error');}
 }
- 
+
 // CONTACT
 async function sendContactMsg(){
+  // app_settings.contact=false ise engelle
+  const appS=window._appSettings||{};
+  if(appS.contact===false){showToast('İletişim formu şu an devre dışı.','error');return;}
   const name=(document.getElementById('msgName')||{value:''}).value.trim();
   const email=(document.getElementById('msgEmail')||{value:''}).value.trim();
   const subject=(document.getElementById('msgSubject')||{value:''}).value.trim();
@@ -960,7 +968,7 @@ async function sendContactMsg(){
   try{await saveMessage(name,email,subject,body);['msgName','msgEmail','msgSubject','msgBody'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});showToast('Mesaj gönderildi!','success');}
   catch(e){showToast('Mesaj gönderilemedi.','error');}
 }
- 
+
 // LIKES
 function toggleLike(id){
   const likes=JSON.parse(localStorage.getItem('ka_likes')||'{}');
@@ -973,13 +981,13 @@ function toggleLike(id){
   if(btn)btn.innerHTML=`${!isLiked?'❤️':'🤍'} <span id="likeCount">${likes['count_'+id]}</span> Beğeni`;
   if(btn)btn.classList.toggle('liked',!isLiked);
 }
- 
+
 function sharePost(title){
   if(navigator.share)navigator.share({title,url:window.location.href}).catch(()=>{});
   else navigator.clipboard.writeText(window.location.href).then(()=>showToast('Link kopyalandı!','success'));
 }
 function scrollToH2(i){const body=document.getElementById('postBody');if(!body)return;const h2s=body.querySelectorAll('h2');if(h2s[i])h2s[i].scrollIntoView({behavior:'smooth'});}
- 
+
 // READING MODE
 function openReadingMode(id){
   const post=allPosts.find(p=>p.id===id);if(!post)return;
@@ -991,7 +999,7 @@ function openReadingMode(id){
 }
 function closeReadingMode(){document.getElementById('readingOverlay').classList.remove('show');document.body.style.overflow='';}
 function changeFontSize(d){readFontSize=Math.max(13,Math.min(24,readFontSize+d));const el=document.getElementById('rmContent');if(el)el.style.fontSize=readFontSize+'px';}
- 
+
 // CHATBOT
 const defaultQA=[{q:'hakkında',a:'Kerem Akbayır, 8+ yıllık deneyime sahip Senior Software Engineer.'},{q:'projeler',a:'MicroKit, AzureWatcher ve QueryOptimizer projelerine göz atabilirsiniz!'},{q:'iletişim',a:'kerem@akbayir.dev adresinden ulaşabilirsiniz.'},{q:'blog',a:'DevOps, Architecture, C#, PostgreSQL, AI konularında yazılar yazıyorum.'},{q:'teknoloji',a:'.NET, Azure, Docker, Kubernetes, PostgreSQL ve LLM entegrasyonlarıyla çalışıyorum.'}];
 function toggleChat(){
@@ -1014,7 +1022,7 @@ function initChat(){
 function addChatMsg(role,text){chatHistory.push({role,text});const msgs=document.getElementById('chatMsgs');if(!msgs)return;const now=new Date().toLocaleTimeString('tr-TR',{hour:'2-digit',minute:'2-digit'});const div=document.createElement('div');div.className=`chat-msg ${role} fade-in`;div.innerHTML=`<div class="chat-bubble">${text}</div><div class="chat-time-label">${now}</div>`;msgs.appendChild(div);msgs.scrollTop=msgs.scrollHeight;}
 function sendChat(){const inp=document.getElementById('chatInput');if(!inp)return;const v=inp.value.trim();if(!v)return;inp.value='';sendChatMsg(v);}
 function sendChatMsg(msg){addChatMsg('user',msg);document.getElementById('chatSugs').innerHTML='';setTimeout(()=>{const lower=msg.toLowerCase();const cbd=window._chatbotData||{};const qa=cbd.qa||defaultQA;const match=qa.find(x=>lower.includes(x.q.toLowerCase()));if(match)addChatMsg('bot',match.a);else if(lower.includes('merhaba')||lower.includes('selam'))addChatMsg('bot','Merhaba! 😊 Size nasıl yardımcı olabilirim?');else addChatMsg('bot','Üzgünüm, bu konuda bilgim yok. İletişim sayfasından mesaj gönderebilirsiniz! 📩');},600);}
- 
+
 // HASH GENERATOR
 async function sha256(msg){const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(msg));return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');}
 async function sha1(msg){const buf=await crypto.subtle.digest('SHA-1',new TextEncoder().encode(msg));return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');}
@@ -1027,12 +1035,12 @@ async function genHashes(){
   const[s256,s1]=await Promise.all([sha256(inp),sha1(inp)]);
   div.innerHTML=[['SHA-256',s256],['SHA-1',s1],['DJB2',djb2(inp)]].map(([n,v])=>`<div style="margin-bottom:7px"><div style="font-size:10px;color:var(--text3);font-family:'JetBrains Mono',monospace;margin-bottom:3px">${n}</div><div style="background:var(--bg3);border:1px solid var(--border);border-radius:7px;padding:8px 11px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--green);word-break:break-all;position:relative"><span>${v}</span><button onclick="navigator.clipboard.writeText('${v}').then(()=>showToast('Kopyalandı!'))" style="position:absolute;top:6px;right:6px;font-size:9px;color:var(--text3);background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:2px 6px;cursor:pointer">Kopyala</button></div></div>`).join('');
 }
- 
+
 // TOOLS
 function goTool(name){showPage('tools');setTimeout(()=>{const btn=document.querySelector(`[onclick="switchTool('${name}',this)"]`);if(btn){document.querySelectorAll('.tnav-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderTool(name);}},100);}
 function switchTool(name,btn){document.querySelectorAll('.tnav-btn').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');renderTool(name);}
 function initTools(){const firstBtn=document.querySelector('.tnav-btn');if(firstBtn){document.querySelectorAll('.tnav-btn').forEach(b=>b.classList.remove('active'));firstBtn.classList.add('active');}renderTool('password');}
- 
+
 function renderTool(name){
   const c=document.getElementById('toolContent');if(!c)return;
   const tools={
@@ -1056,7 +1064,7 @@ function renderTool(name){
   if(name==='uuid')genUUID();
   if(name==='color')colFromHex();
 }
- 
+
 function genPwd(){const len=parseInt(document.getElementById('pwLen')?.value)||16;let chars='';if(document.getElementById('pwUp')?.checked)chars+='ABCDEFGHIJKLMNOPQRSTUVWXYZ';if(document.getElementById('pwLo')?.checked)chars+='abcdefghijklmnopqrstuvwxyz';if(document.getElementById('pwNum')?.checked)chars+='0123456789';if(document.getElementById('pwSym')?.checked)chars+='!@#$%^&*()_+-=';if(!chars)chars='abcdefghijklmnopqrstuvwxyz';let pwd='';const arr=new Uint32Array(len);crypto.getRandomValues(arr);for(let i=0;i<len;i++)pwd+=chars[arr[i]%chars.length];const el=document.getElementById('pwRes');if(el)el.textContent=pwd;}
 function processJSON(){const inp=document.getElementById('jsonIn')?.value.trim();const err=document.getElementById('jsonErr');const out=document.getElementById('jsonOut');if(!inp){if(out)out.textContent='';return;}try{if(out)out.textContent=JSON.stringify(JSON.parse(inp),null,2);if(err)err.style.display='none';}catch(e){if(err){err.textContent='❌ '+e.message;err.style.display='block';}if(out)out.textContent='';}}
 function minifyJSON(){try{const out=document.getElementById('jsonOut');if(out)out.textContent=JSON.stringify(JSON.parse(document.getElementById('jsonIn')?.value||''));document.getElementById('jsonErr').style.display='none';}catch(e){const err=document.getElementById('jsonErr');if(err){err.textContent='❌ '+e.message;err.style.display='block';}}}
@@ -1075,7 +1083,7 @@ function rgbToHsl(r,g,b){r/=255;g/=255;b/=255;const mx=Math.max(r,g,b),mn=Math.m
 function testRegex(){const pat=document.getElementById('rxPat')?.value;const flags=document.getElementById('rxFlags')?.value||'g';const text=document.getElementById('rxText')?.value||'';const info=document.getElementById('rxInfo');const res=document.getElementById('rxRes');if(!pat){if(res)res.innerHTML=escHtml(text);return;}try{let all=[];if(flags.includes('g')){const re2=new RegExp(pat,'g');let m;while((m=re2.exec(text))!==null)all.push(m);}else{const m=new RegExp(pat,flags).exec(text);if(m)all.push(m);}if(info)info.textContent=`${all.length} eşleşme`;if(res)res.innerHTML=text.replace(new RegExp(pat,flags),m=>`<mark style="background:rgba(99,102,241,0.3);border-radius:3px;padding:0 2px">${escHtml(m)}</mark>`);}catch(e){if(info)info.textContent='❌ '+e.message;}}
 function genUUID(){const u='xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,c=>{const r=Math.random()*16|0;return(c==='x'?r:(r&0x3|0x8)).toString(16);});const el=document.getElementById('uuidRes');if(el)el.textContent=u;}
 function copyEl(id){const el=document.getElementById(id);if(!el)return;navigator.clipboard.writeText(el.textContent).then(()=>showToast('Kopyalandı!','success')).catch(()=>showToast('Kopyalanamadı.','error'));}
- 
+
 function initChatbot(){
   setTimeout(()=>{
     const dot=document.getElementById('chatDot');
@@ -1083,10 +1091,8 @@ function initChatbot(){
     if(dot&&win&&!win.classList.contains('show'))dot.style.display='block';
   },3000);
 }
- 
-// ============================================================
+
 // INIT
-// ============================================================
 document.addEventListener('DOMContentLoaded',async()=>{
   const tb=document.getElementById('themeBtn');
   if(tb)tb.textContent=isDark?'🌙':'☀️';
