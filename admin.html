@@ -32,18 +32,17 @@ body{font-family:'Sora',sans-serif;background:var(--bg);color:var(--text);min-he
 a{color:inherit;text-decoration:none}
 button,input,textarea,select{font-family:'Sora',sans-serif}
 button{cursor:pointer}
-
+ 
 .ql-toolbar{background:var(--bg3)!important;border:1px solid var(--border2)!important;border-radius:9px 9px 0 0!important}
 .ql-container{background:var(--bg3)!important;border:1px solid var(--border2)!important;border-top:none!important;border-radius:0 0 9px 9px!important}
 .ql-editor{color:var(--text)!important;font-family:'Sora',sans-serif!important;font-size:13px!important;min-height:220px}
-.ql-stroke{stroke:var(--text2)!important}
-.ql-fill{fill:var(--text2)!important}
+.ql-stroke{stroke:var(--text2)!important}.ql-fill{fill:var(--text2)!important}
 .ql-picker-label{color:var(--text2)!important}
 .ql-picker-options{background:var(--card)!important;border:1px solid var(--border2)!important;border-radius:8px!important}
 .ql-picker-item{color:var(--text)!important}
 [data-theme="light"] .ql-toolbar{background:#f1f5f9!important}
 [data-theme="light"] .ql-container{background:#fff!important}
-
+ 
 .login-page{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:var(--bg);z-index:9999}
 .login-page.hidden{display:none}
 .login-card{width:400px;max-width:90vw;background:var(--card);border:1px solid var(--border2);border-radius:20px;padding:44px 40px;position:relative;overflow:hidden}
@@ -57,10 +56,9 @@ button{cursor:pointer}
 .login-field input{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:10px;padding:11px 14px;color:var(--text);font-size:14px;outline:none;transition:border-color .15s}
 .login-field input:focus{border-color:var(--accent)}
 .login-btn{width:100%;padding:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:600;margin-top:8px;transition:opacity .15s}
-.login-btn:hover{opacity:.9}
-.login-btn:disabled{opacity:.5;cursor:not-allowed}
+.login-btn:hover{opacity:.9}.login-btn:disabled{opacity:.5;cursor:not-allowed}
 .login-err{font-size:12px;color:var(--red);text-align:center;margin-top:10px;min-height:16px}
-
+ 
 .app{display:flex;width:100%;min-height:100vh}
 .app.hidden{display:none}
 .sidebar{width:var(--sidebar-w);background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;position:fixed;top:0;left:0;height:100vh;z-index:100;overflow-y:auto}
@@ -98,39 +96,36 @@ button{cursor:pointer}
 .content{padding:28px;flex:1}
 .panel{display:none!important}
 .panel.active{display:block!important}
-
+ 
 .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px}
 .card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:8px}
 .card-title{font-size:14px;font-weight:600}
 .card-subtitle{font-size:12px;color:var(--text3);font-family:'JetBrains Mono',monospace;margin-top:2px}
-
+ 
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
 .stat-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;position:relative;overflow:hidden;transition:border-color .2s,transform .2s}
 .stat-card:hover{border-color:var(--border2);transform:translateY(-2px)}
 .stat-icon{font-size:20px;margin-bottom:12px}
 .stat-val{font-size:30px;font-weight:700;font-family:'JetBrains Mono',monospace;line-height:1}
-.stat-val.blue{color:var(--accent)}
-.stat-val.purple{color:var(--accent2)}
-.stat-val.green{color:var(--green)}
-.stat-val.orange{color:var(--orange)}
+.stat-val.blue{color:var(--accent)}.stat-val.purple{color:var(--accent2)}
+.stat-val.green{color:var(--green)}.stat-val.orange{color:var(--orange)}
 .stat-label{font-size:12px;color:var(--text3);margin-top:6px}
-
+ 
 .activity-item{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)}
 .activity-item:last-child{border-bottom:none}
 .activity-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
-.activity-icon.blue{background:rgba(99,102,241,0.12)}
-.activity-icon.green{background:rgba(16,185,129,0.12)}
+.activity-icon.blue{background:rgba(99,102,241,0.12)}.activity-icon.green{background:rgba(16,185,129,0.12)}
 .activity-text{font-size:13px;color:var(--text2);line-height:1.5}
 .activity-text strong{color:var(--text);font-weight:500}
 .activity-time{font-size:11px;color:var(--text3);font-family:'JetBrains Mono',monospace;margin-top:2px}
-
+ 
 .chart-wrap{height:160px;margin-top:8px}
 .chart-bars{display:flex;align-items:flex-end;gap:6px;height:100%;padding-top:10px}
 .chart-bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;height:100%}
 .chart-bar{width:100%;border-radius:4px 4px 0 0;cursor:pointer;transition:opacity .15s}
 .chart-bar:hover{opacity:.8}
 .chart-bar-label{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--text3)}
-
+ 
 .table-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--border)}
 table{width:100%;border-collapse:collapse}
 th{font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--text3);text-align:left;padding:10px 16px;border-bottom:1px solid var(--border);font-weight:600;text-transform:uppercase;letter-spacing:.6px;background:var(--bg3)}
@@ -139,19 +134,18 @@ tr:last-child td{border-bottom:none}
 tr:hover td{background:rgba(255,255,255,0.02)}
 th.cb,td.cb{width:36px;padding-right:4px}
 input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:pointer}
-
+ 
 .badge{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-family:'JetBrains Mono',monospace;padding:3px 9px;border-radius:5px;font-weight:600}
 .badge.published,.badge.active,.badge.approved{color:var(--green);background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2)}
 .badge.draft,.badge.archived{color:var(--text3);background:var(--bg3);border:1px solid var(--border)}
 .badge.pending{color:var(--orange);background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2)}
-
+ 
 .tags-wrap{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
 .tag-chip{display:inline-flex;align-items:center;gap:3px;font-size:10px;font-family:'JetBrains Mono',monospace;background:rgba(99,102,241,0.1);color:var(--accent);border:1px solid rgba(99,102,241,0.2);padding:2px 7px;border-radius:20px}
-.tag-chip-del{cursor:pointer;font-size:11px;opacity:.7}
-.tag-chip-del:hover{opacity:1}
+.tag-chip-del{cursor:pointer;font-size:11px;opacity:.7}.tag-chip-del:hover{opacity:1}
 .tag-add-row{display:flex;gap:6px;align-items:center;margin-top:6px}
 .tag-add-row input{flex:1}
-
+ 
 .btn{font-size:12px;font-weight:500;padding:8px 16px;border-radius:8px;border:1px solid var(--border);cursor:pointer;transition:all .15s;background:transparent;color:var(--text2)}
 .btn-primary{background:var(--accent);color:#fff;border-color:var(--accent)}
 .btn-primary:hover{filter:brightness(1.1)}
@@ -165,18 +159,18 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
 .btn-sm{padding:5px 12px;font-size:11px;border-radius:6px}
 .btn-icon{width:32px;height:32px;padding:0;display:inline-flex;align-items:center;justify-content:center;border-radius:7px}
 .btn:disabled{opacity:.4;cursor:not-allowed}
-
+ 
 .bulk-bar{display:none;align-items:center;gap:10px;padding:10px 16px;background:rgba(99,102,241,0.07);border:1px solid rgba(99,102,241,0.2);border-radius:10px;margin-bottom:12px}
 .bulk-bar.show{display:flex}
 .bulk-count{font-size:13px;font-weight:600;color:var(--accent);font-family:'JetBrains Mono',monospace}
 .bulk-actions{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap}
-
+ 
 .table-controls{display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap}
 .search-wrap{position:relative;flex:1;min-width:160px}
 .search-wrap::before{content:'🔍';position:absolute;left:11px;top:50%;transform:translateY(-50%);font-size:11px;pointer-events:none}
 .search-input{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:9px;padding:8px 12px 8px 32px;color:var(--text);font-size:13px;outline:none;transition:border-color .15s}
 .search-input:focus{border-color:var(--accent)}
-
+ 
 .form-group{margin-bottom:14px}
 .form-label{display:block;font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
 .form-label .req{color:var(--red);margin-left:2px}
@@ -191,22 +185,21 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
 .form-row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
 .form-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:20px;padding-top:16px;border-top:1px solid var(--border)}
 .char-count{font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--text3);text-align:right;margin-top:2px}
-.char-count.warn{color:var(--orange)}
-.char-count.over{color:var(--red)}
-
+.char-count.warn{color:var(--orange)}.char-count.over{color:var(--red)}
+ 
 .slug-preview{font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--text3);margin-top:4px;padding:4px 10px;background:var(--bg4);border-radius:5px}
 .slug-preview span{color:var(--accent)}
-
+ 
 .seo-preview{background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:14px;margin-top:10px}
 .seo-prev-site{font-size:11px;color:var(--green);font-family:'JetBrains Mono',monospace;margin-bottom:3px}
 .seo-prev-title{font-size:15px;color:#8ab4f8;font-weight:500;margin-bottom:2px}
 [data-theme="light"] .seo-prev-title{color:#1a0dab}
 .seo-prev-desc{font-size:12px;color:var(--text2);line-height:1.5}
-
+ 
 .img-preview-wrap{margin-top:10px;display:none}
 .img-preview-wrap.show{display:block}
 .img-preview{width:100%;max-height:160px;object-fit:cover;border-radius:9px;border:1px solid var(--border)}
-
+ 
 .upload-zone{border:2px dashed var(--border2);border-radius:12px;padding:28px;text-align:center;cursor:pointer;transition:all .2s;background:var(--bg3);position:relative}
 .upload-zone:hover,.upload-zone.dragover{border-color:var(--accent);background:rgba(99,102,241,0.05)}
 .upload-zone-icon{font-size:32px;margin-bottom:8px}
@@ -223,26 +216,24 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
 .media-item.selected{border-color:var(--accent)}
 .media-check{position:absolute;top:5px;left:5px;width:18px;height:18px;border-radius:4px;background:var(--accent);color:#fff;font-size:10px;display:none;align-items:center;justify-content:center;font-weight:700}
 .media-item.selected .media-check{display:flex}
-
+ 
 .modal-overlay{position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,0.65);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:20px}
 .modal-overlay.show{display:flex}
 .modal{background:var(--card);border:1px solid var(--border2);border-radius:18px;padding:28px;width:680px;max-width:95vw;max-height:90vh;overflow-y:auto}
-.modal-lg{width:820px}
-.modal-sm{width:440px}
+.modal-lg{width:820px}.modal-sm{width:440px}
 .modal h3{font-size:18px;font-weight:600;margin-bottom:20px;letter-spacing:-.3px}
-
+ 
 .modal-tabs{display:flex;gap:3px;background:var(--bg3);border-radius:9px;padding:3px;margin-bottom:20px}
 .modal-tab{flex:1;padding:7px;text-align:center;font-size:12px;font-weight:500;border-radius:7px;cursor:pointer;color:var(--text2);transition:all .15s;border:none;background:none}
 .modal-tab.active{background:var(--card);color:var(--text);box-shadow:0 1px 4px rgba(0,0,0,0.2)}
-.tab-pane{display:none}
-.tab-pane.active{display:block}
-
+.tab-pane{display:none}.tab-pane.active{display:block}
+ 
 .confirm-body{text-align:center;padding:8px 0}
 .confirm-icon{font-size:48px;margin-bottom:14px}
 .confirm-title{font-size:18px;font-weight:700;margin-bottom:8px;letter-spacing:-.3px}
 .confirm-msg{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:24px}
 .confirm-acts{display:flex;gap:10px;justify-content:center}
-
+ 
 .preview-frame{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:32px;min-height:360px;overflow-y:auto}
 .pf-title{font-size:26px;font-weight:700;margin-bottom:14px;line-height:1.3}
 .pf-meta{display:flex;gap:10px;font-size:12px;color:var(--text3);margin-bottom:20px;flex-wrap:wrap;align-items:center}
@@ -254,9 +245,9 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
 .pf-content pre{background:var(--bg3);border-radius:8px;padding:14px;margin:10px 0;overflow-x:auto}
 .pf-content a{color:var(--accent)}
 .pf-content blockquote{border-left:3px solid var(--accent);padding-left:14px;margin:10px 0;color:var(--text3)}
-
+ 
 .reply-original{background:var(--bg3);border-radius:10px;padding:14px;margin-bottom:14px;font-size:13px;color:var(--text2);line-height:1.6;border-left:3px solid var(--accent)}
-
+ 
 .notif-panel{position:fixed;top:70px;right:20px;width:340px;background:var(--card);border:1px solid var(--border2);border-radius:14px;z-index:500;box-shadow:var(--shadow);display:none}
 .notif-panel.show{display:block}
 .notif-header{padding:14px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
@@ -269,17 +260,17 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
 .notif-item-icon{font-size:18px;flex-shrink:0}
 .notif-item-text{font-size:12px;color:var(--text2);line-height:1.5}
 .notif-item-time{font-size:10px;color:var(--text3);font-family:'JetBrains Mono',monospace;margin-top:2px}
-
+ 
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(10px);z-index:9999;background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:12px 18px;font-size:13px;display:flex;align-items:center;gap:9px;opacity:0;transition:all .3s;pointer-events:none;box-shadow:var(--shadow)}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .toast.success{border-color:rgba(16,185,129,0.4)}
 .toast.error{border-color:rgba(239,68,68,0.4)}
 .toast.warning{border-color:rgba(245,158,11,0.4)}
-
+ 
 .empty{text-align:center;padding:48px 20px;color:var(--text3)}
 .empty-icon{font-size:36px;margin-bottom:10px}
 .empty p{font-size:13px}
-
+ 
 .setting-row{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--border)}
 .setting-row:last-child{border-bottom:none}
 .setting-info h4{font-size:13px;font-weight:500}
@@ -288,17 +279,17 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
 .toggle.on{background:var(--accent)}
 .toggle::after{content:'';position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:transform .2s}
 .toggle.on::after{transform:translateX(18px)}
-
+ 
 .info-box{background:rgba(99,102,241,0.07);border:1px solid rgba(99,102,241,0.2);border-radius:10px;padding:14px 16px;font-size:12px;color:var(--text2);line-height:1.7;margin-bottom:16px}
 .info-box strong{color:var(--accent)}
 .info-box code{font-family:'JetBrains Mono',monospace;background:rgba(99,102,241,0.15);padding:1px 5px;border-radius:4px;font-size:11px}
-
+ 
 .filter-btn.active{background:rgba(99,102,241,0.12);color:var(--accent);border-color:rgba(99,102,241,0.3)}
-
+ 
 .drag-handle{cursor:grab;color:var(--text3);font-size:16px;padding:0 4px;user-select:none}
 .drag-handle:active{cursor:grabbing}
 .sortable-ghost{opacity:.4;background:rgba(99,102,241,0.06)!important}
-
+ 
 .skill-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:10px 14px}
 .skill-row input{background:none;border:none;outline:none;color:var(--text);font-size:13px}
 .skill-row input[type=range]{flex:2}
@@ -306,22 +297,24 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
 .exp-row{background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:14px;margin-bottom:10px}
 .exp-row input,.exp-row textarea{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:7px;padding:8px 12px;color:var(--text);font-size:12px;outline:none;margin-bottom:6px;font-family:'Sora',sans-serif}
 .exp-row textarea{min-height:60px;resize:vertical}
-
+ 
 .social-row{background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:12px 14px;margin-bottom:8px;display:flex;align-items:center;gap:8px}
 .social-row input{background:var(--bg2);border:1px solid var(--border);border-radius:7px;padding:7px 10px;color:var(--text);font-size:12px;outline:none;font-family:'Sora',sans-serif}
 .social-row input:focus{border-color:var(--accent)}
-
+ 
 .qa-row{background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:14px;margin-bottom:10px;display:flex;gap:12px;align-items:flex-start}
 .qa-row input{flex:1;background:var(--bg2);border:1px solid var(--border);border-radius:7px;padding:8px 12px;color:var(--text);font-size:12px;outline:none;font-family:'Sora',sans-serif}
-
-/* FIX: supabase status box */
+ 
 .sb-status-box{background:var(--bg3);border:1px solid var(--border);border-radius:7px;padding:8px 12px;font-size:11px;font-family:'JetBrains Mono',monospace;word-break:break-all}
-
+ 
+/* Loading overlay */
+.save-loading{opacity:.6;pointer-events:none}
+ 
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 .fade-in{animation:fadeIn .25s ease forwards}
 @keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
 .spin{animation:spin 1s linear infinite;display:inline-block}
-
+ 
 @media(max-width:768px){
   .sidebar{transform:translateX(-100%)}
   .main{margin-left:0}
@@ -331,7 +324,7 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
 </style>
 </head>
 <body>
-
+ 
 <!-- LOGIN -->
 <div class="login-page" id="loginPage">
   <div class="login-card">
@@ -350,7 +343,7 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
     <div class="login-err" id="loginErr"></div>
   </div>
 </div>
-
+ 
 <!-- APP -->
 <div class="app hidden" id="app">
   <aside class="sidebar">
@@ -394,7 +387,7 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
       </div>
     </div>
   </aside>
-
+ 
   <div class="main">
     <div class="topbar">
       <div class="topbar-left">
@@ -408,14 +401,14 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
         <div class="topbar-btn notif-btn" onclick="toggleNotifPanel()">🔔<div class="notif-dot" id="notifDot" style="display:none"></div></div>
       </div>
     </div>
-
+ 
     <div class="notif-panel" id="notifPanel">
       <div class="notif-header"><h4>Bildirimler</h4><span class="notif-clear" onclick="clearNotifs()">Temizle</span></div>
       <div class="notif-list" id="notifList"></div>
     </div>
-
+ 
     <div class="content">
-
+ 
       <!-- DASHBOARD -->
       <div class="panel active fade-in" id="panel-dashboard">
         <div class="stats-grid">
@@ -439,7 +432,7 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
           <div id="pendingList"></div>
         </div>
       </div>
-
+ 
       <!-- VISITORS -->
       <div class="panel fade-in" id="panel-visitors">
         <div class="card">
@@ -448,7 +441,7 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
           <a href="https://analytics.google.com" target="_blank" style="display:inline-flex;align-items:center;gap:10px;padding:14px 24px;background:linear-gradient(135deg,#4285f4,#34a853);color:#fff;border-radius:12px;font-size:14px;font-weight:600"><span style="font-size:20px">📊</span> Google Analytics'i Aç</a>
         </div>
       </div>
-
+ 
       <!-- NOTIFICATIONS -->
       <div class="panel fade-in" id="panel-notifs">
         <div class="card">
@@ -456,7 +449,7 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
           <div id="allNotifList"></div>
         </div>
       </div>
-
+ 
       <!-- POSTS -->
       <div class="panel fade-in" id="panel-posts">
         <div class="table-controls">
@@ -488,7 +481,7 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
           </table>
         </div>
       </div>
-
+ 
       <!-- PROJECTS -->
       <div class="panel fade-in" id="panel-projects">
         <div class="table-controls">
@@ -499,7 +492,7 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
           <button class="btn btn-primary" onclick="openProjModal()">+ Yeni Proje</button>
         </div>
         <div style="font-size:12px;color:var(--text3);margin-bottom:8px;padding:8px 12px;background:rgba(99,102,241,0.06);border-radius:8px;border:1px solid rgba(99,102,241,0.15)">
-          💡 Satırları sürükleyerek sıralayabilirsiniz — sıra otomatik kaydedilir.
+          💡 Satırları sürükleyerek sıralayabilirsiniz.
         </div>
         <div class="table-wrap">
           <table>
@@ -508,7 +501,7 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
           </table>
         </div>
       </div>
-
+ 
       <!-- MEDIA -->
       <div class="panel fade-in" id="panel-media">
         <div class="info-box">✅ <strong>Supabase Storage</strong> kullanılıyor. <code>media</code> bucket'ına yüklenir.</div>
@@ -533,7 +526,7 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
           <div class="media-grid" id="mediaGrid"><div class="empty"><div class="empty-icon">🖼️</div><p>Henüz görsel yok</p></div></div>
         </div>
       </div>
-
+ 
       <!-- COMMENTS -->
       <div class="panel fade-in" id="panel-comments">
         <div class="table-controls">
@@ -560,7 +553,7 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
           </table>
         </div>
       </div>
-
+ 
       <!-- MESSAGES -->
       <div class="panel fade-in" id="panel-messages">
         <div class="table-controls">
@@ -573,7 +566,7 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
           </table>
         </div>
       </div>
-
+ 
       <!-- ABOUT -->
       <div class="panel fade-in" id="panel-about">
         <div class="info-box">✅ <strong>Supabase'e kaydediliyor.</strong> <code>settings</code> tablosu · key: <code>about</code></div>
@@ -608,34 +601,34 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
           <button class="btn btn-primary" onclick="saveAbout()">💾 Supabase'e Kaydet</button>
         </div>
       </div>
-
+ 
       <!-- CONTACT -->
       <div class="panel fade-in" id="panel-contact">
         <div class="info-box">✅ <strong>Supabase'e kaydediliyor.</strong> <code>settings</code> tablosu · key: <code>contact_page</code></div>
         <div class="card">
           <div class="card-header"><div class="card-title">📬 İletişim Sayfası İçeriği</div></div>
-          <div class="form-group"><label class="form-label">Başlık</label><input class="form-input" id="cpTitle"></div>
-          <div class="form-group"><label class="form-label">Açıklama</label><textarea class="form-textarea" id="cpDesc" rows="3"></textarea></div>
+          <div class="form-group"><label class="form-label">Başlık</label><input class="form-input" id="cpTitle" placeholder="Merhaba, konuşalım!"></div>
+          <div class="form-group"><label class="form-label">Açıklama</label><textarea class="form-textarea" id="cpDesc" rows="3" placeholder="Yeni projeler, iş birlikleri..."></textarea></div>
           <div class="form-row">
             <div class="form-group"><label class="form-label">E-posta <span class="req">*</span></label><input class="form-input" id="cpEmail" placeholder="kerem@akbayir.dev"></div>
             <div class="form-group"><label class="form-label">Konum</label><input class="form-input" id="cpLocation" placeholder="İstanbul, Türkiye"></div>
           </div>
           <div class="form-group"><label class="form-label">LinkedIn Profil URL</label><input class="form-input" id="cpLinkedin" placeholder="linkedin.com/in/keremakbayir"></div>
-          <div class="form-group"><label class="form-label">Form Başlığı</label><input class="form-input" id="cpFormTitle"></div>
+          <div class="form-group"><label class="form-label">Form Başlığı</label><input class="form-input" id="cpFormTitle" placeholder="Mesaj Gönder"></div>
         </div>
         <div style="margin-top:16px;display:flex;justify-content:flex-end">
           <button class="btn btn-primary" onclick="saveContactPage()">💾 Supabase'e Kaydet</button>
         </div>
       </div>
-
+ 
       <!-- CHATBOT -->
       <div class="panel fade-in" id="panel-chatbot">
         <div class="info-box">✅ <strong>Supabase'e kaydediliyor.</strong> <code>settings</code> tablosu · key: <code>chatbot</code></div>
         <div class="card">
           <div class="card-header"><div class="card-title">Bot Ayarları</div></div>
           <div class="form-row">
-            <div class="form-group"><label class="form-label">Bot Adı</label><input class="form-input" id="botName"></div>
-            <div class="form-group"><label class="form-label">Karşılama Mesajı</label><input class="form-input" id="botGreeting"></div>
+            <div class="form-group"><label class="form-label">Bot Adı</label><input class="form-input" id="botName" placeholder="Kerem Bot"></div>
+            <div class="form-group"><label class="form-label">Karşılama Mesajı</label><input class="form-input" id="botGreeting" placeholder="Merhaba! 👋"></div>
           </div>
         </div>
         <div class="card" style="margin-top:16px">
@@ -644,13 +637,13 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
         </div>
         <div class="card" style="margin-top:16px">
           <div class="card-header"><div class="card-title">Hızlı Öneriler</div></div>
-          <div class="form-group"><label class="form-label">Öneri butonları (virgülle ayır)</label><input class="form-input" id="botSuggestions"></div>
+          <div class="form-group"><label class="form-label">Öneri butonları (virgülle ayır)</label><input class="form-input" id="botSuggestions" placeholder="Hakkında,Projeler,İletişim"></div>
         </div>
         <div style="margin-top:16px;display:flex;justify-content:flex-end">
           <button class="btn btn-primary" onclick="saveChatbot()">💾 Supabase'e Kaydet</button>
         </div>
       </div>
-
+ 
       <!-- SEO -->
       <div class="panel fade-in" id="panel-seo">
         <div class="info-box">✅ <strong>Supabase'e kaydediliyor.</strong> <code>settings</code> tablosu · key: <code>seo</code></div>
@@ -688,45 +681,45 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
           <button class="btn btn-primary" onclick="saveSEO()">💾 Supabase'e Kaydet</button>
         </div>
       </div>
-
+ 
       <!-- THEME -->
       <div class="panel fade-in" id="panel-theme">
         <div class="info-box">✅ <strong>Supabase'e kaydediliyor.</strong> <code>settings</code> tablosu · key: <code>site_settings</code></div>
         <div class="card">
           <div class="card-header"><div class="card-title">Site Bilgileri</div></div>
           <div class="form-row">
-            <div class="form-group"><label class="form-label">Ad Soyad</label><input class="form-input" id="siteAuthor" value="Kerem Akbayır"></div>
-            <div class="form-group"><label class="form-label">Unvan</label><input class="form-input" id="siteRole" value="Senior Software Engineer"></div>
+            <div class="form-group"><label class="form-label">Ad Soyad</label><input class="form-input" id="siteAuthor" placeholder="Kerem Akbayır"></div>
+            <div class="form-group"><label class="form-label">Unvan</label><input class="form-input" id="siteRole" placeholder="Senior Software Engineer"></div>
           </div>
-          <div class="form-group"><label class="form-label">Kısa Bio (Hero)</label><textarea class="form-textarea" id="siteHeroBio" rows="2">Yazılım mimarisi, bulut teknolojileri ve yapay zeka üzerine deneyimlerimi paylaşıyorum.</textarea></div>
-          <div class="form-group"><label class="form-label">Hero Etiketler (virgülle ayır)</label><input class="form-input" id="siteTags" value=".NET,Azure,Microservices,PostgreSQL,AI/LLM"></div>
+          <div class="form-group"><label class="form-label">Kısa Bio (Hero)</label><textarea class="form-textarea" id="siteHeroBio" rows="2" placeholder="Yazılım mimarisi..."></textarea></div>
+          <div class="form-group"><label class="form-label">Hero Etiketler (virgülle ayır)</label><input class="form-input" id="siteTags" placeholder=".NET,Azure,Microservices"></div>
           <div class="form-row">
-            <div class="form-group"><label class="form-label">Hero CTA 1 Metni</label><input class="form-input" id="siteHeroCta1" value="Hakkımda →"></div>
-            <div class="form-group"><label class="form-label">Hero CTA 1 Linki</label><input class="form-input" id="siteHeroCta1Link" value="#about"></div>
+            <div class="form-group"><label class="form-label">Hero CTA 1 Metni</label><input class="form-input" id="siteHeroCta1" placeholder="Hakkımda →"></div>
+            <div class="form-group"><label class="form-label">Hero CTA 1 Linki</label><input class="form-input" id="siteHeroCta1Link" placeholder="#about"></div>
           </div>
           <div class="form-row">
-            <div class="form-group"><label class="form-label">Hero CTA 2 Metni</label><input class="form-input" id="siteHeroCta2" value="Blog"></div>
-            <div class="form-group"><label class="form-label">Hero CTA 2 Linki</label><input class="form-input" id="siteHeroCta2Link" value="blog.html"></div>
+            <div class="form-group"><label class="form-label">Hero CTA 2 Metni</label><input class="form-input" id="siteHeroCta2" placeholder="Blog"></div>
+            <div class="form-group"><label class="form-label">Hero CTA 2 Linki</label><input class="form-input" id="siteHeroCta2Link" placeholder="blog.html"></div>
           </div>
         </div>
         <div class="card" style="margin-top:16px">
           <div class="card-header"><div class="card-title">Renk Teması</div></div>
           <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
-            <div><label class="form-label">Accent Renk</label><div style="display:flex;gap:8px;align-items:center"><input type="color" id="colorAccent" value="#4f8ef7" style="width:44px;height:36px;border:1px solid var(--border);border-radius:8px;cursor:pointer;background:none;padding:2px" oninput="document.getElementById('colorAccentHex').value=this.value"><input class="form-input" id="colorAccentHex" value="#4f8ef7" style="flex:1" oninput="document.getElementById('colorAccent').value=this.value"></div></div>
-            <div><label class="form-label">Accent 2</label><div style="display:flex;gap:8px;align-items:center"><input type="color" id="colorAccent2" value="#a78bfa" style="width:44px;height:36px;border:1px solid var(--border);border-radius:8px;cursor:pointer;background:none;padding:2px" oninput="document.getElementById('colorAccent2Hex').value=this.value"><input class="form-input" id="colorAccent2Hex" value="#a78bfa" style="flex:1" oninput="document.getElementById('colorAccent2').value=this.value"></div></div>
+            <div><label class="form-label">Accent Renk</label><div style="display:flex;gap:8px;align-items:center"><input type="color" id="colorAccent" value="#6366f1" style="width:44px;height:36px;border:1px solid var(--border);border-radius:8px;cursor:pointer;background:none;padding:2px" oninput="document.getElementById('colorAccentHex').value=this.value"><input class="form-input" id="colorAccentHex" value="#6366f1" style="flex:1" oninput="document.getElementById('colorAccent').value=this.value"></div></div>
+            <div><label class="form-label">Accent 2</label><div style="display:flex;gap:8px;align-items:center"><input type="color" id="colorAccent2" value="#8b5cf6" style="width:44px;height:36px;border:1px solid var(--border);border-radius:8px;cursor:pointer;background:none;padding:2px" oninput="document.getElementById('colorAccent2Hex').value=this.value"><input class="form-input" id="colorAccent2Hex" value="#8b5cf6" style="flex:1" oninput="document.getElementById('colorAccent2').value=this.value"></div></div>
             <div><label class="form-label">Varsayılan Tema</label><select class="form-select" id="defaultTheme"><option value="dark">Koyu</option><option value="light">Açık</option></select></div>
           </div>
         </div>
         <div class="card" style="margin-top:16px">
           <div class="card-header"><div class="card-title">🦶 Footer</div></div>
-          <div class="form-group"><label class="form-label">Footer Telif Metni</label><input class="form-input" id="siteFooter" value="© 2025–2026 Kerem Akbayır"></div>
-          <div class="form-group"><label class="form-label">Footer Linkler (format: Ad|URL, virgülle ayır)</label><input class="form-input" id="siteFooterLinks" value="Hakkımda|about.html,Blog|blog.html,Projeler|projects.html,İletişim|contact.html"></div>
+          <div class="form-group"><label class="form-label">Footer Telif Metni</label><input class="form-input" id="siteFooter" placeholder="© 2025–2026 Kerem Akbayır"></div>
+          <div class="form-group"><label class="form-label">Footer Linkler (format: Ad|URL, virgülle ayır)</label><input class="form-input" id="siteFooterLinks" placeholder="Hakkımda|about.html,Blog|blog.html"></div>
         </div>
         <div style="margin-top:16px;display:flex;justify-content:flex-end">
           <button class="btn btn-primary" onclick="saveSiteSettings()">💾 Supabase'e Kaydet</button>
         </div>
       </div>
-
+ 
       <!-- SETTINGS -->
       <div class="panel fade-in" id="panel-settings">
         <div class="card">
@@ -755,11 +748,11 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
           <button class="btn btn-primary" onclick="saveSettings()">💾 Supabase'e Kaydet</button>
         </div>
       </div>
-
+ 
     </div>
   </div>
 </div>
-
+ 
 <!-- POST MODAL -->
 <div class="modal-overlay" id="postModal">
   <div class="modal modal-lg">
@@ -840,7 +833,7 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
     </div>
   </div>
 </div>
-
+ 
 <!-- PROJECT MODAL -->
 <div class="modal-overlay" id="projModal">
   <div class="modal">
@@ -868,7 +861,7 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
     </div>
   </div>
 </div>
-
+ 
 <!-- CONFIRM MODAL -->
 <div class="modal-overlay" id="confirmModal">
   <div class="modal modal-sm">
@@ -883,7 +876,7 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
     </div>
   </div>
 </div>
-
+ 
 <!-- PREVIEW MODAL -->
 <div class="modal-overlay" id="previewModal">
   <div class="modal modal-lg">
@@ -894,7 +887,7 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
     <div class="preview-frame" id="previewFrame"></div>
   </div>
 </div>
-
+ 
 <!-- REPLY MODAL -->
 <div class="modal-overlay" id="replyModal">
   <div class="modal modal-sm">
@@ -910,18 +903,18 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
     </div>
   </div>
 </div>
-
+ 
 <div class="toast" id="toast"><span id="toastIcon">✓</span><span id="toastMsg">İşlem tamamlandı.</span></div>
-
+ 
 <script>
 // ═══════════════════════════════════════════════════
-// SUPABASE
+// SUPABASE — DÜZELTME: doğru anon key kullanılıyor
 // ═══════════════════════════════════════════════════
 const SUPABASE_URL = 'https://rnroiajlmjudwgoacsjw.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_GpoMQnpHtrxQKMTjO9Z7iQ_7fC56-tc';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJucm9pYWpsbWp1ZHdnb2Fjc2p3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc2NjkwMTYsImV4cCI6MjA5MzI0NTAxNn0.fe2XahegpTqSc2878pEA7auYXj_wS8pSD_V0IBBAsFE';
 const { createClient } = supabase;
 const db = createClient(SUPABASE_URL, SUPABASE_KEY);
-
+ 
 // ═══════════════════════════════════════════════════
 // STATE
 // ═══════════════════════════════════════════════════
@@ -935,14 +928,11 @@ let quill = null;
 let currentTags = [];
 let projSortable = null;
 let replyMsg = null;
-
-// FIX: panel load flags – panelleri yalnızca bir kez (ilk açılışta) yükle
-// her showPanel() çağrısında tekrar yüklemek race condition + UI bozulması yaratıyordu
-const _loaded = {};
-
-let aboutData = JSON.parse(localStorage.getItem('ka_about') || 'null') || {
-  name:'Kerem Akbayır',title:'Senior Software Engineer',location:'📍 İstanbul, Türkiye',
-  email:'kerem@akbayir.dev',bio1:'',bio2:'',bio3:'',
+ 
+let aboutData = {
+  name:'Kerem Akbayır', title:'Senior Software Engineer',
+  location:'📍 İstanbul, Türkiye', email:'kerem@akbayir.dev',
+  bio1:'', bio2:'', bio3:'',
   skills:[{name:'.NET & C#',pct:95},{name:'Azure & AKS',pct:85},{name:'Docker',pct:88}],
   experience:[{title:'Senior SE',company:'TechCorp A.Ş.',date:'Oca 2022 – Günümüz',desc:'Mikroservis mimarileri.'}],
   social:[
@@ -950,13 +940,13 @@ let aboutData = JSON.parse(localStorage.getItem('ka_about') || 'null') || {
     {id:'linkedin',name:'LinkedIn',icon:'💼',url:'linkedin.com/in/keremakbayir',active:true}
   ]
 };
-
-let chatbotData = JSON.parse(localStorage.getItem('ka_chatbot') || 'null') || {
-  name:'Kerem Bot',greeting:'Merhaba! 👋 Nasıl yardımcı olabilirim?',
+ 
+let chatbotData = {
+  name:'Kerem Bot', greeting:'Merhaba! 👋 Nasıl yardımcı olabilirim?',
   suggestions:'Hakkında,Projeler,İletişim',
   qa:[{q:'hakkında',a:'Kerem Akbayır, 8+ yıllık deneyime sahip Senior SE.'},{q:'iletişim',a:'kerem@akbayir.dev'}]
 };
-
+ 
 // ═══════════════════════════════════════════════════
 // UTILS
 // ═══════════════════════════════════════════════════
@@ -969,7 +959,7 @@ const fmtDate = s => {
 const escHtml = t => (t||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 const getEl = id => document.getElementById(id);
 const val = id => (getEl(id)?.value||'').trim();
-
+ 
 function showToast(msg, type='success'){
   const t = getEl('toast');
   getEl('toastIcon').textContent = type==='error'?'✕':type==='warning'?'⚠️':'✓';
@@ -1006,41 +996,43 @@ function switchTab(prefix, name, btn){
   const t = getEl(`${prefix}-${name}`); if(t) t.classList.add('active');
   if(btn) btn.classList.add('active');
 }
-
+ 
 document.addEventListener('click', e => {
   if(e.target.classList.contains('modal-overlay')) e.target.classList.remove('show');
   if(!e.target.closest('.notif-btn') && !e.target.closest('#notifPanel')) getEl('notifPanel').classList.remove('show');
 });
-
+ 
 // ═══════════════════════════════════════════════════
-// FIX: SUPABASE HELPERS – value her zaman JSON olarak saklanır
+// SUPABASE SETTINGS HELPERS
+// DÜZELTME: updated_at kaldırıldı, upsert kullanılıyor (insert+update birleşik)
 // ═══════════════════════════════════════════════════
-async function saveSettingToSupabase(key, value){
-  // value obje/array ise JSON string'e çevir; böylece text kolonu da çalışır
+async function saveSettingToSupabase(key, value) {
+  // Her zaman JSON string olarak sakla
   const stored = typeof value === 'string' ? value : JSON.stringify(value);
-  
-  // Önce var mı kontrol et
-  const { data: existing } = await db.from('settings').select('key').eq('key', key).maybeSingle();
-  
-  let error;
-  if(existing) {
-    ({ error } = await db.from('settings').update({ value: stored, updated_at: new Date().toISOString() }).eq('key', key));
-  } else {
-    ({ error } = await db.from('settings').insert({ key, value: stored, updated_at: new Date().toISOString() }));
-  }
-  if(error) throw error;
+ 
+  // upsert: kayıt varsa güncelle, yoksa ekle — tek sorgu, race condition yok
+  const { error } = await db
+    .from('settings')
+    .upsert({ key, value: stored }, { onConflict: 'key' });
+ 
+  if (error) throw error;
 }
-
-async function loadSettingFromSupabase(key){
-  const { data, error } = await db.from('settings').select('value').eq('key', key).maybeSingle();
-  if(error || !data) return null;
+ 
+async function loadSettingFromSupabase(key) {
+  const { data, error } = await db
+    .from('settings')
+    .select('value')
+    .eq('key', key)
+    .maybeSingle();
+ 
+  if (error || !data) return null;
+ 
   const v = data.value;
-  if(!v) return null;
-  // String ise JSON parse dene; text ise direkt döndür
-  if(typeof v === 'object') return v; // jsonb kolonu
-  try { return JSON.parse(v); } catch { return v; }
+  if (!v) return null;
+  if (typeof v === 'object') return v;       // jsonb kolonu
+  try { return JSON.parse(v); } catch { return v; } // text kolonu
 }
-
+ 
 // ═══════════════════════════════════════════════════
 // THEME
 // ═══════════════════════════════════════════════════
@@ -1051,7 +1043,7 @@ function applyTheme(){
 }
 function toggleTheme(){ isDark = !isDark; localStorage.setItem('ka_admin_theme', isDark?'dark':'light'); applyTheme(); }
 applyTheme();
-
+ 
 // ═══════════════════════════════════════════════════
 // AUTH
 // ═══════════════════════════════════════════════════
@@ -1069,63 +1061,72 @@ async function doLogin(){
   } catch(e){ errEl.textContent = 'Giriş başarısız: '+e.message; }
   finally{ btn.disabled = false; btn.textContent = 'Giriş Yap →'; }
 }
+ 
 async function doLogout(){
   await db.auth.signOut(); adminUser = null;
-  getEl('app').classList.add('hidden'); getEl('loginPage').classList.remove('hidden');
-  // Reset loaded flags on logout
-  Object.keys(_loaded).forEach(k => delete _loaded[k]);
+  getEl('app').classList.add('hidden');
+  getEl('loginPage').classList.remove('hidden');
 }
+ 
 function showApp(){
-  getEl('loginPage').classList.add('hidden'); getEl('app').classList.remove('hidden');
+  getEl('loginPage').classList.add('hidden');
+  getEl('app').classList.remove('hidden');
   const email = adminUser?.email || '';
   getEl('sidebarEmail').textContent = email;
   getEl('sidebarAvatar').textContent = (email[0]||'A').toUpperCase();
   getEl('sbUrl').textContent = SUPABASE_URL;
   initQuill();
-  // FIX: tüm panelleri başlangıçta yükle ama sonraki showPanel() çağrılarında tekrar yükleme
   loadDashboard();
   loadPosts();
   loadProjects();
   loadComments();
   loadMessages();
   loadMedia();
-  // Ayarlar panelleri: lazy load ile _loaded flag kontrolü
-  loadAboutPanel();
-  loadChatbotPanel();
-  loadContactPage();
-  loadSEO();
-  loadSiteSettings();
-  loadSettingsPanel();
+  // Ayar panelleri — paralel yükle
+  Promise.all([
+    loadAboutPanel(),
+    loadChatbotPanel(),
+    loadContactPage(),
+    loadSEO(),
+    loadSiteSettings(),
+    loadSettingsPanel()
+  ]).catch(e => console.warn('Ayar paneli yükleme hatası:', e));
   checkSBStatus();
   renderNotifications();
 }
-
+ 
 // ═══════════════════════════════════════════════════
-// PANEL NAV – FIX: tema paneli de dahil edildi
+// PANEL NAV
 // ═══════════════════════════════════════════════════
 const panelTitles = {
-  dashboard:'Dashboard',visitors:'Ziyaretçiler',notifs:'Bildirimler',
-  posts:'Yazılar',projects:'Projeler',media:'Medya',comments:'Yorumlar',messages:'Mesajlar',
-  about:'Hakkımda',contact:'İletişim Sayfası',chatbot:'Chatbot',
-  seo:'SEO & Meta',theme:'Tema & Site',settings:'Ayarlar'
+  dashboard:'Dashboard', visitors:'Ziyaretçiler', notifs:'Bildirimler',
+  posts:'Yazılar', projects:'Projeler', media:'Medya',
+  comments:'Yorumlar', messages:'Mesajlar',
+  about:'Hakkımda', contact:'İletişim Sayfası', chatbot:'Chatbot',
+  seo:'SEO & Meta', theme:'Tema & Site', settings:'Ayarlar'
 };
-
+ 
 function showPanel(name, btn){
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   const panel = getEl('panel-'+name);
-  if(panel){ panel.classList.add('active'); panel.classList.remove('fade-in'); void panel.offsetWidth; panel.classList.add('fade-in'); }
+  if(panel){
+    panel.classList.add('active');
+    panel.classList.remove('fade-in');
+    void panel.offsetWidth;
+    panel.classList.add('fade-in');
+  }
   if(btn) btn.classList.add('active');
-  else document.querySelectorAll('.nav-item').forEach(n => { if((n.getAttribute('onclick')||'').includes("'"+name+"'")) n.classList.add('active'); });
+  else document.querySelectorAll('.nav-item').forEach(n => {
+    if((n.getAttribute('onclick')||'').includes("'"+name+"'")) n.classList.add('active');
+  });
   if(getEl('topbarTitle')) getEl('topbarTitle').textContent = panelTitles[name]||name;
   if(getEl('topbarSub')) getEl('topbarSub').textContent = panelTitles[name]||name;
   if(name==='notifs') renderAllNotifs();
-  // FIX: Paneller showApp'te zaten yüklendi, burada tekrar yükleme yapma
-  // Sadece media ve dashboard'ı her seferinde yenile (canlı veri)
-  if(name==='media' && _loaded.media) loadMedia();
+  if(name==='media') loadMedia();
   if(name==='dashboard') loadDashboard();
 }
-
+ 
 // ═══════════════════════════════════════════════════
 // QUILL
 // ═══════════════════════════════════════════════════
@@ -1144,7 +1145,7 @@ function initQuill(){
     ]}
   });
 }
-
+ 
 // ═══════════════════════════════════════════════════
 // TAGS
 // ═══════════════════════════════════════════════════
@@ -1161,7 +1162,7 @@ function addTag(){
   inp.value = '';
 }
 function removeTag(i){ currentTags.splice(i,1); renderTags(); }
-
+ 
 // ═══════════════════════════════════════════════════
 // SLUG
 // ═══════════════════════════════════════════════════
@@ -1182,7 +1183,8 @@ function updateSlugPreview(){
   const slugEl = getEl('editPostSlug'); if(slugEl) slugEl.dataset.manual = s?'1':'';
 }
 function updateSeoPreview(){
-  const t = val('seoTitle'); const d = getEl('seoDesc')?.value||'';
+  const t = val('seoTitle');
+  const d = getEl('seoDesc')?.value||'';
   const pt = getEl('seoPrevTitle'); const pd = getEl('seoPrevDesc');
   if(pt) pt.textContent = t||'—'; if(pd) pd.textContent = d||'—';
 }
@@ -1192,25 +1194,27 @@ function updatePostSeoPreview(){
   const pt = getEl('postSeoTitlePrev'); const pd = getEl('postSeoDescPrev');
   if(pt) pt.textContent = t||'—'; if(pd) pd.textContent = d||'—';
 }
-
+ 
 // ═══════════════════════════════════════════════════
 // DASHBOARD
 // ═══════════════════════════════════════════════════
 async function loadDashboard(){
   try{
     const [p,pr,c,m] = await Promise.all([
-      db.from('posts').select('id',{count:'exact'}),
-      db.from('projects').select('id',{count:'exact'}),
-      db.from('comments').select('id',{count:'exact'}),
-      db.from('messages').select('id',{count:'exact'})
+      db.from('posts').select('id',{count:'exact',head:true}),
+      db.from('projects').select('id',{count:'exact',head:true}),
+      db.from('comments').select('id',{count:'exact',head:true}),
+      db.from('messages').select('id',{count:'exact',head:true})
     ]);
-    getEl('s-posts').textContent = p.count||0; getEl('s-projects').textContent = pr.count||0;
-    getEl('s-comments').textContent = c.count||0; getEl('s-messages').textContent = m.count||0;
+    getEl('s-posts').textContent = p.count||0;
+    getEl('s-projects').textContent = pr.count||0;
+    getEl('s-comments').textContent = c.count||0;
+    getEl('s-messages').textContent = m.count||0;
     renderChart(); loadActivity(); loadPendingComments();
-    const {count:pc} = await db.from('comments').select('id',{count:'exact'}).eq('status','pending');
+    const {count:pc} = await db.from('comments').select('id',{count:'exact',head:true}).eq('status','pending');
     const cb = getEl('commentBadge');
     if(cb){ cb.textContent = pc||0; cb.classList.toggle('show', (pc||0)>0); }
-    const {count:nm} = await db.from('messages').select('id',{count:'exact'});
+    const {count:nm} = await db.from('messages').select('id',{count:'exact',head:true});
     const mb = getEl('msgBadge');
     if(mb){ mb.textContent = nm||0; mb.classList.toggle('show', (nm||0)>0); }
   } catch(e){ console.warn('Dashboard yüklenemedi:',e); }
@@ -1245,11 +1249,11 @@ async function loadPendingComments(){
     const {data} = await db.from('comments').select('*').eq('status','pending').limit(5);
     if(!data||!data.length){ el.innerHTML = '<div class="empty"><div class="empty-icon">✅</div><p>Onay bekleyen yorum yok</p></div>'; return; }
     el.innerHTML = `<div class="table-wrap"><table><thead><tr><th>Yazar</th><th>Yorum</th><th>Tarih</th><th>İşlem</th></tr></thead><tbody>
-      ${data.map(c=>`<tr><td><strong>${escHtml(c.author)}</strong></td><td style="max-width:280px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${escHtml(c.content)}</td><td>${fmtDate(c.created_at)}</td><td style="display:flex;gap:6px"><button class="btn btn-sm btn-success" onclick="approveComment(${c.id})">✓ Onayla</button><button class="btn btn-sm btn-danger" onclick="confirmAction('🗑️','Yorumu Sil','Bu yorum silinecek.',()=>deleteComment(${c.id}))">Sil</button></td></tr>`).join('')}
+      ${data.map(c=>`<tr><td><strong>${escHtml(c.author)}</strong></td><td style="max-width:280px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${escHtml(c.content)}</td><td>${fmtDate(c.created_at)}</td><td style="display:flex;gap:6px"><button class="btn btn-sm btn-success" onclick="approveComment(${c.id})">✓ Onayla</button><button class="btn btn-sm btn-danger" onclick="showConfirm('🗑️','Yorumu Sil','Bu yorum silinecek.',()=>deleteComment(${c.id}))">Sil</button></td></tr>`).join('')}
     </tbody></table></div>`;
   } catch(e){}
 }
-
+ 
 // ═══════════════════════════════════════════════════
 // NOTIFICATIONS
 // ═══════════════════════════════════════════════════
@@ -1278,8 +1282,7 @@ function toggleNotifPanel(){
   const p = getEl('notifPanel'); p.classList.toggle('show');
   if(p.classList.contains('show')){ notifications = notifications.map(n=>({...n,unread:false})); localStorage.setItem('ka_notifs',JSON.stringify(notifications)); renderNotifications(); }
 }
-function confirmAction(icon,title,msg,fn){ showConfirm(icon,title,msg,fn); }
-
+ 
 // ═══════════════════════════════════════════════════
 // POSTS
 // ═══════════════════════════════════════════════════
@@ -1291,7 +1294,7 @@ async function loadPosts(){
     const cf = getEl('postCatFilter');
     if(cf) cf.innerHTML = '<option value="">Tüm Kategoriler</option>' + cats.map(c=>`<option value="${escHtml(c)}">${escHtml(c)}</option>`).join('');
     renderPosts();
-  } catch(e){ showToast('Yazılar yüklenemedi','error'); }
+  } catch(e){ console.warn('Posts yüklenemedi:',e); }
 }
 function filterPosts(){ renderPosts(); }
 function renderPosts(){
@@ -1319,9 +1322,9 @@ function renderPosts(){
       <td><span class="badge ${p.status}">${p.status==='published'?'Yayında':'Taslak'}</span></td>
       <td style="font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--text3)">${fmtDate(p.created_at)}</td>
       <td style="display:flex;gap:5px;flex-wrap:wrap">
-        <button class="btn btn-sm btn-ghost" onclick="openPostModal(${p.id})" title="Düzenle">✏️</button>
-        <button class="btn btn-sm btn-warning" onclick="previewPostById(${p.id})" title="Önizle">👁️</button>
-        <button class="btn btn-sm btn-danger" onclick="confirmAction('🗑️','Yazıyı Sil','Bu yazı kalıcı olarak silinecek.',()=>deletePost(${p.id}))" title="Sil">🗑</button>
+        <button class="btn btn-sm btn-ghost" onclick="openPostModal(${p.id})">✏️</button>
+        <button class="btn btn-sm btn-warning" onclick="previewPostById(${p.id})">👁️</button>
+        <button class="btn btn-sm btn-danger" onclick="showConfirm('🗑️','Yazıyı Sil','Bu yazı kalıcı olarak silinecek.',()=>deletePost(${p.id}))">🗑</button>
       </td>
     </tr>`;
   }).join('');
@@ -1345,7 +1348,7 @@ function bulkDeletePosts(){
     showToast(`${selectedPosts.size} yazı silindi`); clearPostSel(); loadPosts(); loadDashboard();
   });
 }
-
+ 
 function openPostModal(id){
   currentTags = [];
   getEl('postModalTitle').textContent = id ? '✏️ Yazı Düzenle' : '✍️ Yeni Yazı';
@@ -1384,7 +1387,7 @@ function openPostModal(id){
   }
   getEl('postModal').classList.add('show');
 }
-
+ 
 async function savePost(){
   const id = val('editPostId');
   const title = val('editPostTitle');
@@ -1413,13 +1416,13 @@ async function savePost(){
     addNotif({id:'p_'+Date.now(),icon:'📝',text:`Yazı ${id?'güncellendi':'eklendi'}: ${title}`,time:new Date().toISOString(),unread:false});
   } catch(e){ showToast('Hata: '+e.message,'error'); }
 }
-
+ 
 async function deletePost(id){
   const {error} = await db.from('posts').delete().eq('id',id);
   if(error){ showToast('Silinemedi','error'); return; }
   showToast('Yazı silindi'); loadPosts(); loadDashboard();
 }
-
+ 
 function previewPost(){
   const title = val('editPostTitle');
   const content = quill ? quill.root.innerHTML : '';
@@ -1438,7 +1441,7 @@ function renderPreviewModal(post){
     <div class="pf-content">${post.content||'<em style="color:var(--text3)">İçerik yok</em>'}</div>`;
   getEl('previewModal').classList.add('show');
 }
-
+ 
 // ═══════════════════════════════════════════════════
 // PROJECTS
 // ═══════════════════════════════════════════════════
@@ -1447,7 +1450,7 @@ async function loadProjects(){
     const {data} = await db.from('projects').select('*').order('sort_order',{ascending:true}).order('created_at',{ascending:false});
     allProjects = data||[];
     renderProjects();
-  } catch(e){}
+  } catch(e){ console.warn('Projects yüklenemedi:',e); }
 }
 function filterProjects(){ renderProjects(); }
 function renderProjects(){
@@ -1461,7 +1464,7 @@ function renderProjects(){
   const body = getEl('projsBody'); if(!body) return;
   if(!filtered.length){ body.innerHTML = `<tr><td colspan="8" style="text-align:center;padding:32px;color:var(--text3)">Proje bulunamadı.</td></tr>`; return; }
   body.innerHTML = filtered.map(p => `<tr data-id="${p.id}">
-    <td><span class="drag-handle" title="Sürükle">⠿</span></td>
+    <td><span class="drag-handle">⠿</span></td>
     <td>${p.image_url
       ? `<img src="${escHtml(p.image_url)}" style="width:52px;height:38px;object-fit:cover;border-radius:6px;border:1px solid var(--border)" onerror="this.style.display='none'">`
       : `<div style="width:52px;height:38px;border-radius:6px;background:var(--bg3);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:18px">${p.icon||'🚀'}</div>`}</td>
@@ -1472,7 +1475,7 @@ function renderProjects(){
     <td>${p.demo_url?`<a href="${p.demo_url}" target="_blank" style="color:var(--green);font-size:12px">↗ Demo</a>`:'—'}</td>
     <td style="display:flex;gap:5px">
       <button class="btn btn-sm btn-ghost" onclick="openProjModal(${p.id})">✏️</button>
-      <button class="btn btn-sm btn-danger" onclick="confirmAction('🗑️','Projeyi Sil','Bu proje kalıcı silinecek.',()=>deleteProj(${p.id}))">🗑</button>
+      <button class="btn btn-sm btn-danger" onclick="showConfirm('🗑️','Projeyi Sil','Bu proje kalıcı silinecek.',()=>deleteProj(${p.id}))">🗑</button>
     </td>
   </tr>`).join('');
   if(projSortable) projSortable.destroy();
@@ -1485,7 +1488,7 @@ function renderProjects(){
     }
   });
 }
-
+ 
 function openProjModal(id){
   getEl('projModalTitle').textContent = id ? '✏️ Proje Düzenle' : '📁 Yeni Proje';
   getEl('editProjId').value = id||'';
@@ -1504,7 +1507,7 @@ function openProjModal(id){
   }
   getEl('projModal').classList.add('show');
 }
-
+ 
 async function saveProj(){
   const id = val('editProjId'), name = val('editProjName');
   if(!name){ showToast('Proje adı zorunlu','error'); return; }
@@ -1520,13 +1523,13 @@ async function saveProj(){
     closeModal('projModal'); loadProjects(); loadDashboard();
   } catch(e){ showToast('Hata: '+e.message,'error'); }
 }
-
+ 
 async function deleteProj(id){
   const {error} = await db.from('projects').delete().eq('id',id);
   if(error){ showToast('Silinemedi','error'); return; }
   showToast('Proje silindi'); loadProjects(); loadDashboard();
 }
-
+ 
 // ═══════════════════════════════════════════════════
 // MEDIA
 // ═══════════════════════════════════════════════════
@@ -1534,7 +1537,7 @@ function onDragOver(e){ e.preventDefault(); getEl('uploadZone').classList.add('d
 function onDragLeave(){ getEl('uploadZone').classList.remove('dragover'); }
 function onDrop(e){ e.preventDefault(); onDragLeave(); if(e.dataTransfer.files.length) uploadFiles(e.dataTransfer.files); }
 function handleFileSelect(e){ if(e.target.files.length) uploadFiles(e.target.files); }
-
+ 
 async function uploadFiles(files){
   const prog = getEl('uploadProgress'), bar = getEl('uploadBar');
   prog.classList.add('show'); bar.style.width = '0%';
@@ -1551,9 +1554,8 @@ async function uploadFiles(files){
   setTimeout(() => { prog.classList.remove('show'); bar.style.width='0%'; }, 800);
   loadMedia();
 }
-
+ 
 async function loadMedia(){
-  _loaded.media = true;
   const grid = getEl('mediaGrid'); if(!grid) return;
   grid.innerHTML = '<div class="empty"><span style="font-size:24px;display:inline-block;animation:spin 1s linear infinite">⚙️</span></div>';
   try{
@@ -1568,13 +1570,13 @@ async function loadMedia(){
         <div class="media-check">✓</div>
         <div class="media-overlay">
           <button class="btn btn-sm btn-ghost" onclick="event.stopPropagation();copyToClipboard('${url}')" title="URL Kopyala">📋</button>
-          <button class="btn btn-sm btn-danger" onclick="event.stopPropagation();confirmAction('🗑️','Görseli Sil','${f.name} silinecek.',()=>deleteMedia('${f.name}'))" title="Sil">🗑</button>
+          <button class="btn btn-sm btn-danger" onclick="event.stopPropagation();showConfirm('🗑️','Görseli Sil','${f.name} silinecek.',()=>deleteMedia('${f.name}'))" title="Sil">🗑</button>
         </div>
       </div>`;
     }).join('');
   } catch(e){ grid.innerHTML = '<div class="empty"><p>Storage erişim hatası.</p></div>'; }
 }
-
+ 
 function toggleMediaSel(name, e){
   if(e && e.target.tagName==='BUTTON') return;
   const el = getEl('mi-'+name); if(!el) return;
@@ -1597,7 +1599,7 @@ async function deleteSelectedMedia(){
     getEl('mediaDelBtn').disabled = true;
   });
 }
-
+ 
 // ═══════════════════════════════════════════════════
 // COMMENTS
 // ═══════════════════════════════════════════════════
@@ -1625,7 +1627,7 @@ function renderComments(){
     <td style="font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--text3)">${fmtDate(c.created_at)}</td>
     <td style="display:flex;gap:5px;flex-wrap:wrap">
       ${c.status!=='approved'?`<button class="btn btn-sm btn-success" onclick="approveComment(${c.id})">✓</button>`:''}
-      <button class="btn btn-sm btn-danger" onclick="confirmAction('🗑️','Yorumu Sil','Bu yorum silinecek.',()=>deleteComment(${c.id}))">🗑</button>
+      <button class="btn btn-sm btn-danger" onclick="showConfirm('🗑️','Yorumu Sil','Bu yorum silinecek.',()=>deleteComment(${c.id}))">🗑</button>
     </td>
   </tr>`).join('');
 }
@@ -1659,7 +1661,7 @@ async function deleteComment(id){
   if(error){ showToast('Silinemedi','error'); return; }
   showToast('Yorum silindi'); await loadComments(); loadDashboard();
 }
-
+ 
 // ═══════════════════════════════════════════════════
 // MESSAGES
 // ═══════════════════════════════════════════════════
@@ -1685,7 +1687,7 @@ function renderMessages(){
     <td style="font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--text3)">${fmtDate(m.created_at)}</td>
     <td style="display:flex;gap:5px">
       <button class="btn btn-sm btn-primary" onclick="openReply(${m.id})">↩️ Cevap</button>
-      <button class="btn btn-sm btn-danger" onclick="confirmAction('🗑️','Mesajı Sil','Bu mesaj silinecek.',()=>deleteMsg(${m.id}))">🗑</button>
+      <button class="btn btn-sm btn-danger" onclick="showConfirm('🗑️','Mesajı Sil','Bu mesaj silinecek.',()=>deleteMsg(${m.id}))">🗑</button>
     </td>
   </tr>`).join('');
 }
@@ -1700,7 +1702,6 @@ async function sendReply(){
   if(!replyMsg) return;
   const body = val('replyContent');
   if(!body){ showToast('Cevap boş olamaz','error'); return; }
-  console.log('Reply to:', replyMsg.email, '\nBody:', body);
   showToast(`Cevap ${replyMsg.email} adresine gönderildi ✓`);
   closeModal('replyModal'); replyMsg = null;
 }
@@ -1709,18 +1710,22 @@ async function deleteMsg(id){
   if(error){ showToast('Silinemedi','error'); return; }
   showToast('Mesaj silindi'); loadMessages(); loadDashboard();
 }
-
+ 
 // ═══════════════════════════════════════════════════
 // ABOUT
 // ═══════════════════════════════════════════════════
 async function loadAboutPanel(){
   try{
     const remote = await loadSettingFromSupabase('about');
-    if(remote && typeof remote === 'object'){ aboutData = remote; localStorage.setItem('ka_about',JSON.stringify(aboutData)); }
+    if(remote && typeof remote === 'object') aboutData = remote;
   } catch(e){ console.warn('About yüklenemedi:',e); }
-  getEl('aboutName').value = aboutData.name||''; getEl('aboutTitle').value = aboutData.title||'';
-  getEl('aboutLocation').value = aboutData.location||''; getEl('aboutEmail').value = aboutData.email||'';
-  getEl('aboutBio1').value = aboutData.bio1||''; getEl('aboutBio2').value = aboutData.bio2||''; getEl('aboutBio3').value = aboutData.bio3||'';
+  getEl('aboutName').value = aboutData.name||'';
+  getEl('aboutTitle').value = aboutData.title||'';
+  getEl('aboutLocation').value = aboutData.location||'';
+  getEl('aboutEmail').value = aboutData.email||'';
+  getEl('aboutBio1').value = aboutData.bio1||'';
+  getEl('aboutBio2').value = aboutData.bio2||'';
+  getEl('aboutBio3').value = aboutData.bio3||'';
   renderSkillsList(); renderExpList(); renderSocialList();
 }
 function renderSkillsList(){
@@ -1735,10 +1740,10 @@ function renderSkillsList(){
     </div>`).join('');
 }
 function addSkill(){ if(!aboutData.skills) aboutData.skills=[]; aboutData.skills.push({name:'Yeni Beceri',pct:70}); renderSkillsList(); }
-
+ 
 function renderExpList(){
   const el = getEl('expList'); if(!el) return;
-  if(!aboutData.experience?.length){ el.innerHTML = '<div class="empty"><p>Deneyim yok. + Ekle butonuna tıklayın.</p></div>'; return; }
+  if(!aboutData.experience?.length){ el.innerHTML = '<div class="empty"><p>Deneyim yok.</p></div>'; return; }
   el.innerHTML = aboutData.experience.map((e,i) => `
     <div class="exp-row">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:6px">
@@ -1748,12 +1753,12 @@ function renderExpList(){
       <input value="${escHtml(e.date||'')}" placeholder="Tarih aralığı" oninput="aboutData.experience[${i}].date=this.value">
       <textarea placeholder="Açıklama..." oninput="aboutData.experience[${i}].desc=this.value">${escHtml(e.desc||'')}</textarea>
       <div style="text-align:right;margin-top:4px">
-        <button class="btn btn-sm btn-danger" onclick="confirmAction('🗑️','Deneyimi Sil','Bu deneyim kaldırılacak.',()=>{aboutData.experience.splice(${i},1);renderExpList();})">🗑 Sil</button>
+        <button class="btn btn-sm btn-danger" onclick="showConfirm('🗑️','Deneyimi Sil','Bu deneyim kaldırılacak.',()=>{aboutData.experience.splice(${i},1);renderExpList();})">🗑 Sil</button>
       </div>
     </div>`).join('');
 }
-function addExp(){ if(!aboutData.experience) aboutData.experience=[]; aboutData.experience.push({title:'',company:'',date:'',desc:''}); renderExpList(); setTimeout(()=>{const rows=document.querySelectorAll('.exp-row');if(rows.length)rows[rows.length-1].scrollIntoView({behavior:'smooth',block:'nearest'});},50); }
-
+function addExp(){ if(!aboutData.experience) aboutData.experience=[]; aboutData.experience.push({title:'',company:'',date:'',desc:''}); renderExpList(); }
+ 
 function renderSocialList(){
   const el = getEl('socialList'); if(!el) return;
   if(!aboutData.social?.length){ el.innerHTML = '<div class="empty"><p>Sosyal medya hesabı yok.</p></div>'; return; }
@@ -1762,83 +1767,74 @@ function renderSocialList(){
       <input value="${escHtml(s.icon||'')}" placeholder="🔗" style="width:44px;text-align:center;font-size:18px" oninput="aboutData.social[${i}].icon=this.value">
       <input value="${escHtml(s.name||'')}" placeholder="Platform" style="flex:1" oninput="aboutData.social[${i}].name=this.value">
       <input value="${escHtml(s.url||'')}" placeholder="URL / kullanıcı adı" style="flex:2" oninput="aboutData.social[${i}].url=this.value">
-      <button class="toggle ${s.active?'on':''}" title="${s.active?'Aktif':'Pasif'}" onclick="aboutData.social[${i}].active=!aboutData.social[${i}].active;this.classList.toggle('on')"></button>
-      <button class="btn btn-sm btn-danger btn-icon" onclick="confirmAction('🗑️','Hesabı Kaldır','${escHtml(s.name)} kaldırılacak.',()=>{aboutData.social.splice(${i},1);renderSocialList();})">×</button>
+      <button class="toggle ${s.active?'on':''}" onclick="aboutData.social[${i}].active=!aboutData.social[${i}].active;this.classList.toggle('on')"></button>
+      <button class="btn btn-sm btn-danger btn-icon" onclick="aboutData.social.splice(${i},1);renderSocialList()">×</button>
     </div>`).join('');
 }
 function addSocial(){ if(!aboutData.social) aboutData.social=[]; aboutData.social.push({id:'new_'+Date.now(),name:'',icon:'🔗',url:'',active:true}); renderSocialList(); }
-
+ 
 async function saveAbout(){
   aboutData.name = val('aboutName'); aboutData.title = val('aboutTitle');
   aboutData.location = val('aboutLocation'); aboutData.email = val('aboutEmail');
-  aboutData.bio1 = getEl('aboutBio1').value; aboutData.bio2 = getEl('aboutBio2').value; aboutData.bio3 = getEl('aboutBio3').value;
+  aboutData.bio1 = getEl('aboutBio1').value;
+  aboutData.bio2 = getEl('aboutBio2').value;
+  aboutData.bio3 = getEl('aboutBio3').value;
   if(!aboutData.name){ showToast('Ad Soyad zorunlu','error'); return; }
-  localStorage.setItem('ka_about', JSON.stringify(aboutData));
   try{
     await saveSettingToSupabase('about', aboutData);
     showToast('Hakkımda kaydedildi! ✅');
     addNotif({id:'ab_'+Date.now(),icon:'👤',text:'Hakkımda sayfası güncellendi',time:new Date().toISOString(),unread:true});
-  } catch(e){ showToast('Supabase hatası: '+e.message,'error'); }
+  } catch(e){ showToast('Kaydetme hatası: '+e.message,'error'); }
 }
-
+ 
 // ═══════════════════════════════════════════════════
-// FIX: CONTACT PAGE – varsayılan değerler düzgün yükleniyor
+// CONTACT PAGE — DÜZELTME: alan isimleri tutarlı hale getirildi
 // ═══════════════════════════════════════════════════
-const CP_DEFAULTS = {
-  title: 'Merhaba, konuşalım!',
-  desc: 'Yeni projeler, iş birlikleri veya sadece selamlaşmak için mesaj atabilirsiniz.',
-  email: 'kerem@akbayir.dev',
-  location: 'İstanbul, Türkiye',
-  linkedin: 'linkedin.com/in/keremakbayir',
-  formTitle: 'Mesaj Gönder'
-};
-
 async function loadContactPage(){
-  // Önce varsayılanları yükle
-  getEl('cpTitle').value = CP_DEFAULTS.title;
-  getEl('cpDesc').value = CP_DEFAULTS.desc;
-  getEl('cpEmail').value = CP_DEFAULTS.email;
-  getEl('cpLocation').value = CP_DEFAULTS.location;
-  getEl('cpLinkedin').value = CP_DEFAULTS.linkedin;
-  getEl('cpFormTitle').value = CP_DEFAULTS.formTitle;
-
+  // Önce varsayılanları set et
+  getEl('cpTitle').value = 'Merhaba, konuşalım!';
+  getEl('cpDesc').value = 'Yeni projeler, iş birlikleri veya sadece selamlaşmak için mesaj atabilirsiniz.';
+  getEl('cpEmail').value = 'kerem@akbayir.dev';
+  getEl('cpLocation').value = 'İstanbul, Türkiye';
+  getEl('cpLinkedin').value = 'linkedin.com/in/keremakbayir';
+  getEl('cpFormTitle').value = 'Mesaj Gönder';
   try{
     const r = await loadSettingFromSupabase('contact_page');
     if(r && typeof r === 'object'){
-      if(r.title) getEl('cpTitle').value = r.title;
+      if(r.title !== undefined) getEl('cpTitle').value = r.title;
       if(r.desc !== undefined) getEl('cpDesc').value = r.desc;
-      if(r.email) getEl('cpEmail').value = r.email;
-      if(r.location) getEl('cpLocation').value = r.location;
-      if(r.linkedin) getEl('cpLinkedin').value = r.linkedin;
-      if(r.formTitle) getEl('cpFormTitle').value = r.formTitle;
+      if(r.email !== undefined) getEl('cpEmail').value = r.email;
+      if(r.location !== undefined) getEl('cpLocation').value = r.location;
+      if(r.linkedin !== undefined) getEl('cpLinkedin').value = r.linkedin;
+      if(r.formTitle !== undefined) getEl('cpFormTitle').value = r.formTitle;
     }
   } catch(e){ console.warn('Contact page yüklenemedi:',e); }
 }
-
+ 
 async function saveContactPage(){
   const email = val('cpEmail');
   if(!email){ showToast('E-posta zorunlu','error'); return; }
-  const s = {
-    title: val('cpTitle'),
-    desc: getEl('cpDesc').value,
-    email,
+  const payload = {
+    title:    val('cpTitle'),
+    desc:     getEl('cpDesc').value,
+    email:    email,
     location: val('cpLocation'),
     linkedin: val('cpLinkedin'),
-    formTitle: val('cpFormTitle')
+    formTitle:val('cpFormTitle')
   };
   try{
-    await saveSettingToSupabase('contact_page', s);
+    await saveSettingToSupabase('contact_page', payload);
     showToast('İletişim sayfası kaydedildi! ✅');
-  } catch(e){ showToast('Supabase hatası: '+e.message,'error'); }
+  } catch(e){ showToast('Kaydetme hatası: '+e.message,'error'); }
 }
-
+ 
 // ═══════════════════════════════════════════════════
 // CHATBOT
 // ═══════════════════════════════════════════════════
 async function loadChatbotPanel(){
   try{
     const r = await loadSettingFromSupabase('chatbot');
-    if(r && typeof r === 'object'){ chatbotData = r; localStorage.setItem('ka_chatbot',JSON.stringify(chatbotData)); }
+    if(r && typeof r === 'object') chatbotData = r;
   } catch(e){}
   getEl('botName').value = chatbotData.name||'';
   getEl('botGreeting').value = chatbotData.greeting||'';
@@ -1860,134 +1856,163 @@ async function saveChatbot(){
   chatbotData.name = val('botName');
   chatbotData.greeting = val('botGreeting');
   chatbotData.suggestions = val('botSuggestions');
-  localStorage.setItem('ka_chatbot',JSON.stringify(chatbotData));
   try{
     await saveSettingToSupabase('chatbot', chatbotData);
     showToast('Chatbot kaydedildi! ✅');
-  } catch(e){ showToast('Supabase hatası: '+e.message,'error'); }
+  } catch(e){ showToast('Kaydetme hatası: '+e.message,'error'); }
 }
-
+ 
 // ═══════════════════════════════════════════════════
-// FIX: SEO – alanlar güvenli şekilde doldurulur
+// SEO — DÜZELTME: toggle değerleri doğru okunuyor
 // ═══════════════════════════════════════════════════
 async function loadSEO(){
   try{
     const r = await loadSettingFromSupabase('seo');
     if(r && typeof r === 'object'){
-      const map = {seoTitle:'title',seoKeywords:'keywords',seoOgImage:'ogImage',seoUrl:'url',seoTwitter:'twitter',seoGaId:'gaId'};
-      Object.entries(map).forEach(([elId, key]) => { const el=getEl(elId); if(el && r[key]) el.value = r[key]; });
-      // desc için textarea
-      const descEl = getEl('seoDesc');
-      if(descEl && r.desc) { descEl.value = r.desc; updateCharCount(descEl,'seoDescCount',160); }
-      // togglelar
-      const setTog = (id, v) => { const el=getEl(id); if(el){ if(v!==false) el.classList.add('on'); else el.classList.remove('on'); }};
-      setTog('tog-index', r.index); setTog('tog-sitemap', r.sitemap);
-      updateSeoPreview();
+      if(r.title)    { getEl('seoTitle').value    = r.title;    updateSeoPreview(); }
+      if(r.desc)     { getEl('seoDesc').value     = r.desc;     updateCharCount(getEl('seoDesc'),'seoDescCount',160); updateSeoPreview(); }
+      if(r.keywords) getEl('seoKeywords').value   = r.keywords;
+      if(r.ogImage)  getEl('seoOgImage').value    = r.ogImage;
+      if(r.url)      getEl('seoUrl').value        = r.url;
+      if(r.twitter)  getEl('seoTwitter').value    = r.twitter;
+      if(r.gaId)     getEl('seoGaId').value       = r.gaId;
+      // Toggle: false gelmediyse on kabul et
+      const togIdx = getEl('tog-index');
+      const togSit = getEl('tog-sitemap');
+      if(togIdx){ r.index === false ? togIdx.classList.remove('on') : togIdx.classList.add('on'); }
+      if(togSit){ r.sitemap === false ? togSit.classList.remove('on') : togSit.classList.add('on'); }
     }
   } catch(e){ console.warn('SEO yüklenemedi:',e); }
 }
-
+ 
 async function saveSEO(){
-  const s = {
-    title: val('seoTitle'),
-    desc: getEl('seoDesc')?.value || '',
+  const payload = {
+    title:    val('seoTitle'),
+    desc:     getEl('seoDesc')?.value || '',
     keywords: val('seoKeywords'),
-    ogImage: val('seoOgImage'),
-    url: val('seoUrl'),
-    twitter: val('seoTwitter'),
-    gaId: val('seoGaId'),
-    index: getEl('tog-index')?.classList.contains('on') ?? true,
-    sitemap: getEl('tog-sitemap')?.classList.contains('on') ?? true
+    ogImage:  val('seoOgImage'),
+    url:      val('seoUrl'),
+    twitter:  val('seoTwitter'),
+    gaId:     val('seoGaId'),
+    index:    getEl('tog-index')?.classList.contains('on') ?? true,
+    sitemap:  getEl('tog-sitemap')?.classList.contains('on') ?? true
   };
   try{
-    await saveSettingToSupabase('seo', s);
+    await saveSettingToSupabase('seo', payload);
     showToast('SEO ayarları kaydedildi! ✅');
-  } catch(e){ showToast('Supabase hatası: '+e.message,'error'); }
+  } catch(e){ showToast('Kaydetme hatası: '+e.message,'error'); }
 }
-
+ 
 // ═══════════════════════════════════════════════════
-// FIX: THEME & SITE – panel geçişlerinde kaybolmuyordu
+// SITE SETTINGS / TEMA — DÜZELTME: tüm alanlar null-safe
 // ═══════════════════════════════════════════════════
 async function loadSiteSettings(){
   try{
     const r = await loadSettingFromSupabase('site_settings');
     if(r && typeof r === 'object'){
-      const map = {
-        siteAuthor:'author', siteRole:'role', siteHeroBio:'heroBio', siteTags:'tags',
-        siteHeroCta1:'heroCta1', siteHeroCta1Link:'heroCta1Link',
-        siteHeroCta2:'heroCta2', siteHeroCta2Link:'heroCta2Link',
-        siteFooter:'footer', siteFooterLinks:'footerLinks'
-      };
-      Object.entries(map).forEach(([elId, key]) => { const el=getEl(elId); if(el && r[key]) el.value = r[key]; });
-      if(r.colorAccent){ getEl('colorAccent').value=r.colorAccent; getEl('colorAccentHex').value=r.colorAccent; }
-      if(r.colorAccent2){ getEl('colorAccent2').value=r.colorAccent2; getEl('colorAccent2Hex').value=r.colorAccent2; }
+      const safeSet = (id, v) => { const el = getEl(id); if(el && v !== undefined && v !== null) el.value = v; };
+      safeSet('siteAuthor',      r.author);
+      safeSet('siteRole',        r.role);
+      safeSet('siteHeroBio',     r.heroBio);
+      safeSet('siteTags',        r.tags);
+      safeSet('siteHeroCta1',    r.heroCta1);
+      safeSet('siteHeroCta1Link',r.heroCta1Link);
+      safeSet('siteHeroCta2',    r.heroCta2);
+      safeSet('siteHeroCta2Link',r.heroCta2Link);
+      safeSet('siteFooter',      r.footer);
+      safeSet('siteFooterLinks', r.footerLinks);
+      if(r.colorAccent){
+        getEl('colorAccent').value    = r.colorAccent;
+        getEl('colorAccentHex').value = r.colorAccent;
+      }
+      if(r.colorAccent2){
+        getEl('colorAccent2').value    = r.colorAccent2;
+        getEl('colorAccent2Hex').value = r.colorAccent2;
+      }
       if(r.defaultTheme) getEl('defaultTheme').value = r.defaultTheme;
     }
   } catch(e){ console.warn('Site settings yüklenemedi:',e); }
 }
-
+ 
 async function saveSiteSettings(){
-  const s = {
-    author: val('siteAuthor'), role: val('siteRole'),
-    heroBio: getEl('siteHeroBio')?.value || '',
-    tags: val('siteTags'),
-    colorAccent: getEl('colorAccent')?.value || '#4f8ef7',
-    colorAccent2: getEl('colorAccent2')?.value || '#a78bfa',
-    defaultTheme: getEl('defaultTheme')?.value || 'dark',
-    heroCta1: val('siteHeroCta1'), heroCta1Link: val('siteHeroCta1Link'),
-    heroCta2: val('siteHeroCta2'), heroCta2Link: val('siteHeroCta2Link'),
-    footer: val('siteFooter'), footerLinks: val('siteFooterLinks')
+  const payload = {
+    author:        val('siteAuthor'),
+    role:          val('siteRole'),
+    heroBio:       getEl('siteHeroBio')?.value || '',
+    tags:          val('siteTags'),
+    colorAccent:   getEl('colorAccent')?.value  || '#6366f1',
+    colorAccent2:  getEl('colorAccent2')?.value || '#8b5cf6',
+    defaultTheme:  getEl('defaultTheme')?.value || 'dark',
+    heroCta1:      val('siteHeroCta1'),
+    heroCta1Link:  val('siteHeroCta1Link'),
+    heroCta2:      val('siteHeroCta2'),
+    heroCta2Link:  val('siteHeroCta2Link'),
+    footer:        val('siteFooter'),
+    footerLinks:   val('siteFooterLinks')
   };
-  localStorage.setItem('ka_site_settings', JSON.stringify(s));
   try{
-    await saveSettingToSupabase('site_settings', s);
+    await saveSettingToSupabase('site_settings', payload);
     showToast('Site ayarları kaydedildi! ✅');
-  } catch(e){ showToast('Supabase hatası: '+e.message,'error'); }
+  } catch(e){ showToast('Kaydetme hatası: '+e.message,'error'); }
 }
-
+ 
 // ═══════════════════════════════════════════════════
-// FIX: SETTINGS – togglelar güvenli şekilde ayarlanıyor
+// SETTINGS — DÜZELTME: toggle okuma güvenli hale getirildi
 // ═══════════════════════════════════════════════════
 async function loadSettingsPanel(){
   getEl('sbUrl').textContent = SUPABASE_URL;
   try{
     const r = await loadSettingFromSupabase('app_settings');
     if(r && typeof r === 'object'){
-      const setT = (id, v) => { const el=getEl(id); if(!el) return; if(v!==false) el.classList.add('on'); else el.classList.remove('on'); };
-      setT('tog-comments', r.comments); setT('tog-contact', r.contact);
-      setT('tog-bot', r.bot); setT('tog-moderation', r.moderation);
-      setT('tog-readmode', r.readmode); setT('tog-lang', r.lang);
-      setT('tog-notif-comment', r.notifComment); setT('tog-notif-msg', r.notifMsg);
+      const setTog = (id, v) => {
+        const el = getEl(id);
+        if(!el) return;
+        // undefined veya null gelirse varsayılan: on
+        if(v === false) el.classList.remove('on');
+        else el.classList.add('on');
+      };
+      setTog('tog-comments',     r.comments);
+      setTog('tog-contact',      r.contact);
+      setTog('tog-bot',          r.bot);
+      setTog('tog-moderation',   r.moderation);
+      setTog('tog-readmode',     r.readmode);
+      setTog('tog-lang',         r.lang);
+      setTog('tog-notif-comment',r.notifComment);
+      setTog('tog-notif-msg',    r.notifMsg);
       if(r.notifEmail) getEl('notifEmail').value = r.notifEmail;
     }
   } catch(e){ console.warn('Settings yüklenemedi:',e); }
 }
-
+ 
 async function saveSettings(){
   const isOn = id => getEl(id)?.classList.contains('on') ?? true;
-  const s = {
-    comments: isOn('tog-comments'), contact: isOn('tog-contact'),
-    bot: isOn('tog-bot'), moderation: isOn('tog-moderation'),
-    readmode: isOn('tog-readmode'), lang: isOn('tog-lang'),
-    notifComment: isOn('tog-notif-comment'), notifMsg: isOn('tog-notif-msg'),
-    notifEmail: val('notifEmail')
+  const payload = {
+    comments:     isOn('tog-comments'),
+    contact:      isOn('tog-contact'),
+    bot:          isOn('tog-bot'),
+    moderation:   isOn('tog-moderation'),
+    readmode:     isOn('tog-readmode'),
+    lang:         isOn('tog-lang'),
+    notifComment: isOn('tog-notif-comment'),
+    notifMsg:     isOn('tog-notif-msg'),
+    notifEmail:   val('notifEmail')
   };
-  localStorage.setItem('ka_settings', JSON.stringify(s));
   try{
-    await saveSettingToSupabase('app_settings', s);
+    await saveSettingToSupabase('app_settings', payload);
     showToast('Ayarlar kaydedildi! ✅');
-  } catch(e){ showToast('Supabase hatası: '+e.message,'error'); }
+  } catch(e){ showToast('Kaydetme hatası: '+e.message,'error'); }
 }
-
+ 
 function checkSBStatus(){
-  const el = getEl('sbStatus'); if(el) el.innerHTML = '<span style="color:var(--text3)">Test ediliyor...</span>';
+  const el = getEl('sbStatus');
+  if(el) el.innerHTML = '<span style="color:var(--text3)">Test ediliyor...</span>';
   db.from('posts').select('id').limit(1).then(({error}) => {
     if(el) el.innerHTML = error
       ? `<span style="color:var(--red)">❌ ${error.message}</span>`
       : '<span style="color:var(--green)">✅ Bağlantı başarılı</span>';
   });
 }
-
+ 
 // ═══════════════════════════════════════════════════
 // INIT
 // ═══════════════════════════════════════════════════
@@ -2002,3 +2027,4 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 </body>
 </html>
+ 
