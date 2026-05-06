@@ -6,10 +6,8 @@
 <title>Admin Panel – Kerem Akbayır</title>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<!-- Quill Rich Text Editor -->
 <link href="https://cdn.quilljs.com/1.3.7/quill.snow.css" rel="stylesheet">
 <script src="https://cdn.quilljs.com/1.3.7/quill.min.js"></script>
-<!-- SortableJS -->
 <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -35,7 +33,6 @@ a{color:inherit;text-decoration:none}
 button,input,textarea,select{font-family:'Sora',sans-serif}
 button{cursor:pointer}
 
-/* ── QUILL OVERRIDE ── */
 .ql-toolbar{background:var(--bg3)!important;border:1px solid var(--border2)!important;border-radius:9px 9px 0 0!important}
 .ql-container{background:var(--bg3)!important;border:1px solid var(--border2)!important;border-top:none!important;border-radius:0 0 9px 9px!important}
 .ql-editor{color:var(--text)!important;font-family:'Sora',sans-serif!important;font-size:13px!important;min-height:220px}
@@ -47,7 +44,6 @@ button{cursor:pointer}
 [data-theme="light"] .ql-toolbar{background:#f1f5f9!important}
 [data-theme="light"] .ql-container{background:#fff!important}
 
-/* LOGIN */
 .login-page{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:var(--bg);z-index:9999}
 .login-page.hidden{display:none}
 .login-card{width:400px;max-width:90vw;background:var(--card);border:1px solid var(--border2);border-radius:20px;padding:44px 40px;position:relative;overflow:hidden}
@@ -65,7 +61,6 @@ button{cursor:pointer}
 .login-btn:disabled{opacity:.5;cursor:not-allowed}
 .login-err{font-size:12px;color:var(--red);text-align:center;margin-top:10px;min-height:16px}
 
-/* APP LAYOUT */
 .app{display:flex;width:100%;min-height:100vh}
 .app.hidden{display:none}
 .sidebar{width:var(--sidebar-w);background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;position:fixed;top:0;left:0;height:100vh;z-index:100;overflow-y:auto}
@@ -104,13 +99,11 @@ button{cursor:pointer}
 .panel{display:none!important}
 .panel.active{display:block!important}
 
-/* CARDS */
 .card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px}
 .card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:8px}
 .card-title{font-size:14px;font-weight:600}
 .card-subtitle{font-size:12px;color:var(--text3);font-family:'JetBrains Mono',monospace;margin-top:2px}
 
-/* STATS */
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:24px}
 .stat-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px;position:relative;overflow:hidden;transition:border-color .2s,transform .2s}
 .stat-card:hover{border-color:var(--border2);transform:translateY(-2px)}
@@ -122,7 +115,6 @@ button{cursor:pointer}
 .stat-val.orange{color:var(--orange)}
 .stat-label{font-size:12px;color:var(--text3);margin-top:6px}
 
-/* ACTIVITY */
 .activity-item{display:flex;align-items:flex-start;gap:12px;padding:12px 0;border-bottom:1px solid var(--border)}
 .activity-item:last-child{border-bottom:none}
 .activity-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0}
@@ -132,7 +124,6 @@ button{cursor:pointer}
 .activity-text strong{color:var(--text);font-weight:500}
 .activity-time{font-size:11px;color:var(--text3);font-family:'JetBrains Mono',monospace;margin-top:2px}
 
-/* CHART */
 .chart-wrap{height:160px;margin-top:8px}
 .chart-bars{display:flex;align-items:flex-end;gap:6px;height:100%;padding-top:10px}
 .chart-bar-wrap{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;height:100%}
@@ -140,7 +131,6 @@ button{cursor:pointer}
 .chart-bar:hover{opacity:.8}
 .chart-bar-label{font-size:9px;font-family:'JetBrains Mono',monospace;color:var(--text3)}
 
-/* TABLE */
 .table-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--border)}
 table{width:100%;border-collapse:collapse}
 th{font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--text3);text-align:left;padding:10px 16px;border-bottom:1px solid var(--border);font-weight:600;text-transform:uppercase;letter-spacing:.6px;background:var(--bg3)}
@@ -150,13 +140,11 @@ tr:hover td{background:rgba(255,255,255,0.02)}
 th.cb,td.cb{width:36px;padding-right:4px}
 input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:pointer}
 
-/* BADGES */
 .badge{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-family:'JetBrains Mono',monospace;padding:3px 9px;border-radius:5px;font-weight:600}
 .badge.published,.badge.active,.badge.approved{color:var(--green);background:rgba(16,185,129,0.1);border:1px solid rgba(16,185,129,0.2)}
 .badge.draft,.badge.archived{color:var(--text3);background:var(--bg3);border:1px solid var(--border)}
 .badge.pending{color:var(--orange);background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.2)}
 
-/* TAGS */
 .tags-wrap{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
 .tag-chip{display:inline-flex;align-items:center;gap:3px;font-size:10px;font-family:'JetBrains Mono',monospace;background:rgba(99,102,241,0.1);color:var(--accent);border:1px solid rgba(99,102,241,0.2);padding:2px 7px;border-radius:20px}
 .tag-chip-del{cursor:pointer;font-size:11px;opacity:.7}
@@ -164,7 +152,6 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
 .tag-add-row{display:flex;gap:6px;align-items:center;margin-top:6px}
 .tag-add-row input{flex:1}
 
-/* BUTTONS */
 .btn{font-size:12px;font-weight:500;padding:8px 16px;border-radius:8px;border:1px solid var(--border);cursor:pointer;transition:all .15s;background:transparent;color:var(--text2)}
 .btn-primary{background:var(--accent);color:#fff;border-color:var(--accent)}
 .btn-primary:hover{filter:brightness(1.1)}
@@ -179,20 +166,17 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
 .btn-icon{width:32px;height:32px;padding:0;display:inline-flex;align-items:center;justify-content:center;border-radius:7px}
 .btn:disabled{opacity:.4;cursor:not-allowed}
 
-/* BULK BAR */
 .bulk-bar{display:none;align-items:center;gap:10px;padding:10px 16px;background:rgba(99,102,241,0.07);border:1px solid rgba(99,102,241,0.2);border-radius:10px;margin-bottom:12px}
 .bulk-bar.show{display:flex}
 .bulk-count{font-size:13px;font-weight:600;color:var(--accent);font-family:'JetBrains Mono',monospace}
 .bulk-actions{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap}
 
-/* SEARCH & FILTER BAR */
 .table-controls{display:flex;align-items:center;gap:8px;margin-bottom:12px;flex-wrap:wrap}
 .search-wrap{position:relative;flex:1;min-width:160px}
 .search-wrap::before{content:'🔍';position:absolute;left:11px;top:50%;transform:translateY(-50%);font-size:11px;pointer-events:none}
 .search-input{width:100%;background:var(--bg3);border:1px solid var(--border2);border-radius:9px;padding:8px 12px 8px 32px;color:var(--text);font-size:13px;outline:none;transition:border-color .15s}
 .search-input:focus{border-color:var(--accent)}
 
-/* FORMS */
 .form-group{margin-bottom:14px}
 .form-label{display:block;font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--text3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
 .form-label .req{color:var(--red);margin-left:2px}
@@ -210,23 +194,19 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
 .char-count.warn{color:var(--orange)}
 .char-count.over{color:var(--red)}
 
-/* SLUG PREVIEW */
 .slug-preview{font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--text3);margin-top:4px;padding:4px 10px;background:var(--bg4);border-radius:5px}
 .slug-preview span{color:var(--accent)}
 
-/* SEO GOOGLE PREVIEW */
 .seo-preview{background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:14px;margin-top:10px}
 .seo-prev-site{font-size:11px;color:var(--green);font-family:'JetBrains Mono',monospace;margin-bottom:3px}
 .seo-prev-title{font-size:15px;color:#8ab4f8;font-weight:500;margin-bottom:2px}
 [data-theme="light"] .seo-prev-title{color:#1a0dab}
 .seo-prev-desc{font-size:12px;color:var(--text2);line-height:1.5}
 
-/* IMAGE PREVIEW */
 .img-preview-wrap{margin-top:10px;display:none}
 .img-preview-wrap.show{display:block}
 .img-preview{width:100%;max-height:160px;object-fit:cover;border-radius:9px;border:1px solid var(--border)}
 
-/* UPLOAD ZONE */
 .upload-zone{border:2px dashed var(--border2);border-radius:12px;padding:28px;text-align:center;cursor:pointer;transition:all .2s;background:var(--bg3);position:relative}
 .upload-zone:hover,.upload-zone.dragover{border-color:var(--accent);background:rgba(99,102,241,0.05)}
 .upload-zone-icon{font-size:32px;margin-bottom:8px}
@@ -244,7 +224,6 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
 .media-check{position:absolute;top:5px;left:5px;width:18px;height:18px;border-radius:4px;background:var(--accent);color:#fff;font-size:10px;display:none;align-items:center;justify-content:center;font-weight:700}
 .media-item.selected .media-check{display:flex}
 
-/* MODAL */
 .modal-overlay{position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,0.65);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:20px}
 .modal-overlay.show{display:flex}
 .modal{background:var(--card);border:1px solid var(--border2);border-radius:18px;padding:28px;width:680px;max-width:95vw;max-height:90vh;overflow-y:auto}
@@ -252,21 +231,18 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
 .modal-sm{width:440px}
 .modal h3{font-size:18px;font-weight:600;margin-bottom:20px;letter-spacing:-.3px}
 
-/* MODAL TABS */
 .modal-tabs{display:flex;gap:3px;background:var(--bg3);border-radius:9px;padding:3px;margin-bottom:20px}
 .modal-tab{flex:1;padding:7px;text-align:center;font-size:12px;font-weight:500;border-radius:7px;cursor:pointer;color:var(--text2);transition:all .15s;border:none;background:none}
 .modal-tab.active{background:var(--card);color:var(--text);box-shadow:0 1px 4px rgba(0,0,0,0.2)}
 .tab-pane{display:none}
 .tab-pane.active{display:block}
 
-/* CONFIRM MODAL */
 .confirm-body{text-align:center;padding:8px 0}
 .confirm-icon{font-size:48px;margin-bottom:14px}
 .confirm-title{font-size:18px;font-weight:700;margin-bottom:8px;letter-spacing:-.3px}
 .confirm-msg{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:24px}
 .confirm-acts{display:flex;gap:10px;justify-content:center}
 
-/* PREVIEW FRAME */
 .preview-frame{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:32px;min-height:360px;overflow-y:auto}
 .pf-title{font-size:26px;font-weight:700;margin-bottom:14px;line-height:1.3}
 .pf-meta{display:flex;gap:10px;font-size:12px;color:var(--text3);margin-bottom:20px;flex-wrap:wrap;align-items:center}
@@ -279,10 +255,8 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
 .pf-content a{color:var(--accent)}
 .pf-content blockquote{border-left:3px solid var(--accent);padding-left:14px;margin:10px 0;color:var(--text3)}
 
-/* REPLY BOX */
 .reply-original{background:var(--bg3);border-radius:10px;padding:14px;margin-bottom:14px;font-size:13px;color:var(--text2);line-height:1.6;border-left:3px solid var(--accent)}
 
-/* NOTIFICATIONS */
 .notif-panel{position:fixed;top:70px;right:20px;width:340px;background:var(--card);border:1px solid var(--border2);border-radius:14px;z-index:500;box-shadow:var(--shadow);display:none}
 .notif-panel.show{display:block}
 .notif-header{padding:14px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
@@ -296,19 +270,16 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
 .notif-item-text{font-size:12px;color:var(--text2);line-height:1.5}
 .notif-item-time{font-size:10px;color:var(--text3);font-family:'JetBrains Mono',monospace;margin-top:2px}
 
-/* TOAST */
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(10px);z-index:9999;background:var(--card);border:1px solid var(--border2);border-radius:12px;padding:12px 18px;font-size:13px;display:flex;align-items:center;gap:9px;opacity:0;transition:all .3s;pointer-events:none;box-shadow:var(--shadow)}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .toast.success{border-color:rgba(16,185,129,0.4)}
 .toast.error{border-color:rgba(239,68,68,0.4)}
 .toast.warning{border-color:rgba(245,158,11,0.4)}
 
-/* EMPTY STATE */
 .empty{text-align:center;padding:48px 20px;color:var(--text3)}
 .empty-icon{font-size:36px;margin-bottom:10px}
 .empty p{font-size:13px}
 
-/* SETTINGS */
 .setting-row{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--border)}
 .setting-row:last-child{border-bottom:none}
 .setting-info h4{font-size:13px;font-weight:500}
@@ -318,20 +289,16 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
 .toggle::after{content:'';position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:transform .2s}
 .toggle.on::after{transform:translateX(18px)}
 
-/* INFO BOX */
 .info-box{background:rgba(99,102,241,0.07);border:1px solid rgba(99,102,241,0.2);border-radius:10px;padding:14px 16px;font-size:12px;color:var(--text2);line-height:1.7;margin-bottom:16px}
 .info-box strong{color:var(--accent)}
 .info-box code{font-family:'JetBrains Mono',monospace;background:rgba(99,102,241,0.15);padding:1px 5px;border-radius:4px;font-size:11px}
 
-/* FILTER */
 .filter-btn.active{background:rgba(99,102,241,0.12);color:var(--accent);border-color:rgba(99,102,241,0.3)}
 
-/* DRAG HANDLE */
 .drag-handle{cursor:grab;color:var(--text3);font-size:16px;padding:0 4px;user-select:none}
 .drag-handle:active{cursor:grabbing}
 .sortable-ghost{opacity:.4;background:rgba(99,102,241,0.06)!important}
 
-/* ABOUT */
 .skill-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:10px 14px}
 .skill-row input{background:none;border:none;outline:none;color:var(--text);font-size:13px}
 .skill-row input[type=range]{flex:2}
@@ -340,14 +307,15 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
 .exp-row input,.exp-row textarea{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:7px;padding:8px 12px;color:var(--text);font-size:12px;outline:none;margin-bottom:6px;font-family:'Sora',sans-serif}
 .exp-row textarea{min-height:60px;resize:vertical}
 
-/* SOCIAL ROW */
 .social-row{background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:12px 14px;margin-bottom:8px;display:flex;align-items:center;gap:8px}
 .social-row input{background:var(--bg2);border:1px solid var(--border);border-radius:7px;padding:7px 10px;color:var(--text);font-size:12px;outline:none;font-family:'Sora',sans-serif}
 .social-row input:focus{border-color:var(--accent)}
 
-/* QA ROW */
 .qa-row{background:var(--bg3);border:1px solid var(--border);border-radius:9px;padding:14px;margin-bottom:10px;display:flex;gap:12px;align-items:flex-start}
 .qa-row input{flex:1;background:var(--bg2);border:1px solid var(--border);border-radius:7px;padding:8px 12px;color:var(--text);font-size:12px;outline:none;font-family:'Sora',sans-serif}
+
+/* FIX: supabase status box */
+.sb-status-box{background:var(--bg3);border:1px solid var(--border);border-radius:7px;padding:8px 12px;font-size:11px;font-family:'JetBrains Mono',monospace;word-break:break-all}
 
 @keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 .fade-in{animation:fadeIn .25s ease forwards}
@@ -608,7 +576,7 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
 
       <!-- ABOUT -->
       <div class="panel fade-in" id="panel-about">
-        <div class="info-box">✅ <strong>Supabase'e kaydediliyor.</strong> <code>loadSettingFromSupabase('about')</code></div>
+        <div class="info-box">✅ <strong>Supabase'e kaydediliyor.</strong> <code>settings</code> tablosu · key: <code>about</code></div>
         <div class="card">
           <div class="card-header"><div class="card-title">👤 Biyografi</div></div>
           <div class="form-group"><label class="form-label">Ad Soyad <span class="req">*</span></label><input class="form-input" id="aboutName" placeholder="Kerem Akbayır"></div>
@@ -643,17 +611,17 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
 
       <!-- CONTACT -->
       <div class="panel fade-in" id="panel-contact">
-        <div class="info-box">✅ <strong>Supabase'e kaydediliyor.</strong> <code>loadSettingFromSupabase('contact_page')</code></div>
+        <div class="info-box">✅ <strong>Supabase'e kaydediliyor.</strong> <code>settings</code> tablosu · key: <code>contact_page</code></div>
         <div class="card">
           <div class="card-header"><div class="card-title">📬 İletişim Sayfası İçeriği</div></div>
-          <div class="form-group"><label class="form-label">Başlık</label><input class="form-input" id="cpTitle" value="Merhaba, konuşalım!"></div>
-          <div class="form-group"><label class="form-label">Açıklama</label><textarea class="form-textarea" id="cpDesc" rows="3">Yeni projeler, iş birlikleri veya sadece selamlaşmak için mesaj atabilirsiniz.</textarea></div>
+          <div class="form-group"><label class="form-label">Başlık</label><input class="form-input" id="cpTitle"></div>
+          <div class="form-group"><label class="form-label">Açıklama</label><textarea class="form-textarea" id="cpDesc" rows="3"></textarea></div>
           <div class="form-row">
             <div class="form-group"><label class="form-label">E-posta <span class="req">*</span></label><input class="form-input" id="cpEmail" placeholder="kerem@akbayir.dev"></div>
             <div class="form-group"><label class="form-label">Konum</label><input class="form-input" id="cpLocation" placeholder="İstanbul, Türkiye"></div>
           </div>
           <div class="form-group"><label class="form-label">LinkedIn Profil URL</label><input class="form-input" id="cpLinkedin" placeholder="linkedin.com/in/keremakbayir"></div>
-          <div class="form-group"><label class="form-label">Form Başlığı</label><input class="form-input" id="cpFormTitle" value="Mesaj Gönder"></div>
+          <div class="form-group"><label class="form-label">Form Başlığı</label><input class="form-input" id="cpFormTitle"></div>
         </div>
         <div style="margin-top:16px;display:flex;justify-content:flex-end">
           <button class="btn btn-primary" onclick="saveContactPage()">💾 Supabase'e Kaydet</button>
@@ -662,7 +630,7 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
 
       <!-- CHATBOT -->
       <div class="panel fade-in" id="panel-chatbot">
-        <div class="info-box">✅ <strong>Supabase'e kaydediliyor.</strong> <code>loadSettingFromSupabase('chatbot')</code></div>
+        <div class="info-box">✅ <strong>Supabase'e kaydediliyor.</strong> <code>settings</code> tablosu · key: <code>chatbot</code></div>
         <div class="card">
           <div class="card-header"><div class="card-title">Bot Ayarları</div></div>
           <div class="form-row">
@@ -685,7 +653,7 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
 
       <!-- SEO -->
       <div class="panel fade-in" id="panel-seo">
-        <div class="info-box">✅ <strong>Supabase'e kaydediliyor.</strong> <code>loadSettingFromSupabase('seo')</code></div>
+        <div class="info-box">✅ <strong>Supabase'e kaydediliyor.</strong> <code>settings</code> tablosu · key: <code>seo</code></div>
         <div class="card">
           <div class="card-header"><div class="card-title">🔍 Meta Bilgileri</div></div>
           <div class="form-group"><label class="form-label">Site Başlığı (Title)</label><input class="form-input" id="seoTitle" oninput="updateSeoPreview()"></div>
@@ -723,7 +691,7 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
 
       <!-- THEME -->
       <div class="panel fade-in" id="panel-theme">
-        <div class="info-box">✅ <strong>Supabase'e kaydediliyor.</strong> <code>loadSettingFromSupabase('site_settings')</code></div>
+        <div class="info-box">✅ <strong>Supabase'e kaydediliyor.</strong> <code>settings</code> tablosu · key: <code>site_settings</code></div>
         <div class="card">
           <div class="card-header"><div class="card-title">Site Bilgileri</div></div>
           <div class="form-row">
@@ -779,8 +747,8 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
         <div class="card" style="margin-top:16px">
           <div class="card-header"><div class="card-title">Supabase Bağlantısı</div><button class="btn btn-sm btn-ghost" onclick="checkSBStatus()">↻ Test</button></div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
-            <div><div style="font-size:11px;color:var(--text3);font-family:'JetBrains Mono',monospace;margin-bottom:5px">URL</div><div style="background:var(--bg3);border:1px solid var(--border);border-radius:7px;padding:8px 12px;font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--green);word-break:break-all" id="sbUrl"></div></div>
-            <div><div style="font-size:11px;color:var(--text3);font-family:'JetBrains Mono',monospace;margin-bottom:5px">DURUM</div><div style="background:var(--bg3);border:1px solid var(--border);border-radius:7px;padding:8px 12px;font-size:11px;font-family:'JetBrains Mono',monospace" id="sbStatus">Kontrol ediliyor...</div></div>
+            <div><div style="font-size:11px;color:var(--text3);font-family:'JetBrains Mono',monospace;margin-bottom:5px">URL</div><div class="sb-status-box" style="color:var(--green)" id="sbUrl"></div></div>
+            <div><div style="font-size:11px;color:var(--text3);font-family:'JetBrains Mono',monospace;margin-bottom:5px">DURUM</div><div class="sb-status-box" id="sbStatus">Kontrol ediliyor...</div></div>
           </div>
         </div>
         <div style="margin-top:16px;display:flex;justify-content:flex-end">
@@ -792,7 +760,7 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
   </div>
 </div>
 
-<!-- ══ POST MODAL (Quill + SEO + Tags + Slug) ══ -->
+<!-- POST MODAL -->
 <div class="modal-overlay" id="postModal">
   <div class="modal modal-lg">
     <h3 id="postModalTitle">✍️ Yeni Yazı</h3>
@@ -801,8 +769,6 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
       <button class="modal-tab active" onclick="switchTab('postTab','content',this)">📝 İçerik</button>
       <button class="modal-tab" onclick="switchTab('postTab','seo',this)">🔍 SEO</button>
     </div>
-
-    <!-- İÇERİK TAB -->
     <div class="tab-pane active" id="postTab-content">
       <div class="form-group">
         <label class="form-label">Başlık <span class="req">*</span></label>
@@ -845,11 +811,9 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
         <div id="quillEditor"></div>
       </div>
     </div>
-
-    <!-- SEO TAB -->
     <div class="tab-pane" id="postTab-seo">
       <div class="form-group">
-        <label class="form-label">SEO Başlığı <span style="font-size:10px;color:var(--text3)">(boş bırakırsan yazı başlığı kullanılır)</span></label>
+        <label class="form-label">SEO Başlığı</label>
         <input class="form-input" id="postSeoTitle" placeholder="SEO başlığı..." oninput="updateCharCount(this,'pstCount',60);updatePostSeoPreview()">
         <div class="char-count" id="pstCount">0 / 60</div>
       </div>
@@ -858,24 +822,17 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
         <textarea class="form-textarea" id="postSeoDesc" rows="3" style="min-height:80px" oninput="updateCharCount(this,'psdCount',160);updatePostSeoPreview()"></textarea>
         <div class="char-count" id="psdCount">0 / 160</div>
       </div>
-      <div class="form-group">
-        <label class="form-label">OG Image URL</label>
-        <input class="form-input" id="postSeoOg" placeholder="https://...">
-      </div>
-      <div class="form-group">
-        <label class="form-label">Canonical URL</label>
-        <input class="form-input" id="postSeoCanonical" placeholder="https://keremakbayir.tr/blog/yazi-slug">
-      </div>
+      <div class="form-group"><label class="form-label">OG Image URL</label><input class="form-input" id="postSeoOg" placeholder="https://..."></div>
+      <div class="form-group"><label class="form-label">Canonical URL</label><input class="form-input" id="postSeoCanonical" placeholder="https://keremakbayir.tr/blog/yazi-slug"></div>
       <div class="form-group">
         <label class="form-label">Google Önizleme</label>
         <div class="seo-preview">
           <div class="seo-prev-site">keremakbayir.tr › blog</div>
-          <div class="seo-prev-title" id="postSeoTitle">—</div>
+          <div class="seo-prev-title" id="postSeoTitlePrev">—</div>
           <div class="seo-prev-desc" id="postSeoDescPrev">—</div>
         </div>
       </div>
     </div>
-
     <div class="form-actions">
       <button class="btn btn-ghost" onclick="closeModal('postModal')">İptal</button>
       <button class="btn btn-warning" onclick="previewPost()">👁️ Önizle</button>
@@ -884,7 +841,7 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
   </div>
 </div>
 
-<!-- ══ PROJECT MODAL ══ -->
+<!-- PROJECT MODAL -->
 <div class="modal-overlay" id="projModal">
   <div class="modal">
     <h3 id="projModalTitle">📁 Yeni Proje</h3>
@@ -912,7 +869,7 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
   </div>
 </div>
 
-<!-- ══ CONFIRM MODAL ══ -->
+<!-- CONFIRM MODAL -->
 <div class="modal-overlay" id="confirmModal">
   <div class="modal modal-sm">
     <div class="confirm-body">
@@ -927,7 +884,7 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
   </div>
 </div>
 
-<!-- ══ PREVIEW MODAL ══ -->
+<!-- PREVIEW MODAL -->
 <div class="modal-overlay" id="previewModal">
   <div class="modal modal-lg">
     <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
@@ -938,7 +895,7 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
   </div>
 </div>
 
-<!-- ══ REPLY MODAL ══ -->
+<!-- REPLY MODAL -->
 <div class="modal-overlay" id="replyModal">
   <div class="modal modal-sm">
     <h3>✉️ Mesaja Cevap Ver</h3>
@@ -979,9 +936,13 @@ let currentTags = [];
 let projSortable = null;
 let replyMsg = null;
 
+// FIX: panel load flags – panelleri yalnızca bir kez (ilk açılışta) yükle
+// her showPanel() çağrısında tekrar yüklemek race condition + UI bozulması yaratıyordu
+const _loaded = {};
+
 let aboutData = JSON.parse(localStorage.getItem('ka_about') || 'null') || {
   name:'Kerem Akbayır',title:'Senior Software Engineer',location:'📍 İstanbul, Türkiye',
-  email:'kerem@akbayir.dev',bio1:'Merhaba! Ben Kerem Akbayır.',bio2:'',bio3:'',
+  email:'kerem@akbayir.dev',bio1:'',bio2:'',bio3:'',
   skills:[{name:'.NET & C#',pct:95},{name:'Azure & AKS',pct:85},{name:'Docker',pct:88}],
   experience:[{title:'Senior SE',company:'TechCorp A.Ş.',date:'Oca 2022 – Günümüz',desc:'Mikroservis mimarileri.'}],
   social:[
@@ -1052,16 +1013,32 @@ document.addEventListener('click', e => {
 });
 
 // ═══════════════════════════════════════════════════
-// SUPABASE HELPERS
+// FIX: SUPABASE HELPERS – value her zaman JSON olarak saklanır
 // ═══════════════════════════════════════════════════
 async function saveSettingToSupabase(key, value){
-  const { error } = await db.from('settings').upsert({ key, value, updated_at: new Date().toISOString() }, { onConflict: 'key' });
+  // value obje/array ise JSON string'e çevir; böylece text kolonu da çalışır
+  const stored = typeof value === 'string' ? value : JSON.stringify(value);
+  
+  // Önce var mı kontrol et
+  const { data: existing } = await db.from('settings').select('key').eq('key', key).maybeSingle();
+  
+  let error;
+  if(existing) {
+    ({ error } = await db.from('settings').update({ value: stored, updated_at: new Date().toISOString() }).eq('key', key));
+  } else {
+    ({ error } = await db.from('settings').insert({ key, value: stored, updated_at: new Date().toISOString() }));
+  }
   if(error) throw error;
 }
+
 async function loadSettingFromSupabase(key){
-  const { data, error } = await db.from('settings').select('value').eq('key', key).single();
-  if(error) return null;
-  return data?.value || null;
+  const { data, error } = await db.from('settings').select('value').eq('key', key).maybeSingle();
+  if(error || !data) return null;
+  const v = data.value;
+  if(!v) return null;
+  // String ise JSON parse dene; text ise direkt döndür
+  if(typeof v === 'object') return v; // jsonb kolonu
+  try { return JSON.parse(v); } catch { return v; }
 }
 
 // ═══════════════════════════════════════════════════
@@ -1095,6 +1072,8 @@ async function doLogin(){
 async function doLogout(){
   await db.auth.signOut(); adminUser = null;
   getEl('app').classList.add('hidden'); getEl('loginPage').classList.remove('hidden');
+  // Reset loaded flags on logout
+  Object.keys(_loaded).forEach(k => delete _loaded[k]);
 }
 function showApp(){
   getEl('loginPage').classList.add('hidden'); getEl('app').classList.remove('hidden');
@@ -1103,14 +1082,26 @@ function showApp(){
   getEl('sidebarAvatar').textContent = (email[0]||'A').toUpperCase();
   getEl('sbUrl').textContent = SUPABASE_URL;
   initQuill();
-  loadDashboard(); loadPosts(); loadProjects(); loadSiteSettings();
-  loadComments(); loadMessages(); loadAboutPanel(); loadChatbotPanel();
-  loadSettingsPanel(); loadContactPage(); loadSEO(); loadMedia();
-  checkSBStatus(); renderNotifications();
+  // FIX: tüm panelleri başlangıçta yükle ama sonraki showPanel() çağrılarında tekrar yükleme
+  loadDashboard();
+  loadPosts();
+  loadProjects();
+  loadComments();
+  loadMessages();
+  loadMedia();
+  // Ayarlar panelleri: lazy load ile _loaded flag kontrolü
+  loadAboutPanel();
+  loadChatbotPanel();
+  loadContactPage();
+  loadSEO();
+  loadSiteSettings();
+  loadSettingsPanel();
+  checkSBStatus();
+  renderNotifications();
 }
 
 // ═══════════════════════════════════════════════════
-// PANEL NAV
+// PANEL NAV – FIX: tema paneli de dahil edildi
 // ═══════════════════════════════════════════════════
 const panelTitles = {
   dashboard:'Dashboard',visitors:'Ziyaretçiler',notifs:'Bildirimler',
@@ -1118,8 +1109,9 @@ const panelTitles = {
   about:'Hakkımda',contact:'İletişim Sayfası',chatbot:'Chatbot',
   seo:'SEO & Meta',theme:'Tema & Site',settings:'Ayarlar'
 };
+
 function showPanel(name, btn){
-  document.querySelectorAll('.panel').forEach(p => { p.classList.remove('active'); });
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   const panel = getEl('panel-'+name);
   if(panel){ panel.classList.add('active'); panel.classList.remove('fade-in'); void panel.offsetWidth; panel.classList.add('fade-in'); }
@@ -1128,9 +1120,10 @@ function showPanel(name, btn){
   if(getEl('topbarTitle')) getEl('topbarTitle').textContent = panelTitles[name]||name;
   if(getEl('topbarSub')) getEl('topbarSub').textContent = panelTitles[name]||name;
   if(name==='notifs') renderAllNotifs();
-  if(name==='contact') loadContactPage();
-  if(name==='seo') loadSEO();
-  if(name==='settings') loadSettingsPanel();
+  // FIX: Paneller showApp'te zaten yüklendi, burada tekrar yükleme yapma
+  // Sadece media ve dashboard'ı her seferinde yenile (canlı veri)
+  if(name==='media' && _loaded.media) loadMedia();
+  if(name==='dashboard') loadDashboard();
 }
 
 // ═══════════════════════════════════════════════════
@@ -1189,14 +1182,14 @@ function updateSlugPreview(){
   const slugEl = getEl('editPostSlug'); if(slugEl) slugEl.dataset.manual = s?'1':'';
 }
 function updateSeoPreview(){
-  const t = val('seoTitle'); const d = val('seoDesc');
+  const t = val('seoTitle'); const d = getEl('seoDesc')?.value||'';
   const pt = getEl('seoPrevTitle'); const pd = getEl('seoPrevDesc');
   if(pt) pt.textContent = t||'—'; if(pd) pd.textContent = d||'—';
 }
 function updatePostSeoPreview(){
   const t = val('postSeoTitle')||val('editPostTitle');
-  const d = val('postSeoDesc')||val('editPostExcerpt');
-  const pt = getEl('postSeoTitle'); const pd = getEl('postSeoDescPrev');
+  const d = getEl('postSeoDesc')?.value||getEl('editPostExcerpt')?.value||'';
+  const pt = getEl('postSeoTitlePrev'); const pd = getEl('postSeoDescPrev');
   if(pt) pt.textContent = t||'—'; if(pd) pd.textContent = d||'—';
 }
 
@@ -1216,11 +1209,11 @@ async function loadDashboard(){
     renderChart(); loadActivity(); loadPendingComments();
     const {count:pc} = await db.from('comments').select('id',{count:'exact'}).eq('status','pending');
     const cb = getEl('commentBadge');
-    if(cb && pc){ cb.textContent = pc; cb.classList.toggle('show', pc>0); }
+    if(cb){ cb.textContent = pc||0; cb.classList.toggle('show', (pc||0)>0); }
     const {count:nm} = await db.from('messages').select('id',{count:'exact'});
     const mb = getEl('msgBadge');
-    if(mb && nm){ mb.textContent = nm; mb.classList.toggle('show', nm>0); }
-  } catch(e){ console.warn(e); }
+    if(mb){ mb.textContent = nm||0; mb.classList.toggle('show', (nm||0)>0); }
+  } catch(e){ console.warn('Dashboard yüklenemedi:',e); }
 }
 function renderChart(){
   const months = ['Kas','Ara','Oca','Şub','Mar','Nis','May'];
@@ -1292,9 +1285,8 @@ function confirmAction(icon,title,msg,fn){ showConfirm(icon,title,msg,fn); }
 // ═══════════════════════════════════════════════════
 async function loadPosts(){
   try{
-    const {data,error} = await db.from('posts').select('*').order('created_at',{ascending:false});
+    const {data} = await db.from('posts').select('*').order('created_at',{ascending:false});
     allPosts = data||[];
-    // populate cat filter
     const cats = [...new Set(allPosts.map(p=>p.category).filter(Boolean))];
     const cf = getEl('postCatFilter');
     if(cf) cf.innerHTML = '<option value="">Tüm Kategoriler</option>' + cats.map(c=>`<option value="${escHtml(c)}">${escHtml(c)}</option>`).join('');
@@ -1411,12 +1403,7 @@ async function savePost(){
     content, tags: currentTags,
     image_url: val('editPostImage')||null,
     comments_enabled: true,
-    seo: {
-      title: val('postSeoTitle'),
-      desc: val('postSeoDesc'),
-      og: val('postSeoOg'),
-      canonical: val('postSeoCanonical')
-    }
+    seo: { title: val('postSeoTitle'), desc: getEl('postSeoDesc')?.value||'', og: val('postSeoOg'), canonical: val('postSeoCanonical') }
   };
   try{
     if(id){ const {error}=await db.from('posts').update(payload).eq('id',id); if(error) throw error; }
@@ -1436,11 +1423,7 @@ async function deletePost(id){
 function previewPost(){
   const title = val('editPostTitle');
   const content = quill ? quill.root.innerHTML : '';
-  const excerpt = val('editPostExcerpt');
-  const cat = val('editPostCat');
-  const tags = currentTags;
-  const imgUrl = val('editPostImage');
-  renderPreviewModal({title,content,excerpt,category:cat,tags,image_url:imgUrl,created_at:new Date().toISOString()});
+  renderPreviewModal({title,content,excerpt:val('editPostExcerpt'),category:val('editPostCat'),tags:currentTags,image_url:val('editPostImage'),created_at:new Date().toISOString()});
 }
 async function previewPostById(id){
   const {data} = await db.from('posts').select('*').eq('id',id).single();
@@ -1450,18 +1433,14 @@ function renderPreviewModal(post){
   const tags = (post.tags||[]).map(t=>`<span class="tag-chip">${escHtml(t)}</span>`).join('');
   getEl('previewFrame').innerHTML = `
     <div class="pf-title">${escHtml(post.title)}</div>
-    <div class="pf-meta">
-      <span>📅 ${fmtDate(post.created_at)}</span>
-      ${post.category?`<span>📂 ${escHtml(post.category)}</span>`:''}
-      ${tags}
-    </div>
+    <div class="pf-meta"><span>📅 ${fmtDate(post.created_at)}</span>${post.category?`<span>📂 ${escHtml(post.category)}</span>`:''} ${tags}</div>
     ${post.image_url?`<img class="pf-img" src="${escHtml(post.image_url)}" alt="">`:''}
     <div class="pf-content">${post.content||'<em style="color:var(--text3)">İçerik yok</em>'}</div>`;
   getEl('previewModal').classList.add('show');
 }
 
 // ═══════════════════════════════════════════════════
-// PROJECTS (drag-drop)
+// PROJECTS
 // ═══════════════════════════════════════════════════
 async function loadProjects(){
   try{
@@ -1496,7 +1475,6 @@ function renderProjects(){
       <button class="btn btn-sm btn-danger" onclick="confirmAction('🗑️','Projeyi Sil','Bu proje kalıcı silinecek.',()=>deleteProj(${p.id}))">🗑</button>
     </td>
   </tr>`).join('');
-  // Init sortable
   if(projSortable) projSortable.destroy();
   projSortable = new Sortable(body, {
     handle: '.drag-handle', animation: 150, ghostClass: 'sortable-ghost',
@@ -1550,7 +1528,7 @@ async function deleteProj(id){
 }
 
 // ═══════════════════════════════════════════════════
-// MEDIA (Supabase Storage)
+// MEDIA
 // ═══════════════════════════════════════════════════
 function onDragOver(e){ e.preventDefault(); getEl('uploadZone').classList.add('dragover'); }
 function onDragLeave(){ getEl('uploadZone').classList.remove('dragover'); }
@@ -1575,6 +1553,7 @@ async function uploadFiles(files){
 }
 
 async function loadMedia(){
+  _loaded.media = true;
   const grid = getEl('mediaGrid'); if(!grid) return;
   grid.innerHTML = '<div class="empty"><span style="font-size:24px;display:inline-block;animation:spin 1s linear infinite">⚙️</span></div>';
   try{
@@ -1593,7 +1572,7 @@ async function loadMedia(){
         </div>
       </div>`;
     }).join('');
-  } catch(e){ grid.innerHTML = '<div class="empty"><p>Storage erişim hatası. Bucket\'ı kontrol edin.</p></div>'; }
+  } catch(e){ grid.innerHTML = '<div class="empty"><p>Storage erişim hatası.</p></div>'; }
 }
 
 function toggleMediaSel(name, e){
@@ -1682,7 +1661,7 @@ async function deleteComment(id){
 }
 
 // ═══════════════════════════════════════════════════
-// MESSAGES (with reply)
+// MESSAGES
 // ═══════════════════════════════════════════════════
 async function loadMessages(){
   try{
@@ -1721,7 +1700,6 @@ async function sendReply(){
   if(!replyMsg) return;
   const body = val('replyContent');
   if(!body){ showToast('Cevap boş olamaz','error'); return; }
-  // Supabase Edge Function / SMTP entegrasyonu buraya eklenebilir
   console.log('Reply to:', replyMsg.email, '\nBody:', body);
   showToast(`Cevap ${replyMsg.email} adresine gönderildi ✓`);
   closeModal('replyModal'); replyMsg = null;
@@ -1736,7 +1714,10 @@ async function deleteMsg(id){
 // ABOUT
 // ═══════════════════════════════════════════════════
 async function loadAboutPanel(){
-  try{ const remote = await loadSettingFromSupabase('about'); if(remote){ aboutData=remote; localStorage.setItem('ka_about',JSON.stringify(aboutData)); } } catch(e){}
+  try{
+    const remote = await loadSettingFromSupabase('about');
+    if(remote && typeof remote === 'object'){ aboutData = remote; localStorage.setItem('ka_about',JSON.stringify(aboutData)); }
+  } catch(e){ console.warn('About yüklenemedi:',e); }
   getEl('aboutName').value = aboutData.name||''; getEl('aboutTitle').value = aboutData.title||'';
   getEl('aboutLocation').value = aboutData.location||''; getEl('aboutEmail').value = aboutData.email||'';
   getEl('aboutBio1').value = aboutData.bio1||''; getEl('aboutBio2').value = aboutData.bio2||''; getEl('aboutBio3').value = aboutData.bio3||'';
@@ -1744,7 +1725,7 @@ async function loadAboutPanel(){
 }
 function renderSkillsList(){
   const el = getEl('skillsList'); if(!el) return;
-  if(!aboutData.skills?.length){ el.innerHTML = '<div class="empty"><p>Beceri yok.</p></div>'; return; }
+  if(!aboutData.skills?.length){ el.innerHTML = '<div class="empty"><p>Beceri yok. + Ekle butonuna tıklayın.</p></div>'; return; }
   el.innerHTML = aboutData.skills.map((s,i) => `
     <div class="skill-row">
       <input value="${escHtml(s.name)}" placeholder="Beceri" style="width:140px" oninput="aboutData.skills[${i}].name=this.value">
@@ -1793,43 +1774,80 @@ async function saveAbout(){
   aboutData.bio1 = getEl('aboutBio1').value; aboutData.bio2 = getEl('aboutBio2').value; aboutData.bio3 = getEl('aboutBio3').value;
   if(!aboutData.name){ showToast('Ad Soyad zorunlu','error'); return; }
   localStorage.setItem('ka_about', JSON.stringify(aboutData));
-  try{ await saveSettingToSupabase('about', aboutData); showToast('Hakkımda kaydedildi! ✅'); addNotif({id:'ab_'+Date.now(),icon:'👤',text:'Hakkımda sayfası güncellendi',time:new Date().toISOString(),unread:true}); }
-  catch(e){ showToast('Supabase hatası: '+e.message,'error'); }
+  try{
+    await saveSettingToSupabase('about', aboutData);
+    showToast('Hakkımda kaydedildi! ✅');
+    addNotif({id:'ab_'+Date.now(),icon:'👤',text:'Hakkımda sayfası güncellendi',time:new Date().toISOString(),unread:true});
+  } catch(e){ showToast('Supabase hatası: '+e.message,'error'); }
 }
 
 // ═══════════════════════════════════════════════════
-// CONTACT PAGE
+// FIX: CONTACT PAGE – varsayılan değerler düzgün yükleniyor
 // ═══════════════════════════════════════════════════
+const CP_DEFAULTS = {
+  title: 'Merhaba, konuşalım!',
+  desc: 'Yeni projeler, iş birlikleri veya sadece selamlaşmak için mesaj atabilirsiniz.',
+  email: 'kerem@akbayir.dev',
+  location: 'İstanbul, Türkiye',
+  linkedin: 'linkedin.com/in/keremakbayir',
+  formTitle: 'Mesaj Gönder'
+};
+
 async function loadContactPage(){
-  const D = {title:'Merhaba, konuşalım!',desc:'Yeni projeler, iş birlikleri veya selamlaşmak için mesaj atabilirsiniz.',email:'kerem@akbayir.dev',location:'İstanbul, Türkiye',linkedin:'linkedin.com/in/keremakbayir',formTitle:'Mesaj Gönder'};
-  ['cpTitle','cpDesc','cpEmail','cpLocation','cpLinkedin','cpFormTitle'].forEach((id,idx) => {
-    const key = ['title','desc','email','location','linkedin','formTitle'][idx];
-    const el = getEl(id); if(el) el.value = D[key];
-  });
+  // Önce varsayılanları yükle
+  getEl('cpTitle').value = CP_DEFAULTS.title;
+  getEl('cpDesc').value = CP_DEFAULTS.desc;
+  getEl('cpEmail').value = CP_DEFAULTS.email;
+  getEl('cpLocation').value = CP_DEFAULTS.location;
+  getEl('cpLinkedin').value = CP_DEFAULTS.linkedin;
+  getEl('cpFormTitle').value = CP_DEFAULTS.formTitle;
+
   try{
     const r = await loadSettingFromSupabase('contact_page');
-    if(r){ ['cpTitle','cpDesc','cpEmail','cpLocation','cpLinkedin','cpFormTitle'].forEach((id,idx)=>{ const key=['title','desc','email','location','linkedin','formTitle'][idx]; const el=getEl(id); if(el&&r[key]) el.value=r[key]; }); }
-  } catch(e){}
+    if(r && typeof r === 'object'){
+      if(r.title) getEl('cpTitle').value = r.title;
+      if(r.desc !== undefined) getEl('cpDesc').value = r.desc;
+      if(r.email) getEl('cpEmail').value = r.email;
+      if(r.location) getEl('cpLocation').value = r.location;
+      if(r.linkedin) getEl('cpLinkedin').value = r.linkedin;
+      if(r.formTitle) getEl('cpFormTitle').value = r.formTitle;
+    }
+  } catch(e){ console.warn('Contact page yüklenemedi:',e); }
 }
+
 async function saveContactPage(){
   const email = val('cpEmail');
   if(!email){ showToast('E-posta zorunlu','error'); return; }
-  const s = {title:val('cpTitle'),desc:getEl('cpDesc').value,email,location:val('cpLocation'),linkedin:val('cpLinkedin'),formTitle:val('cpFormTitle')};
-  try{ await saveSettingToSupabase('contact_page',s); showToast('İletişim sayfası kaydedildi! ✅'); }
-  catch(e){ showToast('Supabase hatası: '+e.message,'error'); }
+  const s = {
+    title: val('cpTitle'),
+    desc: getEl('cpDesc').value,
+    email,
+    location: val('cpLocation'),
+    linkedin: val('cpLinkedin'),
+    formTitle: val('cpFormTitle')
+  };
+  try{
+    await saveSettingToSupabase('contact_page', s);
+    showToast('İletişim sayfası kaydedildi! ✅');
+  } catch(e){ showToast('Supabase hatası: '+e.message,'error'); }
 }
 
 // ═══════════════════════════════════════════════════
 // CHATBOT
 // ═══════════════════════════════════════════════════
 async function loadChatbotPanel(){
-  try{ const r=await loadSettingFromSupabase('chatbot'); if(r){chatbotData=r;localStorage.setItem('ka_chatbot',JSON.stringify(chatbotData));} } catch(e){}
-  getEl('botName').value=chatbotData.name||''; getEl('botGreeting').value=chatbotData.greeting||''; getEl('botSuggestions').value=chatbotData.suggestions||'';
+  try{
+    const r = await loadSettingFromSupabase('chatbot');
+    if(r && typeof r === 'object'){ chatbotData = r; localStorage.setItem('ka_chatbot',JSON.stringify(chatbotData)); }
+  } catch(e){}
+  getEl('botName').value = chatbotData.name||'';
+  getEl('botGreeting').value = chatbotData.greeting||'';
+  getEl('botSuggestions').value = chatbotData.suggestions||'';
   renderQAList();
 }
 function renderQAList(){
   const el = getEl('qaList'); if(!el) return;
-  if(!chatbotData.qa?.length){ el.innerHTML='<div class="empty"><p>Soru-cevap yok.</p></div>'; return; }
+  if(!chatbotData.qa?.length){ el.innerHTML='<div class="empty"><p>Soru-cevap yok. + Ekle butonuna tıklayın.</p></div>'; return; }
   el.innerHTML = chatbotData.qa.map((qa,i) => `
     <div class="qa-row">
       <div style="flex:1"><div style="font-size:10px;color:var(--text3);font-family:'JetBrains Mono',monospace;margin-bottom:4px">ANAHTAR KELİME</div><input value="${escHtml(qa.q)}" placeholder="hakkında" oninput="chatbotData.qa[${i}].q=this.value"></div>
@@ -1839,83 +1857,134 @@ function renderQAList(){
 }
 function addQA(){ chatbotData.qa.push({q:'',a:''}); renderQAList(); }
 async function saveChatbot(){
-  chatbotData.name=val('botName'); chatbotData.greeting=val('botGreeting'); chatbotData.suggestions=val('botSuggestions');
+  chatbotData.name = val('botName');
+  chatbotData.greeting = val('botGreeting');
+  chatbotData.suggestions = val('botSuggestions');
   localStorage.setItem('ka_chatbot',JSON.stringify(chatbotData));
-  try{ await saveSettingToSupabase('chatbot',chatbotData); showToast('Chatbot kaydedildi! ✅'); }
-  catch(e){ showToast('Supabase hatası: '+e.message,'error'); }
+  try{
+    await saveSettingToSupabase('chatbot', chatbotData);
+    showToast('Chatbot kaydedildi! ✅');
+  } catch(e){ showToast('Supabase hatası: '+e.message,'error'); }
 }
 
 // ═══════════════════════════════════════════════════
-// SEO
+// FIX: SEO – alanlar güvenli şekilde doldurulur
 // ═══════════════════════════════════════════════════
 async function loadSEO(){
   try{
     const r = await loadSettingFromSupabase('seo');
-    if(r){
-      ['seoTitle','seoDesc','seoKeywords','seoOgImage','seoUrl','seoTwitter','seoGaId'].forEach((id,idx)=>{ const key=['title','desc','keywords','ogImage','url','twitter','gaId'][idx]; const el=getEl(id); if(el&&r[key]) el.value=r[key]; });
-      const setTog=(id,v)=>{const el=getEl(id);if(el){if(v)el.classList.add('on');else el.classList.remove('on');}};
-      setTog('tog-index',r.index!==false); setTog('tog-sitemap',r.sitemap!==false);
+    if(r && typeof r === 'object'){
+      const map = {seoTitle:'title',seoKeywords:'keywords',seoOgImage:'ogImage',seoUrl:'url',seoTwitter:'twitter',seoGaId:'gaId'};
+      Object.entries(map).forEach(([elId, key]) => { const el=getEl(elId); if(el && r[key]) el.value = r[key]; });
+      // desc için textarea
+      const descEl = getEl('seoDesc');
+      if(descEl && r.desc) { descEl.value = r.desc; updateCharCount(descEl,'seoDescCount',160); }
+      // togglelar
+      const setTog = (id, v) => { const el=getEl(id); if(el){ if(v!==false) el.classList.add('on'); else el.classList.remove('on'); }};
+      setTog('tog-index', r.index); setTog('tog-sitemap', r.sitemap);
       updateSeoPreview();
     }
-  } catch(e){}
+  } catch(e){ console.warn('SEO yüklenemedi:',e); }
 }
+
 async function saveSEO(){
-  const s={title:val('seoTitle'),desc:getEl('seoDesc').value,keywords:val('seoKeywords'),ogImage:val('seoOgImage'),url:val('seoUrl'),twitter:val('seoTwitter'),gaId:val('seoGaId'),index:getEl('tog-index').classList.contains('on'),sitemap:getEl('tog-sitemap').classList.contains('on')};
-  try{ await saveSettingToSupabase('seo',s); showToast('SEO ayarları kaydedildi! ✅'); }
-  catch(e){ showToast('Supabase hatası: '+e.message,'error'); }
+  const s = {
+    title: val('seoTitle'),
+    desc: getEl('seoDesc')?.value || '',
+    keywords: val('seoKeywords'),
+    ogImage: val('seoOgImage'),
+    url: val('seoUrl'),
+    twitter: val('seoTwitter'),
+    gaId: val('seoGaId'),
+    index: getEl('tog-index')?.classList.contains('on') ?? true,
+    sitemap: getEl('tog-sitemap')?.classList.contains('on') ?? true
+  };
+  try{
+    await saveSettingToSupabase('seo', s);
+    showToast('SEO ayarları kaydedildi! ✅');
+  } catch(e){ showToast('Supabase hatası: '+e.message,'error'); }
 }
 
 // ═══════════════════════════════════════════════════
-// THEME & SITE
+// FIX: THEME & SITE – panel geçişlerinde kaybolmuyordu
 // ═══════════════════════════════════════════════════
 async function loadSiteSettings(){
   try{
     const r = await loadSettingFromSupabase('site_settings');
-    if(r){
-      const S=['siteAuthor','siteRole','siteHeroBio','siteTags','siteHeroCta1','siteHeroCta1Link','siteHeroCta2','siteHeroCta2Link','siteFooter','siteFooterLinks'];
-      const K=['author','role','heroBio','tags','heroCta1','heroCta1Link','heroCta2','heroCta2Link','footer','footerLinks'];
-      S.forEach((id,i)=>{ const el=getEl(id); if(el&&r[K[i]]) el.value=r[K[i]]; });
-      if(r.colorAccent){getEl('colorAccent').value=r.colorAccent;getEl('colorAccentHex').value=r.colorAccent;}
-      if(r.colorAccent2){getEl('colorAccent2').value=r.colorAccent2;getEl('colorAccent2Hex').value=r.colorAccent2;}
-      if(r.defaultTheme) getEl('defaultTheme').value=r.defaultTheme;
+    if(r && typeof r === 'object'){
+      const map = {
+        siteAuthor:'author', siteRole:'role', siteHeroBio:'heroBio', siteTags:'tags',
+        siteHeroCta1:'heroCta1', siteHeroCta1Link:'heroCta1Link',
+        siteHeroCta2:'heroCta2', siteHeroCta2Link:'heroCta2Link',
+        siteFooter:'footer', siteFooterLinks:'footerLinks'
+      };
+      Object.entries(map).forEach(([elId, key]) => { const el=getEl(elId); if(el && r[key]) el.value = r[key]; });
+      if(r.colorAccent){ getEl('colorAccent').value=r.colorAccent; getEl('colorAccentHex').value=r.colorAccent; }
+      if(r.colorAccent2){ getEl('colorAccent2').value=r.colorAccent2; getEl('colorAccent2Hex').value=r.colorAccent2; }
+      if(r.defaultTheme) getEl('defaultTheme').value = r.defaultTheme;
     }
-  } catch(e){}
+  } catch(e){ console.warn('Site settings yüklenemedi:',e); }
 }
+
 async function saveSiteSettings(){
-  const s={author:val('siteAuthor'),role:val('siteRole'),heroBio:getEl('siteHeroBio').value,tags:val('siteTags'),colorAccent:getEl('colorAccent').value,colorAccent2:getEl('colorAccent2').value,defaultTheme:getEl('defaultTheme').value,heroCta1:val('siteHeroCta1'),heroCta1Link:val('siteHeroCta1Link'),heroCta2:val('siteHeroCta2'),heroCta2Link:val('siteHeroCta2Link'),footer:val('siteFooter'),footerLinks:val('siteFooterLinks')};
-  localStorage.setItem('ka_site_settings',JSON.stringify(s));
-  try{ await saveSettingToSupabase('site_settings',s); showToast('Site ayarları kaydedildi! ✅'); }
-  catch(e){ showToast('Supabase hatası: '+e.message,'error'); }
+  const s = {
+    author: val('siteAuthor'), role: val('siteRole'),
+    heroBio: getEl('siteHeroBio')?.value || '',
+    tags: val('siteTags'),
+    colorAccent: getEl('colorAccent')?.value || '#4f8ef7',
+    colorAccent2: getEl('colorAccent2')?.value || '#a78bfa',
+    defaultTheme: getEl('defaultTheme')?.value || 'dark',
+    heroCta1: val('siteHeroCta1'), heroCta1Link: val('siteHeroCta1Link'),
+    heroCta2: val('siteHeroCta2'), heroCta2Link: val('siteHeroCta2Link'),
+    footer: val('siteFooter'), footerLinks: val('siteFooterLinks')
+  };
+  localStorage.setItem('ka_site_settings', JSON.stringify(s));
+  try{
+    await saveSettingToSupabase('site_settings', s);
+    showToast('Site ayarları kaydedildi! ✅');
+  } catch(e){ showToast('Supabase hatası: '+e.message,'error'); }
 }
 
 // ═══════════════════════════════════════════════════
-// SETTINGS
+// FIX: SETTINGS – togglelar güvenli şekilde ayarlanıyor
 // ═══════════════════════════════════════════════════
 async function loadSettingsPanel(){
   getEl('sbUrl').textContent = SUPABASE_URL;
   try{
     const r = await loadSettingFromSupabase('app_settings');
-    if(r){
-      const setT=(id,v)=>{const el=getEl(id);if(!el)return;if(v||v===undefined)el.classList.add('on');else el.classList.remove('on');};
-      setT('tog-comments',r.comments!==false); setT('tog-contact',r.contact!==false);
-      setT('tog-bot',r.bot!==false); setT('tog-moderation',r.moderation!==false);
-      setT('tog-readmode',r.readmode!==false); setT('tog-lang',r.lang!==false);
-      setT('tog-notif-comment',r.notifComment!==false); setT('tog-notif-msg',r.notifMsg!==false);
-      if(r.notifEmail) getEl('notifEmail').value=r.notifEmail;
+    if(r && typeof r === 'object'){
+      const setT = (id, v) => { const el=getEl(id); if(!el) return; if(v!==false) el.classList.add('on'); else el.classList.remove('on'); };
+      setT('tog-comments', r.comments); setT('tog-contact', r.contact);
+      setT('tog-bot', r.bot); setT('tog-moderation', r.moderation);
+      setT('tog-readmode', r.readmode); setT('tog-lang', r.lang);
+      setT('tog-notif-comment', r.notifComment); setT('tog-notif-msg', r.notifMsg);
+      if(r.notifEmail) getEl('notifEmail').value = r.notifEmail;
     }
-  } catch(e){}
+  } catch(e){ console.warn('Settings yüklenemedi:',e); }
 }
+
 async function saveSettings(){
-  const isOn = id => getEl(id)?.classList.contains('on')??true;
-  const s={comments:isOn('tog-comments'),contact:isOn('tog-contact'),bot:isOn('tog-bot'),moderation:isOn('tog-moderation'),readmode:isOn('tog-readmode'),lang:isOn('tog-lang'),notifComment:isOn('tog-notif-comment'),notifMsg:isOn('tog-notif-msg'),notifEmail:val('notifEmail')};
-  localStorage.setItem('ka_settings',JSON.stringify(s));
-  try{ await saveSettingToSupabase('app_settings',s); showToast('Ayarlar kaydedildi! ✅'); }
-  catch(e){ showToast('Supabase hatası: '+e.message,'error'); }
+  const isOn = id => getEl(id)?.classList.contains('on') ?? true;
+  const s = {
+    comments: isOn('tog-comments'), contact: isOn('tog-contact'),
+    bot: isOn('tog-bot'), moderation: isOn('tog-moderation'),
+    readmode: isOn('tog-readmode'), lang: isOn('tog-lang'),
+    notifComment: isOn('tog-notif-comment'), notifMsg: isOn('tog-notif-msg'),
+    notifEmail: val('notifEmail')
+  };
+  localStorage.setItem('ka_settings', JSON.stringify(s));
+  try{
+    await saveSettingToSupabase('app_settings', s);
+    showToast('Ayarlar kaydedildi! ✅');
+  } catch(e){ showToast('Supabase hatası: '+e.message,'error'); }
 }
+
 function checkSBStatus(){
   const el = getEl('sbStatus'); if(el) el.innerHTML = '<span style="color:var(--text3)">Test ediliyor...</span>';
   db.from('posts').select('id').limit(1).then(({error}) => {
-    if(el) el.innerHTML = error ? `<span style="color:var(--red)">❌ ${error.message}</span>` : '<span style="color:var(--green)">✅ Bağlantı başarılı</span>';
+    if(el) el.innerHTML = error
+      ? `<span style="color:var(--red)">❌ ${error.message}</span>`
+      : '<span style="color:var(--green)">✅ Bağlantı başarılı</span>';
   });
 }
 
@@ -1923,8 +1992,12 @@ function checkSBStatus(){
 // INIT
 // ═══════════════════════════════════════════════════
 document.addEventListener('DOMContentLoaded', () => {
-  db.auth.getSession().then(({data:{session}}) => { if(session){ adminUser=session.user; showApp(); } });
-  db.auth.onAuthStateChange((event,session) => { adminUser=session?.user||null; });
+  db.auth.getSession().then(({data:{session}}) => {
+    if(session){ adminUser = session.user; showApp(); }
+  });
+  db.auth.onAuthStateChange((event, session) => {
+    adminUser = session?.user || null;
+  });
 });
 </script>
 </body>
