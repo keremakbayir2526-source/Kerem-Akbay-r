@@ -684,7 +684,10 @@ async function loadSiteSettings(){
     data.forEach(row=>{
       if(!row.value){map[row.key]=null;return;}
       if(typeof row.value==='object'){map[row.key]=row.value;return;}
-      try{map[row.key]=JSON.parse(row.value);}catch{map[row.key]=row.value;}
+      let parsed=row.value;
+try{parsed=JSON.parse(row.value);}catch{}
+if(typeof parsed==='string'){try{parsed=JSON.parse(parsed);}catch{}}
+map[row.key]=parsed;
     });
 
     // ── site_settings ──
