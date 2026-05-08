@@ -151,6 +151,14 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
 .detail-content pre{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:16px 18px;margin:16px 0;overflow-x:auto}
 .detail-content pre code{background:none;border:none;padding:0;color:var(--green);font-size:12px}
 .detail-content blockquote{border-left:2px solid var(--accent);padding:10px 16px;margin:18px 0;background:rgba(99,102,241,0.05);border-radius:0 8px 8px 0;font-style:italic;color:var(--text2)}
+  .detail-content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 24px auto;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+}
 .detail-actions{display:flex;align-items:center;gap:10px;padding:18px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin:28px 0;flex-wrap:wrap}
 .like-btn{display:flex;align-items:center;gap:6px;padding:7px 15px;border-radius:20px;background:var(--bg3);border:1px solid var(--border);font-size:13px;cursor:pointer;transition:all .2s;color:var(--text2)}
 .like-btn:hover,.like-btn.liked{background:rgba(239,68,68,0.1);border-color:rgba(239,68,68,0.3);color:var(--red)}
@@ -565,7 +573,8 @@ let readFontSize=16;
 let chatHistory=[];
 let _capA=0,_capB=0,_capAns=0;
 
-const BASE_LIKES={1:23,2:17,3:31,4:8,5:14,6:6};
+// YENİ — tüm postlar 0'dan başlar:
+const BASE_LIKES={};
 
 const catColors={'DevOps':'','Software Architecture':'badge-purple','C#':'badge-orange','Database':'badge-green','Yapay Zeka':'badge-purple','Design Patterns':'badge-cyan','Bilgi Güvenliği':'badge-red','Genel':''};
 function catBadge(c){return`<span class="badge ${catColors[c]||'badge-default'}">${c||'Genel'}</span>`;}
@@ -858,7 +867,7 @@ async function openPost(id,skipHash){
   setMeta('meta[name="twitter:title"]',post.title+' – Kerem Akbayır');
   setMeta('meta[name="twitter:description"]',post.excerpt||'');
   const likes=JSON.parse(localStorage.getItem('ka_likes')||'{}');
-  if(likes['count_'+id]===undefined){likes['count_'+id]=BASE_LIKES[id]||10;localStorage.setItem('ka_likes',JSON.stringify(likes));}
+if(likes['count_'+id]===undefined){likes['count_'+id]=0;...}||10;localStorage.setItem('ka_likes',JSON.stringify(likes));}
   const likeCount=likes['count_'+id];
   const isLiked=likes['liked_'+id]||false;
   const related=allPosts.filter(p=>p.category===post.category&&p.id!==id).slice(0,2);
