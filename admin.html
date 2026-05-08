@@ -279,7 +279,6 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
 .toggle.on{background:var(--accent)}
 .toggle::after{content:'';position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:transform .2s}
 .toggle.on::after{transform:translateX(18px)}
-.toggle.disabled{opacity:0.4;cursor:not-allowed}
 
 .info-box{background:rgba(99,102,241,0.07);border:1px solid rgba(99,102,241,0.2);border-radius:10px;padding:14px 16px;font-size:12px;color:var(--text2);line-height:1.7;margin-bottom:16px}
 .info-box strong{color:var(--accent)}
@@ -287,6 +286,12 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
 
 .warn-box{background:rgba(245,158,11,0.07);border:1px solid rgba(245,158,11,0.25);border-radius:10px;padding:12px 16px;font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:12px}
 .warn-box strong{color:var(--orange)}
+
+/* Hata kutusu - settings tablosu yoksa göster */
+.error-box{background:rgba(239,68,68,0.07);border:1px solid rgba(239,68,68,0.25);border-radius:10px;padding:12px 16px;font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:12px;display:none}
+.error-box.show{display:block}
+.error-box strong{color:var(--red)}
+.error-box code{font-family:'JetBrains Mono',monospace;font-size:11px;background:rgba(239,68,68,0.1);padding:1px 5px;border-radius:4px}
 
 .filter-btn.active{background:rgba(99,102,241,0.12);color:var(--accent);border-color:rgba(99,102,241,0.3)}
 
@@ -311,9 +316,6 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
 
 .sb-status-box{background:var(--bg3);border:1px solid var(--border);border-radius:7px;padding:8px 12px;font-size:11px;font-family:'JetBrains Mono',monospace;word-break:break-all}
 
-.save-loading{opacity:.6;pointer-events:none}
-
-/* ── SEO KOLON UYARI KUTUSU ── */
 .seo-col-warn{background:rgba(239,68,68,0.07);border:1px solid rgba(239,68,68,0.25);border-radius:8px;padding:10px 14px;font-size:11px;color:var(--text2);line-height:1.6;margin-bottom:12px;display:none}
 .seo-col-warn.show{display:block}
 .seo-col-warn strong{color:var(--red)}
@@ -578,6 +580,7 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
       <!-- ABOUT -->
       <div class="panel fade-in" id="panel-about">
         <div class="info-box">✅ <strong>Supabase'e kaydediliyor.</strong> <code>settings</code> tablosu · key: <code>about</code></div>
+        <div class="error-box" id="aboutErr"></div>
         <div class="card">
           <div class="card-header"><div class="card-title">👤 Biyografi</div></div>
           <div class="form-group"><label class="form-label">Ad Soyad <span class="req">*</span></label><input class="form-input" id="aboutName" placeholder="Kerem Akbayır"></div>
@@ -613,6 +616,7 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
       <!-- CONTACT -->
       <div class="panel fade-in" id="panel-contact">
         <div class="info-box">✅ <strong>Supabase'e kaydediliyor.</strong> <code>settings</code> tablosu · key: <code>contact_page</code></div>
+        <div class="error-box" id="contactErr"></div>
         <div class="card">
           <div class="card-header"><div class="card-title">📬 İletişim Sayfası İçeriği</div></div>
           <div class="form-group"><label class="form-label">Başlık</label><input class="form-input" id="cpTitle" placeholder="Merhaba, konuşalım!"></div>
@@ -655,6 +659,7 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
       <!-- SEO -->
       <div class="panel fade-in" id="panel-seo">
         <div class="info-box">✅ <strong>Supabase'e kaydediliyor.</strong> <code>settings</code> tablosu · key: <code>seo</code></div>
+        <div class="error-box" id="seoErr"></div>
         <div class="card">
           <div class="card-header"><div class="card-title">🔍 Meta Bilgileri</div></div>
           <div class="form-group"><label class="form-label">Site Başlığı (Title)</label><input class="form-input" id="seoTitle" oninput="updateSeoPreview()"></div>
@@ -693,6 +698,7 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
       <!-- THEME -->
       <div class="panel fade-in" id="panel-theme">
         <div class="info-box">✅ <strong>Supabase'e kaydediliyor.</strong> <code>settings</code> tablosu · key: <code>site_settings</code></div>
+        <div class="error-box" id="themeErr"></div>
         <div class="card">
           <div class="card-header"><div class="card-title">Site Bilgileri</div></div>
           <div class="form-row">
@@ -733,6 +739,7 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
         <div class="warn-box">
           ⚠️ <strong>Önemli:</strong> Bu ayarlar Supabase'e kaydedilir. Ayarların sitenizde etkili olabilmesi için <strong>site kodunuzun</strong> (index.html, blog.html vb.) bu değerleri Supabase'den okuması gerekir.
         </div>
+        <div class="error-box" id="settingsErr"></div>
         <div class="card">
           <div class="card-header"><div class="card-title">Genel Ayarlar</div></div>
           <div class="setting-row">
@@ -834,9 +841,8 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
       </div>
     </div>
     <div class="tab-pane" id="postTab-seo">
-      <!-- ── SEO kolonları opsiyonel — Supabase'de yoksa hata vermez ── -->
       <div class="seo-col-warn" id="seoColWarn">
-        ⚠️ <strong>SEO kolonları bulunamadı.</strong> Supabase'deki <code>posts</code> tablosuna <code>seo_title</code>, <code>seo_desc</code>, <code>seo_og</code>, <code>seo_canonical</code> text kolonları ekleyin. Şimdilik SEO alanları kaydedilmeyecek.
+        ⚠️ <strong>SEO kolonları bulunamadı.</strong> Supabase'deki <code>posts</code> tablosuna <code>seo_title</code>, <code>seo_desc</code>, <code>seo_og</code>, <code>seo_canonical</code> kolonları ekleyin.
       </div>
       <div class="form-group">
         <label class="form-label">SEO Başlığı</label>
@@ -862,7 +868,7 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
     <div class="form-actions">
       <button class="btn btn-ghost" onclick="closeModal('postModal')">İptal</button>
       <button class="btn btn-warning" onclick="previewPost()">👁️ Önizle</button>
-      <button class="btn btn-primary" onclick="savePost()">💾 Kaydet</button>
+      <button class="btn btn-primary" id="savePostBtn" onclick="savePost()">💾 Kaydet</button>
     </div>
   </div>
 </div>
@@ -961,8 +967,10 @@ let quill = null;
 let currentTags = [];
 let projSortable = null;
 let replyMsg = null;
-// ── Supabase'de SEO kolonlarının var olup olmadığını takip et ──
-let hasSeoColumns = true;
+let hasSeoColumns = null; // null = henüz bilinmiyor
+
+// Supabase settings tablosunun varlığı
+let hasSettingsTable = null; // null = henüz bilinmiyor
 
 let aboutData = {
   name:'Kerem Akbayır', title:'Senior Software Engineer',
@@ -1033,6 +1041,11 @@ function switchTab(prefix, name, btn){
   const t = getEl(`${prefix}-${name}`); if(t) t.classList.add('active');
   if(btn) btn.classList.add('active');
 }
+function showErr(id, msg){
+  const el = getEl(id); if(!el) return;
+  el.innerHTML = msg;
+  el.classList.toggle('show', !!msg);
+}
 
 document.addEventListener('click', e => {
   if(e.target.classList.contains('modal-overlay')) e.target.classList.remove('show');
@@ -1040,14 +1053,41 @@ document.addEventListener('click', e => {
 });
 
 // ═══════════════════════════════════════════════════
-// SUPABASE SETTINGS HELPERS
+// SETTINGS TABLE HELPERS
 // ═══════════════════════════════════════════════════
+/**
+ * settings tablosuna upsert yapar.
+ * Tablo yoksa veya RLS izni yoksa hata fırlatır — çağıran yakalar.
+ */
 async function saveSettingToSupabase(key, value) {
-  const stored = typeof value === 'string' ? value : JSON.stringify(value);
-  const { error } = await db
+  const stored = (typeof value === 'object') ? JSON.stringify(value) : String(value);
+
+  // Önce var mı diye bak
+  const { data: existing, error: selErr } = await db
     .from('settings')
-    .upsert({ key, value: stored }, { onConflict: 'key' });
-  if (error) throw error;
+    .select('key')
+    .eq('key', key)
+    .maybeSingle();
+
+  if (selErr && selErr.code !== 'PGRST116') {
+    // PGRST116 = satır bulunamadı — sorun değil
+    throw new Error('settings tablosu okunamadı: ' + selErr.message);
+  }
+
+  if (existing) {
+    // Güncelle
+    const { error: updErr } = await db
+      .from('settings')
+      .update({ value: stored })
+      .eq('key', key);
+    if (updErr) throw new Error('Güncelleme hatası: ' + updErr.message);
+  } else {
+    // Ekle
+    const { error: insErr } = await db
+      .from('settings')
+      .insert([{ key, value: stored }]);
+    if (insErr) throw new Error('Ekleme hatası: ' + insErr.message);
+  }
 }
 
 async function loadSettingFromSupabase(key) {
@@ -1112,14 +1152,13 @@ function showApp(){
   loadComments();
   loadMessages();
   loadMedia();
-  Promise.all([
-    loadAboutPanel(),
-    loadChatbotPanel(),
-    loadContactPage(),
-    loadSEO(),
-    loadSiteSettings(),
-    loadSettingsPanel()
-  ]).catch(e => console.warn('Ayar paneli yükleme hatası:', e));
+  // Ayar panelleri — hata yakalanır, konsola yazılır
+  loadAboutPanel().catch(e => console.warn('About:', e));
+  loadChatbotPanel().catch(e => console.warn('Chatbot:', e));
+  loadContactPage().catch(e => console.warn('Contact:', e));
+  loadSEO().catch(e => console.warn('SEO:', e));
+  loadSiteSettings().catch(e => console.warn('SiteSettings:', e));
+  loadSettingsPanel().catch(e => console.warn('Settings:', e));
   checkSBStatus();
   renderNotifications();
 }
@@ -1313,13 +1352,22 @@ function toggleNotifPanel(){
 }
 
 // ═══════════════════════════════════════════════════
-// POSTS — DÜZELTİLDİ: SEO kolonları opsiyonel, hata vermez
+// POSTS
 // ═══════════════════════════════════════════════════
 async function loadPosts(){
   try{
     const {data, error} = await db.from('posts').select('*').order('created_at',{ascending:false});
     if(error) throw error;
     allPosts = data||[];
+
+    // Tablonun kolonlarını kontrol et — SEO kolonları var mı?
+    if(hasSeoColumns === null && allPosts.length > 0){
+      hasSeoColumns = 'seo_title' in allPosts[0];
+    } else if(hasSeoColumns === null){
+      // Boş tablo — bir insert/select ile anlayamayız, optimist olarak true kabul et
+      hasSeoColumns = true;
+    }
+
     const cats = [...new Set(allPosts.map(p=>p.category).filter(Boolean))];
     const cf = getEl('postCatFilter');
     if(cf) cf.innerHTML = '<option value="">Tüm Kategoriler</option>' + cats.map(c=>`<option value="${escHtml(c)}">${escHtml(c)}</option>`).join('');
@@ -1383,74 +1431,76 @@ function openPostModal(id){
   currentTags = [];
   getEl('postModalTitle').textContent = id ? '✏️ Yazı Düzenle' : '✍️ Yeni Yazı';
   getEl('editPostId').value = id||'';
-  ['editPostTitle','editPostExcerpt','editPostCat','editPostImage','editPostSlug','postSeoTitle','postSeoDesc','postSeoOg','postSeoCanonical'].forEach(x=>{ const el=getEl(x); if(el)el.value=''; });
+  ['editPostTitle','editPostExcerpt','editPostCat','editPostImage','editPostSlug',
+   'postSeoTitle','postSeoDesc','postSeoOg','postSeoCanonical'].forEach(x=>{ const el=getEl(x); if(el) el.value=''; });
   getEl('editPostIcon').value = '📝';
   getEl('editPostStatus').value = 'published';
   getEl('editPostFeatured').value = 'false';
   getEl('postImgPreview').classList.remove('show');
   getEl('slugPreviewVal').textContent = '—';
   getEl('editPostTitleErr').textContent = '';
-  // SEO kolon uyarısını göster/gizle
   const warnEl = getEl('seoColWarn');
-  if(warnEl) warnEl.classList.toggle('show', !hasSeoColumns);
+  if(warnEl) warnEl.classList.toggle('show', hasSeoColumns === false);
   if(getEl('editPostSlug')) getEl('editPostSlug').dataset.manual = '';
   renderTags();
   if(quill) quill.setContents([]);
   switchTab('postTab','content', document.querySelector('.modal-tab'));
+
   if(id){
     db.from('posts').select('*').eq('id',id).single().then(({data}) => {
       if(!data) return;
-      getEl('editPostTitle').value = data.title||'';
+      getEl('editPostTitle').value   = data.title||'';
       getEl('editPostExcerpt').value = data.excerpt||'';
-      getEl('editPostCat').value = data.category||'';
-      getEl('editPostIcon').value = data.icon||'📝';
-      getEl('editPostStatus').value = data.status||'published';
-      getEl('editPostFeatured').value = String(data.featured||false);
+      getEl('editPostCat').value     = data.category||'';
+      getEl('editPostIcon').value    = data.icon||'📝';
+      getEl('editPostStatus').value  = data.status||'published';
+      getEl('editPostFeatured').value= String(data.featured||false);
       if(data.slug){ getEl('editPostSlug').value=data.slug; getEl('editPostSlug').dataset.manual='1'; updateSlugPreview(); }
       currentTags = data.tags||[]; renderTags();
       if(quill && data.content) quill.clipboard.dangerouslyPasteHTML(data.content);
-      // SEO kolonlarını sadece varsa oku
-      if(hasSeoColumns){
-        if(data.seo_title)     getEl('postSeoTitle').value    = data.seo_title;
-        if(data.seo_desc)      getEl('postSeoDesc').value     = data.seo_desc;
-        if(data.seo_og)        getEl('postSeoOg').value       = data.seo_og;
-        if(data.seo_canonical) getEl('postSeoCanonical').value= data.seo_canonical;
-      }
+      if(data.seo_title !== undefined){ getEl('postSeoTitle').value = data.seo_title||''; hasSeoColumns = true; }
+      if(data.seo_desc  !== undefined) getEl('postSeoDesc').value  = data.seo_desc||'';
+      if(data.seo_og    !== undefined) getEl('postSeoOg').value    = data.seo_og||'';
+      if(data.seo_canonical !== undefined) getEl('postSeoCanonical').value = data.seo_canonical||'';
       if(data.image_url){ getEl('editPostImage').value=data.image_url; getEl('postImgEl').src=data.image_url; getEl('postImgPreview').classList.add('show'); }
     });
   }
   getEl('postModal').classList.add('show');
 }
 
-// ── DÜZELTİLDİ: savePost — SEO kolonları try/catch ile ayrı kaydediliyor ──
+// ── DÜZELTME 1: savePost — comments_enabled ve SEO kolonları güvenli şekilde handle ediliyor
 async function savePost(){
   const id = val('editPostId');
   const title = val('editPostTitle');
   const errEl = getEl('editPostTitleErr');
   if(!title){ errEl.textContent = 'Başlık zorunlu'; getEl('editPostTitle').classList.add('err'); return; }
   getEl('editPostTitle').classList.remove('err'); errEl.textContent = '';
-  const slug = val('editPostSlug') || toSlug(title);
+
+  const slug    = val('editPostSlug') || toSlug(title);
   const content = quill ? quill.root.innerHTML : '';
 
-  // Temel payload — SEO kolonları YOK (bunlar aşağıda ayrıca deneniyor)
-  const basePayload = {
-    title,
-    slug,
-    excerpt:          val('editPostExcerpt'),
-    category:         val('editPostCat'),
-    icon:             val('editPostIcon'),
-    status:           getEl('editPostStatus').value,
-    featured:         getEl('editPostFeatured').value === 'true',
-    content,
-    tags:             currentTags,
-    image_url:        val('editPostImage') || null,
-    comments_enabled: true,
-  };
+  const saveBtn = getEl('savePostBtn');
+  if(saveBtn){ saveBtn.disabled = true; saveBtn.textContent = '⏳ Kaydediliyor...'; }
 
   try{
-    let savedId = id;
+    // Temel payload — sadece mevcut kolonları içerir
+    const basePayload = {
+      title,
+      slug,
+      excerpt:   val('editPostExcerpt') || null,
+      category:  val('editPostCat')     || null,
+      icon:      val('editPostIcon')    || '📝',
+      status:    getEl('editPostStatus').value || 'published',
+      featured:  getEl('editPostFeatured').value === 'true',
+      content,
+      tags:      currentTags,
+      image_url: val('editPostImage')   || null,
+    };
+
+    let savedId = id ? parseInt(id) : null;
+
     if(id){
-      const {error} = await db.from('posts').update(basePayload).eq('id',id);
+      const {error} = await db.from('posts').update(basePayload).eq('id', id);
       if(error) throw error;
     } else {
       const {data, error} = await db.from('posts').insert([basePayload]).select('id').single();
@@ -1458,41 +1508,43 @@ async function savePost(){
       savedId = data?.id;
     }
 
-    // SEO kolonlarını ayrı dene — yoksa sessizce atla
-    if(hasSeoColumns && savedId){
-      const seoPayload = {
-        seo_title:     val('postSeoTitle') || null,
-        seo_desc:      getEl('postSeoDesc')?.value || null,
-        seo_og:        val('postSeoOg') || null,
-        seo_canonical: val('postSeoCanonical') || null,
-      };
-      try{
-        const {error: seoErr} = await db.from('posts').update(seoPayload).eq('id',savedId);
+    // SEO kolonları ayrıca dene — yoksa hasSeoColumns=false yap
+    if(savedId && hasSeoColumns !== false){
+      const seoPayload = {};
+      const st = val('postSeoTitle');      if(st)  seoPayload.seo_title     = st;
+      const sd = getEl('postSeoDesc')?.value; if(sd) seoPayload.seo_desc      = sd;
+      const so = val('postSeoOg');         if(so)  seoPayload.seo_og         = so;
+      const sc = val('postSeoCanonical');  if(sc)  seoPayload.seo_canonical  = sc;
+
+      if(Object.keys(seoPayload).length > 0){
+        const {error: seoErr} = await db.from('posts').update(seoPayload).eq('id', savedId);
         if(seoErr){
-          // Kolon yoksa bir daha deneme, uyarı ver
           hasSeoColumns = false;
           const warnEl = getEl('seoColWarn');
           if(warnEl) warnEl.classList.add('show');
-          console.warn('SEO kolonları bulunamadı, atlanıyor:', seoErr.message);
+          console.warn('SEO kolonları yok, atlandı:', seoErr.message);
+        } else {
+          hasSeoColumns = true;
         }
-      } catch(seoEx){
-        hasSeoColumns = false;
-        console.warn('SEO kolon hatası:', seoEx);
       }
     }
 
-    showToast(id?'Yazı güncellendi!':'Yazı eklendi! 🎉');
-    closeModal('postModal'); loadPosts(); loadDashboard();
-    addNotif({id:'p_'+Date.now(),icon:'📝',text:`Yazı ${id?'güncellendi':'eklendi'}: ${title}`,time:new Date().toISOString(),unread:false});
+    showToast(id ? 'Yazı güncellendi! ✅' : 'Yazı eklendi! 🎉');
+    closeModal('postModal');
+    loadPosts();
+    loadDashboard();
+    addNotif({id:'p_'+Date.now(), icon:'📝', text:`Yazı ${id?'güncellendi':'eklendi'}: ${title}`, time:new Date().toISOString(), unread:false});
   } catch(e){
-    showToast('Kayıt hatası: '+e.message,'error');
     console.error('savePost hatası:', e);
+    showToast('Kayıt hatası: ' + e.message, 'error');
+  } finally {
+    if(saveBtn){ saveBtn.disabled = false; saveBtn.textContent = '💾 Kaydet'; }
   }
 }
 
 async function deletePost(id){
   const {error} = await db.from('posts').delete().eq('id',id);
-  if(error){ showToast('Silinemedi','error'); return; }
+  if(error){ showToast('Silinemedi: '+error.message,'error'); return; }
   showToast('Yazı silindi'); loadPosts(); loadDashboard();
 }
 
@@ -1571,10 +1623,13 @@ function openProjModal(id){
   if(id){
     db.from('projects').select('*').eq('id',id).single().then(({data}) => {
       if(!data) return;
-      getEl('editProjName').value = data.name||''; getEl('editProjIcon').value = data.icon||'🚀';
-      getEl('editProjDesc').value = data.description||''; getEl('editProjTech').value = data.tech||'';
-      getEl('editProjGithub').value = data.github_url||''; getEl('editProjDemo').value = data.demo_url||'';
-      getEl('editProjStatus').value = data.status||'active';
+      getEl('editProjName').value    = data.name||'';
+      getEl('editProjIcon').value    = data.icon||'🚀';
+      getEl('editProjDesc').value    = data.description||'';
+      getEl('editProjTech').value    = data.tech||'';
+      getEl('editProjGithub').value  = data.github_url||'';
+      getEl('editProjDemo').value    = data.demo_url||'';
+      getEl('editProjStatus').value  = data.status||'active';
       if(data.image_url){ getEl('editProjImage').value=data.image_url; getEl('projImgEl').src=data.image_url; getEl('projImgPreview').classList.add('show'); }
     });
   }
@@ -1585,21 +1640,31 @@ async function saveProj(){
   const id = val('editProjId'), name = val('editProjName');
   if(!name){ showToast('Proje adı zorunlu','error'); return; }
   const payload = {
-    name, icon: val('editProjIcon'), description: val('editProjDesc'),
-    tech: val('editProjTech'), github_url: val('editProjGithub'), demo_url: val('editProjDemo'),
-    status: getEl('editProjStatus').value, image_url: val('editProjImage')||null
+    name,
+    icon:        val('editProjIcon') || '🚀',
+    description: getEl('editProjDesc').value || null,
+    tech:        val('editProjTech')   || null,
+    github_url:  val('editProjGithub') || null,
+    demo_url:    val('editProjDemo')   || null,
+    status:      getEl('editProjStatus').value,
+    image_url:   val('editProjImage')  || null
   };
   try{
-    if(id){ const {error}=await db.from('projects').update(payload).eq('id',id); if(error) throw error; }
-    else{ const {error}=await db.from('projects').insert([{...payload, sort_order: allProjects.length}]); if(error) throw error; }
-    showToast(id?'Proje güncellendi!':'Proje eklendi!');
+    if(id){
+      const {error}=await db.from('projects').update(payload).eq('id',id);
+      if(error) throw error;
+    } else {
+      const {error}=await db.from('projects').insert([{...payload, sort_order: allProjects.length}]);
+      if(error) throw error;
+    }
+    showToast(id?'Proje güncellendi! ✅':'Proje eklendi! 🎉');
     closeModal('projModal'); loadProjects(); loadDashboard();
-  } catch(e){ showToast('Hata: '+e.message,'error'); }
+  } catch(e){ showToast('Hata: '+e.message,'error'); console.error('saveProj:', e); }
 }
 
 async function deleteProj(id){
   const {error} = await db.from('projects').delete().eq('id',id);
-  if(error){ showToast('Silinemedi','error'); return; }
+  if(error){ showToast('Silinemedi: '+error.message,'error'); return; }
   showToast('Proje silindi'); loadProjects(); loadDashboard();
 }
 
@@ -1726,17 +1791,17 @@ function bulkDeleteComments(){
 }
 async function approveComment(id){
   const {error} = await db.from('comments').update({status:'approved'}).eq('id',id);
-  if(error){ showToast('Hata','error'); return; }
+  if(error){ showToast('Hata: '+error.message,'error'); return; }
   showToast('Yorum onaylandı!'); await loadComments(); loadDashboard();
 }
 async function deleteComment(id){
   const {error} = await db.from('comments').delete().eq('id',id);
-  if(error){ showToast('Silinemedi','error'); return; }
+  if(error){ showToast('Silinemedi: '+error.message,'error'); return; }
   showToast('Yorum silindi'); await loadComments(); loadDashboard();
 }
 
 // ═══════════════════════════════════════════════════
-// MESSAGES — DÜZELTİLDİ: body/message kolon toleransı
+// MESSAGES
 // ═══════════════════════════════════════════════════
 async function loadMessages(){
   try{
@@ -1745,7 +1810,6 @@ async function loadMessages(){
   } catch(e){}
 }
 function getMsgBody(m){
-  // 'body', 'message', 'content' kolonlarından hangisi varsa kullan
   return m.body || m.message || m.content || '';
 }
 function renderMessages(){
@@ -1789,7 +1853,7 @@ async function sendReply(){
 }
 async function deleteMsg(id){
   const {error} = await db.from('messages').delete().eq('id',id);
-  if(error){ showToast('Silinemedi','error'); return; }
+  if(error){ showToast('Silinemedi: '+error.message,'error'); return; }
   showToast('Mesaj silindi'); loadMessages(); loadDashboard();
 }
 
@@ -1799,15 +1863,16 @@ async function deleteMsg(id){
 async function loadAboutPanel(){
   try{
     const remote = await loadSettingFromSupabase('about');
-    if(remote && typeof remote === 'object') aboutData = remote;
+    if(remote && typeof remote === 'object') aboutData = {...aboutData, ...remote};
   } catch(e){ console.warn('About yüklenemedi:',e); }
-  getEl('aboutName').value = aboutData.name||'';
-  getEl('aboutTitle').value = aboutData.title||'';
-  getEl('aboutLocation').value = aboutData.location||'';
-  getEl('aboutEmail').value = aboutData.email||'';
-  getEl('aboutBio1').value = aboutData.bio1||'';
-  getEl('aboutBio2').value = aboutData.bio2||'';
-  getEl('aboutBio3').value = aboutData.bio3||'';
+  const s = (id, v) => { const el=getEl(id); if(el) el.value=v||''; };
+  s('aboutName',     aboutData.name);
+  s('aboutTitle',    aboutData.title);
+  s('aboutLocation', aboutData.location);
+  s('aboutEmail',    aboutData.email);
+  s('aboutBio1',     aboutData.bio1);
+  s('aboutBio2',     aboutData.bio2);
+  s('aboutBio3',     aboutData.bio3);
   renderSkillsList(); renderExpList(); renderSocialList();
 }
 function renderSkillsList(){
@@ -1856,38 +1921,48 @@ function renderSocialList(){
 function addSocial(){ if(!aboutData.social) aboutData.social=[]; aboutData.social.push({id:'new_'+Date.now(),name:'',icon:'🔗',url:'',active:true}); renderSocialList(); }
 
 async function saveAbout(){
-  aboutData.name = val('aboutName'); aboutData.title = val('aboutTitle');
-  aboutData.location = val('aboutLocation'); aboutData.email = val('aboutEmail');
-  aboutData.bio1 = getEl('aboutBio1').value;
-  aboutData.bio2 = getEl('aboutBio2').value;
-  aboutData.bio3 = getEl('aboutBio3').value;
+  aboutData.name     = val('aboutName');
+  aboutData.title    = val('aboutTitle');
+  aboutData.location = val('aboutLocation');
+  aboutData.email    = val('aboutEmail');
+  aboutData.bio1     = getEl('aboutBio1').value;
+  aboutData.bio2     = getEl('aboutBio2').value;
+  aboutData.bio3     = getEl('aboutBio3').value;
   if(!aboutData.name){ showToast('Ad Soyad zorunlu','error'); return; }
+  showErr('aboutErr','');
   try{
     await saveSettingToSupabase('about', aboutData);
     showToast('Hakkımda kaydedildi! ✅');
     addNotif({id:'ab_'+Date.now(),icon:'👤',text:'Hakkımda sayfası güncellendi',time:new Date().toISOString(),unread:true});
-  } catch(e){ showToast('Kaydetme hatası: '+e.message,'error'); }
+  } catch(e){
+    showErr('aboutErr', `⚠️ <strong>Kayıt hatası:</strong> ${e.message}<br><small>Supabase'de <code>settings</code> tablosu ve <code>key</code> (text, unique), <code>value</code> (text) kolonlarının olduğundan emin olun.</small>`);
+    showToast('Kayıt başarısız','error');
+    console.error('saveAbout:', e);
+  }
 }
 
 // ═══════════════════════════════════════════════════
 // CONTACT PAGE
 // ═══════════════════════════════════════════════════
 async function loadContactPage(){
-  getEl('cpTitle').value = 'Merhaba, konuşalım!';
-  getEl('cpDesc').value = 'Yeni projeler, iş birlikleri veya sadece selamlaşmak için mesaj atabilirsiniz.';
-  getEl('cpEmail').value = 'kerem@akbayir.dev';
-  getEl('cpLocation').value = 'İstanbul, Türkiye';
-  getEl('cpLinkedin').value = 'linkedin.com/in/keremakbayir';
-  getEl('cpFormTitle').value = 'Mesaj Gönder';
+  const defaults = {
+    title:'Merhaba, konuşalım!',
+    desc:'Yeni projeler, iş birlikleri veya sadece selamlaşmak için mesaj atabilirsiniz.',
+    email:'kerem@akbayir.dev',
+    location:'İstanbul, Türkiye',
+    linkedin:'linkedin.com/in/keremakbayir',
+    formTitle:'Mesaj Gönder'
+  };
+  // Önce default değerleri set et
+  Object.entries(defaults).forEach(([k,v])=>{
+    const map = {title:'cpTitle',desc:'cpDesc',email:'cpEmail',location:'cpLocation',linkedin:'cpLinkedin',formTitle:'cpFormTitle'};
+    const el = getEl(map[k]); if(el) el.value = v;
+  });
   try{
     const r = await loadSettingFromSupabase('contact_page');
     if(r && typeof r === 'object'){
-      if(r.title !== undefined)     getEl('cpTitle').value     = r.title;
-      if(r.desc !== undefined)      getEl('cpDesc').value      = r.desc;
-      if(r.email !== undefined)     getEl('cpEmail').value     = r.email;
-      if(r.location !== undefined)  getEl('cpLocation').value  = r.location;
-      if(r.linkedin !== undefined)  getEl('cpLinkedin').value  = r.linkedin;
-      if(r.formTitle !== undefined) getEl('cpFormTitle').value = r.formTitle;
+      const map = {title:'cpTitle',desc:'cpDesc',email:'cpEmail',location:'cpLocation',linkedin:'cpLinkedin',formTitle:'cpFormTitle'};
+      Object.entries(map).forEach(([k,id])=>{ if(r[k] !== undefined){ const el=getEl(id); if(el) el.value=r[k]; } });
     }
   } catch(e){ console.warn('Contact page yüklenemedi:',e); }
 }
@@ -1895,18 +1970,22 @@ async function loadContactPage(){
 async function saveContactPage(){
   const email = val('cpEmail');
   if(!email){ showToast('E-posta zorunlu','error'); return; }
+  showErr('contactErr','');
   const payload = {
-    title:    val('cpTitle'),
-    desc:     getEl('cpDesc').value,
+    title:     val('cpTitle'),
+    desc:      getEl('cpDesc').value,
     email,
-    location: val('cpLocation'),
-    linkedin: val('cpLinkedin'),
-    formTitle:val('cpFormTitle')
+    location:  val('cpLocation'),
+    linkedin:  val('cpLinkedin'),
+    formTitle: val('cpFormTitle')
   };
   try{
     await saveSettingToSupabase('contact_page', payload);
     showToast('İletişim sayfası kaydedildi! ✅');
-  } catch(e){ showToast('Kaydetme hatası: '+e.message,'error'); }
+  } catch(e){
+    showErr('contactErr', `⚠️ <strong>Kayıt hatası:</strong> ${e.message}`);
+    showToast('Kayıt başarısız','error'); console.error('saveContact:', e);
+  }
 }
 
 // ═══════════════════════════════════════════════════
@@ -1915,11 +1994,12 @@ async function saveContactPage(){
 async function loadChatbotPanel(){
   try{
     const r = await loadSettingFromSupabase('chatbot');
-    if(r && typeof r === 'object') chatbotData = r;
-  } catch(e){}
-  getEl('botName').value = chatbotData.name||'';
-  getEl('botGreeting').value = chatbotData.greeting||'';
-  getEl('botSuggestions').value = chatbotData.suggestions||'';
+    if(r && typeof r === 'object') chatbotData = {...chatbotData, ...r};
+  } catch(e){ console.warn('Chatbot yüklenemedi:',e); }
+  const s = (id,v)=>{ const el=getEl(id); if(el) el.value=v||''; };
+  s('botName',        chatbotData.name);
+  s('botGreeting',    chatbotData.greeting);
+  s('botSuggestions', chatbotData.suggestions);
   renderQAList();
 }
 function renderQAList(){
@@ -1934,13 +2014,13 @@ function renderQAList(){
 }
 function addQA(){ chatbotData.qa.push({q:'',a:''}); renderQAList(); }
 async function saveChatbot(){
-  chatbotData.name = val('botName');
-  chatbotData.greeting = val('botGreeting');
+  chatbotData.name        = val('botName');
+  chatbotData.greeting    = val('botGreeting');
   chatbotData.suggestions = val('botSuggestions');
   try{
     await saveSettingToSupabase('chatbot', chatbotData);
     showToast('Chatbot kaydedildi! ✅');
-  } catch(e){ showToast('Kaydetme hatası: '+e.message,'error'); }
+  } catch(e){ showToast('Kayıt hatası: '+e.message,'error'); console.error('saveChatbot:', e); }
 }
 
 // ═══════════════════════════════════════════════════
@@ -1950,22 +2030,24 @@ async function loadSEO(){
   try{
     const r = await loadSettingFromSupabase('seo');
     if(r && typeof r === 'object'){
-      if(r.title)    { getEl('seoTitle').value    = r.title;    updateSeoPreview(); }
-      if(r.desc)     { getEl('seoDesc').value     = r.desc;     updateCharCount(getEl('seoDesc'),'seoDescCount',160); updateSeoPreview(); }
-      if(r.keywords) getEl('seoKeywords').value   = r.keywords;
-      if(r.ogImage)  getEl('seoOgImage').value    = r.ogImage;
-      if(r.url)      getEl('seoUrl').value        = r.url;
-      if(r.twitter)  getEl('seoTwitter').value    = r.twitter;
-      if(r.gaId)     getEl('seoGaId').value       = r.gaId;
-      const togIdx = getEl('tog-index');
-      const togSit = getEl('tog-sitemap');
-      if(togIdx){ r.index === false ? togIdx.classList.remove('on') : togIdx.classList.add('on'); }
-      if(togSit){ r.sitemap === false ? togSit.classList.remove('on') : togSit.classList.add('on'); }
+      const s = (id,v)=>{ const el=getEl(id); if(el&&v!==undefined) el.value=v; };
+      s('seoTitle',    r.title);
+      s('seoKeywords', r.keywords);
+      s('seoOgImage',  r.ogImage);
+      s('seoUrl',      r.url);
+      s('seoTwitter',  r.twitter);
+      s('seoGaId',     r.gaId);
+      if(r.desc){ const el=getEl('seoDesc'); if(el){ el.value=r.desc; updateCharCount(el,'seoDescCount',160); } }
+      updateSeoPreview();
+      const togIdx = getEl('tog-index'),   togSit = getEl('tog-sitemap');
+      if(togIdx){ r.index===false ? togIdx.classList.remove('on') : togIdx.classList.add('on'); }
+      if(togSit){ r.sitemap===false ? togSit.classList.remove('on') : togSit.classList.add('on'); }
     }
   } catch(e){ console.warn('SEO yüklenemedi:',e); }
 }
 
 async function saveSEO(){
+  showErr('seoErr','');
   const payload = {
     title:    val('seoTitle'),
     desc:     getEl('seoDesc')?.value || '',
@@ -1980,7 +2062,10 @@ async function saveSEO(){
   try{
     await saveSettingToSupabase('seo', payload);
     showToast('SEO ayarları kaydedildi! ✅');
-  } catch(e){ showToast('Kaydetme hatası: '+e.message,'error'); }
+  } catch(e){
+    showErr('seoErr', `⚠️ <strong>Kayıt hatası:</strong> ${e.message}`);
+    showToast('Kayıt başarısız','error'); console.error('saveSEO:', e);
+  }
 }
 
 // ═══════════════════════════════════════════════════
@@ -1990,54 +2075,52 @@ async function loadSiteSettings(){
   try{
     const r = await loadSettingFromSupabase('site_settings');
     if(r && typeof r === 'object'){
-      const safeSet = (id, v) => { const el = getEl(id); if(el && v !== undefined && v !== null) el.value = v; };
-      safeSet('siteAuthor',      r.author);
-      safeSet('siteRole',        r.role);
-      safeSet('siteHeroBio',     r.heroBio);
-      safeSet('siteTags',        r.tags);
-      safeSet('siteHeroCta1',    r.heroCta1);
-      safeSet('siteHeroCta1Link',r.heroCta1Link);
-      safeSet('siteHeroCta2',    r.heroCta2);
-      safeSet('siteHeroCta2Link',r.heroCta2Link);
-      safeSet('siteFooter',      r.footer);
-      safeSet('siteFooterLinks', r.footerLinks);
-      if(r.colorAccent){
-        getEl('colorAccent').value    = r.colorAccent;
-        getEl('colorAccentHex').value = r.colorAccent;
-      }
-      if(r.colorAccent2){
-        getEl('colorAccent2').value    = r.colorAccent2;
-        getEl('colorAccent2Hex').value = r.colorAccent2;
-      }
-      if(r.defaultTheme) getEl('defaultTheme').value = r.defaultTheme;
+      const s = (id,v)=>{ const el=getEl(id); if(el&&v!==undefined&&v!==null) el.value=v; };
+      s('siteAuthor',      r.author);
+      s('siteRole',        r.role);
+      s('siteHeroBio',     r.heroBio);
+      s('siteTags',        r.tags);
+      s('siteHeroCta1',    r.heroCta1);
+      s('siteHeroCta1Link',r.heroCta1Link);
+      s('siteHeroCta2',    r.heroCta2);
+      s('siteHeroCta2Link',r.heroCta2Link);
+      s('siteFooter',      r.footer);
+      s('siteFooterLinks', r.footerLinks);
+      if(r.colorAccent)  { getEl('colorAccent').value=r.colorAccent;  getEl('colorAccentHex').value=r.colorAccent; }
+      if(r.colorAccent2) { getEl('colorAccent2').value=r.colorAccent2; getEl('colorAccent2Hex').value=r.colorAccent2; }
+      if(r.defaultTheme)   getEl('defaultTheme').value = r.defaultTheme;
     }
   } catch(e){ console.warn('Site settings yüklenemedi:',e); }
 }
 
 async function saveSiteSettings(){
+  showErr('themeErr','');
   const payload = {
-    author:        val('siteAuthor'),
-    role:          val('siteRole'),
-    heroBio:       getEl('siteHeroBio')?.value || '',
-    tags:          val('siteTags'),
-    colorAccent:   getEl('colorAccent')?.value  || '#6366f1',
-    colorAccent2:  getEl('colorAccent2')?.value || '#8b5cf6',
-    defaultTheme:  getEl('defaultTheme')?.value || 'dark',
-    heroCta1:      val('siteHeroCta1'),
-    heroCta1Link:  val('siteHeroCta1Link'),
-    heroCta2:      val('siteHeroCta2'),
-    heroCta2Link:  val('siteHeroCta2Link'),
-    footer:        val('siteFooter'),
-    footerLinks:   val('siteFooterLinks')
+    author:       val('siteAuthor'),
+    role:         val('siteRole'),
+    heroBio:      getEl('siteHeroBio')?.value || '',
+    tags:         val('siteTags'),
+    colorAccent:  getEl('colorAccent')?.value  || '#6366f1',
+    colorAccent2: getEl('colorAccent2')?.value || '#8b5cf6',
+    defaultTheme: getEl('defaultTheme')?.value || 'dark',
+    heroCta1:     val('siteHeroCta1'),
+    heroCta1Link: val('siteHeroCta1Link'),
+    heroCta2:     val('siteHeroCta2'),
+    heroCta2Link: val('siteHeroCta2Link'),
+    footer:       val('siteFooter'),
+    footerLinks:  val('siteFooterLinks')
   };
   try{
     await saveSettingToSupabase('site_settings', payload);
     showToast('Site ayarları kaydedildi! ✅');
-  } catch(e){ showToast('Kaydetme hatası: '+e.message,'error'); }
+  } catch(e){
+    showErr('themeErr', `⚠️ <strong>Kayıt hatası:</strong> ${e.message}`);
+    showToast('Kayıt başarısız','error'); console.error('saveSiteSettings:', e);
+  }
 }
 
 // ═══════════════════════════════════════════════════
-// SETTINGS — DÜZELTİLDİ: double toast kaldırıldı
+// SETTINGS
 // ═══════════════════════════════════════════════════
 async function loadSettingsPanel(){
   getEl('sbUrl').textContent = SUPABASE_URL;
@@ -2045,25 +2128,24 @@ async function loadSettingsPanel(){
     const r = await loadSettingFromSupabase('app_settings');
     if(r && typeof r === 'object'){
       const setTog = (id, v) => {
-        const el = getEl(id);
-        if(!el) return;
-        if(v === false) el.classList.remove('on');
-        else el.classList.add('on');
+        const el = getEl(id); if(!el) return;
+        v === false ? el.classList.remove('on') : el.classList.add('on');
       };
-      setTog('tog-comments',     r.comments);
-      setTog('tog-contact',      r.contact);
-      setTog('tog-bot',          r.bot);
-      setTog('tog-moderation',   r.moderation);
-      setTog('tog-readmode',     r.readmode);
-      setTog('tog-lang',         r.lang);
-      setTog('tog-notif-comment',r.notifComment);
-      setTog('tog-notif-msg',    r.notifMsg);
-      if(r.notifEmail) getEl('notifEmail').value = r.notifEmail;
+      setTog('tog-comments',      r.comments);
+      setTog('tog-contact',       r.contact);
+      setTog('tog-bot',           r.bot);
+      setTog('tog-moderation',    r.moderation);
+      setTog('tog-readmode',      r.readmode);
+      setTog('tog-lang',          r.lang);
+      setTog('tog-notif-comment', r.notifComment);
+      setTog('tog-notif-msg',     r.notifMsg);
+      if(r.notifEmail){ const el=getEl('notifEmail'); if(el) el.value=r.notifEmail; }
     }
   } catch(e){ console.warn('Settings yüklenemedi:',e); }
 }
 
 async function saveSettings(){
+  showErr('settingsErr','');
   const isOn = id => getEl(id)?.classList.contains('on') ?? true;
   const payload = {
     comments:     isOn('tog-comments'),
@@ -2078,9 +2160,11 @@ async function saveSettings(){
   };
   try{
     await saveSettingToSupabase('app_settings', payload);
-    // ── DÜZELTİLDİ: Tek toast, double toast bug'ı giderildi ──
-    showToast('Ayarlar kaydedildi! ✅ Site kodunuzu güncellemeyi unutmayın.');
-  } catch(e){ showToast('Kaydetme hatası: '+e.message,'error'); }
+    showToast('Ayarlar kaydedildi! ✅');
+  } catch(e){
+    showErr('settingsErr', `⚠️ <strong>Kayıt hatası:</strong> ${e.message}<br><small>Supabase'de <code>settings</code> tablosu (<code>key text unique</code>, <code>value text</code>) oluşturulmuş olmalı. RLS politikalarını kontrol edin.</small>`);
+    showToast('Kayıt başarısız','error'); console.error('saveSettings:', e);
+  }
 }
 
 function checkSBStatus(){
