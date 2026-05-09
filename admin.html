@@ -1843,13 +1843,32 @@ function openReply(id){
   getEl('replyOriginal').innerHTML = `<strong>${escHtml(msg.name)}</strong> &lt;${escHtml(msg.email||'')}&gt; · ${fmtDate(msg.created_at)}<br><strong>${escHtml(msg.subject||'Konu yok')}</strong><br><br>${escHtml(msgBody)}`;
   getEl('replyContent').value = '';
   getEl('replyModal').classList.add('show');
-}
 async function sendReply(){
   if(!replyMsg) return;
   const body = val('replyContent');
   if(!body){ showToast('Cevap boş olamaz','error'); return; }
-  showToast(`Cevap ${replyMsg.email} adresine gönderildi ✓`);
-  closeModal('replyModal'); replyMsg = null;
+
+  const btn = document.querySelector('#replyModal .btn-primary');
+  if(btn){ btn.disabled = true; btn.textContent = '⏳ Gönderiliyor...'; }
+
+  try{
+    const { error } = await db.functions.invoke('send-email', {
+      body: {
+        to:      replyMsg.email,
+        subject: 'Re: ' + (replyMsg.subject || 'Mesajınız'),
+        html:    `<p>${val('replyContent').replace(/\n/g,'<br>')}</p>`
+      }
+    });
+    if(error) throw error;
+    showToast(`Cevap gönderildi → ${replyMsg.email} ✅`);
+    closeModal('replyModal');
+    replyMsg = null;
+  } catch(e){
+    showToast('Gönderilemedi: ' + e.message, 'error');
+  } finally {
+    if(btn){ btn.disabled = false; btn.textContent = '📤 Gönder'; }
+  }
+
 }
 async function deleteMsg(id){
   const {error} = await db.from('messages').delete().eq('id',id);
