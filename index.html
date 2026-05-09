@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="tr" data-theme="dark">
 <head>
@@ -565,8 +567,7 @@ let readFontSize=16;
 let chatHistory=[];
 let _capA=0,_capB=0,_capAns=0;
 
-// YENİ — tüm postlar 0'dan başlar:
-const BASE_LIKES={};
+const BASE_LIKES={1:23,2:17,3:31,4:8,5:14,6:6};
 
 const catColors={'DevOps':'','Software Architecture':'badge-purple','C#':'badge-orange','Database':'badge-green','Yapay Zeka':'badge-purple','Design Patterns':'badge-cyan','Bilgi Güvenliği':'badge-red','Genel':''};
 function catBadge(c){return`<span class="badge ${catColors[c]||'badge-default'}">${c||'Genel'}</span>`;}
@@ -859,7 +860,7 @@ async function openPost(id,skipHash){
   setMeta('meta[name="twitter:title"]',post.title+' – Kerem Akbayır');
   setMeta('meta[name="twitter:description"]',post.excerpt||'');
   const likes=JSON.parse(localStorage.getItem('ka_likes')||'{}');
-if(likes['count_'+id]===undefined){likes['count_'+id]=0;...}||10;localStorage.setItem('ka_likes',JSON.stringify(likes));}
+  if(likes['count_'+id]===undefined){likes['count_'+id]=BASE_LIKES[id]||10;localStorage.setItem('ka_likes',JSON.stringify(likes));}
   const likeCount=likes['count_'+id];
   const isLiked=likes['liked_'+id]||false;
   const related=allPosts.filter(p=>p.category===post.category&&p.id!==id).slice(0,2);
