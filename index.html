@@ -95,7 +95,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(10,12,18,0.92);backdrop-fi
 .card{background:var(--card);border:1px solid var(--border);border-radius:14px}
 .featured-card{display:flex;overflow:hidden;margin-bottom:32px;cursor:pointer;transition:border-color .2s,transform .2s,box-shadow .2s}
 .featured-card:hover{border-color:rgba(99,102,241,0.4);transform:translateY(-2px);box-shadow:var(--shadow)}
-.featured-img{width:190px;flex-shrink:0;background:linear-gradient(160deg,var(--bg3),var(--bg4));display:flex;align-items:center;justify-content:center;font-size:44px;border-right:1px solid var(--border)}
+.featured-img{width:190px;flex-shrink:0;background:linear-gradient(160deg,var(--bg3),var(--bg4));display:flex;align-items:center;justify-content:center;font-size:44px;border-right:1px solid var(--border);overflow:hidden;position:relative}
 .featured-body{padding:24px 28px;flex:1}
 .featured-body h2{font-size:18px;font-weight:600;margin:8px 0 10px;letter-spacing:-.3px;line-height:1.4}
 .featured-body p{font-size:13px;color:var(--text2);line-height:1.75;margin-bottom:12px}
@@ -222,7 +222,7 @@ footer{border-top:1px solid var(--border);padding:24px 2rem;max-width:900px;marg
 .blog-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px}
 .blog-card{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;transition:border-color .2s,transform .2s,box-shadow .2s}
 .blog-card:hover{border-color:rgba(99,102,241,0.35);transform:translateY(-2px);box-shadow:var(--shadow)}
-.blog-thumb{height:110px;background:linear-gradient(135deg,var(--bg3),var(--bg4));display:flex;align-items:center;justify-content:center;font-size:32px;border-bottom:1px solid var(--border)}
+.blog-thumb{height:110px;background:linear-gradient(135deg,var(--bg3),var(--bg4));display:flex;align-items:center;justify-content:center;font-size:32px;border-bottom:1px solid var(--border);overflow:hidden;position:relative}
 .blog-body{padding:14px 16px}
 .blog-body h3{font-size:13px;font-weight:600;margin:6px 0;line-height:1.45}
 .blog-body p{font-size:11.5px;color:var(--text2);line-height:1.65}
@@ -662,7 +662,7 @@ function goBackToBlog(){history.back();}
  
 async function loadPosts(){
   try{const{data,error}=await db.from('posts').select('*').eq('status','published').order('created_at',{ascending:false});if(error)throw error;
-    allPosts=(data||[]).map(p=>({id:p.id,title:p.title,excerpt:p.excerpt||'',content:p.content||'',category:p.category||'Genel',icon:p.icon||'📝',date:p.created_at?p.created_at.split('T')[0]:'',featured:p.featured,comments_enabled:p.comments_enabled!==false}));
+allPosts=(data||[]).map(p=>({id:p.id,title:p.title,excerpt:p.excerpt||'',content:p.content||'',category:p.category||'Genel',icon:p.icon||'📝',image:p.image||'',date:p.created_at?p.created_at.split('T')[0]:'',featured:p.featured,comments_enabled:p.comments_enabled!==false}));
   }catch(e){console.warn('Posts:',e.message);allPosts=[];}
 }
  
@@ -734,7 +734,7 @@ function renderHome(){
   const feat=allPosts.find(p=>p.featured)||allPosts[0];
   const rest=allPosts.filter(p=>p!==feat).slice(0,6);
   const fe=document.getElementById('homeFeatured');
-  if(fe&&feat){fe.innerHTML=`<div class="section-head"><span class="section-title">Öne Çıkan</span><div class="section-line"></div></div><div class="featured-card card" onclick="openPost(${feat.id})"><div class="featured-img">${feat.icon||'📝'}</div><div class="featured-body">${catBadge(feat.category)}<h2>${feat.title}</h2><p>${feat.excerpt}</p><div class="post-meta">${fmtDate(feat.date)}<span class="meta-dot"></span>${readTime(feat.content)} dk okuma</div></div></div>`;}else if(fe)fe.innerHTML='';
+  if(fe&&feat){fe.innerHTML=`<div class="section-head"><span class="section-title">Öne Çıkan</span><div class="section-line"></div></div><div class="featured-card card" onclick="openPost(${feat.id})"><div class="featured-img">${feat.image?`<img src="${feat.image}" alt="${feat.title}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">`:(feat.icon||'📝')}</div><div class="featured-body">${catBadge(feat.category)}<h2>${feat.title}</h2><p>${feat.excerpt}</p><div class="post-meta">${fmtDate(feat.date)}<span class="meta-dot"></span>${readTime(feat.content)} dk okuma</div></div></div>`;}else if(fe)fe.innerHTML='';
   const hg=document.getElementById('homePostsGrid');
   if(hg){if(!rest.length){hg.innerHTML='<div class="empty" style="grid-column:span 2"><div class="empty-icon">📭</div><p>Henüz yazı yok.</p></div>';return;}
     hg.innerHTML=rest.map(p=>`<div class="post-card fade-in" onclick="openPost(${p.id})">${catBadge(p.category)}<h3>${p.title}</h3><p>${p.excerpt}</p><div class="post-meta">${fmtDate(p.date)}<span class="meta-dot"></span>${readTime(p.content)} dk</div></div>`).join('');}
@@ -747,7 +747,7 @@ function renderBlog(filter){
   const filtered=filter?allPosts.filter(p=>p.category===filter):allPosts;
   const grid=document.getElementById('blogGrid');if(!grid)return;
   if(!filtered.length){grid.innerHTML='<div class="empty" style="grid-column:span 2"><div class="empty-icon">📭</div><p>Yazı bulunamadı.</p></div>';return;}
-  grid.innerHTML=filtered.map(p=>`<div class="blog-card fade-in" onclick="openPost(${p.id})"><div class="blog-thumb">${p.icon||'📝'}</div><div class="blog-body">${catBadge(p.category)}<h3>${p.title}</h3><p>${p.excerpt}</p><div class="post-meta">${fmtDate(p.date)}<span class="meta-dot"></span>${readTime(p.content)} dk</div></div></div>`).join('');
+  grid.innerHTML=filtered.map(p=>`<div class="blog-card fade-in" onclick="openPost(${p.id})"><div class="blog-thumb">${p.image?`<img src="${p.image}" alt="${p.title}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">`:(p.icon||'📝')}</div><div class="blog-body">${catBadge(p.category)}<h3>${p.title}</h3><p>${p.excerpt}</p><div class="post-meta">${fmtDate(p.date)}<span class="meta-dot"></span>${readTime(p.content)} dk</div></div></div>`).join('');
 }
  
 function renderAbout(){
