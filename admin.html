@@ -287,7 +287,6 @@ input[type=checkbox]{width:14px;height:14px;accent-color:var(--accent);cursor:po
 .warn-box{background:rgba(245,158,11,0.07);border:1px solid rgba(245,158,11,0.25);border-radius:10px;padding:12px 16px;font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:12px}
 .warn-box strong{color:var(--orange)}
 
-/* Hata kutusu - settings tablosu yoksa göster */
 .error-box{background:rgba(239,68,68,0.07);border:1px solid rgba(239,68,68,0.25);border-radius:10px;padding:12px 16px;font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:12px;display:none}
 .error-box.show{display:block}
 .error-box strong{color:var(--red)}
@@ -967,10 +966,8 @@ let quill = null;
 let currentTags = [];
 let projSortable = null;
 let replyMsg = null;
-let hasSeoColumns = null; // null = henüz bilinmiyor
-
-// Supabase settings tablosunun varlığı
-let hasSettingsTable = null; // null = henüz bilinmiyor
+let hasSeoColumns = null;
+let hasSettingsTable = null;
 
 let aboutData = {
   name:'Kerem Akbayır', title:'Senior Software Engineer',
@@ -1055,14 +1052,9 @@ document.addEventListener('click', e => {
 // ═══════════════════════════════════════════════════
 // SETTINGS TABLE HELPERS
 // ═══════════════════════════════════════════════════
-/**
- * settings tablosuna upsert yapar.
- * Tablo yoksa veya RLS izni yoksa hata fırlatır — çağıran yakalar.
- */
 async function saveSettingToSupabase(key, value) {
   const stored = (typeof value === 'object') ? JSON.stringify(value) : String(value);
 
-  // Önce var mı diye bak
   const { data: existing, error: selErr } = await db
     .from('settings')
     .select('key')
@@ -1070,19 +1062,16 @@ async function saveSettingToSupabase(key, value) {
     .maybeSingle();
 
   if (selErr && selErr.code !== 'PGRST116') {
-    // PGRST116 = satır bulunamadı — sorun değil
     throw new Error('settings tablosu okunamadı: ' + selErr.message);
   }
 
   if (existing) {
-    // Güncelle
     const { error: updErr } = await db
       .from('settings')
       .update({ value: stored })
       .eq('key', key);
     if (updErr) throw new Error('Güncelleme hatası: ' + updErr.message);
   } else {
-    // Ekle
     const { error: insErr } = await db
       .from('settings')
       .insert([{ key, value: stored }]);
@@ -1152,7 +1141,6 @@ function showApp(){
   loadComments();
   loadMessages();
   loadMedia();
-  // Ayar panelleri — hata yakalanır, konsola yazılır
   loadAboutPanel().catch(e => console.warn('About:', e));
   loadChatbotPanel().catch(e => console.warn('Chatbot:', e));
   loadContactPage().catch(e => console.warn('Contact:', e));
@@ -1360,11 +1348,9 @@ async function loadPosts(){
     if(error) throw error;
     allPosts = data||[];
 
-    // Tablonun kolonlarını kontrol et — SEO kolonları var mı?
     if(hasSeoColumns === null && allPosts.length > 0){
       hasSeoColumns = 'seo_title' in allPosts[0];
     } else if(hasSeoColumns === null){
-      // Boş tablo — bir insert/select ile anlayamayız, optimist olarak true kabul et
       hasSeoColumns = true;
     }
 
@@ -1468,7 +1454,6 @@ function openPostModal(id){
   getEl('postModal').classList.add('show');
 }
 
-// ── DÜZELTME 1: savePost — comments_enabled ve SEO kolonları güvenli şekilde handle ediliyor
 async function savePost(){
   const id = val('editPostId');
   const title = val('editPostTitle');
@@ -1483,7 +1468,6 @@ async function savePost(){
   if(saveBtn){ saveBtn.disabled = true; saveBtn.textContent = '⏳ Kaydediliyor...'; }
 
   try{
-    // Temel payload — sadece mevcut kolonları içerir
     const basePayload = {
       title,
       slug,
@@ -1508,7 +1492,6 @@ async function savePost(){
       savedId = data?.id;
     }
 
-    // SEO kolonları ayrıca dene — yoksa hasSeoColumns=false yap
     if(savedId && hasSeoColumns !== false){
       const seoPayload = {};
       const st = val('postSeoTitle');      if(st)  seoPayload.seo_title     = st;
@@ -1836,18 +1819,17 @@ function renderMessages(){
   </tr>`;
   }).join('');
 }
+
 function openReply(id){
   const msg = allMessages.find(m=>m.id===id); if(!msg) return;
   replyMsg = msg;
   const msgBody = getMsgBody(msg);
-  getEl('replyOriginal').innerHTML = `...`;
+  getEl('replyOriginal').innerHTML = `<strong>${escHtml(msg.name)}</strong>: ${escHtml(msgBody)}`;
   getEl('replyContent').value = '';
   getEl('replyModal').classList.add('show');
-}   K
+}
 
 async function sendReply(){
-  
-}
   const body = val('replyContent');
   if(!body){ showToast('Cevap boş olamaz','error'); return; }
 
@@ -1871,8 +1853,8 @@ async function sendReply(){
   } finally {
     if(btn){ btn.disabled = false; btn.textContent = '📤 Gönder'; }
   }
-
 }
+
 async function deleteMsg(id){
   const {error} = await db.from('messages').delete().eq('id',id);
   if(error){ showToast('Silinemedi: '+error.message,'error'); return; }
@@ -1975,7 +1957,6 @@ async function loadContactPage(){
     linkedin:'linkedin.com/in/keremakbayir',
     formTitle:'Mesaj Gönder'
   };
-  // Önce default değerleri set et
   Object.entries(defaults).forEach(([k,v])=>{
     const map = {title:'cpTitle',desc:'cpDesc',email:'cpEmail',location:'cpLocation',linkedin:'cpLinkedin',formTitle:'cpFormTitle'};
     const el = getEl(map[k]); if(el) el.value = v;
