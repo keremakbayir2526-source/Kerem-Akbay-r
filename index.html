@@ -715,8 +715,20 @@ async function loadSiteSettings(){
       const setText=(id,val)=>{const el=document.getElementById(id);if(el&&val!=null&&val!=='')el.textContent=val;};
       setText('contactTitle',c.title);setText('contactDesc',c.desc);setText('contactEmail',c.email);setText('contactLocation',c.location);setText('contactLinkedin',c.linkedin);setText('contactFormTitle',c.formTitle);
     }
-    if(map['app_settings']){
-      const s=map['app_settings'];
+    
+    data.forEach(row=>{
+  if(!row.value){map[row.key]=null;return;}
+  let parsed=row.value;
+  // Eğer string ise parse et
+  if(typeof parsed==='string'){
+    try{parsed=JSON.parse(parsed);}catch{}
+  }
+  // Hâlâ string ise tekrar parse et (double-encoded)
+  if(typeof parsed==='string'){
+    try{parsed=JSON.parse(parsed);}catch{}
+  }
+  map[row.key]=parsed;
+});
       const chatBtn=document.getElementById('chatBtn');if(chatBtn) chatBtn.style.display=(s.bot===false)?'none':'flex';
       const langBtn=document.getElementById('langBtn');if(langBtn) langBtn.style.display=(s.lang===false)?'none':'';
       const contactFormCard=document.getElementById('contactFormCard');if(contactFormCard) contactFormCard.style.display=(s.contact===false)?'none':'';
